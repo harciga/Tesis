@@ -89,7 +89,7 @@
            name = prevalente,
     description = {Que prevalece o sobresale}}
 \newglossaryentry{programacion} {
-           name = planificación,
+           name = programación,
     description = {Acción de programar}}
 \newglossaryentry{programar} {
            name = programar,
@@ -97,12 +97,18 @@
 \newglossaryentry{turno} {
            name = turno,
     description = {Conjunto de trabajadores que desempeñan su actividad al mismo tiempo, según un orden establecido previamente}}
-\newglossaryentry{revision~bibliografica}{
-          name = revisión~bibliografica,
+\newglossaryentry{revision bibliografica}{
+          name = revisión bibliográfica,
    description = {La revisión bibliográfica comprende todas las actividades relacionadas con la búsqueda de información escrita sobre un tema acotado previamente y sobre el cual, se reúne y discute críticamente, toda la información recuperada y utilizada}}
 \newglossaryentry{planeacion}{
           name = planeación,
-   description = {description}}
+   description = {Mex. Planificación}}
+\newglossaryentry{procedimental}{
+          name = procedimental,
+   description = {Del procedimiento o relacionado con él:la exigencia de total y absoluta formalidad procedimental}}
+\newglossaryentry{precedencia}{
+          name = precedencia,
+   description = {Circunstancia de preceder a una cosa o persona en el tiempo o en el espacio o de tener más importancia que otra persona o cosa:la precedencia de un acontecimiento sobre otro}}
 
 \newacronym[longplural=Frames per Second]{fpsLabel} {FPS}{Frame per Second}
 
@@ -215,16 +221,13 @@ De manera intuitiva, se puede pensar que la programación\index{programación} e
 
 La preparación de una comida o el lavado de ropa son buenos ejemplos de problemas cotidianos de programación\index{programación}. Ambos involucran tareas\index{tarea} a realizar, las tareas\index{tarea} son específicas, y requieren de recursos\index{recurso} en particular: un cocinero y una estufa para la preparación de la comida, y una lavadora y secadora para el lavado de ropa.
 Los problemas de programación\index{programación} en la industria\index{industria} tienen una estructura similar: consisten de un conjunto de tareas\index{tarea} a realizar y de un conjunto de recursos\index{recurso} disponibles para llevar a cabo dichas tareas. Dadas tareas\index{tarea} y recursos\index{recurso}, el problema en general\index{programación!problema general} es determinar los tiempos\index{tiempo} de las tareas\index{tarea} a la vez que se reconocen las capacidades de los recursos\index{recurso}.
-Este problema\index{problema} usualmente surge dentro de una jerarquía\index{jerarquía} de toma de decisiones\index{toma de decisiones} en donde la programación\index{programación} sigue algunas decisiones más básicas, hechas anteriormente. La preparación de una comida, por ejemplo, típicamente requiere una especificación de los elementos en el menú, las recetas de los mismos, e información respecto a cuántas raciones serán necesarias. En la industria\index{industria}, decisiones análogas se dice forman parte de la función de planeación\index{planeación!función de}.
-En el proceso de programación, es necesario conocer el tipo y cantidad de cada recurso de manera que se pueda determinar cuándo las tareas pueden ser factiblemente realizadas. Cuando se especifícan los recursos, jse define efectivamente el alcance del problema de programación. Además, se describe cada tarea en términos de información tales como su requisito de recurso, su duración, el tiempo más temprano en el que puede comenzar, y el tiempo al que debe hacer llegado a compleción.
-En general, la duración de la tarea es incierta, pero se puede suprimir la incertidumbre cuando se formula el problema. También se debe describir cualquier limitante tecnológica que exista entre las tareas. La información acerca de los recursis y las tareas define al problema de programación. Sin embargo, encontrar una solución es comúnmente una tarea compleja, y los acercamientos formales para su solución son beneficiosos.
+Este problema\index{problema} usualmente surge dentro de una jerarquía\index{jerarquía} de toma de decisiones\index{toma de decisiones} en donde la programación\index{programación} sigue algunas decisiones más básicas, hechas anteriormente. La preparación de una comida, por ejemplo, típicamente requiere una especificación de los elementos en el menú, las recetas de los mismos, e información respecto a cuántas raciones serán necesarias. En el sector de la industria\index{industria}, decisiones análogas se dice forman parte de la función de planificación\index{planificación!función de}. Entre otras cosas, la función de planificación\index{planificación!función de} puede describir el diseño de los productos de la compañía, la tecnología disponible para la produccíon y prueba de las partes requeridas, y los volúmenes de producción deseados. En resumen, la función de planificación\index{planificación!función de} determina los recursos\index{recurso} disponibles para la producción\index{producción} y las tareas\index{tarea} a ser programadas\index{programación}\citep[p.~2]{Baker2009}.
+
+En el proceso\index{proceso} de programación\index{programación}, es necesario conocer el tipo y cantidad de cada recurso\index{recurso} de manera que se pueda determinar cuándo las tareas\index{tarea} pueden ser factiblemente\index{factible} realizadas. Cuando se especifícan los recursos\index{recurso}, se define efectivamente el alcance del problema de programación\index{programación!problema general}. Además, se describe cada tarea\index{tarea} en términos informativos tales como su requisito de recurso\index{recurso}, su duración, el tiempo\index{tiempo} más pronto en el que puede comenzar, y el tiempo\index{tiempo} en el que debe llegar a su compleción.
+En general, la duración de la tarea\index{tarea} es incierta, pero se puede suprimir la incertidumbre –si así se desea– cuando se formula el problema\index{problema}. También se debe describir cualquier limitante\index{limitante} procedimental\index{limitante!procedimental} –restricciones de precedencia– que exista entre las tareas\index{tarea}. La información acerca de los recursos\index{recurso} y las tareas\index{tarea} define un problema de programación\index{programación!problema general}. Sin embargo, encontrar una solución es comúnmente una tarea compleja, y los planteamientos formales\index{planteamiento formal} para la solución del problema son beneficiosos.
 \iffalse
-
-This problem usually arises within a decision-making hierarchy in which scheduling follows some earlier, more basic decisions. Dinner preparation, for example, typically requires a specification of the menu items, recipes for those items, and information on how many portions will be needed. In industry, analogous decisions are usually said to be part of the planning function. Among other things, the planning function might describe the design of a company’s products, the technology available for making and testing the required parts, and the volumes to be produced. In short, the planning function determines the resources available for production and the tasks to be scheduled.
-
-In the scheduling process, we need to know the type and the amount of each resource so that we can determine when the tasks can feasibly be accomplished. When we specify the resources, we effectively define the boundary of the scheduling problem. In addition, we describe each task in terms of such information as its resource requirement, its duration, the earliest time at which it may start, and the time at which it is due to complete. 
-
-In general, the task duration is uncertain, but we may want to suppress that uncertainty when stating the problem. We should also describe any technological constraints (precedence restrictions) that exist among the tasks. Information about resources and tasks defines a scheduling problem. However, finding a solution is often a fairly complex matter, and formal problem-solving approaches are helpful.
+Scheduling - programación
+constraint - limitante
 
 Planificación (scheduling)
 planificación de horarios (timetabling)
