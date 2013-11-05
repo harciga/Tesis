@@ -97,6 +97,12 @@
 \newglossaryentry{turno} {
            name = turno,
     description = {Conjunto de trabajadores que desempeñan su actividad al mismo tiempo, según un orden establecido previamente}}
+\newglossaryentry{revision~bibliografica}{
+          name = revisión~bibliografica,
+   description = {La revisión bibliográfica comprende todas las actividades relacionadas con la búsqueda de información escrita sobre un tema acotado previamente y sobre el cual, se reúne y discute críticamente, toda la información recuperada y utilizada}}
+\newglossaryentry{planeacion}{
+          name = planeación,
+   description = {description}}
 
 \newacronym[longplural=Frames per Second]{fpsLabel} {FPS}{Frame per Second}
 
@@ -183,18 +189,54 @@ Moving onto course timetabling, Chapter 7 deals with variable
 \section{Introducción}
 
 \index{horarios!planificación}
-En este capítulo se hace una revisión bibliográfica poniéndo énfasis en los aspectos fundamentales del área de investigación. Se introduce la definición del problema general de planificación de horarios así como los términos relevantes al ámbito de estudio. 
-
-, en específico la problemática relevante a las instituciones docentes así como las limitantes que tales problemas deben considerar \citep[p.~8]{abdullah06heuristic-approaches}. Se precisan los términos utilizados en el ámbito
-
-El capítulo comprende 
+Este capítulo es una revisión bibliográfica enfocada en los aspectos fundamentales del área de investigación. Introduce la definición del problema general de planificación\marginnote{planificaci\'on?} de horarios\index{horarios!planificaci\'on!problema general} así como los términos relevantes al ámbito de estudio \citep[p.~8]{abdullah06heuristic-approaches}.  
+El capítulo comprende de equis secciones. La secci\'on \ref{sec:preliminares} proporciona las definiciones de los t\'erminos a utilizar, la secci\'on \ref{sec:planificacion_horarios} presenta el problema de manera general
 
 \iffalse
 This literature review chapter attempts to place an emphasis on the fundamental aspects of the research area. It introduces the definition of the general timetabling problem, specifically the university timetabling problem, the constraints that such a problem must consider and the key approaches related to the university timetabling problem that have been carried out to date.
 This chapter comprises seven sections. Section 2.1 describes the definition of timetabling. Section 2.2 briefly explains the general timetabling problem followed by the classification of educational timetabling problems. Since this thesis focuses on the university timetabling problem, Sections 2.4 and 2.5 present more details on the examination and course timetabling problems which include related soft and hard constraints. Section 2.6 discusses the university timetabling problem model using graph colouring. The summary of the papers which have been published and the techniques applied to university timetabling problems are presented in Section 2.7. Section 2.8 provides a summary of this chapter.
 \fi
 
+\section{Preliminares}
+\label{sec:preliminares}
+
+Es necesario aclarar algunos términos prevalentes en este trabajo pues en la literatura relevante son utilizados de manera muy distinta. Siguiendo la pauta de \citet[p.~46]{wren95scheduling-timetabling} el trabajo comienza con el más ampliamente utilizado: programación\index{programación} (\textit{scheduling}). ¿Qué es la programación\index{programación}?
+
+La programación\index{programación} como palabra, forma parte del vocabulario de todos los días —aunque no siempre se tenga una idea clara de su significado–. En realidad, no es la programación\index{programación} en sí lo que es un concepto común en la vida diaria, son más bien los horarios\index{horario}. Un horario\index{horario} es un plan o documento tangible, tal como el horario de salidas de un autobus o un horario de clases. Un horario\index{horario} señala cuándo debe suceder algún evento\index{evento}; especifíca un plan para el tiempo de ocurrencia de ciertas actividades\index{actividad} y contesta la pregunta, “Si todo va bien, ¿cuándo ocurrirá un evento\index{evento} en particular?” 
+
+Supóngase que es deseable saber cuándo la cena será servida o cuándo un autobus saldrá a su destino. En estos casos, el evento\index{evento} de interés es la compleción de una actividad\index{actividad} en particular —como lo es la preparación de la cena— o el comienzo de una actividad\index{actividad} en particular —como el viaje en autobus—.
+
+Las respuestas a la pregunta “¿cuándo?” usualmente están ligadas con información acerca del tiempo\index{tiempo}. La cena está programada para ser servida a las 18:00, el autobus está programado para salir a las 8:00. Sin embargo, una respuesta igualmente útil puede ser dada en términos de secuencia\index{secuencia} en lugar de tiempo: es decir, la cena será servida tan pronto como el platillo principal esté horneado, o el autobus partirá a su destino en cuanto su limpieza y mantenimiento sean completados. Por lo tanto, la pregunta “¿cuándo?” puede ser respondida ya sea con información de tiempo o de secuencia obtenida a partir de un horario \citep[p.~1]{Baker2009}.
+
+\iffalse
+If we take into account that some events are unpredictable, then changes may occur in a schedule. Even then, the schedule is useful: by letting passengers know when the bus is due to leave, we help them plan their own schedules. Thus, we may say that the bus leaves at 8:00 am unless it is delayed for cleaning and maintenance, or we may leave the condition implicit and just say that the bus is scheduled to leave at 8:00 am. If we make allowances for uncertainty when we schedule cleaning and maintenance, then passengers can trust that the bus will leave at 8:00 am with some confidence. In turn, they may schedule their own time buffer when planning their arrival at the station. Using a time buffer (or safety time) helps us cope with uncertainty.
+\fi
+De manera intuitiva, se puede pensar que la programación\index{programación} es el proceso\index{proceso} de producir un horario\index{horario}, sin embargo rara vez se consideran los detalles que ello conlleva. De hecho, aunque se piense en un horario\index{horario} como algo tangible, el proceso\index{proceso} de la programación\index{programación} parece no serlo, hasta que es considerado con cierto detenimiento. El problema es comúnmente atacado en dos pasos: secuenciación\index{secuenciación} y programación\index{programación}. En el primer paso, se planifica una secuencia\index{secuencia} o se decide cómo elegir la siguiente tarea. En el segundo paso, se planifica para cada tarea, la hora de inicio y tal vez la hora de terminación\citep[p.~2]{Baker2009}. 
+
+La preparación de una comida o el lavado de ropa son buenos ejemplos de problemas cotidianos de programación\index{programación}. Ambos involucran tareas\index{tarea} a realizar, las tareas\index{tarea} son específicas, y requieren de recursos\index{recurso} en particular: un cocinero y una estufa para la preparación de la comida, y una lavadora y secadora para el lavado de ropa.
+Los problemas de programación\index{programación} en la industria\index{industria} tienen una estructura similar: consisten de un conjunto de tareas\index{tarea} a realizar y de un conjunto de recursos\index{recurso} disponibles para llevar a cabo dichas tareas. Dadas tareas\index{tarea} y recursos\index{recurso}, el problema en general\index{programación!problema general} es determinar los tiempos\index{tiempo} de las tareas\index{tarea} a la vez que se reconocen las capacidades de los recursos\index{recurso}.
+Este problema\index{problema} usualmente surge dentro de una jerarquía\index{jerarquía} de toma de decisiones\index{toma de decisiones} en donde la programación\index{programación} sigue algunas decisiones más básicas, hechas anteriormente. La preparación de una comida, por ejemplo, típicamente requiere una especificación de los elementos en el menú, las recetas de los mismos, e información respecto a cuántas raciones serán necesarias. En la industria\index{industria}, decisiones análogas se dice forman parte de la función de planeación\index{planeación!función de}.
+En el proceso de programación, es necesario conocer el tipo y cantidad de cada recurso de manera que se pueda determinar cuándo las tareas pueden ser factiblemente realizadas. Cuando se especifícan los recursos, jse define efectivamente el alcance del problema de programación. Además, se describe cada tarea en términos de información tales como su requisito de recurso, su duración, el tiempo más temprano en el que puede comenzar, y el tiempo al que debe hacer llegado a compleción.
+En general, la duración de la tarea es incierta, pero se puede suprimir la incertidumbre cuando se formula el problema. También se debe describir cualquier limitante tecnológica que exista entre las tareas. La información acerca de los recursis y las tareas define al problema de programación. Sin embargo, encontrar una solución es comúnmente una tarea compleja, y los acercamientos formales para su solución son beneficiosos.
+\iffalse
+
+This problem usually arises within a decision-making hierarchy in which scheduling follows some earlier, more basic decisions. Dinner preparation, for example, typically requires a specification of the menu items, recipes for those items, and information on how many portions will be needed. In industry, analogous decisions are usually said to be part of the planning function. Among other things, the planning function might describe the design of a company’s products, the technology available for making and testing the required parts, and the volumes to be produced. In short, the planning function determines the resources available for production and the tasks to be scheduled.
+
+In the scheduling process, we need to know the type and the amount of each resource so that we can determine when the tasks can feasibly be accomplished. When we specify the resources, we effectively define the boundary of the scheduling problem. In addition, we describe each task in terms of such information as its resource requirement, its duration, the earliest time at which it may start, and the time at which it is due to complete. 
+
+In general, the task duration is uncertain, but we may want to suppress that uncertainty when stating the problem. We should also describe any technological constraints (precedence restrictions) that exist among the tasks. Information about resources and tasks defines a scheduling problem. However, finding a solution is often a fairly complex matter, and formal problem-solving approaches are helpful.
+
+Planificación (scheduling)
+planificación de horarios (timetabling)
+turno (rostering)
+
+We shall then trace some developments of scheduling, timetabling and rostering as defined below, drawing to a great extent from the author's own principal areas of experience, but introducing parallels from a wider domain.
+We start with the most widely used term: scheduling. What is Scheduling?
+\fi
+
+
 \section{¿Qué es la planificación de horarios?}
+\label{sec:planificacion_horarios}
 
 \index{horarios!planificación!problema general}
 \citet[p.~53]{wren95scheduling-timetabling} definió la planificación de horarios como “la asignación, sujeta a limitantes\index{limitantes}, de recursos a objetos dados siendo puestos en espacio-tiempo, de tal manera que se satisfagan tanto como sea posible un conjunto de objetivos deseados.”
@@ -204,54 +246,6 @@ Timetabling is the allocation, subject to constraints, of given resources to obj
 
 “Timetabling is the allocation, subject to constraints, of given resources to objects being placed in space time, in such a way as to satisfy as nearly as possible a set of desirable objectives.”
 \fi
-
-\subsection{Definiciones de términos}
-
-Es necesario aclarar algunos términos prevalentes en este trabajo pues en la literatura relevante son utilizados de manera muy distinta. Siguiendo la pauta de \citet[p.~46]{wren95scheduling-timetabling} el trabajo comienza con el más ampliamente utilizado: programación\index{programación} (\textit{scheduling}). ¿Qué es la programación?
-
-La programación es una palabra común —forma parte del vocabulario del día a día— aunque no siempre se tenga una idea clara de su significado. En realidad, no la acción de programar lo que es un concepto común en la vida diaria, son más bien los horarios. Un horario es un plan o documento tangible, tal como el horario de salidas de un autobus o un horario de clases. Un horario señala cuándo debe suceder algún evento; especifíca un plan para el tiempo de ocurrencia de ciertas actividades y contesta la pregunta, “Si todo va bien, ¿cuándo ocurrirá un evento en particular?” 
-Digamos que es deseable saber cuándo la cena será servida o cuándo un autobus saldrá a su destino. En estos casos, el evento de interés es la compleción de una actividad en particular —como lo es la preparación de la cena— o el comienzo de una actividad en particular —como el viaje en autobus—.
-Las respuestas a la pregunta “¿cuándo?” usualmente están ligadas con información acerca del tiempo. La cena está programada para ser servida a las 18:00, el autobus está programado para salir a las 8:00. Sin embargo, una respuesta igualmente útil puede ser dada en términos de secuencia en lugar de tiempo: es decir, la cena será servida tan pronto como el platillo principal esté horneado, o el autobus partirá a su destino en cuanto su limpieza y mantenimiento sean completados. Por lo tanto, la pregunta “¿cuándo?” puede ser respondida ya sea con información de tiempo o de secuencia obtenida a partir de un horario \citep[p.~1]{Baker2009}.
-
-De manera intuitiva, se puede pensar que la programación es el acto de producir un horario, sin embargo rara vez se consideran los detalles del proceso que ello conlleva. De hecho, aunque se piense en un horario como algo tangible, el proceso de la programación parece no serlo, hasta que es considerado con cierto detenimiento. El problema es comúnmente atacado en dos pasos: secuenciación y programación. En el primer paso, se planifica una secuencia o se decide cómo elegir la siguiente tarea. En el segundo paso, se planifica la hora de inicio, y tal vez la hora de terminación, de cada tarea \citep[p.~2]{Baker2009}. 
-
-
-\iffalse
-La preparación de una comida o el lavado de ropa son buenos ejemplos de problemas cotidianos de programación. Ambos involucran tareas a realizar, las tareas son claras, y recursos en específico son necesarios: un cocinero y una estufa para la preparación de la comida, y una lavadora y secadora para el lavado de ropa.
-
-Preparing a dinner or doing the laundry are good examples of everyday scheduling problems. They involve tasks to be carried out, the tasks are well specified, and particular resources are required—a cook and an oven for dinner preparation, a washer and a dryer for laundry. 
-
-Los problemas de programación en la industria tienen una estructura similar: consisten de un conjunto de tareas a realizar y de un conjunto de recursos disponibles para llevar a cabo dichas tareas. Dados tareas y recursos, el problema general es determinar los tiempos de las tareas a la vez que se reconocen las capacidades de los recursos.
-
-Scheduling problems in industry have a similar structure: they contain a set of tasks to be carried out and a set of resources available to perform those tasks. Given tasks and resources, together with some information about uncertainties, the general problem is to determine the timing of the tasks while recognizing the capability of the resources. 
-
-Este problema usualmente surge dentro de una jerarquía de toma de decisiones en donde la programación sigue algunas decisiones más básicas, hechas anteriormente. La preparación de la comida, por ejemplo, típicamente requiere una especificación de los elementos del menú, las recetas de los mismos, e información respecto a cuántas raciones serán necesarias. En la industria, decisiones análogas se dice forman parte de la función de planeación.
-
-This problem usually arises within a decision-making hierarchy in which scheduling follows some earlier, more basic decisions. Dinner preparation, for example, typically requires a specification of the menu items, recipes for those items, and information on how many portions will be needed. In industry, analogous decisions are usually said to be part of the planning function. Among other things, the planning function might describe the design of a company’s products, the technology available for making and testing the required parts, and the volumes to be produced. In short, the planning function determines the resources available for production and the tasks to be scheduled.
-
-En el proceso de programación, es necesario conocer el tipo y cantidad de cada recurso de manera que se pueda determinar cuándo las tareas pueden ser factiblemente realizadas. Cuando se especifícan los recursos, jse define efectivamente el alcance del problema de programación. Además, se describe cada tarea en términos de información tales como su requisito de recurso, su duración, el tiempo más temprano en el que puede comenzar, y el tiempo al que debe hacer llegado a compleción.
-
-In the scheduling process, we need to know the type and the amount of each resource so that we can determine when the tasks can feasibly be accomplished. When we specify the resources, we effectively define the boundary of the scheduling problem. In addition, we describe each task in terms of such information as its resource requirement, its duration, the earliest time at which it may start, and the time at which it is due to complete. 
-
-En general, la duración de la tarea es incierta, pero se puede suprimir la incertidumbre cuando se formula el problema. También se debe describir cualquier limitante tecnológica que exista entre las tareas. La información acerca de los recursis y las tareas define al problema de programación. Sin embargo, encontrar una solución es comúnmente una tarea compleja, y los acercamientos formales para su solución son beneficiosos.
-
-In general, the task duration is uncertain, but we may want to suppress that uncertainty when stating the problem. We should also describe any technological constraints (precedence restrictions) that exist among the tasks. Information about resources and tasks defines a scheduling problem. However, finding a solution is often a fairly complex matter, and formal problem-solving approaches are helpful.
-
-Intuitively, we think of scheduling as the process of generating the schedule, although we seldom stop to consider what the details of that process might be. In fact, although we think of a schedule as something tangible, the process of scheduling seems quite intangible, until we consider it in some depth. We often approach the problem in two steps: sequencing and scheduling. In the first step, we plan a sequence or decide how to select the next task. In the second step, we plan the start time, and perhaps the completion time, of each task. The determination of safety time is part of the second step.
-
-Suppose we are interested in when dinner will be served or when a bus will depart. In these instances, the event we are interested in is the completion of a particular activity, such as preparing dinner, or the start of a particular activity such as a bus trip. Answers to the “when” question usually come to us with information about timing. Dinner is scheduled to be served at 6:00 pm, the bus is scheduled to depart at 8:00 am, and so on. However, an equally useful answer might be in terms of sequence rather than timing: that is, dinner will be served as soon as the main course is baked, or the bus will depart right after cleaning and maintenance are finished. Thus, the “when” question can be answered by timing or by sequence information obtained from the schedule.
-
-Scheduling is a term in our everyday vocabulary, although we may not always have a good definition of the term in mind. Actually, it’s not scheduling that is a common concept in our everyday life, rather it is schedules. A schedule is a tangible plan or document, such as a bus schedule or a class schedule. A schedule usually tells us when things are supposed to happen; it shows us a plan for the timing of certain activities and answers the question, “If all goes well, when will a particular event take place?” 
-
-Planificación (scheduling)
-planificación de horarios (timetabling)
-turno (rostering)
-
-However, a browse through relevant literature reveals very different uses of the terms. We shall therefore start by surveying some of these uses, and then introduce definitions which we shall use within the current paper.
-We shall then trace some developments of scheduling, timetabling and rostering as defined below, drawing to a great extent from the author's own principal areas of experience, but introducing parallels from a wider domain.
-We start with the most widely used term: scheduling. What is Scheduling?
-\fi
-
 \section{Clasificación de los problemas}
 
 \index{clasificación}
