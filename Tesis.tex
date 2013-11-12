@@ -151,22 +151,17 @@ University timetabling problems, particularly examination and course timetabling
 
 \section{Objetivos de la investigación}
 
-\index{gestor escolar}\index{métricas de desempeño}\index{formulación matemática}
-Esta tesis investiga la problemática de la elaboración de horarios en instituciones docentes y el impacto potencial de su formulación en distintas métricas de desempeño educacional relevantes para el gestor escolar. 
+Esta tesis investiga la problemática de la elaboración de horarios en instituciones docentes y el impacto potencial de su formulación en distintas métricas de desempeño educacional relevantes para el gestor\index{gestor escolar} escolar. 
 El fin primordial del trabajo es investigar de qué manera puede el gestor escolar hacer uso de estas técnicas, para la consecución de sus estrategias.
 Para poder cumplir con esta finalidad, los siguientes objetivos son considerados:
 \begin{enumerate}[1]
 \item La investigación de las distintas problemáticas en la planificación de horarios en instituciones docentes.
-\item Las distintas formulaciones matemáticas de los problemas de planificación de horarios.
+\item Las distintas formulaciones\index{formulación matemática} matemáticas de los problemas de planificación de horarios.
 \item Los algoritmos de solución disponibles para este tipo de modelos matemáticos.
 \item Los antecedentes históricos de técnicas de optimación aplicados a partir del surgimiento de los ordenadores.
-\item La recopilación de las métricas de desempeño educacional relevantes para los gestores escolares.
-\item Una investigación de las limitantes más comunes utilizadas en las formulaciones de los problemas de planificación de horarios.
+\item La recopilación de las métricas\index{métricas de desempeño} de desempeño educacional relevantes para los gestores escolares.
+\item Una investigación de las restricciones más comunes utilizadas en las formulaciones de los problemas de planificación de horarios.
 \end{enumerate}
-
-\iffalse
-This thesis investigates a large neighbourhood search approach and meta-heuristic approaches to university timetabling problems. The overall aim of the work is to investigate how these approaches can improve the quality of the timetable. We consider both examination and course timetabling problems. In order to accomplish this primary aim, several objectives are outlined:
-\fi
 
 \section{Descripción de la tesis}
 
@@ -178,7 +173,7 @@ Los preliminares de la calendarización en general aparecen en el Capítulo 3.
 
 En el Capítulo 4 se detallan los modelos matemáticos y los algoritmos existentes para su solución así como una propuesta de un lenguaje en común para la representación de los problemas.
 
-Las limitantes y funciones objetivo más comunes en la literatura se exponen en el Capítulo 5.
+Las restricciones y funciones objetivo más comunes en la literatura se exponen en el Capítulo 5.
 
 El papel del gestor escolar se discute en el Capítulo 6.
 
@@ -186,40 +181,20 @@ En el Capítulo 7 se hace una exposición del tipo de herramientas existentes pa
 
 Por último, en el Capítulo 8 se presenta un resumen del trabajo de investigación, las contribuciones hechas en el mismo, el trabajo futuro y la diseminación de trabajo.
 
-\iffalse
-This thesis consists of ten chapters. This chapter presents the background motivation and the aims of the research. The remainder of this thesis is organised in the following way:
-Chapter 2 introduces various timetabling problems and concentrates upon 
-Chapter 3 explores the sp
-An investigation into the application of a large neighbourhood search based on Ahuja-Orlin’s methodology (Ahuja et al. 2001a) to the examination timetabling problem is presented in Chapter 4. 
-Moving onto course timetabling, Chapter 7 deals with variable
-\fi
-
 \chapter{Una visión general del problema}
 
 \section{Introducción}
 
-\index{horarios!planificación}
-Este capítulo es una revisión bibliográfica enfocada en los aspectos fundamentales del área de investigación. %Introduce la definición del problema general de programación de horarios\index{programación!problema general} así como los términos relevantes al ámbito de estudio \citep[p.~8]{abdullah06heuristic-approaches}.  
-Introduce conceptos fundamentales así como el problema general de programación de horarios, con sus elementos, y formulaciones relevantes para el ámbito educacional.
+Este capítulo es una revisión bibliográfica enfocada en los aspectos fundamentales del área de investigación.
+Introduce conceptos primordiales así como el problema general de programación de horarios, con sus elementos, y formulaciones relevantes para el ámbito educacional.
 El capítulo comprende de ? secciones. La sección \ref{sec:preliminares} introduce el concepto de programación y sus elementos de decisión, la sección \ref{sec:programa_secuencia_horario} proporciona las definiciones de los términos pertinentes a este trabajo. La sección \ref{sec:problema_general_programacion_horarios} presenta el problema general de la programación de horarios. La sección \ref{sec:clasificacion_problemas} presenta una clasificación de los tipos de problemas encontrados en la programación de horarios educacionales.
-
-\iffalse
-This literature review chapter attempts to place an emphasis on the fundamental aspects of the research area. It introduces the definition of the general timetabling problem, specifically the university timetabling problem, the constraints that such a problem must consider and the key approaches related to the university timetabling problem that have been carried out to date.
-This chapter comprises seven sections. Section 2.1 describes the definition of timetabling. Section 2.2 briefly explains the general timetabling problem followed by the classification of educational timetabling problems. Since this thesis focuses on the university timetabling problem, Sections 2.4 and 2.5 present more details on the examination and course timetabling problems which include related soft and hard constraints. Section 2.6 discusses the university timetabling problem model using graph colouring. The summary of the papers which have been published and the techniques applied to university timetabling problems are presented in Section 2.7. Section 2.8 provides a summary of this chapter.
-\fi
 
 \section{Preliminares}
 \label{sec:preliminares}
 
-%Es necesario aclarar algunos términos prevalentes en este trabajo pues en la literatura relevante son utilizados de manera muy distinta. Siguiendo la pauta de \citet[p.~46]{wren95scheduling-timetabling} el trabajo comienza con el más ampliamente utilizado: programación\index{programación} (\textit{scheduling}).
-
-La \textit{programación}\index{programación} como palabra, forma parte del vocabulario de todos los días —aunque no siempre se tenga una idea clara de su significado–. En realidad, no es la programación\index{programación} en sí lo que es un concepto común en la vida diaria, son más bien los programas\index{programación!programa}. Un programa\index{programación!programa} es un plan o documento tangible, tal como el programa de salidas de un autobus o un programa de clases. Un programa\index{programa} señala cuándo debe suceder algún evento\index{evento}; especifíca un plan para el tiempo de ocurrencia de ciertas actividades\index{actividad} y contesta la pregunta, «Si todo va bien, ¿cuándo ocurrirá un evento\index{evento} en particular?» \citep[p.~1]{Baker2009}.
+La \textit{programación}\index{programación} como palabra, forma parte del vocabulario de todos los días —aunque no siempre se tenga una idea clara de su significado–. En realidad, no es la programación\index{programación} en sí lo que es un concepto común en la vida diaria, son más bien los \textit{programas}\index{programación!programa}. Un programa\index{programación!programa} es un plan o documento tangible, tal como el programa de salidas de un autobus o un programa de clases. Un programa\index{programa} señala cuándo debe suceder algún evento\index{evento}; especifíca un plan para el tiempo de ocurrencia de ciertas actividades\index{actividad} y contesta la pregunta, «Si todo va bien, ¿cuándo ocurrirá un evento\index{evento} en particular?» \citep[p.~1]{Baker2009}.
 
 Supóngase que es deseable saber cuándo será servida la cena o cuándo un autobus saldrá a su destino. En estos casos, el evento\index{evento} de interés es la compleción de una actividad\index{actividad} en particular —como lo es la preparación de la cena— o el comienzo de una actividad\index{actividad} en particular —como el viaje en autobus—. Las respuestas a la pregunta «¿cuándo?» usualmente están ligadas con información relacionada al tiempo\index{tiempo}. La cena está programada para ser servida a las 18:00, el autobus está programado para salir a las 8:00. Sin embargo, una respuesta igualmente útil puede ser dada en términos de secuencia\index{secuencia} en lugar de tiempo: es decir, la cena será servida tan pronto como el platillo principal esté horneado, o el autobus partirá a su destino en cuanto su limpieza y mantenimiento sean completados. Por lo tanto, la pregunta «¿cuándo?» puede ser contestada ya sea con información de tiempo o de secuencia obtenida a partir de un programa \citep[p.~1]{Baker2009}.
-
-\iffalse
-If we take into account that some events are unpredictable, then changes may occur in a schedule. Even then, the schedule is useful: by letting passengers know when the bus is due to leave, we help them plan their own schedules. Thus, we may say that the bus leaves at 8:00 am unless it is delayed for cleaning and maintenance, or we may leave the condition implicit and just say that the bus is scheduled to leave at 8:00 am. If we make allowances for uncertainty when we schedule cleaning and maintenance, then passengers can trust that the bus will leave at 8:00 am with some confidence. In turn, they may schedule their own time buffer when planning their arrival at the station. Using a time buffer (or safety time) helps us cope with uncertainty.
-\fi
 
 De manera intuitiva, se puede pensar que la programación\index{programación} es el proceso\index{programación!proceso} de producir un programa\index{programa}, sin embargo rara vez se consideran los detalles que ello conlleva. De hecho, aunque se piense en un programa\index{programa} como algo tangible, el proceso\index{programación!proceso} de la programación\index{programación} parece no serlo, hasta que es considerado con cierto detenimiento. El problema es comúnmente atacado en dos pasos: secuenciación\index{secuenciación} y programación\index{programación}. En el primer paso, se planifica una secuencia\index{secuencia} o se decide cómo elegir la siguiente tarea. En el segundo paso, se planifica para cada tarea, la hora de inicio y tal vez la hora de terminación \citep[p.~2]{Baker2009}. 
 
@@ -227,54 +202,64 @@ La preparación de una comida o el lavado de ropa son buenos ejemplos de problem
 Los problemas de programación\index{programación} en la industria\index{industria} tienen una estructura similar: consisten de un conjunto de tareas\index{tarea} a realizar y de un conjunto de recursos\index{recurso} disponibles para llevar a cabo dichas tareas. Dadas tareas\index{tarea} y recursos\index{recurso}, el problema en general\index{programación!problema general} es determinar los tiempos\index{tiempo} de las tareas\index{tarea} a la vez que se reconocen las capacidades de los recursos\index{recurso}.
 Este problema\index{problema} usualmente surge dentro de una jerarquía\index{jerarquía} de toma de decisiones\index{toma de decisiones} en donde la programación\index{programación} sigue algunas decisiones más básicas, hechas anteriormente. La preparación de una comida, por ejemplo, típicamente requiere una especificación de los elementos en el menú, las recetas de los mismos, e información respecto a cuántas raciones serán necesarias. En el sector de la industria\index{industria}, decisiones análogas se dice forman parte de la función de planificación\index{planificación!función de}. Entre otras cosas, la función de planificación\index{planificación!función de} puede describir el diseño de los productos de la compañía, la tecnología disponible para la produccíon y prueba de las partes requeridas, y los volúmenes de producción deseados. En resumen, la función de planificación\index{planificación!función de} determina los recursos\index{recurso} disponibles para la producción\index{producción} y las tareas\index{tarea} a ser programadas\index{programación} \citep[p.~2]{Baker2009}.
 
-En el proceso\index{programación!proceso} de programación\index{programación}, es necesario conocer el tipo y cantidad de cada recurso\index{recurso} de manera que se pueda determinar cuándo las tareas\index{tarea} pueden ser factiblemente\index{factible} realizadas. Cuando se especifícan los recursos\index{recurso}, se define efectivamente el alcance del problema de programación\index{programación!problema general}. Además, se describe cada tarea\index{tarea} en términos informativos tales como su necesidad de recurso\index{recurso}, su duración, el tiempo\index{tiempo} más pronto en el que puede comenzar, y el tiempo\index{tiempo} en el que debe llegar a su compleción. En general, la duración de la tarea\index{tarea} es incierta, pero se puede suprimir la incertidumbre –si así se desea– cuando se formula el problema\index{problema}. También se debe describir cualquier limitante\index{limitante} procedimental\index{limitante!procedimental} –restricciones de precedencia– que exista entre las tareas\index{tarea}. La información acerca de los recursos\index{recurso} y las tareas\index{tarea} define un problema de programación\index{programación!problema general}. Sin embargo, encontrar una solución es comúnmente una tarea compleja, y los planteamientos formales\index{planteamiento formal} para la solución del problema son beneficiosos \citep[p.~2]{Baker2009}.
+En el proceso\index{programación!proceso} de programación\index{programación}, es necesario conocer el tipo y cantidad de cada recurso\index{recurso} de manera que se pueda determinar cuándo las tareas\index{tarea} pueden ser factiblemente\index{factible} realizadas. Cuando se especifícan los recursos\index{recurso}, se define efectivamente el alcance del problema de programación\index{programación!problema general}. Además, se describe cada tarea\index{tarea} en términos informativos tales como su necesidad de recurso\index{recurso}, su duración, el tiempo\index{tiempo} más pronto en el que puede comenzar, y el tiempo\index{tiempo} en el que debe llegar a su compleción. En general, la duración de la tarea\index{tarea} es incierta, pero se puede suprimir la incertidumbre –si así se desea– cuando se formula el problema\index{problema}. También se debe describir cualquier restricción\index{restricción} procedimental\index{restricción!procedimental} –restricciones de precedencia– que exista entre las tareas\index{tarea}. La información acerca de los recursos\index{recurso} y las tareas\index{tarea} define un problema de programación\index{programación!problema general}. Sin embargo, encontrar una solución es comúnmente una tarea compleja, y los planteamientos formales\index{planteamiento formal} para la solución del problema son beneficiosos \citep[p.~2]{Baker2009}.
 
-La programación\index{programación} puede ser vista como el acomodo de «objetos» en un patrón\index{programación!patrón} de tiempo o espacio de maneral tal que algunos objetivos\index{programación!objetivo} sean alcanzados –o se acerquen a ello– y que limitantes\index{limitante} existentes en la manera en que los objetos pueden ser acomodados sean satisfechas –o casi satisfechas–. Los «objetos» pueden ser personas, vehículos, clases, exámenes, máquinas, trabajos en una fábrica, es decir, cualquier cosa que sea del interés del dueño del problema. De manera formal llamaremos a estos «objetos», recursos\index{recurso} de aquí en adelante. Con frecuencia la formación de los recursos puede ser vista como parte del proceso de programación\index{programación!proceso}. Por ejemplo, las herramientras de trabajo en una fábrica pueden ser acomodadas por turnos de personal los cuales deben ser agrupados en listas. Tal formación de turnos puede ser vista como un proceso\index{programación!proceso} específico de programación\index{programación} dentro de un proceso\index{programación!proceso} más grande. El patrón\index{programación!patrón} resultante puede ser producto del acomodo de eventos, una estructura de rutas, una matriz de colocaciones, etcétera. El patrón\index{programación!patrón} general puede tener que ser elaborado como parte del proceso de programación, o puede ya existir como una plantilla\index{programación!plantilla} característica del problema\index{programación!problema general} en cuestión \citep[p.~48]{wren95scheduling-timetabling}.\marginnote{revisar el uso de comas}
+La programación\index{programación} puede ser vista como el acomodo de «objetos» en un patrón\index{programación!patrón} de tiempo o espacio de maneral tal que algunos objetivos\index{programación!objetivo} sean alcanzados –o se acerquen a ello– y que restricciones\index{restricción} existentes en la manera en que los objetos pueden ser acomodados sean satisfechas –o casi satisfechas–. Los «objetos» pueden ser personas, vehículos, clases, exámenes, máquinas, trabajos en una fábrica, es decir, cualquier cosa que sea del interés del dueño del problema. De manera formal llamaremos a estos «objetos», recursos\index{recurso} de aquí en adelante. Con frecuencia la formación de los recursos puede ser vista como parte del proceso de programación\index{programación!proceso}. Por ejemplo, las herramientras de trabajo en una fábrica pueden ser acomodadas por turnos de personal los cuales deben ser agrupados en listas. Tal formación de turnos puede ser vista como un proceso\index{programación!proceso} específico de programación\index{programación} dentro de un proceso\index{programación!proceso} más grande. El patrón\index{programación!patrón} resultante puede ser producto del acomodo de eventos, una estructura de rutas, una matriz de colocaciones, etcétera. El patrón\index{programación!patrón} general puede tener que ser elaborado como parte del proceso de programación, o puede ya existir como una plantilla\index{programación!plantilla} característica del problema\index{programación!problema general} en cuestión \citep[p.~48]{wren95scheduling-timetabling}.\marginnote{revisar el uso de comas}
 
 \iffalse
 Scheduling may be seen as the arrangement of objects into a pattern in time or space in such a way that some goals are achieved, or nearly achieved, and that constraints on the way the objects may be arranged are satisfied, or nearly satisfied.
 The objects may be people, vehicles, classes, examinations, machines, jobs in a factory, etc. Often the formation of objects may be seen as part of the scheduling process. For example, items of work may be arranged into personnel shifts which have to be grouped into a roster. The formation of shifts may be seen as a specific scheduling process within the larger process.
 The pattern may be an ordering of events, a set of legal shifts defined in terms of work to be done during the shifts, a structure of routes, a matrix of allocations, etc.; the overall pattern may have to be created as part of the scheduling process, or may pre-exist as a template which is characteristic of the problem being tackled.
+
 Scheduling - programación
-constraint - limitante
-
-Planificación (scheduling)
-planificación de horarios (timetabling)
+constraint - restricción
+programación de horarios (timetabling)
 turno (rostering)
-
-We shall then trace some developments of scheduling, timetabling and rostering as defined below, drawing to a great extent from the author's own principal areas of experience, but introducing parallels from a wider domain.
-We start with the most widely used term: scheduling. What is Scheduling?
 \fi
-Las limitantes\index{limitante} definen relaciones físicas o legales en los recursos\index{recurso} o entre los recursos\index{recurso}, otros recursos\index{recurso} y el patrón\index{programación!patrón}. Ellas gobiernan la manera en la cual los objetos pueden encajar juntos o en el patrón\index{programación!patrón}. Las limitantes\index{limitante} pueden ser vistas como reglas que dificultan el logro de los objetivos\index{programación!objetivo}. No obstante, también pueden ser vistas como parte de la especificación del problema\index{programación!problema general} y pueden ser útiles orientando al algoritmo de solución\index{algoritmo!de solución} a una respuesta. Algunas limitantes\index{limitante} existen únicamente desde el punto de vista del dueño del problema, y pueden formar parte del proceso\index{programación!proceso} de solución con el propósito de mostrar hasta qué grado una solución\index{programación!solución} podría ser mejorada si una limitante\index{limitante} o limitantes\index{limitante} fueran relajadas, de manera que el dueño pueda decidir si la limitante es realmente necesaria o si valdría la pena el esfuerzo de eliminar la limitante del problema \citep[p.~48]{wren95scheduling-timetabling}.\marginnote{revisar tiempo verbal}
+
+Las restricciones\index{restricción} definen relaciones físicas o permisibles en los recursos\index{recurso} o entre los recursos\index{recurso}, otros recursos\index{recurso} y el patrón\index{programación!patrón}. Ellas gobiernan la manera en la cual los objetos pueden acomodarse juntos o dentro del patrón\index{programación!patrón}. Las restricciones\index{restricción} pueden ser vistas como reglas que dificultan el logro de los objetivos\index{programación!objetivo}. No obstante, también pueden ser vistas como parte de la especificación del problema\index{programación!problema general} y pueden ser útiles orientando al algoritmo de solución\index{algoritmo!de solución} a una respuesta. Algunas restricciones\index{restricción} existen únicamente desde el punto de vista del dueño del problema, y pueden formar parte del proceso\index{programación!proceso} de solución con el propósito de mostrar hasta qué grado una solución\index{programación!solución} podría ser mejorada si una restricción\index{restricción} o restricciones\index{restricción} fueran relajadas, de manera que el dueño pudiera decidir si la restricción es realmente necesaria o si valdría la pena el esfuerzo de eliminar la restricción del problema \citep[p.~48]{wren95scheduling-timetabling}.\marginnote{revisar tiempo verbal}
+
 \iffalse
 The constraints define physical or legal relationships among the objects or between the objects, other objects and the pattern. They govern the ways in which objects may be fitted together or into the pattern. Constraints may be seen as rules which hinder the achievement of goals. However, they may also be seen as part of the problem specification which may be used to guide the solver towards a solution. Some constraints may exist only in the eye of the problem owner, and it may be part of the solution process to indicate the extent to which a solution might be improved if a constraint or constraints were to be relaxed, so that the owner might decide whether the constraint is necessary or how much it might be worth spending to abolish the constraint.
 \fi
+
 \section{Programa, secuencia, horario}
 \label{sec:programa_secuencia_horario}
 
 Algunas veces los términos programa, secuencia y horario son utilizados a la ligera como si fueran sinónimos. Aquí se presentarán algunas distinciones buscando ajustarnos a las prácticas aceptadas y mantener tanta coherencia como sea posible.
 
-Un horario\index{horario} muestra cuándo deben ocurrir eventos\index{evento} en particular. No necesariamente implica una asignación\index{asignación} de recursos\index{recursos}. Por ende, un horario\index{horario} publicado de trenes o autobuses muestra cuándo las salidas deben ocurrir para una o más rutas en particular. No nos dice cuáles vehículos o conductores han de ser asignados a trayectos en particular. La asignación\index{asignación} de vehículos y conductores es parte del proceso de programación. Aunque la calendarización\index{calendarización} –la acción de producir horarios\index{horarios}– es el estricto diseño del patrón\index{programación!patrón} de trayectos, este patrón\index{programación!patrón} puede ser conformado como parte de un proceso el cuál tiene en consideración si es probable que un programa\index{programación!programa} eficiente pueda ser ajustado al resultante patrón\index{programación!patrón} de trayectos \cite[p.~48]{wren95scheduling-timetabling}.
+Un horario\index{horario} muestra cuándo deben ocurrir eventos\index{evento} en particular. No necesariamente implica una asignación\index{asignación} de recursos\index{recursos}. Por ende, un horario\index{horario} publicado de trenes o autobuses muestra cuándo las salidas deben ocurrir para una o más rutas en particular. No nos dice cuáles vehículos o conductores han de ser asignados a trayectos en particular. La asignación\index{asignación} de vehículos y conductores es parte del proceso de programación. Aunque la calendarización\index{calendarización} –la acción de producir horarios\index{horarios}– es el estricto diseño del patrón\index{programación!patrón} de trayectos, este patrón\index{programación!patrón} puede ser conformado como parte de un proceso que toma en consideración si es probable que un programa\index{programación!programa} eficiente pueda ser ajustado al patrón\index{programación!patrón} de trayectos resultante \cite[p.~48]{wren95scheduling-timetabling}.
 
 \iffalse
 Sometimes the words schedule, sequence and timetable are loosely used as if they were synonymous. Here we shall make some distinctions, and although we may sometimes have to overstep our definitions in order to conform to accepted practice, we shall try to be consistent as far as possible.
 A timetable shows when particular events are to take place. It does not necessarily imply an allocation of resources. Thus a published bus or train timetable shows when journeys are to be made on a particular route or routes. It does not tell us which vehicles or drivers are to be assigned to particular journeys. The allocation of vehicles and drivers is part of the scheduling process. .Although timetabling is strictly the design of the pattern of journeys, this pattern may be devised as part of a process which bears in mind whether it is likely that an efficient schedule may be fitted to the resulting journey pattern.
 \fi
-En el ámbito ferroviario, el término calendarización\index{calendarización} es utilizado para referirse a la construcción de una ruta –con tiempos– para un tren a través de un sistema. Siendo así que «el Escocés Volador» –mundialmente famoso tren de pasajeros exprés que recorre desde 1862 el trayecto Londres-Edinburgo– solía salir de Edinburgo (estación \textit{Waverly}) a las 10:00; el trabajo de la calendarización era el proceso de la búsqueda de tiempos y rutas a través del sistema de trenes que no conflictuaran con otro tráfico –haciendo revisiones en el resto del tráfico de ser necesario– hasta que llegaba a Londres (estación \textit{Kings Cross}) a las 18:30 (en 1922) o 18:05 (1948) \citep[p.~48,49]{burke04timetabling-and-rostering}.
+
+En el ámbito ferroviario, el término calendarización\index{calendarización} es utilizado para referirse a la construcción de una ruta –con tiempos– para un tren a través de un sistema. Siendo así que «el Escocés Volador» –mundialmente famoso tren de pasajeros exprés que recorre desde 1862 el trayecto Londres-Edinburgo– solía partir de Edinburgo (estación \textit{Waverly}) a las 10:00; el trabajo de calendarización era el proceso de la búsqueda de tiempos y rutas a través del sistema de trenes que no conflictuaran con otro tráfico –haciendo revisiones en el resto del tráfico de ser necesario– hasta que llegaba a Londres (estación \textit{Kings Cross}) a las 18:30 (en 1922) o 18:05 (1948) \citep[p.~48,49]{wren95scheduling-timetabling}.
+
 \iffalse
 In the rail domain, the term timetabling is often used to refer to the construction of a path (with times) for a train through a system. Thus, the Flying Scotsman used to leave Edinburgh (Waverley) at 10 a.m.; the job of timetabling was the process of finding times and paths through the rail system which did not conflict with other traffic (revising such other traffic as necessary) until it reached Kings Cross at 6.30 p.m. (in 1922) or 6.05 p.m. (1948). Thig form of limetabling has been the subject of some research, but little, if any, practical implementation over any but the simplest systems. Carey [7] has recently reported on timetabling and track allocation in large stations.
 \fi
 
-Un horario educacional también muestra cuándo deben ocurrir eventos en particular. En ciertas circunstancias puede no existir actividad de programación necesaria para producir tal horario. En una escuela donde un solo maestro es el responsable por todas las actividades de una clase en particular, y en donde estas actividades ocurren en un mismo lugar, un horario no es más que una declaración de los tiempos en los cuales actividades en particular deberán ocurrir –como en el caso del «Escocés Volador»–. En contraste, un horario de exámenes para una universidad normalmente incluirá asignación de aulas derivadas del conocimiento del tamaño de los grupos y de instalaciones especiales requeridas. Habrá sido conformado sujeto a limitantes duras y suaves, como la cantidad de exámenes que puede presentar un estudiante en periodos consecutivos. Las actividades de calendarización de horarios para cursos y exámenes en universidades pueder ser consideradas actividades de programación \citep[p.~49]{burke04timetabling-and-rostering}.
+Un horario\index{horario!educacional} educacional también muestra cuándo deben ocurrir eventos en particular. En ciertas circunstancias puede no haber actividad de programación\index{programación} necesaria para producir tal horario\index{horario}. En una escuela donde un solo maestro es el responsable por todas las actividades\index{actividad} de una clase\index{clase} en particular, y en donde estas actividades\index{actividad} ocurren en un mismo lugar, un horario\index{horario} no es más que una declaración de los tiempos en los cuales actividades en particular deberán ocurrir –como en el caso del «Escocés Volador»–. En contraste, un horario de exámenes\index{calendarización!de exámenes} para una universidad normalmente incluirá asignación de aulas derivadas del conocimiento del tamaño de los grupos y de instalaciones especiales requeridas. Habrá sido conformado sujeto a restricciones\index{restricción} duras\index{restricción!dura} y suaves\index{restricción!suave}, como la cantidad de exámenes que puede presentar un estudiante en periodos consecutivos. Las actividades de calendarización de cursos\index{calendarización!de cursos} y exámenes\index{calendarización!de exámenes} en universidades\index{horarios!en universidades} pueder ser consideradas actividades\index{actividad} de programación\index{programación} \citep[p.~49]{wren95scheduling-timetabling}.
+
 \iffalse
 A class timetable also shows when particular events are to take place. In certain circumstances there may be no scheduling activity necessary in drawing up such a timetable. In an infants' school where a single teacher is responsible for all the activities of a partieuiar class, and where these activities ait take place in the same room, a timetable is nothing more than a statement as to the times at which particular activities will take place (as is the public train timetable above). By contrast, a university examination timetable will normally include room assignments drawn up in the knowledge of group sizes and of special facilities needed. It will have been devised subject to hard or soft constraints, for example on the numbers of examinations to be taken by individual students in consecutive periods. A university class timetable has also to take into account the availability of individual lecturers. The activities of drawing up examination and university class timetables may be considered as scheduling activities.
+\fi
+
+Una secuencia es un orden simple de las actividades llevadas a cabo. Por ejemplo, el orden en el que los trabajos son procesados a través de las máquinas en una fábrica, si los trabajos pasan a través de cada máquina en el mismo orden, es una secuencia. La secuenciación puede tomar en cuenta los costos relacionados a un trabajo en particular sea seguido por otro (costos de conversión de maquinaria, etc.). El problema de la secuenciación de trabajos en estas circunstancias es conocido como un problema de «flow-shop»
+
+\iffalse
+A sequence is simply an order in which activities are carried out. For example, the order in which jobs are processed through the machines of a factory, if jobs pass through each machine in the same order, is a sequence. Sequencing may take into account costs related Io one particular jDb being followed by another (machine conversion costs etc.). The problem of sequencing jobs in these circumstances is known as a flow shop problem.
+A schedule will normally include all the spacial and temporal information necessary for a process to be carried out. This will include times at which activities are to take place, statements as to which resources will be assigned where, and workplans for individual personnel or machines.
+We have already tentatively defined scheduling as allocation, subject to constraints, of resources to objects being placed in space-time. Thus scheduling is the process of forming the schedule, including assignment of resources. We note that French [6] uses the term timetabling for this process, and other authors will use other conventions.
 \fi
 
 \section{El problema general de la programación de horarios}
 \label{sec:problema_general_programacion_horarios}
 
 \index{horarios!programación!problema general}
-\citet[p.~53]{wren95scheduling-timetabling} definió la programación de horarios como “la asignación, sujeta a limitantes\index{limitante}, de recursos\index{recurso} dados a objetos siendo acomodados en un espacio-tiempo, de tal manera que se satisfagan tanto como sea posible un conjunto de objetivos deseados.”
+\citet[p.~53]{wren95scheduling-timetabling} definió la programación de horarios como “la asignación, sujeta a restricciones\index{restricción}, de recursos\index{recurso} dados a objetos siendo acomodados en un espacio-tiempo, de tal manera que se satisfagan tanto como sea posible un conjunto de objetivos deseados.”
 
 \iffalse
 Timetabling is the allocation, subject to constraints, of given resources to objects being placed in space-time, in such a way as to satisfy as nearly as possible a set of desirable objectives. Examples are class and examination timetabling and some forms of personnel allocation, for example manning of toll booths subject to a given number of personnel.
@@ -291,7 +276,7 @@ calendarización de clases\index{horarios!de clases} (\textit{school timetabling
 calendarización de cursos\index{calendarización!de cursos} (\textit{course timetabling}) y
 calendarización de exámenes\index{calendarización!de exámenes} (\textit{examination timetabling}) \citep[p.~88]{schaerf99a-survey-of-automated}.
 
-Todos tienen en común las características básicas del problema general de programación de horarios\index{horarios!problema general} pero pueden presentar diferencias significativas entre ellos. Cada problema cuenta con su propias limitantes\index{limitante}, requerimientos\index{requerimiento} y reglas\index{regla}. Son agrupados por su ámbito de aplicación en horarios en escuelas\index{horarios!en escuelas} y horarios en universidades\index{horarios!en universidades} \citep[p.~10]{abdullah06heuristic-approaches}.
+Todos tienen en común las características básicas del problema general de programación de horarios\index{horarios!problema general} pero pueden presentar diferencias significativas entre ellos. Cada problema cuenta con su propias restricciones\index{restricción}, requerimientos\index{requerimiento} y reglas\index{regla}. Son agrupados por su ámbito de aplicación en horarios en escuelas\index{horarios!en escuelas} y horarios en universidades\index{horarios!en universidades} \citep[p.~10]{abdullah06heuristic-approaches}.
 
 \begin{figure}[hbtp]
 \centering
@@ -406,11 +391,11 @@ Course timetabling: The weekly scheduling for all the lectures of a set of unive
 
 \section{Algoritmos de solución}
 
-\chapter{Limitantes y funciones objetivo}
+\chapter{restricciones y funciones objetivo}
 
 \section{Introducción}
 
-\section{Limitantes}
+\section{restricciones}
 
 \section{Funciones objetivo}
 
@@ -478,13 +463,13 @@ Course timetabling: The weekly scheduling for all the lectures of a set of unive
 
 \section{Diseminación}
 
-\index{timetabling!university|see{planificación de horarios en universidades}}
-\index{timetabling!school|see{horarios de clases y planificación de horarios en escuelas}}
+\index{timetabling!university|see{programación de horarios en universidades}}
+\index{timetabling!school|see{calendarización de clases y programación de horarios en escuelas}}
 \index{timetabling!course|see{calendarización de cursos}}
 \index{timetabling!examination|see{calendarización de exámenes}}
 
-\index{scheduling|see{planificación}}
-\index{timetabling|see{planificación de horarios}}
+\index{scheduling|see{programación}}
+\index{timetabling|see{programación de horarios}}
 
 % Bibliography
 \bibliographystyle{apalike}
