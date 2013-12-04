@@ -18,11 +18,6 @@
 \usepackage{rotating}
 
 \usepackage{scrhack}
-\iffalse% outline for images
-\usepackage{float}
-\floatstyle{boxed}
-\restylefloat{figure}
-\fi
 
 \usepackage{natbib}
 \usepackage{amsmath,amssymb, bm}
@@ -34,7 +29,6 @@
 \frenchspacing
 \recalctypearea
 
-\usepackage{pdfsync}
 \usepackage{marginnote}
 % \usepackage{hyperref}
 
@@ -188,7 +182,7 @@ Por último, en el Capítulo 8 se presenta un resumen del trabajo de investigaci
 
 Este capítulo es una revisión bibliográfica enfocada en los aspectos fundamentales del área de investigación.
 Introduce conceptos primordiales para el estudio del problema general de programación de horarios, los elementos que lo abarcan, cómo se clasifican los problemas en el ámbito educacional y las formulaciones de los modelos matemáticos pertinentes.
-El capítulo comprende de 7 secciones. La sección \ref{sec:preliminares} introduce los conceptos de programación\index{programación} y programa\index{programa} así como los elementos involucrados en su proceso\index{programación!proceso} de elaboración, esclarece términos prevalentes en la literatura y establece la definición de conceptos relevantes. La sección \ref{sec:problema_general_programacion_horarios} presenta el problema general de la programación de horarios\index{programación!problema general}. La sección \ref{sec:clasificacion_problemas} presenta una clasificación\index{calendarización!clasificación} de los tipos de problemas encontrados en la programación de horarios educacionales. En las secciones \ref{sec:calendarizacion_clases}, \ref{sec:calendarizacion_cursos} y \ref{sec:calendarizacion_examenes} se presentan de manera general las formulaciones formales de los problemas.
+El capítulo comprende de 7 secciones. La sección \ref{sec:preliminares} introduce los conceptos de programación\index{programación} y programa\index{programa} así como los elementos involucrados en el proceso\index{programación!proceso} de programación, esclarece términos prevalentes en la literatura y establece la definición de conceptos relevantes. La sección \ref{sec:problema_general_programacion_horarios} presenta el problema general de la programación de horarios\index{programación!problema general}. La sección \ref{sec:clasificacion_problemas} presenta una clasificación\index{calendarización!clasificación} de los tipos de problemas encontrados en la programación de horarios educacionales. En las secciones \ref{sec:calendarizacion_clases}, \ref{sec:calendarizacion_cursos} y \ref{sec:calendarizacion_examenes} se presentan de manera general las formulaciones formales de los problemas.
 
 \section{Preliminares}
 \label{sec:preliminares}
@@ -201,30 +195,27 @@ De manera intuitiva, se puede pensar que la programación\index{programación} e
 
 La preparación de una comida o el lavado de ropa son buenos ejemplos de problemas cotidianos de programación\index{programación}. Ambos involucran tareas\index{tarea} a realizar, las tareas\index{tarea} son específicas, y requieren de recursos\index{recurso} en particular: un cocinero y una estufa para la preparación de la comida, y una lavadora y secadora para el lavado de ropa.  Los problemas de programación en el ámbito educacional tienen una estructura similar: consisten de un conjunto de tareas a realizar y de un conjunto de recursos disponibles para llevar a cabo dichas tareas. Dados un conjunto de tareas\index{tarea} y recursos, el problema en general\index{programación!problema general} es determinar los tiempos de inicio de las tareas a la vez que se reconocen las capacidades de los recursos \citetext{p.~2}.
 
-El problema\index{programación!problema} usualmente surge dentro de una jerarquía de toma de decisiones en donde la programación\index{programación} sigue algunas decisiones más básicas, hechas anteriormente. La preparación de una comida, por ejemplo, típicamente requiere una especificación de los elementos en el menú, las recetas de los mismos, e información respecto a cuántas raciones serán necesarias. En el ámbito educacional, decisiones análogas se dice forman parte de la función administrativa de planificación\index{administración!función de planificación} (\textit{planning function}). Entre otras cosas, la función de planificación puede describir el diseño del plan de estudios, la tecnología disponible para la educación, los exámenes para evaluar el desempeño y los niveles de aprovechamiento deseados. En resumen, la función de planificación determina los recursos\index{recurso} disponibles para el logro de los objetivos deseados y las tareas\index{tarea} a ser programadas\index{programación}.
+El problema\index{programación!problema} usualmente surge dentro de una jerarquía de toma de decisiones en donde la programación\index{programación} sigue algunas decisiones más básicas, hechas anteriormente. La preparación de una comida, por ejemplo, típicamente requiere una especificación de los elementos en el menú, las recetas de los mismos, e información respecto a cuántas raciones serán necesarias. En el contexto educacional, decisiones análogas se dice forman parte de la función administrativa de planificación\index{administración!función de planificación}. Entre otras cosas, la función de planificación puede describir el diseño del plan de estudios, la tecnología disponible para la educación, los exámenes para evaluar el desempeño y los niveles de aprovechamiento deseados. En síntesis, la función de planificación determina los recursos\index{recurso} disponibles para el logro de los objetivos deseados y las tareas\index{tarea} a ser programadas \citetext{p.~2}.
 
-En el proceso\index{programación!proceso} de programación\index{programación}, es necesario conocer el tipo y cantidad de cada recurso\index{recurso} de manera que se pueda determinar cuándo las tareas\index{tarea} pueden ser factiblemente\index{factible} realizadas. Cuando se especifícan los recursos\index{recurso}, se define efectivamente el alcance del problema de programación\index{programación!problema general}. Además, se describe cada tarea\index{tarea} en términos informativos tales como su necesidad de recurso\index{recurso}, su duración, el tiempo\index{tiempo} más pronto en el que puede comenzar, y el tiempo\index{tiempo} en el que debe llegar a su compleción. En general, la duración de la tarea\index{tarea} es incierta, pero se puede suprimir la incertidumbre –si así se desea– cuando se formula el problema\index{problema}. También se debe describir cualquier restricción\index{restricción} procedimental\index{restricción!procedimental} –restricciones de precedencia– que exista entre las tareas\index{tarea}. La información acerca de los recursos\index{recurso} y las tareas\index{tarea} define un problema de programación\index{programación!problema general}. Sin embargo, encontrar una solución es comúnmente una tarea compleja, y los planteamientos formales\index{planteamiento formal} para la solución del problema son beneficiosos \citetext{p.~2}. En la figura \ref{fig:programacion} se puede apreciar un modelo conceptual de las nociones vistas hasta el momento. \marginnote{necesidad de recursos?, revisar tareas y tiempo de compleción, tal vez tiempo límite}
+En el proceso\index{programación!proceso} de programación\index{programación}, es necesario conocer el tipo y cantidad de cada recurso\index{recurso} de manera que se pueda determinar cuándo las tareas\index{tarea} pueden ser factiblemente\index{factible} realizadas. Cuando se especifícan los recursos, se define efectivamente el alcance del problema de programación\index{programación!problema general}. Además, se describe cada tarea en términos informativos tales como su necesidad de recurso, su duración, el tiempo\index{tiempo} más pronto en el que puede comenzar, y el tiempo en el que debe llegar a su compleción. En general, la duración de la tarea es incierta, pero se puede suprimir la incertidumbre –si así se desea– cuando se formula el problema. También se debe describir cualquier restricción procedimental\index{restricción!procedimental} –restricciones de precedencia– que exista entre las tareas. La información acerca de los recursos y las tareas define un problema de programación. Sin embargo, encontrar una solución es comúnmente una tarea compleja, y los planteamientos formales\index{formulación!planteamiento formal} para la solución del problema son beneficiosos \citetext{p.~2}. En la figura \ref{fig:programacion} se puede apreciar un modelo conceptual de la programación, relacionando las nociones expuestas anteriormente.
 
 \begin{sidewaysfigure}
 \includegraphics[width=\textheight]{scheduling.pdf}
-\caption[Modelo conceptual - programación]{Modelo conceptual de la programación y su proceso de elaboración}
+\caption[Modelo conceptual de la programación]{Modelo conceptual de la programación}
 \label{fig:programacion}
 \end{sidewaysfigure}
 
-De acuerdo a \citet{wren95scheduling-timetabling}, la programación\index{programación} puede ser vista como el acomodo de «objetos» dentro de un patrón\index{programación!patrón} en el tiempo o espacio de manera tal que algunos objetivos\index{programación!objetivo} sean alcanzados –o se acerquen a ello– y que restricciones\index{restricción} existentes en la manera en que los objetos pueden ser acomodados sean satisfechas –o casi satisfechas–. Los «objetos» pueden ser personas, vehículos, clases, exámenes, máquinas, trabajos en una fábrica, es decir, cualquier cosa que sea del interés del dueño del problema. De manera formal llamaremos a estos «objetos», recursos\index{recurso} de aquí en adelante. Con frecuencia la formación de los recursos puede ser vista como parte del proceso de programación\index{programación!proceso}. Por ejemplo, las herramientras de trabajo en una fábrica pueden ser acomodadas por turnos de personal los cuales deben ser agrupados en listas. Tal formación de turnos puede ser vista como un proceso\index{programación!proceso} específico de programación\index{programación} dentro de un proceso\index{programación!proceso} más grande. El patrón\index{programación!patrón} resultante puede ser producto del acomodo de eventos, una estructura de rutas, una matriz de colocaciones, etcétera. El patrón\index{programación!patrón} general puede tener que ser elaborado como parte del proceso de programación, o puede ya existir como una plantilla\index{programación!plantilla} característica del problema\index{programación!problema general} en cuestión \citetext{p.~48}.\marginnote{revisar el uso de comas}
+De acuerdo a \citet{wren95scheduling-timetabling}, la programación\index{programación} puede ser vista como el acomodo de «objetos» dentro de un patrón\index{programación!patrón} en el tiempo o espacio de manera tal que algunos objetivos\index{objetivo} sean alcanzados –o se acerquen a ello– y que restricciones\index{restricción} existentes en la manera en que los objetos pueden ser acomodados sean satisfechas –o casi satisfechas–.  Los «objetos» pueden ser personas, vehículos, clases, exámenes, máquinas, trabajos en una fábrica, es decir, cualquier cosa que sea del interés del dueño del problema. De manera formal llamaremos a estos «objetos», recursos de aquí en adelante. Con frecuencia la conformación de los recursos puede ser vista como parte del proceso de programación\index{programación!proceso}. Por ejemplo, las herramientras de trabajo en una fábrica pueden ser acomodadas por turnos de personal, los cuales deben ser agrupados en listas. La formación de turnos puede ser vista como un proceso específico de programación dentro de un proceso más extenso.  El patrón de programación\index{programación!patrón} puede ser un orden de eventos, una estructura de rutas, una matriz de asignaciones, etcétera. El patrón general puede tener que ser elaborado como parte del proceso de programación, o puede ser una plantilla\index{programación!plantilla} pre-existente característica del problema\index{programación!problema general} en cuestión \citetext{p.~48}.
 
-\iffalse
-Scheduling may be seen as the arrangement of objects into a pattern in time or space in such a way that some goals are achieved, or nearly achieved, and that constraints on the way the objects may be arranged are satisfied, or nearly satisfied.
-The objects may be people, vehicles, classes, examinations, machines, jobs in a factory, etc. Often the formation of objects may be seen as part of the scheduling process. For example, items of work may be arranged into personnel shifts which have to be grouped into a roster. The formation of shifts may be seen as a specific scheduling process within the larger process.
-The pattern may be an ordering of events, a set of legal shifts defined in terms of work to be done during the shifts, a structure of routes, a matrix of allocations, etc.; the overall pattern may have to be created as part of the scheduling process, or may pre-exist as a template which is characteristic of the problem being tackled.
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=\textwidth]{media/scheduling_process.pdf}
+\caption[Modelo conceptual del proceso de programación]{Modelo conceptual del proceso de programación}
+\label{fig:scheduling_process}
+\end{figure}
 
-Scheduling - programación
-constraint - restricción
-programación de horarios (timetabling)
-turno (rostering)
-\fi
+Las restricciones\index{restricción} definen relaciones físicas o permisibles entre los recursos\index{recurso}, y entre estos y el patrón\index{programación!patrón} de programación. Ellas gobiernan la manera en la cual los objetos pueden acomodarse juntos o dentro del patrón. Las restricciones pueden ser vistas como reglas que obstaculizan el logro de los objetivos\index{objetivo}. No obstante, también pueden ser vistas como parte de la especificación del problema\index{programación!problema general} y pueden ser útiles orientando al algoritmo de solución\index{algoritmo!de solución} a una respuesta. En la figura \ref{fig:scheduling_process} se muestran de manera ilustrada los conceptos ya descritos. Algunas restricciones existen únicamente desde el punto de vista del dueño del problema, y pueden formar parte del proceso\index{programación!proceso} de solución con el propósito de mostrar hasta qué grado una solución podría ser mejorada si una restricción o restricciones fueran relajadas, de manera que el dueño pueda decidir si la restricción es realmente necesaria o si vale la pena hacer el esfuerzo de eliminarla de la definición del problema \citetext{p.~46}.
 
-Las restricciones\index{restricción} definen relaciones físicas o permisibles en los recursos\index{recurso} o entre los recursos\index{recurso}, otros recursos\index{recurso} y el patrón\index{programación!patrón}. Ellas gobiernan la manera en la cual los objetos pueden acomodarse juntos o dentro del patrón\index{programación!patrón}. Las restricciones\index{restricción} pueden ser vistas como reglas que dificultan el logro de los objetivos\index{programación!objetivo}. No obstante, también pueden ser vistas como parte de la especificación del problema\index{programación!problema general} y pueden ser útiles orientando al algoritmo de solución\index{algoritmo!de solución} a una respuesta. Algunas restricciones\index{restricción} existen únicamente desde el punto de vista del dueño del problema, y pueden formar parte del proceso\index{programación!proceso} de solución con el propósito de mostrar hasta qué grado una solución\index{programación!solución} podría ser mejorada si una restricción\index{restricción} o restricciones\index{restricción} fueran relajadas, de manera que el dueño pudiera decidir si la restricción es realmente necesaria o si valdría la pena el esfuerzo de eliminar la restricción del problema \citetext{p.~48}.\marginnote{revisar tiempo verbal}
 \iffalse
 The constraints define physical or legal relationships among the objects or between the objects, other objects and the pattern. They govern the ways in which objects may be fitted together or into the pattern. Constraints may be seen as rules which hinder the achievement of goals. However, they may also be seen as part of the problem specification which may be used to guide the solver towards a solution. Some constraints may exist only in the eye of the problem owner, and it may be part of the solution process to indicate the extent to which a solution might be improved if a constraint or constraints were to be relaxed, so that the owner might decide whether the constraint is necessary or how much it might be worth spending to abolish the constraint.
 \fi
@@ -232,9 +223,9 @@ The constraints define physical or legal relationships among the objects or betw
 \subsection{Programa, secuencia, horario}
 \label{sub:programa_secuencia_horario}
 
-Algunas veces los términos programa, secuencia y horario son utilizados a la ligera como si fueran sinónimos. Aquí se presentarán algunas distinciones buscando ajustarnos a las prácticas aceptadas y mantener tanta coherencia como sea posible.
+En ocasiones los términos programa\index{programa} (\textit{schedule}), secuencia\index{secuencia} (\textit{sequence}) y horario\index{horario} (\textit{timetable}) son utilizados a la ligera como si fueran sinónimos. Aquí se presentarán algunas distinciones buscando ajustarnos a las prácticas aceptadas y mantener tanta coherencia como sea posible.
 
-Un horario\index{horario} muestra cuándo deben ocurrir eventos\index{evento} en particular. No necesariamente implica una asignación\index{asignación} de recursos\index{recursos}. Por ende, un horario\index{horario} publicado de trenes o autobuses muestra cuándo las salidas deben ocurrir para una o más rutas en particular. No nos dice cuáles vehículos o conductores han de ser asignados a trayectos en particular. La asignación\index{asignación} de vehículos y conductores es parte del proceso de programación. Aunque la calendarización\index{calendarización} –la acción de producir horarios\index{horarios}– es el estricto diseño del patrón\index{programación!patrón} de trayectos, este patrón\index{programación!patrón} puede ser conformado como parte de un proceso que toma en consideración si es probable que un programa\index{programación!programa} eficiente pueda ser ajustado al patrón\index{programación!patrón} de trayectos resultante \cite[p.~48]{wren95scheduling-timetabling}.
+Un horario\index{horario} muestra cuándo deben ocurrir eventos\index{evento} en particular. No necesariamente implica una asignación\index{asignación} de recursos\index{recursos}. Por ende, un horario publicado de trenes o autobuses muestra cuándo las salidas deben ocurrir para una o más rutas en particular. No nos dice cuáles vehículos o conductores han de ser asignados a trayectos en particular. La asignación de vehículos y conductores es parte del proceso\index{programación!proceso} de programación. Aunque la calendarización\index{calendarización} (\textit{timetabling}) –la acción de producir horarios– es estrictamente el diseño del patrón\index{programación!patrón} de trayectos, este patrón puede ser concebido como parte de un proceso que toma en consideración si es probable que un programa eficiente pueda ser ajustado al patrón de trayectos resultante \cite[p.~48]{wren95scheduling-timetabling}.
 
 \iffalse
 Sometimes the words schedule, sequence and timetable are loosely used as if they were synonymous. Here we shall make some distinctions, and although we may sometimes have to overstep our definitions in order to conform to accepted practice, we shall try to be consistent as far as possible.
@@ -308,7 +299,7 @@ Todos tienen en común las características básicas del problema general de pro
 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width=.8\textwidth, trim=0 140 0 140]{timetabling_classification.pdf}
+\includegraphics[width=\textwidth]{timetabling_classification.pdf}
 \caption[Clasificación del problema]{Clasificación de los problemas en la elaboración de horarios educacionales}
 \label{fig:timetabling_classification}
 \end{figure}
@@ -500,7 +491,11 @@ Course timetabling: The weekly scheduling for all the lectures of a set of unive
 \index{timetabling!examination|see{calendarización de exámenes}}
 
 \index{scheduling|see{programación}}
-\index{timetabling|see{programación de horarios}}
+\index{timetabling|see{calendarización}}
+
+\index{schedule|see{programa}}
+\index{sequence|see{secuencia}}
+\index{timetable|see{horario}}
 
 % Bibliography
 \bibliographystyle{apalike}
