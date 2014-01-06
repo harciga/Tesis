@@ -211,6 +211,10 @@ En el proceso\index{programación!proceso} de programación\index{programación}
 \subsection{El proceso de programación} % (fold)
 \label{sub:proceso_programacion}
 
+De acuerdo a \citet{wren95scheduling-timetabling}, el objetivo de la programación es solucionar problemas prácticos relacionados a la asignación, sujeta a restricciones, de recursos a objetos siendo colocados en el espacio-tiempo, haciendo uso o desarrollando herramientas apropiadas. Los problemas con frecuencia buscarán la satisfacción de ciertos objetivos \citetext{p.~47}.
+
+Aunque algunos autores consideren la programación\index{programación} (\textit{scheduling}) y calendarización\index{calendarización} (\textit{timetabling}) como actividades distintas, en este trabajo se utilizará el término programación\index{programación} tanto como un término genérico y para cubrir tipos específicos de problemas, y se considerará a la calendarización\index{programación!calendarización} (\textit{timetabling}), secuenciación\index{programación!secuenciación} (\textit{sequencing}) y establecimiento de listas\index{programación!listas} (\textit{rostering}) como casos especiales de la actividad genérica de programación\index{programación} \citep[p.~47]{wren95scheduling-timetabling}.
+
 De acuerdo a \citet[p.~48]{wren95scheduling-timetabling}, la programación\index{programación} puede ser vista como el acomodo de recursos dentro de un patrón\index{programación!patrón} en el tiempo o espacio de manera tal que algunos objetivos\index{objetivo} sean alcanzados –o se acerquen a ello– y que restricciones\index{restricción} existentes en la manera en que los recursos pueden ser acomodados sean satisfechas –o casi satisfechas–.
 %
 Los recursos pueden ser personas, vehículos, clases, exámenes, máquinas, trabajos en una fábrica, es decir, cualquier cosa que sea del interés del dueño del problema.
@@ -224,7 +228,7 @@ Con frecuencia la conformación de los recursos puede ser vista como parte del p
 \label{fig:scheduling_process}
 \end{figure}
 
-El patrón de programación\index{programación!patrón} puede ser un orden de eventos, una estructura de rutas, una matriz de asignaciones, entre otros. El patrón general puede tener que ser elaborado como parte del proceso de programación, o puede ser una plantilla\index{programación!plantilla} pre-existente característica del problema\index{programación!problema general} en cuestión \citep[p.~48]{wren95scheduling-timetabling}.
+El patrón de programación\index{programación!patrón} puede ser un orden de eventos, una estructura de rutas, una matriz de asignaciones, entre otros. El patrón general de programación puede tener que ser elaborado como parte del proceso de programación, o puede ser una plantilla\index{programación!plantilla} pre-existente característica del problema\index{programación!problema general} en cuestión \citep[p.~48]{wren95scheduling-timetabling}.
 
 Las restricciones\index{restricción} definen conexiones físicas o permisibles entre los recursos\index{recurso}, y entre estos y el patrón\index{programación!patrón} de programación. Ellas gobiernan la manera en la cual los recursos pueden acomodarse juntos o dentro del patrón. Las restricciones pueden ser vistas como reglas que obstaculizan el logro de los objetivos\index{objetivo}. No obstante, también pueden ser vistas como parte de la especificación del problema\index{programación!problema general} siendo posible utilizarlas para guiar a la herramienta\index{programación!herramienta} de búsqueda de soluciones a una respuesta.
 %
@@ -242,41 +246,25 @@ Un \textbf{horario}\index{horario} muestra cuándo deben ocurrir eventos\index{e
 La asignación de vehículos y conductores es parte del proceso\index{programación!proceso} de programación. Aunque la calendarización\index{calendarización} (\textit{timetabling}) –la acción de producir horarios– es estrictamente el diseño del patrón\index{programación!patrón} de trayectos, este patrón puede ser concebido como parte de un proceso que toma en consideración si es probable que un programa\index{programa} eficiente pueda ser ajustado al patrón de trayectos resultante \cite[p.~48]{wren95scheduling-timetabling}.
 
 En el ámbito ferroviario, el término calendarización\index{calendarización} es utilizado con frecuencia para referirse a la construcción de una ruta –con tiempos– para un tren a través de un sistema. Siendo así que el «Escocés Volador» –mundialmente famoso tren de pasajeros exprés que recorre desde 1862 el trayecto Londres-Edinburgo– solía partir de Edinburgo (estación \textit{Waverly}) a las 10:00; el trabajo de calendarización era el proceso de la búsqueda de tiempos y rutas a través del sistema de trenes que no conflictuaran con otro tráfico –haciendo revisiones en el resto del tráfico de ser necesario– hasta que llegaba a Londres (estación \textit{Kings Cross}) a las 18:30 (en 1922) o 18:05 (1948) 
-\citetext{p.~48, 49}.
+\citep[p.~48, 49]{wren95scheduling-timetabling}.
 
 Un horario\index{horario!educacional} educacional también muestra cuándo deben ocurrir eventos en particular. En ciertas circunstancias puede no haber actividad de programación\index{programación} necesaria para producir tal horario\index{horario}. En una escuela donde un único maestro es el responsable por todas las actividades\index{actividad} de una clase\index{clase} en particular, y donde dichas actividades\index{actividad} ocurren en un mismo lugar, un horario\index{horario} no es más que una declaración respecto a los tiempos en que deberán ocurrir actividades específicas –como en el caso del «Escocés Volador»–.
 %
 En contraste, un horario de exámenes para una universidad normalmente incluirá la asignación de aulas elaboradas a partir del conocimiento del tamaño de los grupos y de las instalaciones especiales requeridas. Habrá sido conformado sujeto a restricciones duras\index{restricción!dura} y suaves\index{restricción!suave}, como la cantidad de exámenes que puede presentar un estudiante en periodos consecutivos. Un horario de cursos para una universidad también tiene que tomar en cuenta la disponibilidad de los conferenciantes individualmente.
 %
-Es por ello que las actividades de calendarización de cursos\index{calendarización!de cursos} y calendarización de exámenes\index{calendarización!de exámenes} en universidades\index{horario!en universidades} pueder ser consideradas actividades\index{actividad} de programación\index{programación} \citetext{p.~49}. 
+Es por ello que las actividades de calendarización de cursos\index{calendarización!de cursos} y calendarización de exámenes\index{calendarización!de exámenes} en universidades\index{horario!en universidades} pueder ser consideradas actividades\index{actividad} de programación\index{programación} \citep[p.~49]{wren95scheduling-timetabling}. 
 
-Una \textbf{secuencia}\index{secuenciación!secuencia} es simplemente un orden en que las actividades\index{actividad} son llevadas a cabo. Por ejemplo, el orden en el que los trabajos son procesados a través de las máquinas en una fábrica, si los trabajos pasan a través de cada máquina en el mismo orden, es una secuencia. La secuenciación\index{secuenciación} puede tomar en cuenta costos relacionados a un trabajo específico siendo seguido por otro, como el costo de conversión de máquina. El problema de la secuenciación\index{secuenciación} de trabajos en estas circunstancias es conocido como un problema \textit{flow-shop}\index{secuenciación!flow-shop} \citetext{p.~49}. 
+Una \textbf{secuencia}\index{secuenciación!secuencia} es simplemente un orden en que las actividades\index{actividad} son llevadas a cabo. Por ejemplo, el orden en el que los trabajos son procesados a través de las máquinas en una fábrica, si los trabajos pasan a través de cada máquina en el mismo orden, es una secuencia. La secuenciación\index{secuenciación} puede tomar en cuenta costos relacionados a un trabajo específico siendo seguido por otro, como el costo de conversión de máquina. El problema de la secuenciación\index{secuenciación} de trabajos en estas circunstancias es conocido como un problema \textit{flow-shop}\index{secuenciación!flow-shop} \citep[p.~49]{wren95scheduling-timetabling}. 
 
 Un \textbf{programa} normalmente incluirá toda la información espacial y temporal necesaria para que un proceso llegue a término. Esto comprenderá los tiempos de inicio de las actividades pertinentes, declaraciones respecto a cuáles recursos serán asignados donde, así como los planes de trabajo individuales para el personal o las máquinas \citep[p.~49]{wren95scheduling-timetabling}.
 
+En \ref{sub:proceso_programacion} se definió tentativamente la programación\index{programación} como la asignación, sujeta a restricciones\index{restricción}, de recursos\index{recurso} a objetos siendo colocados en el espacio-tiempo. Por consiguiente, la programación\index{programación} es el proceso\index{programación!proceso} de la elaboración del programa\index{programación!programa}, incluyendo la asignación\index{asignación} de recursos\index{recurso} \citep[p.~49]{wren95scheduling-timetabling}.
+
 % up to here, we're doing alright
-Habiendo definido tentativamente la programación\index{programación} como la asignación, sujeta a restricciones\index{restricción}, de recursos\index{recurso} a objetos colocados en el espacio-tiempo, podemos decir que la programación\index{programación} es el proceso\index{programación!proceso} de la conformación del programa\index{programación!programa}, incluyendo la asignación\index{asignación} de recursos\index{recurso} \citep[p.~49]{wren95scheduling-timetabling}.
-
-\iffalse
-We have already tentatively defined scheduling as allocation, subject to constraints, of resources to objects being placed in space-time. Thus scheduling is the process of forming the schedule, including assignment of resources. We note that French [6] uses the term timetabling for this process, and other authors will use other conventions.
-\fi
-
 \subsection{Definiciones}
 \label{sub:Definiciones}
 
-De acuerdo a \citet{wren95scheduling-timetabling}, el objetivo de la programación es la solución de problemas prácticos relacionados a la asignación, sujeta a restricciones, de recursos a objetos siendo colocados en el espacio-tiempo, haciendo uso o desarrollando herramientas apropiadas. Los problemas con frecuencia buscarán la satisfacción de ciertos objetivos \citetext{p.~47}.
-
-\iffalse
-Aunque para algunos la programación\index{programación} (\textit{scheduling}) y calendarización\index{calendarización} (\textit{timetabling}) son actividades distintas, se utilizará el término programación\index{programación} tanto como un término genérico y para cubrir tipos específicos de problemas, y se considerará a la calendarización\index{programación!calendarización} (\textit{timetabling}), secuenciación\index{programación!secuenciación} (\textit{sequencing}) y establecimiento de listas\index{programación!listas} (\textit{rostering}) como casos especiales de la actividad genérica de programación\index{programación} \citetext{p.~47}.
-\fi
-
 Las actividades de calendarización\index{programación!calendarización} (\textit{timetabling}), establecimiento de listas\index{programación!listas} (\textit{rostering}) y secuenciación\index{programación!secuenciación} (\textit{sequencing}) todas se apegan a la definición anterior. Sin embargo, se hará uso de las siguientes definiciones más restrictivas para este trabajo.
-
-\iffalse
-We have already defined the goal of scheduling in its broadest sense as:
-to solve practical problems relating to the allocation, subject to constraints, of resources to objects being placed in space-time, using or developing whatever tools may be appropriate. The problems will often relate to the satisfaction of certain objectives.
-The activities known as timetabling,rosteringand sequencingall conform to the above definition. However, we shall use the following more restrictive definitions in the remainder of this paper:
-\fi
 
 % finish this
 \section{El problema general de la programación de horarios}
