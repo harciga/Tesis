@@ -32,6 +32,9 @@
 \usepackage{marginnote}
 % \usepackage{hyperref}
 
+\setlength{\parindent}{0.25in}
+\renewenvironment{quotation}{\list{}{\leftmargin=0.25in}\item[]}{\endlist}
+
 % Glossary
 \newglossaryentry{asignatura} {
 	   name = asignatura,
@@ -213,13 +216,11 @@ En el proceso\index{programación!proceso} de programación\index{programación}
 
 De acuerdo a \citet{wren95scheduling-timetabling}, el objetivo de la programación es solucionar problemas prácticos relacionados a la asignación, sujeta a restricciones, de recursos a objetos siendo colocados en el espacio-tiempo, haciendo uso o desarrollando herramientas apropiadas. Los problemas con frecuencia buscarán la satisfacción de ciertos objetivos \citetext{p.~47}.
 
-Aunque algunos autores consideren la programación\index{programación} (\textit{scheduling}) y calendarización\index{calendarización} (\textit{timetabling}) como actividades distintas, en este trabajo se utilizará el término programación\index{programación} tanto como un término genérico y para cubrir tipos específicos de problemas, y se considerará a la calendarización\index{programación!calendarización} (\textit{timetabling}), secuenciación\index{programación!secuenciación} (\textit{sequencing}) y establecimiento de listas\index{programación!listas} (\textit{rostering}) como casos especiales de la actividad genérica de programación\index{programación} \citep[p.~47]{wren95scheduling-timetabling}.
-
-De acuerdo a \citet[p.~48]{wren95scheduling-timetabling}, la programación\index{programación} puede ser vista como el acomodo de recursos dentro de un patrón\index{programación!patrón} en el tiempo o espacio de manera tal que algunos objetivos\index{objetivo} sean alcanzados –o se acerquen a ello– y que restricciones\index{restricción} existentes en la manera en que los recursos pueden ser acomodados sean satisfechas –o casi satisfechas–.
+\citet{wren95scheduling-timetabling} prosigue mencionando que la programación\index{programación} puede ser vista como el acomodo de recursos dentro de un patrón\index{programación!patrón} en el tiempo o espacio de manera tal que algunos objetivos\index{objetivo} sean alcanzados –o se acerquen a ello– y que restricciones\index{restricción} existentes en la manera en que los recursos pueden ser acomodados sean satisfechas –o casi satisfechas–.
 %
 Los recursos pueden ser personas, vehículos, clases, exámenes, máquinas, trabajos en una fábrica, es decir, cualquier cosa que sea del interés del dueño del problema.
 %
-Con frecuencia la conformación de los recursos puede ser vista como parte del proceso de programación\index{programación!proceso}. Por ejemplo, las herramientras de trabajo en una fábrica pueden ser acomodadas por turnos de personal, los cuales deben ser agrupados en listas, esta formación de turnos puede ser vista como un proceso específico de programación dentro de un proceso más extenso. 
+Con frecuencia la conformación de los recursos puede ser vista como parte del proceso de programación\index{programación!proceso}. Por ejemplo, las herramientras de trabajo en una fábrica pueden ser acomodadas por turnos de personal, los cuales deben ser agrupados en listas, esta formación de turnos puede ser vista como un proceso específico de programación dentro de un proceso más extenso \citetext{p.~48}. 
 
 \begin{figure}[hbtp]
 \centering
@@ -254,19 +255,59 @@ En contraste, un horario de exámenes para una universidad normalmente incluirá
 %
 Es por ello que las actividades de calendarización de cursos\index{calendarización!de cursos} y calendarización de exámenes\index{calendarización!de exámenes} en universidades\index{horario!en universidades} pueder ser consideradas actividades\index{actividad} de programación\index{programación} \citep[p.~49]{wren95scheduling-timetabling}. 
 
+\begin{sidewaysfigure}
+\includegraphics[width=\textwidth]{media/programa_secuencia_horario.pdf}
+\caption[Programa, secuencia, horario]{Programa, secuencia, horario}
+\label{fig:programa_secuencia_horario}
+\end{sidewaysfigure}
+
 Una \textbf{secuencia}\index{secuenciación!secuencia} es simplemente un orden en que las actividades\index{actividad} son llevadas a cabo. Por ejemplo, el orden en el que los trabajos son procesados a través de las máquinas en una fábrica, si los trabajos pasan a través de cada máquina en el mismo orden, es una secuencia. La secuenciación\index{secuenciación} puede tomar en cuenta costos relacionados a un trabajo específico siendo seguido por otro, como el costo de conversión de máquina. El problema de la secuenciación\index{secuenciación} de trabajos en estas circunstancias es conocido como un problema \textit{flow-shop}\index{secuenciación!flow-shop} \citep[p.~49]{wren95scheduling-timetabling}. 
 
-Un \textbf{programa} normalmente incluirá toda la información espacial y temporal necesaria para que un proceso llegue a término. Esto comprenderá los tiempos de inicio de las actividades pertinentes, declaraciones respecto a cuáles recursos serán asignados donde, así como los planes de trabajo individuales para el personal o las máquinas \citep[p.~49]{wren95scheduling-timetabling}.
+Un \textbf{programa} normalmente incluirá toda la información espacial y temporal necesaria para que un proceso llegue a término. Esto comprenderá los tiempos de inicio de las actividades pertinentes, declaraciones respecto a cuáles recursos serán asignados donde, así como los planes de trabajo individuales para el personal o las máquinas \citep[p.~49]{wren95scheduling-timetabling}. En la figura \ref{fig:programa_secuencia_horario} se ilustran los conceptos anteriores.
 
-En \ref{sub:proceso_programacion} se definió tentativamente la programación\index{programación} como la asignación, sujeta a restricciones\index{restricción}, de recursos\index{recurso} a objetos siendo colocados en el espacio-tiempo. Por consiguiente, la programación\index{programación} es el proceso\index{programación!proceso} de la elaboración del programa\index{programación!programa}, incluyendo la asignación\index{asignación} de recursos\index{recurso} \citep[p.~49]{wren95scheduling-timetabling}.
+En la sub-sección \ref{sub:proceso_programacion} se definió tentativamente la programación\index{programación} como la asignación, sujeta a restricciones\index{restricción}, de recursos\index{recurso} a objetos siendo colocados en el espacio-tiempo. Por consiguiente, la programación\index{programación} es el proceso\index{programación!proceso} de la elaboración del programa\index{programación!programa}, incluyendo la asignación\index{asignación} de recursos\index{recurso} \citep[p.~49]{wren95scheduling-timetabling}.
 
-% up to here, we're doing alright
 \subsection{Definiciones}
 \label{sub:Definiciones}
 
-Las actividades de calendarización\index{programación!calendarización} (\textit{timetabling}), establecimiento de listas\index{programación!listas} (\textit{rostering}) y secuenciación\index{programación!secuenciación} (\textit{sequencing}) todas se apegan a la definición anterior. Sin embargo, se hará uso de las siguientes definiciones más restrictivas para este trabajo.
+Algunos autores consideran a la programación\index{programación} (\textit{scheduling}) y calendarización\index{calendarización} (\textit{timetabling}) como actividades distintas, en este trabajo se utilizará el término programación\index{programación} tanto como un término genérico y para cubrir tipos específicos de problemas, y se considerará a la calendarización\index{programación!calendarización} (\textit{timetabling}), secuenciación\index{programación!secuenciación} (\textit{sequencing}) y establecimiento de listas\index{programación!listas} (\textit{rostering}) como casos especiales de la actividad genérica de programación\index{programación} \citep[p.~47]{wren95scheduling-timetabling}.
 
-% finish this
+En la sub-sección \ref{sub:proceso_programacion} definimos el objetivo de la programación de acuerdo a \citet{wren95scheduling-timetabling} como:
+
+\begin{quotation}
+solucionar problemas prácticos relacionados a la asignación, sujeta a restricciones, de recursos a objetos siendo colocados en el espacio-tiempo, haciendo uso o desarrollando herramientas apropiadas. Los problemas con frecuencia buscarán la satisfacción de ciertos objetivos \citetext{p.~47}.
+\end{quotation}
+
+Para \citet{wren95scheduling-timetabling}, las actividades de calendarización\index{programación!calendarización}, establecimiento de listas\index{programación!listas} y secuenciación\index{programación!secuenciación} todas se apegan a la definición anterior.
+%
+Sin embargo, se hará uso de las siguientes definiciones más restrictivas para este trabajo.
+
+\begin{quotation}
+La \textbf{programación} es la asignación, sujeta a restricciones, de recursos a objetos siendo colocados en el espacio-tiempo, de manera tal que se minimice el costo total de algún conjunto de los recursos usados. Ejemplos comunes son la programación de transporte o el diseño de rutas para vehículos de entrega que buscan minimizar el número de vehículos o conductores y dentro de ese mínimo minimizar el costo total, y la programación \textit{job-shop} que puede buscar minimizar el número de periodo de tiempos usados, o algún recurso físico.
+\iffalse
+Scheduling is the allocation, subject to constraints, of resources to objects being placed in space-time, in such a way as to minimise the total cost of some set of the resources used. Common examples are transport scheduling or delivery vehicle routeing which seek to minimise the numbers of vehicles or drivers and within that minimum to minimise the total cost, and job shop scheduling which may seek to minimise the number of time periods used, or some physical resource.
+\fi
+
+La \textbf{calendarización} es la asignación, sujeta a restricciones, de recursos dados a objetos siendo colocados en el espacio-tiempo, de manera tal que se satisfaga tanto como sea posible un conjunto de objetivos deseados. De ejemplo están la calendarización de cursos y exámenes y algunas formas de asignación de personal, como la ocupación de puestos en casetas de cobro sujetas a un número limitado de personal.
+\iffalse
+Timetablingis the allocation, subject to constraints, of given resources to objects being placed in space-time, in such a way as to satisfy as nearly as possible a set of desirable objectives. Examples are class and examination timetabling and some forms of personnel allocation, for example manning of toll booths subject to a given number of personnel.
+\fi
+
+La \textbf{secuenciación} es la construcción, sujeta a restricciones, de un orden en el que actividades deben ser llevadas a cabo u objetos que deben ser colocados en alguna representación de una solución. Como ejemplos están la programación \textit{flow-shop} y el problema del agente viajero.
+\iffalse
+Sequencingis the construction, subject to constraints, of an order in which activities are to be carried out or objects are to be placed in some representation of a solution. Examples are flow-shop scheduling and the travelling salesman problem.
+\fi
+
+El \textbf{establecimiento de listas} es la colocación, sujeta a restricciones, de recursos en espacios dentro de un patrón. Uno puede buscar minimizar algún objetivo, o simplemente lograr una asignación factible. Frecuentemente los recursos rotarán a través de una lista. \citetext{p.~53}
+\iffalse
+Rosteringis the placing, subject to constraints, of resources into slots in a pattern. One may seek to minimise some objective, or simply to obtain a feasible allocation. Often the resources will rotate through a roster.
+\fi
+\end{quotation}
+
+Algunos problemas pueden encajar en más de una de las deficiones anteriores, y los términos tienen a ser utilizados de manera holgada en el área de trabajo y en la comunidad de investigación del área.
+%
+En algunas se ha referido a la satisfacción o a la minimización. Debe ser resaltado que muchos de los problemas que se tratan en el área no tienen un objetivo bien definido. En ocasiones se puede justificar el uso de métodos de mejora o no-óptimos en parte porque los distintos dueños del problema tienen distintas perspectivas del objetivo, aunque en realidad tales métodos son frecuentemente utilizados simplemente porque no hay un método óptimo (o exacto) que sea viable en la práctica \citep[p.~53,~54]{wren95scheduling-timetabling}
+
 \section{El problema general de la programación de horarios}
 \label{sec:problema_general_programacion_horarios}
 
