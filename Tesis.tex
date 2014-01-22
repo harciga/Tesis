@@ -309,6 +309,10 @@ Algunos problemas pueden encajar en más de una de las deficiones anteriores, y 
 %
 En algunas se ha referido a la satisfacción o a la minimización. Debe ser resaltado que muchos de los problemas que se tratan en el área no tienen un objetivo bien definido. En ocasiones se puede justificar el uso de métodos de mejora o no-óptimos en parte porque los distintos dueños del problema tienen distintas perspectivas del objetivo, aunque en realidad tales métodos son frecuentemente utilizados simplemente porque no hay un método óptimo (o exacto) que sea viable en la práctica \citep[p.~53,~54]{wren95scheduling-timetabling}
 
+\section{Una reseña de los problemas más comunes de programación} % (fold)
+\label{sec:resena_problemas_comunes_programacion}
+
+
 \section{Teoría de la programación} % (fold)
 \label{sec:teoria_programacion}
 
@@ -327,8 +331,9 @@ Idealmente, la función objetivo debe consistir de todos los costos que dependan
 
 Una perspectiva útil en cuanto a la relación de los problemas de programación y sus técnicas de solución viene de los avances de una rama de la ciencia computacional conocida como \textbf{teoría de la complejidad computacional}. La noción de la complejidad se refiere al esfuerzo computacional requerido por un algoritmo de solución. El esfuerzo de computación es descrito con una notación de orden de magnitud.
 %
-Por ejemplo, se hace uso de un algoritmo en particular para resolver un problema de tamaño \textit{n}. (Técnicamente, \textit{n} denota la cantidad de información necesaria para especificar el problema.)
-El número de computaciones requeridas por el algoritmo típicamente está vinculado desde encima por una función de \textit{n}. Si la orden de magnitud de esta función es polinomial conforme \textit{n} se agranda, entonces decimos que el algoritmo es polinomial. En otra instancia, si la función tiene una orden de magnitud $\textit{n}^2$, denotada por $\BigO(\textit{n}^2)$ entonces el algoritmo es polinomial. Por otra parte, si la función tiene un orden de magnitud $\textit{n}^2$, denotada por $\BigO\textit{n}^2$
+Por ejemplo, se hace uso de un algoritmo en particular para resolver un problema de tamaño \textit{n}. (Técnicamente, \textit{n} denota la cantidad de información necesaria para especificar el problema.) El número de computaciones requeridas por el algoritmo típicamente está vinculado desde encima por una función de \textit{n}. Si la orden de magnitud de esta función es polinomial conforme \textit{n} se agranda, entonces decimos que el algoritmo es polinomial.
+%
+Por ejemplo, si la función tiene una orden de magnitud $\textit{n}^2$, denotada por $\BigO(\textit{n}^2)$ entonces el algoritmo es polinomial. Por otra parte, si la función es $\BigO(2^\textit{n})$, entonces el algoritmo es no-polinomial (en este caso sería exponencial). Siendo todo lo demás igual, son preferibles los algoritmos polinomiales puesto que conforme \textit{n} se agranda, estos son ultimadamente más rápidos.
 
 \section{Calendarización educacional} % (fold)
 \label{sec:calendarizacion_educacional}
