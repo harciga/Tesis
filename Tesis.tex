@@ -180,7 +180,8 @@ En el Capítulo 7 se hace una exposición del tipo de herramientas existentes pa
 
 Por último, en el Capítulo 8 se presenta un resumen del trabajo de investigación, las contribuciones hechas en el mismo, el trabajo futuro y la diseminación de trabajo.
 
-\chapter{Una visión general del problema}
+\chapter{Preliminares}
+\label{sec:preliminares}
 
 \section{Introducción}
 
@@ -188,10 +189,7 @@ Este capítulo es una revisión bibliográfica enfocada en los aspectos fundamen
 Introduce conceptos primordiales para el estudio del problema general de programación de horarios, los elementos que lo abarcan, cómo se clasifican los problemas en el ámbito educacional y las formulaciones de los modelos matemáticos pertinentes.
 El capítulo comprende de 7 secciones. La sección \ref{sec:preliminares} introduce los conceptos de programación\index{programación} y programa\index{programa} así como los elementos involucrados en el proceso\index{programación!proceso} de programación, esclarece términos prevalentes en la literatura y establece la definición de conceptos relevantes. La sección \ref{sec:problema_general_programacion_horarios} presenta el problema general de la programación de horarios\index{programación!problema general}. La sección \ref{sec:clasificacion_problemas} presenta una clasificación\index{calendarización!clasificación} de los tipos de problemas encontrados en la programación de horarios educacionales. En las secciones \ref{sec:calendarizacion_clases}, \ref{sec:calendarizacion_cursos} y \ref{sec:calendarizacion_examenes} se presentan de manera general las formulaciones formales de los problemas.
 
-\section{Preliminares}
-\label{sec:preliminares}
-
-\subsection{La programación y sus elementos} % (fold)
+\section{La programación y sus elementos} % (fold)
 \label{sub:programacion_elementos}
 
 La programación\index{programación} como palabra, forma parte del vocabulario de todos los días —aunque no siempre se tenga una idea clara de su significado–. En realidad, no es la programación en sí lo que es una noción común de la vida diaria, son más bien los programas\index{programa}. Un programa es un plan o documento tangible, tal como el programa de salidas de un autobús o un programa de clases. Un programa señala cuándo debe suceder algún evento\index{evento}; especifíca un plan para el tiempo de ocurrencia de ciertas actividades\index{actividad} y contesta la pregunta, «Si todo va bien, ¿cuándo ocurrirá un evento determinado?» \cite[p.~1]{Baker2009}.
@@ -212,7 +210,7 @@ En el proceso\index{programación!proceso} de programación\index{programación}
 \label{fig:programacion}
 \end{sidewaysfigure}
 
-\subsection{El proceso de programación} % (fold)
+\section{El proceso de programación} % (fold)
 \label{sub:proceso_programacion}
 
 De acuerdo a \citet{wren95scheduling-timetabling}, el objetivo de la programación es solucionar problemas prácticos relacionados a la asignación, sujeta a restricciones, de recursos a objetos siendo colocados en el espacio-tiempo, haciendo uso o desarrollando herramientas apropiadas. Los problemas con frecuencia buscarán la satisfacción de ciertos objetivos \citetext{p.~47}.
@@ -238,7 +236,7 @@ En la figura \ref{fig:scheduling_process} se presentan los conceptos ya descrito
 %
 Algunas restricciones existen únicamente desde el punto de vista del dueño del problema, y pueden formar parte del proceso\index{programación!proceso} de solución con el propósito de mostrar hasta qué grado una solución podría ser mejorada si una restricción o restricciones fueran relajadas, de manera que el dueño pueda decidir si la restricción es realmente necesaria o si vale la pena hacer el esfuerzo de eliminarla de la definición del problema \citep[p.~48]{wren95scheduling-timetabling}.
 
-\subsection{Programa, secuencia, horario}
+\section{Programa, secuencia, horario}
 \label{sub:programa_secuencia_horario}
 
 En ocasiones los términos programa\index{programa} (\textit{schedule}), secuencia\index{secuencia} (\textit{sequence}) y horario\index{horario} (\textit{timetable}) son utilizados a la ligera como si fueran sinónimos. Aquí se presentan algunas distinciones ajustándose a las prácticas aceptadas y procurando mantener tanta coherencia como sea posible.
@@ -268,7 +266,7 @@ Un \textbf{programa} normalmente incluirá toda la información espacial y tempo
 
 En la sub-sección \ref{sub:proceso_programacion} se definió tentativamente la programación\index{programación} como la asignación, sujeta a restricciones\index{restricción}, de recursos\index{recurso} a objetos siendo colocados en el espacio-tiempo. Por consiguiente, la programación\index{programación} es el proceso\index{programación!proceso} de la elaboración del programa\index{programación!programa}, incluyendo la asignación\index{asignación} de recursos\index{recurso} \citep[p.~49]{wren95scheduling-timetabling}.
 
-\subsection{Definiciones}
+\section{Definiciones}
 \label{sub:Definiciones}
 
 Algunos autores consideran a la programación\index{programación} (\textit{scheduling}) y calendarización\index{calendarización} (\textit{timetabling}) como actividades distintas, en este trabajo se utilizará el término programación\index{programación} tanto como un término genérico y para cubrir tipos específicos de problemas, y se considerará a la calendarización\index{programación!calendarización} (\textit{timetabling}), secuenciación\index{programación!secuenciación} (\textit{sequencing}) y establecimiento de listas\index{programación!listas} (\textit{rostering}) como casos especiales de la actividad genérica de programación\index{programación} \citep[p.~47]{wren95scheduling-timetabling}.
@@ -309,14 +307,6 @@ Algunos problemas pueden encajar en más de una de las deficiones anteriores, y 
 %
 En algunas se ha referido a la satisfacción o a la minimización. Debe ser resaltado que muchos de los problemas que se tratan en el área no tienen un objetivo bien definido. En ocasiones se puede justificar el uso de métodos de mejora o no-óptimos en parte porque los distintos dueños del problema tienen distintas perspectivas del objetivo, aunque en realidad tales métodos son frecuentemente utilizados simplemente porque no hay un método óptimo (o exacto) que sea viable en la práctica \citep[p.~53,~54]{wren95scheduling-timetabling}
 
-\section{Teoría y clasificación de la programación} % (fold)
-\label{sec:teoria_clasificacion_programacion}
-% section Teoría y clasificación de la programación (end)
-
-\section{Una reseña de los problemas más comunes de programación} % (fold)
-\label{sec:resena_problemas_comunes_programacion}
-
-
 \section{Teoría de la programación} % (fold)
 \label{sec:teoria_programacion}
 
@@ -330,7 +320,11 @@ Idealmente, la función objetivo debe consistir de todos los costos que dependan
 %
 
 
-\subsection{Teoría de la complejidad computacional} % (fold)
+\section{Una reseña de los problemas más comunes de programación} % (fold)
+\label{sec:resena_problemas_comunes_programacion}
+
+
+\section{Teoría de la complejidad computacional} % (fold)
 \label{sub:teoria_complejidad_computacional}
 
 Una perspectiva útil en cuanto a la relación de los problemas de programación y sus técnicas de solución viene de los avances de una rama de la ciencia computacional conocida como \textbf{teoría de la complejidad computacional}. La noción de la complejidad se refiere al esfuerzo computacional requerido por un algoritmo de solución. El esfuerzo de computación es descrito con una notación de orden de magnitud.
@@ -339,9 +333,7 @@ Por ejemplo, se hace uso de un algoritmo en particular para resolver un problema
 %
 Por ejemplo, si la función tiene una orden de magnitud $\textit{n}^2$, denotada por $\BigO(\textit{n}^2)$ entonces el algoritmo es polinomial. Por otra parte, si la función es $\BigO(2^\textit{n})$, entonces el algoritmo es no-polinomial (en este caso sería exponencial). Siendo todo lo demás igual, son preferibles los algoritmos polinomiales puesto que conforme \textit{n} se agranda, estos son ultimadamente más rápidos.
 
-\section{Calendarización educacional} % (fold)
-\label{sec:calendarizacion_educacional}
-
+\chapter{Una visión general del problema}
 
 \section{El problema general de la programación de horarios}
 \label{sec:problema_general_programacion_horarios}
@@ -354,6 +346,10 @@ Timetabling is the allocation, subject to constraints, of given resources to obj
 
 “Timetabling is the allocation, subject to constraints, of given resources to objects being placed in space time, in such a way as to satisfy as nearly as possible a set of desirable objectives.”
 \fi
+
+\section{Calendarización educacional} % (fold)
+\label{sec:calendarizacion_educacional}
+
 
 \section{Clasificación de los problemas}
 \label{sec:clasificacion_problemas}
@@ -456,18 +452,6 @@ Course timetabling: The weekly scheduling for all the lectures of a set of unive
 \section{Calendarización de exámenes}
 \label{sec:calendarizacion_examenes}
 
-\chapter{Preliminares}
-
-\section{Introducción}
-
-\section{Historia de la calendarización}
-
-\section{Terminología y definiciones}
-
-\section{Complejidad computacional}
-
-\subsection{Clases P y NP}
-
 \chapter{Modelos matemáticos}
 
 \section{Introducción}
@@ -529,20 +513,6 @@ Course timetabling: The weekly scheduling for all the lectures of a set of unive
 \subsubsection{Profesorado}
 
 \subsection{Flexibilidad}
-
-\chapter{Herramientas de solución}
-
-\section{Tipo de herramientas}
-
-\subsection{Automatizadas}
-
-\subsection{Interactivas}
-
-\section{Listado de software}
-
-\subsection{KHE}
-
-\subsubsection{Formato de datos}
 
 \chapter{Trabajo en el futuro y conclusiones}
 
