@@ -144,10 +144,6 @@ Las instituciones educativas como factor de cambio social juegan un papel import
 Si bien el gestor escolar en el sector público no cuenta con el mismo grado de laxitud operativa que su contra-parte en la iniciativa privada, ambos tienen alternativas de acción similares para afectar el desempeño de su institución.
 Mucho se ha hablado de maneras para mejorar el nivel educativo en las instituciones educativas desde la inversión de recursos en infraestructura; la capacitación continua de los docentes; el aprovisionamiento gratuito de útiles escolares, uniformes, alimentos; la  inclusión de las nuevas tecnologías informáticas en la pedagogía; mejoras en las condiciones laborales del magisterio;
 
-\iffalse
-University timetabling problems, particularly examination and course timetabling, are difficult tasks faced by educational institutions. Solving a real world university timetabling problem manually often requires a large amount of time and expensive resources. In order to handle the complexity of the problems and to provide automated support for human timetables, much research in this area has been invested over the years
-\fi
-
 \section{Objetivos de la investigación}
 
 Esta tesis investiga la problemática de la elaboración de horarios en instituciones docentes y el impacto potencial de su formulación en distintas métricas de desempeño educacional relevantes para el gestor\index{gestor escolar} escolar.
@@ -186,7 +182,7 @@ Por último, en el Capítulo 8 se presenta un resumen del trabajo de investigaci
 \section{Introducción}
 
 Este capítulo es una revisión bibliográfica enfocada en los aspectos fundamentales del área de investigación.
-Introduce conceptos primordiales para el estudio del problema general de programación de horarios, los elementos que lo abarcan, cómo se clasifican los problemas en el ámbito educacional y las formulaciones de los modelos matemáticos pertinentes.
+Introduce conceptos primordiales para el estudio del problema general de programación, los elementos que lo componen, su proceso de elaboración, la teoría detrás de los modelos matemáticos, así como la clasificación de los problemas.
 El capítulo comprende de 7 secciones. La sección \ref{sec:preliminares} introduce los conceptos de programación\index{programación} y programa\index{programa} así como los elementos involucrados en el proceso\index{programación!proceso} de programación, esclarece términos prevalentes en la literatura y establece la definición de conceptos relevantes. La sección \ref{sec:problema_general_programacion_horarios} presenta el problema general de la programación de horarios\index{programación!problema general}. La sección \ref{sec:clasificacion_problemas} presenta una clasificación\index{calendarización!clasificación} de los tipos de problemas encontrados en la programación de horarios educacionales. En las secciones \ref{sec:calendarizacion_clases}, \ref{sec:calendarizacion_cursos} y \ref{sec:calendarizacion_examenes} se presentan de manera general las formulaciones formales de los problemas.
 
 \section{La programación y sus elementos} % (fold)
@@ -210,7 +206,7 @@ En el proceso\index{programación!proceso} de programación\index{programación}
 \label{fig:programacion}
 \end{sidewaysfigure}
 
-\section{El proceso de programación} % (fold)
+\subsection{El proceso de programación} % (fold)
 \label{sub:proceso_programacion}
 
 De acuerdo a \citet{wren95scheduling-timetabling}, el objetivo de la programación es solucionar problemas prácticos relacionados a la asignación, sujeta a restricciones, de recursos a objetos siendo colocados en el espacio-tiempo, haciendo uso o desarrollando herramientas apropiadas. Los problemas con frecuencia buscarán la satisfacción de ciertos objetivos \citetext{p.~47}.
@@ -236,7 +232,7 @@ En la figura \ref{fig:scheduling_process} se presentan los conceptos ya descrito
 %
 Algunas restricciones existen únicamente desde el punto de vista del dueño del problema, y pueden formar parte del proceso\index{programación!proceso} de solución con el propósito de mostrar hasta qué grado una solución podría ser mejorada si una restricción o restricciones fueran relajadas, de manera que el dueño pueda decidir si la restricción es realmente necesaria o si vale la pena hacer el esfuerzo de eliminarla de la definición del problema \citep[p.~48]{wren95scheduling-timetabling}.
 
-\section{Programa, secuencia, horario}
+\subsection{Programa, secuencia, horario}
 \label{sub:programa_secuencia_horario}
 
 En ocasiones los términos programa\index{programa} (\textit{schedule}), secuencia\index{secuencia} (\textit{sequence}) y horario\index{horario} (\textit{timetable}) son utilizados a la ligera como si fueran sinónimos. Aquí se presentan algunas distinciones ajustándose a las prácticas aceptadas y procurando mantener tanta coherencia como sea posible.
@@ -266,7 +262,7 @@ Un \textbf{programa} normalmente incluirá toda la información espacial y tempo
 
 En la sub-sección \ref{sub:proceso_programacion} se definió tentativamente la programación\index{programación} como la asignación, sujeta a restricciones\index{restricción}, de recursos\index{recurso} a objetos siendo colocados en el espacio-tiempo. Por consiguiente, la programación\index{programación} es el proceso\index{programación!proceso} de la elaboración del programa\index{programación!programa}, incluyendo la asignación\index{asignación} de recursos\index{recurso} \citep[p.~49]{wren95scheduling-timetabling}.
 
-\section{Definiciones}
+\subsection{Definiciones}
 \label{sub:Definiciones}
 
 Algunos autores consideran a la programación\index{programación} (\textit{scheduling}) y calendarización\index{calendarización} (\textit{timetabling}) como actividades distintas, en este trabajo se utilizará el término programación\index{programación} tanto como un término genérico y para cubrir tipos específicos de problemas, y se considerará a la calendarización\index{programación!calendarización} (\textit{timetabling}), secuenciación\index{programación!secuenciación} (\textit{sequencing}) y establecimiento de listas\index{programación!listas} (\textit{rostering}) como casos especiales de la actividad genérica de programación\index{programación} \citep[p.~47]{wren95scheduling-timetabling}.
@@ -283,48 +279,56 @@ Sin embargo, se hará uso de las siguientes definiciones más restrictivas para 
 
 \begin{quotation}
 La \textbf{programación} es la asignación, sujeta a restricciones, de recursos a objetos siendo colocados en el espacio-tiempo, de manera tal que se minimice el costo total de algún conjunto de los recursos usados. Ejemplos comunes son la programación de transporte o el diseño de rutas para vehículos de entrega que buscan minimizar el número de vehículos o conductores y dentro de ese mínimo minimizar el costo total, y la programación \textit{job-shop} que puede buscar minimizar el número de periodo de tiempos usados, o algún recurso físico.
-\iffalse
-Scheduling is the allocation, subject to constraints, of resources to objects being placed in space-time, in such a way as to minimise the total cost of some set of the resources used. Common examples are transport scheduling or delivery vehicle routeing which seek to minimise the numbers of vehicles or drivers and within that minimum to minimise the total cost, and job shop scheduling which may seek to minimise the number of time periods used, or some physical resource.
-\fi
 
 La \textbf{calendarización} es la asignación, sujeta a restricciones, de recursos dados a objetos siendo colocados en el espacio-tiempo, de manera tal que se satisfaga tanto como sea posible un conjunto de objetivos deseados. De ejemplo están la calendarización de cursos y exámenes y algunas formas de asignación de personal, como la ocupación de puestos en casetas de cobro sujetas a un número limitado de personal.
-\iffalse
-Timetablingis the allocation, subject to constraints, of given resources to objects being placed in space-time, in such a way as to satisfy as nearly as possible a set of desirable objectives. Examples are class and examination timetabling and some forms of personnel allocation, for example manning of toll booths subject to a given number of personnel.
-\fi
 
 La \textbf{secuenciación} es la construcción, sujeta a restricciones, de un orden en el que actividades deben ser llevadas a cabo u objetos que deben ser colocados en alguna representación de una solución. Como ejemplos están la programación \textit{flow-shop} y el problema del agente viajero.
-\iffalse
-Sequencingis the construction, subject to constraints, of an order in which activities are to be carried out or objects are to be placed in some representation of a solution. Examples are flow-shop scheduling and the travelling salesman problem.
-\fi
 
 El \textbf{establecimiento de listas} es la colocación, sujeta a restricciones, de recursos en espacios dentro de un patrón. Uno puede buscar minimizar algún objetivo, o simplemente lograr una asignación factible. Frecuentemente los recursos rotarán a través de una lista. \citetext{p.~53}
-\iffalse
-Rosteringis the placing, subject to constraints, of resources into slots in a pattern. One may seek to minimise some objective, or simply to obtain a feasible allocation. Often the resources will rotate through a roster.
-\fi
 \end{quotation}
 
 Algunos problemas pueden encajar en más de una de las deficiones anteriores, y los términos tienen a ser utilizados de manera holgada en el área de trabajo y en la comunidad de investigación del área.
 %
 En algunas se ha referido a la satisfacción o a la minimización. Debe ser resaltado que muchos de los problemas que se tratan en el área no tienen un objetivo bien definido. En ocasiones se puede justificar el uso de métodos de mejora o no-óptimos en parte porque los distintos dueños del problema tienen distintas perspectivas del objetivo, aunque en realidad tales métodos son frecuentemente utilizados simplemente porque no hay un método óptimo (o exacto) que sea viable en la práctica \citep[p.~53,~54]{wren95scheduling-timetabling}
 
-\section{Teoría de la programación} % (fold)
+\citet[p.~3]{Baker2009} recuerda que muchos de los primeros desarrollos en el campo de la programación fueron motivados por problemas encontrados en la industria de la producción. Por lo tanto, es natural encontrar en la literatura el uso de vocabulario de producción cuando se describen problemas de programación. Aún cuando hoy día la aplicación de la programación es de considerable importancia en múltiples áreas no relacionadas con la producción, la terminología sigue siendo frecuentemente utilizada. Es por eso que a los recursos usualmente se les llama \textbf{máquinas} (\textit{machines}) y a las tareas se les llama \textbf{trabajos} (\textit{jobs}). En ocasiones, los trabajos pueden consistir de varias tareas elementales llamadas \textbf{operaciones} (\textit{operations}). El ambiente del problema de programación es llamado el \textbf{taller de trabajo} (\textit{job-shop}), o simplemente, el \textbf{taller} (\textit{shop}). Por ejemplo, un problema de programación que trate con el procesamiento de pólizas de seguros por aseguradoras puede ser descrito de manera genérica como un «taller» de seguros que se encarga del procesamiento de «trabajos» de polizas por «máquinas» aseguradoras.
+
+\section{Áreas de aplicación}
+\label{sec:areas_aplicacion}
+
+Los problemas de programación se encuentran en todos los niveles y en todos los sectores de la actividad económica. Generalmente, se hace una distinción entre aquellos relacionados a la industria de la fabricación y aquellos relacionados a los sistemas de cómputo o administración de proyectos \citep[p.~6]{TKindt2002}.
+
+\subsection{Problemas relacionados a la producción} % (fold)
+\label{sub:problemas_relacionados_produccion}
+
+Los problemas de programación se encuentran en los sistemas de manufactura flexible (\textit{FMS; Flexible Manufacturing System}). Numerosas definiciones de un \textit{FMS} existen en la literatura. Para Liu y MacCarthy (1996), «un FMS comprende tres elementos principales: herramientas de maquinaria controladas por computadora; un sistema de transporte automatizado y un sistema de control por computadora» (como está citado en \citealp[p.~6]{TKindt2002})  Estos problemas son tratados en la literatura y seguido en una bien definida clase de aplicación. Además, este amplio problema abarca otros problemas relacionados con la \textbf{Programación de Celdas Robotizadas} y la \textbf{Programación de Vehículos Guiados Automatizados}.
+
+Igualmente, la \textbf{electrodeposición} y los \textbf{talleres químicos} tienen sus propias peculiaridades en los problemas de programación. El último también es conocido como Problemas de Programación de Grúas. Estos talleres se caracterizan por la presencia de una o más grúas compartiendo el mismo espacio físico y donde deben transportar productos para tratamientos en tanques. Por lo general, el tiempo de submersión en un tanque está limitado por un mínimo y un máximo –el intervalo del tiempo de procesamiento–, el tiempo de transporte no es despreciable y las operaciones deben ser llevadas a cabo sin tiempos de espera. Estos problemas son muy comunes en la industra y los casos simples –mono-robot, tanques de una pasada, etc.– ya tienen planteadas buenas soluciones \citep[p.~6,~7]{TKindt2002}.
+
+
+\section{Historia}
+\label{sec:historia_programación}
+
+\subsection{Reseña de problemas clásicos}
+\label{sub:resena_problemas_clasicos}
+
+\section{Teoría de la programación}
 \label{sec:teoria_programacion}
 
-La teoría de la programación se preocupa primariamente con modelos matemáticos que se relacionan al proceso de programación. El desarrollo de modelos útiles, los cuales derivan en técnicas de solución y perspectivas prácticas, han sido la interfaz continua entre la teoría y la práctica. 
+De acuerdo a \citet[p.~1]{TKindt2002}, la teoría de la programación aparece a mediados de la década de los cincuenta. Desde entonces los problemas planteados se han acercado cada vez más a aplicaciones industriales y de esta manera se han incrementado en complejidad. La disposición de las máquinas se asemejan más y más a lo encontrado en la práctica. Al mismo tiempo las restricciones impuestas son cada vez más concretas.  Paradójicamente, la literatura muestra que en la mayoría de los problemas planteados, los programas son evaluados por un único criterio. 
+
+Durante las diferentes etapas de planificación distintos criterios pueden ser considerados. A un nivel estratégico, una planificación de largo alcance puede contemplar varios años, los objetivos se preocupan con la minimización de costos relacionados a los planes de inversión para materiales, finanzas, o personal, relacionados a la elección de nuevas oportunidades de negocio, o al lanzamiento de campañas de publicidad. Para la planificación estratégica en una fase de mediano plazo con varios meses en mente, los objetivos se enfocan a la minimización de costos: costos de inventario, costos de transporte de insumos, costos de modificación en la capacidad de producción, costos de lanzamiento, costos de modificación de sistemas de producción entre otros. Durante una fase de planificación o una fase de programación a corto plazo –un periodo de tiempo de una semana– multiples objetivos requieren la atención del ejecutivo de producción: ante todo, debe considerar los retrasos para la satisfacción del cliente, acto seguido, debe minimizar el costo del trabajo en proceso de la producción, y finalmente debe minimizar los costos de producción relacionados al tiempo utilizado para la configuraciónd de la maquinaria o los tiempos muertos de las mismas. Es por ello, que un problema de programación puede contemplar multiples criterios de manera tal que permita ofrecer al dueño del problema soluciones más realistas\citep[p.~1]{TKindt2002}.
+
+ésta se preocupa primariamente con modelos matemáticos que se relacionan al proceso de programación. El desarrollo de modelos útiles, los cuales derivan en técnicas de solución y perspectivas prácticas, han sido la interfaz continua entre la teoría y la práctica. 
 %
 La perspectiva teorética es en gran medida un acercamiento cuantitativo, uno que intenta capturar la estructura del problema de una manera matemática.
 %
 En particular, este enfoque cuantitativo comiento con la descripción de los recursos y tareas, y con la traducción de objetivos de planificación en una \textbf{función objetivo} explícita.
 
 Idealmente, la función objetivo debe consistir de todos los costos que dependan de decisiones de programación. En la práctica, sin embargo, tales costos son frecuentemente difíciles de medir, o incluso de identificar en su totalidad. Los costos de operación mayores –y los más inmediatamente identificables– son determinados por la \textbf{función de planificación}, mientras que los costos relacionados con la programación son difíciles de aislar y frecuentemente tienden a dar la impresión de ser costos fijos.
-%
 
 
-\section{Una reseña de los problemas más comunes de programación} % (fold)
-\label{sec:resena_problemas_comunes_programacion}
-
-
-\section{Teoría de la complejidad computacional} % (fold)
+\subsection{Teoría de la complejidad computacional} % (fold)
 \label{sub:teoria_complejidad_computacional}
 
 Una perspectiva útil en cuanto a la relación de los problemas de programación y sus técnicas de solución viene de los avances de una rama de la ciencia computacional conocida como \textbf{teoría de la complejidad computacional}. La noción de la complejidad se refiere al esfuerzo computacional requerido por un algoritmo de solución. El esfuerzo de computación es descrito con una notación de orden de magnitud.
@@ -334,6 +338,8 @@ Por ejemplo, se hace uso de un algoritmo en particular para resolver un problema
 Por ejemplo, si la función tiene una orden de magnitud $\textit{n}^2$, denotada por $\BigO(\textit{n}^2)$ entonces el algoritmo es polinomial. Por otra parte, si la función es $\BigO(2^\textit{n})$, entonces el algoritmo es no-polinomial (en este caso sería exponencial). Siendo todo lo demás igual, son preferibles los algoritmos polinomiales puesto que conforme \textit{n} se agranda, estos son ultimadamente más rápidos.
 
 \chapter{Una visión general del problema}
+
+\section{Introducción}
 
 \section{El problema general de la programación de horarios}
 \label{sec:problema_general_programacion_horarios}
@@ -351,7 +357,7 @@ Timetabling is the allocation, subject to constraints, of given resources to obj
 \label{sec:calendarizacion_educacional}
 
 
-\section{Clasificación de los problemas}
+\section{Clasificación de los problemas en el ámbito educacional}
 \label{sec:clasificacion_problemas}
 
 \index{clasificación}
@@ -385,15 +391,6 @@ De acuerdo a \citet[p.~88]{schaerf99a-survey-of-automated} el problema de horari
 
 El problema intenta asignar lecciones a periodos y, un profesor a una clase en particular en un momento dado mientras se satisface un conjunto de limitaciones con el fin producir un horario factible. Algunos ejemplos de limitaciones en este tipo de problemas son las capacidades de alojamiento, ubicaciones, cargas de trabajo de los profesores, tiempo de descanso entre lecciones.
 
-\iffalse
-School timetabling: The weekly scheduling for all the classes of a school, avoiding teachers meeting two classes at the same time, and vice versa;
-
-2.3.1 SchoolTimetabling
-The school timetabling problem is concerned with the weekly scheduling for all the lessons of a school. The problem consists of a set of teachers, classes, subject/lessons and weekly periods. These weekly periods are predefined. This problem tries to assign lessons to periods and, a teacher to a particular class at a given time while satisfying a set of constraints in order to produce a feasible timetable.
-
-Some examples of constraints in the school timetabling problem are capacities, locations, teacher loads, rest time between two lessons and other personal preferences. Examples of research on school timetabling can be found in Abramson (1991) who employed simulated annealing, Carrasco and Pato (2001) who employed a multi- objective genetic algorithm and Legierski (2003) who applied a constraint-based approach.
-\fi
-
 \subsection{Horarios en universidades}
 
 \index{horarios!en universidades}\index{calendarización!de cursos}\index{calendarización!de exámenes}
@@ -403,10 +400,6 @@ El problema de la calendarización de exámenes se refiere a la asignación de p
 Ambos problemas son similares de manera superficial, pero existen diferencias importantes que los distinguen.
 En la calendarización de exámenes, múltiples exámenes pueden ser presentados en una misma aula (ej. auditorio) al mismo tiempo.
 Sin embargo, esto no es posible para la calendarización de cursos en donde únicamente un curso puede ser asignado a un aula \citep[p.~11]{abdullah06heuristic-approaches}.
-
-\iffalse
-The university timetabling problem can be grouped into two categories: (i) course (or lecture) timetabling and (ii) examination timetabling. The course timetabling problem is the process of assigning timeslots and rooms so that meetings between lecturers and students can take place. The examination timetabling problem refers to the assignment of timeslots and rooms so that students can take examinations. These two (examination and course) timetabling problems are fairly similar in some superficial ways, but there are some distinct underlying differences between them. In examination timetabling, several examinations can be assigned to one (large) room at the same time. However, this is not possible for course timetabling where only one course can be assigned to one room.
-\fi
 
 \subsubsection{Calendarización de exámenes}
 
@@ -418,30 +411,11 @@ The university timetabling problem can be grouped into two categories: (i) cours
 \end{enumerate}
 El problema de la calendarización de exámenes es muy común tanto en escuelas como en universidades. La asignación de los exámenes a los periodos está sujeta a un conjunto de limitaciones \citep[p.~12]{abdullah06heuristic-approaches}.
 
-\iffalse
-course sched- uling problems and exam scheduling problems were quite similar; bo:2 types could be formulated in terms of node coloring in a graph. There are in fact a few differences which should be underlined.
-a) There is usually only one exam in each subject (while we had several lectures in a course). Exam graphs will so be generally smaller in size than course scheduling graphs.
-b) In a weekly course schedvle, the only objec- tive is to avoid conflicts (i.e. the sJtuation where 2 courses chosen by a student are scheduled m ~he same period). For the exams, it is usua]iy required to have at most one exam per day for each student or even to avoid having exams on consecutive days if the time interval for exams atlows it.
-
-Examination timetabling: The scheduling for the exams of a set of univer- sity courses, avoiding overlap of exams of courses having common students, and spreading the exams for the students as much as possible.
-
-11Chapter 2. A Review of University Timetabling Problems and Approaches
-Carter and Laporte (1996) defined the examination timetabling problem as:
-“The assigning of examinations to a limited number of available time periods in such a way that there are no conflicts or clashes”
-The examination timetabling problem is very common in both schools and universities. It is concerned with allocating a set of examinations, into a limited number of timeslots (periods), subject to a set of constraints. Carter et al. (1994) quoted that the basic challenge of examination timetabling is to schedule examinations over a limited number of timeslots so as to avoid conflicts and to satisfy a number of side constraints. In this case, the conflict is referred to as a hard constraint and side constraints are referred to as soft constraints.
-\fi
-
 \subsubsection{Calendarización de cursos}
 
 \index{calendarización!de cursos}
 El problema de la calendarización de cursos surge cuando una universidad (o incluso una escuela) ofrece una colección de cursos (cada uno consistiendo de un número dado de conferencias) sin existir un currículo fijo y en donde cada estudiante puede elegir cierto número de cursos. El problema consiste en la asignación de cada lectura a algún periodo en la semana de manera tal que ningún estudiante requiera asistir a más de una conferencia a la vez \citep[p.~157]{werra85an-introduction-to-timetabling}.
 \citet[p.~88]{schaerf99a-survey-of-automated} define el problema como la calendarización semanal de todas las lecciones de un conjunto de cursos universitarios, minimizando los empalmes de las lecciones de cursos teniendo estudiantes en común.
-
-\iffalse
-The course scheduling problem arises when a university (or even a school) offers a collection of courses (each one consisting of a given number of lectures) and there is no fixed curriculum: Each student may choose a certain number of courses. The problem consists in assigning each lecture to some period of the week in such a way that no student is required to take more than one lecture at a time. {werra85an-introduction-to-timetabling}
-
-Course timetabling: The weekly scheduling for all the lectures of a set of university courses, minimizing the overlaps of lectures of courses having common students;{schaerf99a-survey-of-automated}
-\fi
 
 \section{Calendarización de clases}
 \label{sec:calendarizacion_clases}
