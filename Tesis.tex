@@ -297,6 +297,29 @@ En algunas se ha referido a la satisfacción o a la minimización. Debe ser resa
 
 \citet[p.~3]{Baker2009} recuerda que muchos de los primeros desarrollos en el campo de la programación fueron motivados por problemas encontrados en la industria de la producción. Por lo tanto, es natural encontrar en la literatura el uso de vocabulario de producción cuando se describen problemas de programación. Aún cuando hoy día la aplicación de la programación es de considerable importancia en múltiples áreas no relacionadas con la producción, la terminología sigue siendo frecuentemente utilizada. Es por eso que a los recursos usualmente se les llama \textbf{máquinas} (\textit{machines}) y a las tareas se les llama \textbf{trabajos} (\textit{jobs}). En ocasiones, los trabajos pueden consistir de varias tareas elementales llamadas \textbf{operaciones} (\textit{operations}). El ambiente del problema de programación es llamado el \textbf{taller de trabajo} (\textit{job-shop}), o simplemente, el \textbf{taller} (\textit{shop}). Por ejemplo, un problema de programación que trate con el procesamiento de pólizas de seguros por aseguradoras puede ser descrito de manera genérica como un «taller» de seguros que se encarga del procesamiento de «trabajos» de polizas por «máquinas» aseguradoras.
 
+\section{Historia}
+\label{historia_programación}
+
+El concepto de programación no es nuevo; las pirámides tienen más de 3,000 años, Sun Tzu escribió acerca de programación y estrategia desde una perspectiva militar hace 2,500 años, vías ferroviarias han sido construidas por unos 200 años, entre otros ejemplos. Ninguna de estas actividades pudo haber sido lograda sin alguna forma de programación –como lo es el entendimiento de actividades y la secuenciación–. Sin embargo, mientras que los administradores, sacerdotes y líderes militares en control de las organizaciones responsables por el logro de estas actividades debieron tener una apreciación por la programación –o al menos aquellos que tuvieron éxito– existe poca evidencia de procesos formales hasta el siglo XX.
+
+Los controles de programación modernos pueden encontrar sus orígenes en 1765. El creador de la «gráfica de barra» parece ser Joseph Priestley (Inglaterra, 1733-1804); su «Gráfica de Biografía» mostraba unos 2,000 periodos de vida de personajes notables en una gráfica con escala de tiempo, véase la figura \ref{fig:chart_biography}.
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=\textwidth]{media/PriestleyChart.png}
+\caption[Gr\'afica de Biograf\'ia]{Joseph Priestly: Gr\'afica de Biograf\'ia}
+\label{fig:chart_biography}
+\end{figure}
+
+La evolución de la programación siguió de cerca el desarrollo de las computadoras. Los primeros sistemas eran computadoras centrales gigantescas, típicamente le tomaba a un nuevo programador muchos meses aprender a utilizarlas. Estos sistemas migraron a las «mini-computadoras» de la década de los setenta y ochenta pero continuaron siendo onerosos, fomentando así el uso generalizado de técnicas manuales de programación, solo las organizaciones más grandes –o más sofisticadas– pudieron sufragar una oficina central de programación y los sistemas de cómputo necesarios \citep[p.~2]{Weaver2006}.
+
+El advenimiento de la «micro-computadora» –entiéndase la PC o computadora personal– cambió la programación para siempre. La evolución de la programación basada en tecnología PC cambió los controles del proyecto de un ambiente en donde un equipo especializado de programadores operaba sistemas costosos asegurándose que la programación era «correcta» –y que la organización tenía el control de los datos– a una situación en donde cualquiera podía aprender a manejar un paquete de software de programación, los programas se convirtieron en «islas de información» dispersas en los escritorios de los empleados y la calidad de la programación en general se desplomó \citep[p.~2]{Weaver2006}.
+
+En la actualidad, hay tendencias de un regreso a los sistemas empresariales soportados por paquetes Ofimáticos de Administración de Proyectos (\textit{Project Management Office; PMO}) que corrigen el balance y ofrecen lo mejor de los dos mundos. Desde un punto de vista tecnológico, la información es gestionada de manera central, pero está disponible fácilmente para todos en cualquier PC a través de una interfaz de red. Desde el punto de vista de habilidades, los \textit{PMO} están teniendo un impacto en el desarrollo de las carreras de los programadores y apoyando en la implementación de estándares de programación dentro de las organizaciones \citep[p.~2]{Weaver2006}.
+
+\subsection{Reseña de problemas clásicos}
+\label{resena_problemas_clasicos}
+
 \section{Áreas de aplicación}
 \label{areas_aplicacion}
 
@@ -309,12 +332,6 @@ Los problemas de programación se encuentran en los sistemas de manufactura flex
 
 Igualmente, la \textbf{electrodeposición} y los \textbf{talleres químicos} tienen sus propias peculiaridades en los problemas de programación. El último también es conocido como Problemas de Programación de Grúas. Estos talleres se caracterizan por la presencia de una o más grúas compartiendo el mismo espacio físico y donde deben transportar productos para tratamientos en tanques. Por lo general, el tiempo de submersión en un tanque está limitado por un mínimo y un máximo –el intervalo del tiempo de procesamiento–, el tiempo de transporte no es despreciable y las operaciones deben ser llevadas a cabo sin tiempos de espera. Estos problemas son muy comunes en la industra y los casos simples –mono-robot, tanques de una pasada, etc.– ya tienen planteadas buenas soluciones \citep[p.~6,~7]{TKindt2002}.
 
-
-\section{Historia}
-\label{historia_programación}
-
-\subsection{Reseña de problemas clásicos}
-\label{resena_problemas_clasicos}
 
 \section{Teoría de la programación}
 \label{teoria_programacion}
