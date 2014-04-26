@@ -239,7 +239,7 @@ Algunas restricciones existen únicamente desde el punto de vista del dueño del
 \subsection{Programa, secuencia, horario}
 \label{programa_secuencia_horario}
 
-En ocasiones los términos programa\index{programa} (\textit{schedule}), secuencia\index{secuencia} (\textit{sequence}) y horario\index{horario} (\textit{timetable}) son utilizados a la ligera como si fueran sinónimos. Aquí se presentan algunas distinciones ajustándose a las prácticas aceptadas y procurando mantener tanta coherencia como sea posible.
+En ocasiones los términos programa\index{programa} (\textit{schedule}), secuencia\index{secuencia} (\textit{sequence}) y horario\index{horario} (\textit{timetable}) son utilizados a la ligera como si fueran sinónimos. Aquí se presentan algunas distinciones ajustándose a las prácticas aceptadas y procurando mantener tanta coherencia como sea posible \citep[p.~48]{wren95scheduling-timetabling}.
 
 Un \textbf{horario}\index{horario} muestra cuándo deben ocurrir eventos\index{evento} particulares. No necesariamente implica una asignación\index{asignación} de recursos\index{recursos}. Por ende, un horario publicado de trenes o autobuses muestra cuándo deben ocurrir las salidas para una o más rutas distintas, sin embargo, no nos dice cuáles vehículos o conductores han de ser asignados a trayectos en específico.
 %
@@ -262,9 +262,11 @@ Es por ello que las actividades de calendarización de cursos\index{calendarizac
 
 Una \textbf{secuencia}\index{secuenciación!secuencia} es simplemente un orden en que las actividades\index{actividad} son llevadas a cabo. Por ejemplo, el orden en el que los trabajos son procesados a través de las máquinas en una fábrica, si los trabajos pasan a través de cada máquina en el mismo orden, es una secuencia. La secuenciación\index{secuenciación} puede tomar en cuenta costos relacionados a un trabajo específico siendo seguido por otro, como el costo de conversión de máquina. El problema de la secuenciación\index{secuenciación} de trabajos en estas circunstancias es conocido como un problema \textit{flow-shop}\index{secuenciación!flow-shop} \citep[p.~49]{wren95scheduling-timetabling}. 
 
-Un \textbf{programa} normalmente incluirá toda la información espacial y temporal necesaria para que un proceso llegue a término. Esto comprenderá los tiempos de inicio de las actividades pertinentes, declaraciones respecto a cuáles recursos serán asignados donde, así como los planes de trabajo individuales para el personal o las máquinas \citep[p.~49]{wren95scheduling-timetabling}. En la figura \ref{fig:programa_secuencia_horario} se ilustran los conceptos anteriores.
-
-En la sub-sección \ref{proceso_programacion} se definió tentativamente la programación\index{programación} como la asignación, sujeta a restricciones\index{restricción}, de recursos\index{recurso} a objetos siendo colocados en el espacio-tiempo. Por consiguiente, la programación\index{programación} es el proceso\index{programación!proceso} de la elaboración del programa\index{programación!programa}, incluyendo la asignación\index{asignación} de recursos\index{recurso} \citep[p.~49]{wren95scheduling-timetabling}.
+Un \textbf{programa}\index{programa} normalmente incluirá toda la información espacial y temporal necesaria para que un proceso\index{proceso} llegue a término. Esto comprenderá los tiempos de inicio de las actividades\index{actividad} pertinentes, aserciones respecto a dónde serán asignados\index{asignación} cuáles recursos\index{recurso}, así como los planes de trabajo individuales para el personal o las máquinas.
+%
+Por consiguiente, la programación\index{programación} es el proceso\index{programación!proceso} de la elaboración del programa\index{programa}, incluyendo la asignación\index{asignación} de recursos\index{recurso} \citep[p.~49]{wren95scheduling-timetabling}.
+%
+En la figura \ref{fig:programa_secuencia_horario} se ilustran los conceptos anteriores.
 
 \subsection{Definiciones}
 \label{Definiciones}
@@ -277,7 +279,7 @@ En la sub-sección \ref{proceso_programacion} definimos el objetivo de la progra
 solucionar problemas prácticos relacionados a la asignación, sujeta a restricciones, de recursos a objetos siendo colocados en el espacio-tiempo, haciendo uso o desarrollando herramientas apropiadas. Los problemas con frecuencia buscarán la satisfacción de ciertos objetivos \citetext{p.~47}.
 \end{quotation}
 
-Para \citet{wren95scheduling-timetabling}, las actividades de calendarización\index{programación!calendarización}, establecimiento de listas\index{programación!listas} y secuenciación\index{programación!secuenciación} todas se apegan a la definición anterior.
+Para \citet{wren95scheduling-timetabling}, las actividades de calendarización\index{programación!calendarización}, establecimiento de listas\index{programación!listas} y secuenciación\index{programación!secuenciación} todas se apegan a la definición anterior \citetext{p.~53}.
 %
 Sin embargo, se hará uso de las siguientes definiciones más restrictivas para este trabajo.
 
@@ -328,9 +330,9 @@ Para 1912, la gráfica de barras moderna aparenta estar totalmente desarrollada 
 \label{fig:grafica_gantt}
 \end{sidewaysfigure}
 
-La planeación de líneas de flujo (\textit{flowline planning}) fue desarrollada en la década de los treinta o aún antes y las gráficas de Milestone tambien estuvieron en uso regular para la decada de los cincuenta. Grandes contratos eran subdivididos en secciones con fechas límite para la compleción del trabajo necesario para alcanzar las metas de cada hito (\textit{milestone}). Sin embargo, así como con las graficas de Gantt, todas las fechas y las relaciones mostradas en estas graficas estaban basadas en heuristicos o en experiencia. Era posible identificar retrasos pero cualquier valoración del impacto del mismo estaba basada en un punto de vista personal de los datos y no de un analisis serio. Como consecuencia cuando el retraso de un programa se volvia aparente en grandes contratos, la tendencia era solucionar el problema inundandolo con mano de obra y "comprar tiempo" frecuentemente a un precio muy elevado.
+La planeación de líneas de flujo (\textit{flowline planning}) fue desarrollada en la década de los treinta o aún antes y las gráficas de Milestone tambien estuvieron en uso regular para la decada de los cincuenta. Grandes contratos eran subdivididos en secciones con fechas límite para la compleción del trabajo necesario para alcanzar las metas de cada hito (\textit{milestone}). Sin embargo, así como con las graficas de Gantt, todas las fechas y las relaciones mostradas en estas graficas estaban basadas en heuristicos o en experiencia. Era posible identificar retrasos pero cualquier valoración del impacto del mismo estaba basada en un punto de vista personal de los datos y no de un analisis serio. Como consecuencia cuando el retraso de un programa se volvia aparente en grandes contratos, la tendencia era solucionar el problema inundandolo con mano de obra y «comprar tiempo» frecuentemente a un precio muy elevado \citep[p.~4]{Weaver2006}.
 
-Independiente del desarrollo de los procesos de control de programacion basados en graficas de barras y en milestones, el programacion lineal habia estado siendo investigado por varios años. Esta rama de las matematicas miraba en la causa y efecto de las acciones entre ellas en situaciones tales como el flujo de trafico en una autopista. Una los matematicos involucrados en ese trabajo fue James E. Kelley.
+Independiente del desarrollo de los procesos de control de programacion basados en graficas de barras y en milestones, el programacion lineal habia estado siendo investigado por varios años. Esta rama de las matematicas miraba en la causa y efecto de las acciones entre ellas en situaciones tales como el flujo de trafico en una autopista. Uno los matematicos involucrados en ese trabajo fue James E. Kelley \citep[p.~4]{Weaver2006}.
 
 La evolución de la programación siguió de cerca el desarrollo de las computadoras. Los primeros sistemas eran computadoras centrales gigantescas, típicamente le tomaba a un nuevo programador muchos meses aprender a utilizarlas. Estos sistemas migraron a las mini-computadoras de la década de los setenta y ochenta pero continuaron siendo onerosos, fomentando así el uso generalizado de técnicas manuales de programación, solo las organizaciones más grandes –o más sofisticadas– pudieron sufragar una oficina central de programación y los sistemas de cómputo necesarios \citep[p.~2]{Weaver2006}.
 
