@@ -306,19 +306,18 @@ El concepto de programación no es nuevo; las pirámides tienen más de 3,000 a�
 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width=\textwidth]{media/PriestleyChart.png}
+\includegraphics[width=.8\textwidth]{media/PriestleyChart.png}
 \caption[Gr\'afica de Biograf\'ia]{Gr\'afica de Biograf\'ia abarcando los primeros 650 años antes de la era común. De \textit{A description of a chart of biography}, por J. \citeauthor{priestley1764description}, \citeyear{priestley1764description}. Derechos de autor expirados, obra del dominio público.}
 \label{fig:chart_biography}
 \end{figure}
 
 De acuerdo a \citet{Weaver2006}, las herramientas de control de programación modernas pueden trazar sus orígenes hasta 1765. El creador de la «gráfica de barra» (\textit{bar chart}) parece ser Joseph Priestley (Inglaterra, 1733-1804); su «Gráfica de Biografía» (\textit{Chart of Biography}) mostraba unos 2,000 lapsos de vida de personajes notables en una gráfica con escala de tiempo, véase la figura \ref{fig:chart_biography}. Las ideas de Priestley fueron retomadas por William Playfair (1759-1823) en su «Atlas Comercial y Político» (\textit{Commercial and Political Atlas}) de 1786. A Playfair se le atribuye el desarrollo de un vasto rango de gráficas incluyendo la línea, la barra (histograma), y las gráficas circulares (gráficas de pastel), un ejemplo puede ser visto en la figura \ref{fig:playfair_timeseries} \citetext{p.~2,~3}.
 
-\begin{figure}[hbtp]
-\centering
+\begin{sidewaysfigure}
 \includegraphics[width=\textwidth]{media/Playfair_TimeSeries.png}
 \caption[Gráfica del Atlas de W. Playfair]{Una de las gráficas elaboradas por Playfair. De \textit{The Commercial and Political Atlas}, por W. \citeauthor{playfair1786commercial}, \citeyear{playfair1786commercial}. Derechos de autor expirados, obra del dominio público.}
 \label{fig:playfair_timeseries}
-\end{figure}
+\end{sidewaysfigure}
 
 \citet{Weaver2006} recuenta que siguiendo los pasos de Playfair, Karol Adamiecki –un polaco economista, ingeniero e investigador de la administración– desarrolló el harmonograma (\textit{Harmonogram}) en 1896. Este gráfico dispone de una escala de tiempo en el eje  vertical (en el lado izquierdo) y enumera las actividades en la parte superior. La hora de inicio y la duración de las actividades se muestra por una «barra deslizante» (\textit{sliding tab}), muy similar a la «barra» en una gráfica de barra. Lo relevante del harmonigrafo (\textit{Harmonygraph}) es que también tabula para cada actividad sus predecesores y sucesores haciéndolo un predecesor destacado de los sistemas \textit{CPM} y \textit{PERT} desarrollados unos 60 años después \citetext{p.~3}.
 
@@ -372,7 +371,13 @@ En el Reino Unido la compañía química ICI pudo haber desarrollado una herrami
 %
 La Sección de Investigación de Operaciones (\textit{Operational Research Section; ORS}) del Consejo Central para la Generación de Electricidad (\textit{Central Electricity Generating Board; CEGB}) en los años 1957 y 1958 estuvieron involucrados en el desarrollo de su versión de \textit{CPM}. Al seguir desarrollando su método tipo \textit{CPM} y al aplicarlo al apagado y mantenimiento de la central eléctrica Keadby en Leicestershire en 1957, el \textit{CEGB} fue capaz de reducir el tiempo de apagado en un 42\% en comparación al promedio de años anteriores, y en 1960 alcanzó a mejorar la reducción en otro 32\%. Desafortunadamente estos sucesos no fueron ampliamente publicitados y cayeron en el olvido. Es posible que una parte significativa del trabajo de \textit{ORS-CEGB} haya sido integrado –o cuando menos influenciado– en los antepasados de la compañia ICL en el desarrollo de lo que se convirtió su software de programación para \textit{mainframe} «ICL PERT», así como sus sucesores para sistemas \textit{PC} como Micro Planner y PlanTrac \citep[p.~8]{Weaver2006}.
 
-La URSS (Rusia) desarrolló su propio sistema tipo \textit{PERT} llamado \textit{Setevoe planirovanie i upravlenie}. Si bien no tuvo un impacto fuera de la URSS, los programadores rusos han desarrollado otras herramientas interesantes, una de las más recientes es el Proyecto ARAÑA (\textit{Project SPIDER}) que enlaza dinámicamente tiempo, recursos y costo –el objetivo original del trabajo de Kelley y Walker– dentro de un perfil de riesgo controlado \citep[p.~8]{Weaver2006}.
+La URSS (Rusia) desarrolló su propio sistema tipo \textit{PERT} llamado \textit{Setevoe planirovanie i upravlenie}. Si bien no tuvo un impacto fuera de la URSS, los programadores rusos han desarrollado otras herramientas interesantes, una de las más recientes es el Proyecto ARAÑA (\textit{Project SPIDER}) –véase figura \ref{fig:screenshot_project_spider}– que enlaza dinámicamente tiempo, recursos y costo –el objetivo original del trabajo de Kelley y Walker– dentro de un perfil de riesgo controlado \citep[p.~8]{Weaver2006}.
+
+\begin{sidewaysfigure}
+\includegraphics[width=\textwidth]{media/spider_project_gray.pdf}
+\caption[Interfaz del Proyecto ARAÑA]{Una captura de pantalla de la herramienta rusa de programación «Proyecto ARAÑA». De \textit{Spider Project Professional}, por P. \citeauthor{cotterell14spider-project}, \citeyear{cotterell14spider-project}, p.~2. Derechos reservados [\citeyear{cotterell14spider-project}] por \textit{Spider Project}.}
+\label{fig:screenshot_project_spider}
+\end{sidewaysfigure}
 
 El método Metra Potencial (\textit{Metra Potential Method; MPM}) desarrollado en 1958 por el Sr. B. Roy con la consultoría METRA en Francia, pudo haber sido influenciado por avances en los EEUU pero parece haber sido inventado de manera independiente del trabajo del Dr. John Fondahl en el sistema de precedencias. \textit{MPM} empleaba un sistema gráfico de «nudos» –puntos y círculos– unidos por «tiras». Las «tiras» –líneas entre los nudos– podían o no tener una dirección de flujo pero sí especificaban el periodo de tiempo que una actividad estaba indicada a demorarse después del inicio de la actividad predecesora. La herramienta alemana «ACOS Plus 1» utiliza \textit{MPM} como su filosofía de programación aunque desde una perspectiva de usuario, \textit{ACOS} es similar a la mayoría de las herramientas de programación basadas en precedencia. Sin embargo, ACOS ofrece un número adicional de tipos de enlaces. \textit{MPM} fue probablemente el primer sistema en utilizar «demoras» en sus algoritmos de programación \citep[p.~8,~9]{Weaver2006}.
 
@@ -413,13 +418,11 @@ En la actualidad, hay tendencias de un regreso a los sistemas empresariales sopo
 Antes de la década de los ochenta la programación era considerado un asunto muy serio; hacía uso de recursos costosos, requería de significante entrenamiento y habilidad, y estaba mayormente centralizada y visible. En donde se hacía uso de la programación manual, los ahorros en costos de operación eran contrarrestados por el tedio de las extensas computaciones manuales; no era redituable cometer equivocaciones, por ende los programadores eran profesionales entrenados.
 %
 La llegada de herramientas de programación «fáciles de utilizar» con una interfaz gráfica cambió radicalmente a la industria. La programación migró al escritorio y surgió el mito de que «cualquiera» podía crear un programa –considerando que supiera encender una \textit{PC}–. Mucha gente aprendió «programación» al usar herramientas como \textit{Microsoft Project}. No había entrenamiento o supervisión y como consecuencia, el programa promedio estaba inundado de «arreglos» permitidos o incluso fomentados por la herramienta. La tendencia ha sido hacia un enfoque en los procesos computacionales y la obtención de un programa que se «vea bien» en lugar de el análisis de un proyecto para determinar la duración apropiada basada en las disponibilidades de los recursos apropiados y en el diseño de un programa como una herramienta efectiva para la administración en el contexto de cada proyecto en específico \citep[p.~12,~13]{Weaver2006}.
+
 \section{Áreas de aplicación}
 \label{areas_aplicacion}
 
 Los problemas de programación se encuentran en todos los niveles y en todos los sectores de la actividad económica. Generalmente, se hace una distinción entre aquellos relacionados a la industria de la fabricación y aquellos relacionados a los sistemas de cómputo o administración de proyectos \citep[p.~6]{TKindt2002}.
-
-\subsection{Reseña de problemas clásicos}
-\label{resena_problemas_clasicos}
 
 \subsection{Problemas relacionados a la producción} % (fold)
 \label{problemas_relacionados_produccion}
@@ -428,16 +431,25 @@ Los problemas de programación se encuentran en los sistemas de manufactura flex
 
 Igualmente, la \textbf{electrodeposición} y los \textbf{talleres químicos} tienen sus propias peculiaridades en los problemas de programación. El último también es conocido como Problemas de Programación de Grúas. Estos talleres se caracterizan por la presencia de una o más grúas compartiendo el mismo espacio físico y donde deben transportar productos para tratamientos en tanques. Por lo general, el tiempo de submersión en un tanque está limitado por un mínimo y un máximo –el intervalo del tiempo de procesamiento–, el tiempo de transporte no es despreciable y las operaciones deben ser llevadas a cabo sin tiempos de espera. Estos problemas son muy comunes en la industra y los casos simples –mono-robot, tanques de una pasada, etc.– ya tienen planteadas buenas soluciones \citep[p.~6,~7]{TKindt2002}.
 
+Los problemas de programación en las \textbf{líneas de producción automotrices}, también conocidos como «Problemas de Secuenciación Automotriz» (\textit{Car Sequencing Problems}), se encuentran en los talleres de ensamblado donde cierto equipamiento u opciones deben ser incorporados a distintos modelos de vehículo. Estos problemas tienen restricciones y peculiaridades particulares. Teniendo conocimiento de una secuencia de vehículos en curso de tratamiento, el problema es determinar el tipo adecuado de vehículo siguiente. Es necesario tomar en consideración el grupo de restricciones enlazadas principalmente a las opciones de emsamblado para estos vehículos y al limitado rango de movimiento de las herramientas dispuestas a lo largo de la línea de producción \citep[p.~7]{TKindt2002}.
+
+\subsection{Otros problemas}
+\label{otros_problemas}
+
+\citet[p.~7]{TKindt2002} continua, afirmando que se encuentran problemas de programación en los \textbf{sistemas computacionales}. Estos problemas son estudiados de distintas maneras al discriminarlos por sistemas mono o multi procesador, con las restricciones de sincronización de operaciones y compartición de recursos. En estos problemas, ciertas operaciones son periódicas y otras no, algunas están sujetas a fechas de cierre, otras a fechas límite. El objetivo es encontrar una solución factible, es decir, una solución que satisfaga las restricciones. Estos problemas abundan en la literatura. De hecho, a pesar de las apariencias son bastante cercanos a los problemas encontrados en los sistemas de producción.
+
+Los \textbf{problemas de programación de horarios escolares} conciernen a todas las instituciones educativas o universidades, dado que involucran la calendarización de cursos asegurando la disponibilidad de profesores, estudiantes y aulas. Estos problemas son ampliamente estudiados \citep[p.~7]{TKindt2002}.
+
+Los \textbf{problemas de programación de proyectos} comprenden una vasta literatura. El interés general se concentra en la programación de operaciones que hacen uso de multiples recursos simultáneamente (dinero, personal, equipo, materiales, etc), estos recursos estando disponibles en cantidades conocidas. En palabras precisas son problemas de programación multi-recurso haciendo uso de recursos acumulativos no-renovables \citep[p.~7]{TKindt2002}.
 
 \section{Teoría de la programación}
 \label{teoria_programacion}
 
-De acuerdo a \citet[p.~1]{TKindt2002}, la teoría de la programación aparece a mediados de la década de los cincuenta. Desde entonces los problemas planteados se han acercado cada vez más a aplicaciones industriales y de esta manera se han incrementado en complejidad. La disposición de las máquinas se asemejan más y más a lo encontrado en la práctica. Al mismo tiempo las restricciones impuestas son cada vez más concretas.  Paradójicamente, la literatura muestra que en la mayoría de los problemas planteados, los programas son evaluados por un único criterio.
+De acuerdo a \citet[p.~1]{TKindt2002}, la teoría de la programación aparece a mediados de la década de los cincuenta. Desde entonces los problemas planteados se han acercado cada vez más a aplicaciones industriales y de esta manera se han incrementado en complejidad. La disposición de las talleres tomandos en consideración se asemejan cada vez más y más a lo encontrado en la práctica; al mismo tiempo las restricciones impuestas son cada vez más concretas.  Paradójicamente, la literatura muestra que en la mayoría de los problemas planteados, los programas son evaluados por un único criterio.
 
 Durante las diferentes etapas de planificación distintos criterios pueden ser considerados. A un nivel estratégico, una planificación de largo alcance puede contemplar varios años, los objetivos se preocupan con la minimización de costos relacionados a los planes de inversión para materiales, finanzas, o personal, relacionados a la elección de nuevas oportunidades de negocio, o al lanzamiento de campañas de publicidad. Para la planificación estratégica en una fase de mediano plazo con varios meses en mente, los objetivos se enfocan a la minimización de costos: costos de inventario, costos de transporte de insumos, costos de modificación en la capacidad de producción, costos de lanzamiento, costos de modificación de sistemas de producción entre otros. Durante una fase de planificación o una fase de programación a corto plazo –un periodo de tiempo de una semana– multiples objetivos requieren la atención del ejecutivo de producción: ante todo, debe considerar los retrasos para la satisfacción del cliente, acto seguido, debe minimizar el costo del trabajo en proceso de la producción, y finalmente debe minimizar los costos de producción relacionados al tiempo utilizado para la configuraciónd de la maquinaria o los tiempos muertos de las mismas. Es por ello, que un problema de programación puede contemplar multiples criterios de manera tal que permita ofrecer al dueño del problema soluciones más realistas\citep[p.~1]{TKindt2002}.
 
-FIX ME
-ésta se preocupa primariamente con modelos matemáticos que se relacionan al proceso de programación. El desarrollo de modelos útiles, los cuales derivan en técnicas de solución y perspectivas prácticas, han sido la interfaz continua entre la teoría y la práctica. 
+De acuerdo a \citet[p.~3,~4]{Baker2009}, la teoría de la programación se preocupa primordialmente con modelos matemáticos que se relacionan al proceso de programación. El desarrollo de modelos útiles, los cuales derivan en técnicas de solución y perspectivas prácticas, han sido la interfaz continua entre la teoría y la práctica. 
 %
 La perspectiva teorética es en gran medida un acercamiento cuantitativo, uno que intenta capturar la estructura del problema de una manera matemática.
 %
@@ -445,6 +457,8 @@ En particular, este enfoque cuantitativo comiento con la descripción de los rec
 
 Idealmente, la función objetivo debe consistir de todos los costos que dependan de decisiones de programación. En la práctica, sin embargo, tales costos son frecuentemente difíciles de medir, o incluso de identificar en su totalidad. Los costos de operación mayores –y los más inmediatamente identificables– son determinados por la \textbf{función de planificación}, mientras que los costos relacionados con la programación son difíciles de aislar y frecuentemente tienden a dar la impresión de ser costos fijos.
 
+\subsection{Reseña de problemas clásicos}
+\label{resena_problemas_clasicos}
 
 \subsection{Teoría de la complejidad computacional} % (fold)
 \label{teoria_complejidad_computacional}
