@@ -210,32 +210,6 @@ En el \textbf{proceso\index{programación!proceso} de programación}, es necesar
 \label{fig:programacion}
 \end{sidewaysfigure}
 
-\subsection{El proceso de programación} % (fold)
-\label{proceso_programacion}
-
-De acuerdo a \citet{wren95scheduling-timetabling}, \textbf{el objetivo de la programación} es solucionar problemas prácticos relacionados a la asignación, sujeta a restricciones, de recursos a objetos siendo colocados en el espacio-tiempo, haciendo uso o desarrollando herramientas apropiadas. Los problemas con frecuencia buscarán la satisfacción de ciertos objetivos \citetext{p.~47}.
-
-\citet{wren95scheduling-timetabling} prosigue mencionando que la programación\index{programación} puede ser vista como el acomodo de recursos dentro de un \textbf{patrón\index{programación!patrón} en el tiempo o espacio} de manera tal que algunos objetivos\index{objetivo} sean alcanzados –o se acerquen a ello– y que restricciones\index{restricción} existentes en la manera en que los recursos pueden ser acomodados sean satisfechas –o casi satisfechas–.
-%
-Los \textbf{recursos} pueden ser personas, vehículos, clases, exámenes, máquinas, trabajos en una fábrica, es decir, cualquier cosa que sea del interés del dueño del problema.
-%
-Con frecuencia la conformación de los recursos puede ser vista como parte del proceso de programación\index{programación!proceso}. Por ejemplo, las herramientras de trabajo en una fábrica pueden ser acomodadas por turnos de personal, los cuales deben ser agrupados en listas, esta formación de turnos puede ser vista como un proceso específico de programación dentro de un proceso más extenso \citetext{p.~48}.
-
-El \textbf{patrón de programación}\index{programación!patrón} puede ser un orden de eventos, una estructura de rutas, una matriz de asignaciones, entre otros. El \textbf{patrón general de programación} puede tener que ser elaborado como parte del proceso de programación, o puede ser una plantilla\index{programación!plantilla} pre-existente característica del problema\index{programación!problema general} en cuestión \citep[p.~48]{wren95scheduling-timetabling}.
-
-Las \textbf{restricciones}\index{restricción} definen conexiones físicas o permisibles entre los recursos\index{recurso}, y entre estos y el patrón\index{programación!patrón} de programación. Ellas gobiernan la manera en la cual los recursos pueden acomodarse juntos o dentro del patrón. Las restricciones pueden ser vistas como reglas que obstaculizan el logro de los objetivos\index{objetivo}. No obstante, también pueden ser vistas como parte de la especificación del problema\index{programación!problema general} siendo posible utilizarlas para guiar a la herramienta\index{programación!herramienta} de búsqueda de soluciones a una respuesta.
-%
-En la figura \ref{fig:scheduling_process} se presentan los conceptos ya descritos.
-%
-Algunas restricciones existen únicamente desde el punto de vista del dueño del problema y pueden formar parte del proceso\index{programación!proceso} de solución, con el propósito de mostrar hasta qué grado una solución podría ser mejorada si una restricción o restricciones fueran relajadas; de manera que el dueño pueda decidir si la restricción es realmente necesaria o si vale la pena hacer el esfuerzo de eliminarla de la definición del problema \citep[p.~48]{wren95scheduling-timetabling}.
-
-\begin{figure}[hbtp]
-\centering
-\includegraphics[width=\textwidth]{media/scheduling_process.pdf}
-\caption[El proceso de programación]{El proceso de programación}
-\label{fig:scheduling_process}
-\end{figure}
-
 \subsection{Programa, secuencia, horario}
 \label{programa_secuencia_horario}
 
@@ -267,6 +241,32 @@ En la figura \ref{fig:programa_secuencia_horario} se ilustran los conceptos ante
 \caption[Programa, secuencia, horario]{Programa, secuencia, horario}
 \label{fig:programa_secuencia_horario}
 \end{sidewaysfigure}
+
+\subsection{El proceso de programación} % (fold)
+\label{proceso_programacion}
+
+De acuerdo a \citet{wren95scheduling-timetabling}, \textbf{el objetivo de la programación} es solucionar problemas prácticos relacionados a la asignación, sujeta a restricciones, de recursos a objetos siendo colocados en el espacio-tiempo, haciendo uso o desarrollando herramientas apropiadas. Los problemas con frecuencia buscarán la satisfacción de ciertos objetivos \citetext{p.~47}.
+
+\citet{wren95scheduling-timetabling} prosigue mencionando que la programación\index{programación} puede ser vista como el acomodo de recursos dentro de un \textbf{patrón\index{programación!patrón} en el tiempo o espacio} de manera tal que algunos objetivos\index{objetivo} sean alcanzados –o se acerquen a ello– y que restricciones\index{restricción} existentes en la manera en que los recursos pueden ser acomodados sean satisfechas –o casi satisfechas–.
+%
+Los \textbf{recursos} pueden ser personas, vehículos, clases, exámenes, máquinas, trabajos en una fábrica, es decir, cualquier cosa que sea del interés del dueño del problema.
+%
+Con frecuencia la conformación de los recursos puede ser vista como parte del proceso de programación\index{programación!proceso}. Por ejemplo, las herramientras de trabajo en una fábrica pueden ser acomodadas por turnos de personal, los cuales deben ser agrupados en listas, esta formación de turnos puede ser vista como un proceso específico de programación dentro de un proceso más extenso \citetext{p.~48}.
+
+El \textbf{patrón de programación}\index{programación!patrón} puede ser un orden de eventos, una estructura de rutas, una matriz de asignaciones, entre otros. El \textbf{patrón general de programación} puede tener que ser elaborado como parte del proceso de programación, o puede ser una plantilla\index{programación!plantilla} pre-existente característica del problema\index{programación!problema general} en cuestión \citep[p.~48]{wren95scheduling-timetabling}.
+
+Las \textbf{restricciones}\index{restricción} definen conexiones físicas o permisibles entre los recursos\index{recurso}, y entre estos y el patrón\index{programación!patrón} de programación. Ellas gobiernan la manera en la cual los recursos pueden acomodarse juntos o dentro del patrón. Las restricciones pueden ser vistas como reglas que obstaculizan el logro de los objetivos\index{objetivo}. No obstante, también pueden ser vistas como parte de la especificación del problema\index{programación!problema general} siendo posible utilizarlas para guiar a la herramienta\index{programación!herramienta} de búsqueda de soluciones a una respuesta.
+%
+En la figura \ref{fig:scheduling_process} se presentan los conceptos ya descritos.
+%
+Algunas restricciones existen únicamente desde el punto de vista del dueño del problema y pueden formar parte del proceso\index{programación!proceso} de solución, con el propósito de mostrar hasta qué grado una solución podría ser mejorada si una restricción o restricciones fueran relajadas; de manera que el dueño pueda decidir si la restricción es realmente necesaria o si vale la pena hacer el esfuerzo de eliminarla de la definición del problema \citep[p.~48]{wren95scheduling-timetabling}.
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=\textwidth]{media/scheduling_process.pdf}
+\caption[El proceso de programación]{El proceso de programación}
+\label{fig:scheduling_process}
+\end{figure}
 
 \subsection{Definiciones}
 \label{Definiciones}
@@ -439,7 +439,7 @@ La perspectiva teorética es también en gran medida un acercamiento cuantitativ
 %
 En particular, este enfoque cuantitativo comienza con la descripción de los recursos y tareas, y con la traducción de objetivos de planificación en una \textbf{función objetivo} explícita.
 
-Idealmente, la función objetivo debe consistir de todos los costos que dependan de decisiones de programación. En la práctica, sin embargo, tales costos son frecuentemente difíciles de medir, o incluso de identificar en su totalidad. Los costos de operación mayores –y los más inmediatamente identificables– son determinados por la \textbf{función de planificación}, mientras que los costos relacionados con la programación son difíciles de aislar y frecuentemente tienden a dar la impresión de ser costos fijos.
+Idealmente, la función objetivo debe consistir de todos los costos que dependan de decisiones de programación. En la práctica, sin embargo, tales costos son frecuentemente difíciles de medir, o incluso de identificar en su totalidad. Los costos de operación mayores –y los más fácilmente identificables– son determinados por la \textbf{función de planificación}, mientras que los costos relacionados con la programación son difíciles de aislar y frecuentemente tienden a dar la impresión de ser costos fijos. Sin embargo, tres tipos de objetivos relativos a la toma de decisiones parecen ser prevalentes en la programación: plazo (\textit{turnaround}), puntualidad (\textit{timeliness}) y rendimiento (\textit{throughput}). El plazo cuantifica el tiempo requerido para completar una tarea. La puntualidad evalúa la conformidad de la compleción de una tarea particular sujeta a una fecha límite. El rendimiento mide la cantidad de trabajo completado durante un periodo fijo. Los primeros dos objetivos requieren más elaboración pues aun cuando se puede juzgar el plazo o la puntualidad de una tarea dada, los problemas de programación requieren una evaluación de desempeño para el conjunto total de tareas en un programa. El rendimiento, en contraste, ya es un indicador que aplica a todo el conjunto \citep[p.~4]{Baker2009}.
 
 \subsection{Áreas de aplicación}
 \label{areas_aplicacion}
@@ -466,6 +466,31 @@ Los \textbf{problemas de programación de proyectos} comprenden una vasta litera
 
 \subsection{Reseña de problemas clásicos}
 \label{resena_problemas_clasicos}
+
+\subsubsection{Problemas centrales de programación}
+\label{problemas_centrales_programación}
+
+\citet{gotha93les-problemes-dordonnancement} califica de «centrales» a los problemas de programación sin restricciones de recursos, en donde tales son suficientes sin importar el programa que resulte \citetext{p.~89}. 
+
+En el problema central clásico de programación se busca la ordenación de tareas sujetas a restricciones de secuencia y de tiempo, dentro de un periodo mínimo \citep[p.~90]{gotha93les-problemes-dordonnancement}. 
+
+El problema central de recursos consumibles consiste de tareas vinculadas por restricciones potenciales, las cuales deben ser ordenadas en un periodo mínimo; cada tarea consume en un principio una cantidad determinada de unidades de un recurso consumible. Al comienzo del programa, hay disponibles una cantidad conocida de tales recursos y se espera la disponibilidad de recursos adicionales para fechas futuras; este modelo representa, como ejemplo, el financiamiento de un logro \citep[p.~90,~91]{gotha93les-problemes-dordonnancement}.
+
+El problema central cíclico consiste de un conjunto finito de tareas genéricas. Una tarea genérica produce una infidad de instancias, todas de la misma duración. Un conjunto finito de restricciones de precedencia genéricas vincula las tareas genéricas; una de estas restricciones es especificado por una tripleta $(i, j, h)$ en donde $i$ y $j$ son dos tareas genéricas, y $h$ es un entero natural llamado «\textit{hauteur}». Esto significa que por cada entero $n$, la instancia $(j, h+n)$ no puede comenzar su ejecución sino después de que haya sido completada la instancia $(i,n)$ \citep[p.~92]{gotha93les-problemes-dordonnancement}.
+
+\subsubsection{Problemas enfocados en un recurso único}
+\label{problemas_enfocados_recurso_unico}
+
+Los problemas pertinentes a esta sección tratan con un recurso único individual o con $m$ instancias idénticas. Estos problemas pueden parecer muy específicos, sin embargo su resolución es la base de otros problemas más generales, especialmente cuando parece que un recurso es dominante. 
+%
+El problema básico consiste en determinar para un recurso la secuencia óptima de $n$ tareas disponibles al instante del inicio. Los criterios de solución primordiales son la duración total y la suma de retardos. Si se conoce información de disponibilidad la minimización de la suma de retardos entonces es un problema difícil-NP. Respecto a la minimización de la duración total se procura la ordenación de un conjunto de tareas independientes en un recurso único para tal propósito; cada tarea está caracterizada por su tiempo de disponiblidad, su duración y su latencia \citep[p.~94-96]{gotha93les-problemes-dordonnancement}. 
+
+En los problemas clásicos de $m$ recursos se asume que cada tarea requiere de un recurso y que se dispone del mismo en $m$ ejemplares idénticos. Generalmente la solución de estos problemas tiene como criterio la minimización de la duración total; los mismos son casi siempre NP-difíciles salvo en los casos particulares de periodos unitarios y dos recursos o de periodo unitario y un árbol de precedencia dando lugar a algoritmos de listas óptimas. En ciertos problemas de programación, una restricción de sucesión está asociada a una transferencia entre los recursos que llevan a cabo las dos tareas. En las aplicaciones computacionales un ejemplo sería la transferencia de datos entre las dos tareas. La duración de esta transferencia depende de las dos tareas pero también de la distancia entre los dos recursos. Estos problemas de programación distribuida, por supuesto son más difíciles que los problemas de programación convencionales de $m$ recursos puesto que los contienen como casos especiales \citep[p.~99]{gotha93les-problemes-dordonnancement}.
+
+\subsubsection{Problemas enfocados en múltiples recursos}
+\label{problemas_enfocados_multiples_recursos}
+
+Los problemas de programación con restricciones de recursos renovables son comúnmente conocidos como problemas de talleres puesto que se les encuentra en la administración de la producción. Sin embargo, son problemas muy generales que aparecen en otros contextos, en especial en las ciencias computacionales \citep[p.~101]{gotha93les-problemes-dordonnancement}.
 
 \subsection{Teoría de la complejidad computacional} % (fold)
 \label{teoria_complejidad_computacional}
