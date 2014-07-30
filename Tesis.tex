@@ -83,6 +83,9 @@
 \newglossaryentry{matriz}{
           name = matriz,
    description = {Conjunto de números o signos algebraicos distribuidos en filas y columnas y dispuestos en forma de rectángulo sobre el que se definen ciertas operaciones}}
+\newglossaryentry{heuristica}{
+          name = heurística,
+   description = {En algunas ciencias, manera de buscar la solución de un problema mediante métodos no rigurosos, como por tanteo, reglas empíricas, etc.}}
 \newglossaryentry{factible}{
           name = factible,
    description = {Que se puede hacer}}
@@ -308,7 +311,7 @@ Para 1912, la gráfica de barras moderna parece estar totalmente desarrollada y 
 \label{fig:grafica_gantt}
 \end{sidewaysfigure}
 
-La planeación de líneas de flujo (\textit{flowline planning}) fue desarrollada en la década de los treinta o aún antes y las gráficas de hitos (\textit{milestone chart}) también estuvieron en uso regular para la década de los cincuenta. Grandes contratos eran subdivididos en secciones con fechas límite de compleción del trabajo necesario para lograr cada hito (\textit{milestone}). Sin embargo, así como con las graficas de Gantt, todas las fechas y las relaciones mostradas en estas graficas estaban basadas en heurísticos o en experiencia. Era posible identificar retrasos pero cualquier valoración del impacto del mismo estaba basada en una interpretación personal de los datos y no de un análisis serio. Como consecuencia cuando el retraso de un programa se volvía aparente en grandes contratos, la tendencia era solucionar el problema inundándolo con mano de obra y «comprar tiempo» frecuentemente a un precio muy elevado.
+La planeación de líneas de flujo (\textit{flowline planning}) fue desarrollada en la década de los treinta o aún antes y las gráficas de hitos (\textit{milestone chart}) también estuvieron en uso regular para la década de los cincuenta. Grandes contratos eran subdivididos en secciones con fechas límite de compleción del trabajo necesario para lograr cada hito (\textit{milestone}). Sin embargo, así como con las graficas de Gantt, todas las fechas y las relaciones mostradas en estas graficas estaban basadas en heurísticas o en experiencia. Era posible identificar retrasos pero cualquier valoración del impacto del mismo estaba basada en una interpretación personal de los datos y no de un análisis serio. Como consecuencia cuando el retraso de un programa se volvía aparente en grandes contratos, la tendencia era solucionar el problema inundándolo con mano de obra y «comprar tiempo» frecuentemente a un precio muy elevado.
 %
 Independiente del desarrollo de los procesos de control de programación basados en gráficas de barras y de hitos, la programación lineal había estado siendo investigada durante varios años. Esta rama de las matemáticas observaba las dinámicas de causa y efecto de acciones entre ellas mismas, en situaciones tales como el flujo de tráfico en una autopista. Uno los matemáticos involucrados en este trabajo fue James E. Kelley \citep[p.~4]{Weaver2006}.
 
@@ -436,6 +439,33 @@ Los \textbf{problemas de programación de horarios escolares} conciernen a todas
 
 Los \textbf{problemas de programación de proyectos} comprenden una vasta literatura. El interés general se concentra en la programación de operaciones que hacen uso de multiples recursos simultáneamente (dinero, personal, equipo, materiales, etc), estos recursos estando disponibles en cantidades conocidas. En palabras precisas son problemas de programación multi-recurso haciendo uso de recursos acumulativos no-renovables \citep[p.~7]{TKindt2002}.
 
+\subsection{Tipología y notación de problemas}
+
+En el tema de los problemas de programación se hace una distinción entre su tipología y su notación. Una tipología es una clasificación de los problemas de acuerdo a su naturaleza. En la programación usualmente está basada en el contexto de las máquinas y en las particularidades de los trabajos. Una notación nos permite referirnos rápidamente a un problema, siendo así que es posible construir una base de datos del conjunto de problemas vistos en la literatura \citep[p.~14]{TKindt2002}.
+
+\subsubsection{Tipología de problemas}
+
+Existen diferentes tipologías de problemas de programación en la literatura. En la figura \ref{fig:typology_maccarthy} se presenta una generalización de la expuesta por \citet{maccarthy1993addressing} (como está citado en \citealp[p.~14]{TKindt2002}). En los problemas de programación el objetivo es determinar una secuencia para cada máquina y un tiempo de inicio para cada operación. En problemas de programación y asignación con etapas se pueden definir, independientemente de cada operación, etapas de máquinas. Una máquina pertenece a una sola etapa. Entonces, se combina cada operación con una etapa, y una operación puede ser procesada por cualquier máquina de de su etapa. Por lo tanto, se incorpora un problema de asignación al problema inicial de programación. Ya no es suficiente determinar el tiempo de inicio para las operaciones, es necesario establecer la asignación de las operaciones en las máquinas. Lo mismo ocurre para los problemas generales de programación y asignación en donde un conjunto de máquinas es detallado para cada operación. Por supuesto, una máquina puede existir en más de un conjunto y una operación puede ser llevada a cabo por cualquier máquina perteneciente al mismo conjunto.
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=.8\textwidth]{media/typology_maccarthy_spanish.pdf}
+\caption[Tipología de problemas de programación]{Tipología generalizada de las proposiciones de \citet{maccarthy1993addressing}. De \textit{Multicriteria Scheduling: Theory, Models and Algorithms}, por V. \citeauthor{TKindt2002}, \citeyear{TKindt2002}. Derechos reservados [2006] por \textit{Springer-Verlag Berlin Heidelberg}.}
+\label{fig:typology_maccarthy}
+\end{figure}
+
+La tipología anterior hace uso del ambiente de las máquinas y operaciones para distinguir los problemas. Existen otras tipologías, se pueden estudiar los problemas de acuerdo sus distintas características, véase la fig ref.
+
+\begin{enumerate}[1]
+\item \textbf{determinístico vs. estocástico}. En la situación donde todas las características del problema son bien conocidos, se habla de un problema \textbf{determinístico}. Por otra parte, algunas características pueden consistir de variables aleatorias de ley de probabilidad conocida. En este caso se habla de un problema \textbf{estocástico}.
+\item \textbf{unitario vs. repetitivo}. Si las operaciones aparentan ser cíclicas, se trata de un problema \textbf{repetitivo}. En cambio, si cada operación corresponde a un producto único se dice que el problema es \textbf{unitario}.
+\item \textbf{estático vs. dinámico}. Si toda la información del problema es conocida al mismo tiempo es un problema \textbf{estático}. Para algunos problemas, un programa puede haber sido elaborado con cierta información y ser ejecutado mientras aparecen nuevas operaciones en el sistema. Entonces el programa anterior tiene que ser restablecido «al momento». Estos problemas se les conoce como \textbf{dinámicos}.
+\end{enumerate}
+
+Estas dos tipologías son complementarias pues es posible trabajar, como ejemplo, con un problema \textit{flow-shop} determinístico, sea unitario o estático. Como será evidente en la próxima sección, la notación tradicional de los problemas de programación es un reflejo de estas tipologías \citep[p.~16]{TKindt2002}.
+
+\subsubsection{Notación}
+
 \subsection{Teoría de la complejidad computacional} % (fold)
 \label{teoria_complejidad_computacional}
 
@@ -445,12 +475,12 @@ Por ejemplo, se hace uso de un algoritmo en particular para resolver un problema
 %
 Por ejemplo, si la función tiene una orden de magnitud $\textit{n}^2$, denotada por $\BigO(\textit{n}^2)$ entonces el algoritmo es polinomial. Por otra parte, si la función es $\BigO(2^\textit{n})$, entonces el algoritmo es no-polinomial (en este caso sería exponencial). Siendo todo lo demás igual, son preferibles los algoritmos polinomiales puesto que conforme \textit{n} se agranda, estos son ultimadamente más rápidos.
 
-\section{Síntesis de los problemas de programación}
+\subsection{Síntesis de los problemas de programación}
 \label{sintesis_problemas_programacion}
 
 Los problemas encontrados en la programación son infinitamente variados y tienen potencialmente una aplicación en cualquier contexto económico imaginable como la informática, la construcción, la industria y la administración. A continuación se reseñan de manera general los problemas que conforman la programación.
 
-\subsection{Problemas centrales de programación}
+\subsubsection{Problemas centrales de programación}
 \label{problemas_centrales_programación}
 
 \citet{gotha93les-problemes-dordonnancement} califica de «centrales» a los problemas de programación sin restricciones de recursos, en donde tales son suficientes sin importar el programa que resulte \citetext{p.~89}. 
@@ -461,7 +491,7 @@ El problema central de recursos consumibles consiste de tareas vinculadas por re
 
 El problema central cíclico consiste de un conjunto finito de tareas genéricas. Una tarea genérica produce una infinidad de instancias, todas de la misma duración. Un conjunto finito de restricciones de precedencia genéricas vincula las tareas genéricas; una de estas restricciones es especificada por una tripleta $(i, j, h)$ en donde $i$ y $j$ son dos tareas genéricas, y $h$ es un entero natural llamado «\textit{hauteur}». Esto significa que por cada entero $n$, la instancia $(j, h+n)$ no puede comenzar su ejecución sino después de que haya sido completada la instancia $(i,n)$ \citep[p.~92]{gotha93les-problemes-dordonnancement}.
 
-\subsection{Problemas enfocados en un recurso único}
+\subsubsection{Problemas enfocados en un recurso único}
 \label{problemas_enfocados_recurso_unico}
 
 Los problemas pertinentes a esta sección tratan con un recurso único individual o con $m$ instancias idénticas. Estos problemas pueden parecer muy específicos, sin embargo su resolución es la base de otros problemas más generales, especialmente cuando parece que un recurso es dominante. 
@@ -470,7 +500,7 @@ El problema básico consiste en determinar para un recurso la secuencia óptima 
 
 En los problemas clásicos de $m$ recursos se asume que cada tarea requiere de un recurso y que se dispone del mismo en $m$ ejemplares idénticos. Generalmente la solución de estos problemas tiene como criterio la minimización de la duración total; los mismos son casi siempre NP-difíciles salvo en los casos particulares de periodos unitarios y dos recursos o de periodo unitario y un árbol de precedencia dando lugar a algoritmos de listas óptimas. En ciertos problemas de programación, una restricción de sucesión está asociada a una transferencia entre los recursos que llevan a cabo las dos tareas. En las aplicaciones computacionales un ejemplo sería la transferencia de datos entre las dos tareas. La duración de esta transferencia depende de las dos tareas pero también de la distancia entre los dos recursos. Estos problemas de programación distribuida, por supuesto son más difíciles que los problemas de programación convencionales de $m$ recursos puesto que los contienen como casos especiales \citep[p.~99]{gotha93les-problemes-dordonnancement}.
 
-\subsection{Problemas enfocados en múltiples recursos}
+\subsubsection{Problemas enfocados en múltiples recursos}
 \label{problemas_enfocados_multiples_recursos}
 
 Los problemas de programación con restricciones de recursos renovables son comúnmente conocidos como problemas de talleres puesto que se les encuentra en la administración de la producción. Sin embargo, son problemas muy generales que aparecen en otros contextos, en especial en las ciencias computacionales \citep[p.~101]{gotha93les-problemes-dordonnancement}.
@@ -482,10 +512,10 @@ Los problemas se pueden clasificar de acuerdo al orden de utilización de las m�
 El modelo básico puede ser extendido de varias maneras como asumiendo la existencia de fechas límite expiradas, la posible interrupción de una operación –con o sin memoria del trabajo parcialmente realizado–, el tiempo de preparación, que la disponibilidad de máquinas varíe en el transcurso del programa, que la capacidad de los recursos sea fraccional o la utilización de múltiples recursos para una operación \citep[p.~102]{gotha93les-problemes-dordonnancement}.
 
 
-\subsection{Problemas de ordenación cíclicos}
+\subsubsection{Problemas de ordenación cíclicos}
 \label{problemas_ordenacion_ciclicos}
 
-Este tipo de problemas tienen numerosas aplicaciones en el ámbito informático –computaciones cíclicas en arquitecturas paralelas– como en el dominio de la producción –\textit{job-shops} cíclicos– o de la planificación –asignación periódica de recursos–. La investigación de estos problemas ha sido apegada a sus respectivas aplicaciones y el desarrollo de heurísticas para la obtención de una solución aproximada rápidamente. Si bien hay mucho interés en el estudio teorético de los problemas subyacentes, la división de los investigadores por sus campos de aplicación han imposibilitado su estudio \citep[p.~131]{gotha93les-problemes-dordonnancement}.
+Este tipo de problemas tienen numerosas aplicaciones en el ámbito informático –computaciones cíclicas en arquitecturas paralelas– como en el dominio de la producción –\textit{job-shops} cíclicos– o de la planificación –asignación periódica de recursos–. La investigación de estos problemas ha sido realizada apegándose a sus respectivas aplicaciones y el desarrollo de heurísticas para la obtención rápida de una solución aproximada. Si bien hay mucho interés en el estudio teorético de los problemas subyacentes, la división de los investigadores por sus campos de aplicación han imposibilitado su estudio \citep[p.~131]{gotha93les-problemes-dordonnancement}.
 
 \chapter{Una visión general del problema}
 \label{vision_general_problema}
