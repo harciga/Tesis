@@ -285,8 +285,6 @@ Algunos problemas pueden encajar en más de una de las deficiones anteriores, y 
 %
 En algunas definiciones se ha referido a la satisfacción o a la minimización. Debe ser resaltado que muchos de los problemas que se tratan en el área no tienen un objetivo bien definido. En ocasiones se puede justificar el uso de métodos de mejora o no-óptimos en parte porque los distintos dueños del problema tienen distintas perspectivas del objetivo, aunque en realidad tales métodos son frecuentemente utilizados simplemente porque no hay un método óptimo –o exacto– que sea viable en la práctica \citep[p.~53,~54]{wren95scheduling-timetabling}
 
-\citet[p.~3]{Baker2009} recuerdan que muchos de los primeros desarrollos en el campo de la programación fueron motivados por problemas encontrados en la industria de la producción. Por lo tanto, es natural encontrar en la literatura el uso de vocabulario de producción cuando se describen problemas de programación. Aún cuando hoy día la aplicación de la programación es de considerable importancia en múltiples áreas no relacionadas con la producción, la terminología sigue siendo frecuentemente utilizada. Es por eso que a los recursos usualmente se les llama \textbf{máquinas} (\textit{machines}) y a las tareas se les llaman \textbf{trabajos} (\textit{jobs}). En ocasiones, los trabajos pueden consistir de varias tareas elementales llamadas \textbf{operaciones} (\textit{operations}). El ambiente del problema de programación es llamado el \textbf{taller de trabajo} (\textit{job-shop}), o simplemente, el \textbf{taller} (\textit{shop}). Por ejemplo, un problema de programación que trate con el procesamiento de pólizas de seguros en aseguradoras puede ser descrito de manera genérica como un «taller» de seguros que se encarga del procesamiento de «trabajos» de polizas por «máquinas» aseguradoras.
-
 \section{Historia}
 \label{historia_programacion}
 
@@ -410,6 +408,11 @@ La llegada de herramientas de programación «fáciles de utilizar» con una int
 \chapter{Teoría de la programación}
 \label{teoria_programacion}
 
+\section{Introducción}
+
+\section{Criterios de evaluación}
+\label{criterios_evaluacion}
+
 Según \citet[p.~1]{TKindt2002}, la teoría de la programación aparece a mediados de la década de los cincuenta. Desde entonces los problemas planteados se han aproximado cada vez más a aplicaciones industriales incrementando por tanto su complejidad. La disposición de los talleres tomados en consideración se asemejan cada vez más y más a lo encontrado en la práctica; al mismo tiempo las restricciones impuestas son cada vez más concretas.  Paradójicamente, la literatura muestra que en la mayoría de los problemas planteados, los programas son evaluados por un \textbf{único} criterio.
 
 Durante las diferentes etapas de planificación distintos criterios pueden ser considerados. A un nivel estratégico, una \textbf{planificación de largo alcance} puede contemplar varios años, los objetivos se preocupan con la minimización de costos relacionados a los planes de inversión para materiales, finanzas, o personal, relacionados a la elección de nuevas oportunidades de negocio, o al lanzamiento de campañas de publicidad. Para la planificación estratégica en una \textbf{fase de mediano plazo} con varios meses en mente, los objetivos se enfocan a la minimización de costos: costos de inventario, costos de transporte de insumos, costos de modificación en la capacidad de producción, costos de lanzamiento, costos de modificación de sistemas de producción entre otros. Durante una fase de planificación o una fase de \textbf{programación a corto plazo} –un periodo de tiempo de una semana– multiples objetivos requieren la atención del ejecutivo de producción: ante todo, debe considerar los retrasos para la satisfacción del cliente, acto seguido, debe minimizar el costo del trabajo en proceso de la producción, y finalmente debe minimizar los costos de producción relacionados al tiempo utilizado para la configuraciónd de la maquinaria o los tiempos muertos de las mismas. Es por ello, que un problema de programación puede contemplar multiples criterios de manera tal que permita ofrecer al dueño del problema soluciones más realistas\citep[p.~1]{TKindt2002}.
@@ -421,6 +424,30 @@ La perspectiva teorética es también en gran medida un acercamiento cuantitativ
 En particular, este enfoque cuantitativo comienza con la descripción de los recursos y tareas, y con la traducción de objetivos de planificación en una \textbf{función objetivo} explícita.
 
 Idealmente, la función objetivo debe consistir de todos los costos que dependan de decisiones de programación. En la práctica, sin embargo, tales costos son frecuentemente difíciles de medir, o incluso de identificar en su totalidad. Los costos de operación mayores –y los más fácilmente identificables– son determinados por la \textbf{función de planificación}, mientras que los costos relacionados con la programación son difíciles de aislar y frecuentemente tienden a dar la impresión de ser costos fijos. Sin embargo, tres tipos de objetivos relativos a la toma de decisiones parecen ser prevalentes en la programación: plazo (\textit{turnaround}), puntualidad (\textit{timeliness}) y rendimiento (\textit{throughput}). El plazo cuantifica el tiempo requerido para completar una tarea. La puntualidad evalúa la conformidad de la compleción de una tarea particular sujeta a una fecha límite. El rendimiento mide la cantidad de trabajo completado durante un periodo fijo. Los primeros dos objetivos requieren más elaboración pues aun cuando se puede juzgar el plazo o la puntualidad de una tarea dada, los problemas de programación requieren una evaluación de desempeño para el conjunto total de tareas en un programa. El rendimiento, en contraste, ya es un indicador que aplica a todo el conjunto \citep[p.~4]{Baker2009}.
+
+\section{Marco de la programación}
+
+En todos los problemas de programación se considera que el número de trabajos y el número de máquinas son finitos. El número de trabajos es denominado por $n$ y el número de máquinas por $m$. Usualmente el subíndice $j$ se refiere a un trabajo mientras que el subíndice $i$ se refiere a una máquina. Si un trabajo requiere de varios pasos u operaciones, entonces el par $(i, j)$ se refiere al paso del proceso u operación del trabajo $j$ en la máquina $i$. Los siguientes atributos están asociados a un trabajo $j$.
+
+\textbf{Tiempo de procesamiento} ($p_{ij}$) La $p_{ij}$ representa el tiempo de procesamiento de un trabajo $j$ en una máquina $i$. El subíndice $i$ es omitido si el tiempo de procesamiento del trabajo $j$ no depende de la máquina o si el trabajo $j$ únicamente va a ser procesado en una máquina dada.
+
+\textbf{Fecha de liberación} ($r_j$) La fecha de liberación $r_j$ de un trabajo $j$ también es conocido como fecha de inicio. 
+
+\textbf{Fecha de cierre} ($d_j$) La fecha de cierre $d_j$ del trabajo $j$ representa la fecha comprometida de compleción. La compleción de un trabajo después de su fecha de cierre \textit{es} permitida, pero se incurre en una penalización. Cuando una fecha de cierre \textit{debe} ser cumplida se le llama \textit{fecha límite} y es denotada por $\bar{d}_j$.
+
+\textbf{Peso} ($w_j$) El peso $w_j$ del trabajo $j$ es básicamente un factor de prioridad, denotando la importancia del trabajo $j$ en relación a otros trabajos en el sistema. Por ejemplo, este peso puede representar el costo actual de mantener el trabajo en el sistema. Este costo podría ser un activo o un costo de inventario; también podría representar la cantidad de valor ya agregado al trabajo.
+
+Un problema de programación es descrito por una tripleta $\alpha\; |\; \beta\; |\; \gamma$. El elemento $\alpha$ describe el ambiente de la máquina y contiene únicamente un valor. El elemento $\beta$ provee detalles de las características del procesamiento y restricciones, puede no tener valor alguno, un solo valor o múltiples valores. El elemento $\gamma$ describe el objeto a ser minimizado y frecuentemente contiene un solo valor.
+
+Los posibles ambientes para especificar en el elemento $\alpha$ son:
+
+\textbf{Máquina única}
+
+\textbf{Máquinas idénticas en paralelo}
+
+\textbf{Máquinas en paralelo con velocidades distintas}
+
+\textbf{Máquinas no-relacionadas en paralelo}
 
 \section{Áreas de aplicación}
 \label{areas_aplicacion}
@@ -448,6 +475,8 @@ Los \textbf{problemas de programación de proyectos} comprenden una vasta litera
 \section{Tipología y notación de problemas}
 
 En el tema de los problemas de programación se hace una distinción entre su tipología y su notación. Una tipología es una clasificación de los problemas de acuerdo a su naturaleza. En la programación usualmente está basada en el contexto de las máquinas y en las particularidades de los trabajos. Una notación nos permite referirnos rápidamente a un problema, siendo así que es posible construir una base de datos del conjunto de problemas vistos en la literatura \citep[p.~14]{TKindt2002}.
+
+\citet[p.~3]{Baker2009} recuerdan que muchos de los primeros desarrollos en el campo de la programación fueron motivados por problemas encontrados en la industria de la producción. Por lo tanto, es natural encontrar en la literatura el uso de vocabulario de producción cuando se describen problemas de programación. Aún cuando hoy día la aplicación de la programación es de considerable importancia en múltiples áreas no relacionadas con la producción, la terminología sigue siendo frecuentemente utilizada. Es por eso que a los recursos usualmente se les llama \textbf{máquinas} (\textit{machines}) y a las tareas se les llaman \textbf{trabajos} (\textit{jobs}). En ocasiones, los trabajos pueden consistir de varias tareas elementales llamadas \textbf{operaciones} (\textit{operations}). El ambiente del problema de programación es llamado el \textbf{taller de trabajo} (\textit{job-shop}), o simplemente, el \textbf{taller} (\textit{shop}). Por ejemplo, un problema de programación que trate con el procesamiento de pólizas de seguros en aseguradoras puede ser descrito de manera genérica como un «taller» de seguros que se encarga del procesamiento de «trabajos» de polizas por «máquinas» aseguradoras.
 
 \subsection{Tipología de problemas}
 
@@ -534,15 +563,18 @@ El modelo básico puede ser extendido de varias maneras como asumiendo la existe
 
 Este tipo de problemas tienen numerosas aplicaciones en el ámbito informático –computaciones cíclicas en arquitecturas paralelas– como en el dominio de la producción –\textit{job-shops} cíclicos– o de la planificación –asignación periódica de recursos–. La investigación de estos problemas ha sido realizada apegándose a sus respectivas aplicaciones y el desarrollo de heurísticas para la obtención rápida de una solución aproximada. Si bien hay mucho interés en el estudio teorético de los problemas subyacentes, la división de los investigadores por sus campos de aplicación ha imposibilitado su estudio \citep[p.~131]{gotha93les-problemes-dordonnancement}.
 
-\chapter{Una visión general del problema}
-\label{vision_general_problema}
+\chapter{Calendarización en instituciones educacionales}
 
 \section{Introducción}
 \label{introduccion_vision_general}
 
-En las secciones \ref{calendarizacion_clases}, \ref{calendarizacion_cursos} y \ref{calendarizacion_examenes} se presentan de manera general las formulaciones formales de los problemas.
-La sección \ref{problema_general_programacion_horarios} presenta el problema general de la programación de horarios\index{programación!problema general}. La sección \ref{clasificacion_problemas} presenta una clasificación\index{calendarización!clasificación} de los tipos de problemas encontrados en la programación de horarios educacionales. 
-\section{El problema general de la programación de horarios}
+%En las secciones ref{calendarizacion_clases}, ref{calendarizacion_cursos} y ref{calendarizacion_examenes} se presentan de manera general las formulaciones formales de los problemas.
+%La sección \ref{problema_general_programacion_horarios} presenta el problema general de la programación de horarios\index{programación!problema general}. La sección \ref{clasificacion_problemas} presenta una clasificación\index{calendarización!clasificación} de los tipos de problemas encontrados en la programación de horarios educacionales. 
+%
+\section{Una visión general del problema}
+\label{vision_general_problema}
+
+\subsection{El problema general de la programación de horarios}
 \label{problema_general_programacion_horarios}
 
 \index{horarios!programación!problema general}
@@ -554,11 +586,11 @@ Timetabling is the allocation, subject to constraints, of given resources to obj
 “Timetabling is the allocation, subject to constraints, of given resources to objects being placed in space time, in such a way as to satisfy as nearly as possible a set of desirable objectives.”
 \fi
 
-\section{Calendarización educacional} % (fold)
+\subsection{Calendarización educacional} % (fold)
 \label{calendarizacion_educacional}
 
 
-\section{Clasificación de los problemas en el ámbito educacional}
+\subsection{Clasificación de los problemas en el ámbito educacional}
 \label{clasificacion_problemas}
 
 \index{clasificación}
@@ -581,18 +613,18 @@ Classification of Educational Timetabling Problems
 Schaerf (1999a) classified educational timetabling into three main classes i.e. school timetabling, course timetabling and examination timetabling. They share the same basic characteristics of the general timetabling problem but can still have significant differences between them. Each one of them has its own constraints, requirements and rules. More details on educational timetabling can be found in Burke et al. (2004e). In this section, a classification of educational timetabling and its properties are discussed. We divided educational timetabling into two categories i.e. school timetabling and university timetabling (which consists of examination timetabling and course timetabling).
 \fi
 
-\subsection{Horarios en escuelas}
+\subsubsection{Horarios en escuelas}
 
 \index{horarios!en escuelas}
 
-\subsubsection{Horarios de clases}
+\paragraph{Horarios de clases}
 
 \index{horarios!de clases}
 De acuerdo a \citet[p.~88]{schaerf99a-survey-of-automated} el problema de horarios de clases consiste en calendarizar en un periodo semanal todas las clases de una escuela, evitando que los profesores se encuentren con dos clases al mismo tiempo, y viceversa. \citet[p.~10,11]{abdullah06heuristic-approaches} elabora explicando que el problema consiste de un conjunto de profesores, clases, lecciones y periodos semanales. En donde tales periodos semanales son predefinidos.
 
 El problema intenta asignar lecciones a periodos y, un profesor a una clase en particular en un momento dado mientras se satisface un conjunto de restricciones con el fin producir un horario factible. Algunos ejemplos de restricciones en este tipo de problemas son las capacidades de alojamiento, ubicaciones, cargas de trabajo de los profesores, tiempo de descanso entre lecciones.
 
-\subsection{Horarios en universidades}
+\subsubsection{Horarios en universidades}
 
 \index{horarios!en universidades}\index{calendarización!de cursos}\index{calendarización!de exámenes}
 El problema de la planificación de horarios en universidades puede ser agrupado en dos categorías: (i) calendarización de cursos y (ii) calendarización exámenes.
@@ -602,7 +634,7 @@ Ambos problemas son similares de manera superficial, pero existen diferencias im
 En la calendarización de exámenes, múltiples exámenes pueden ser presentados en una misma aula (ej. auditorio) al mismo tiempo.
 Sin embargo, esto no es posible para la calendarización de cursos en donde únicamente un curso puede ser asignado a un aula \citep[p.~11]{abdullah06heuristic-approaches}.
 
-\subsubsection{Calendarización de exámenes}
+\paragraph{Calendarización de exámenes}
 
 \index{calendarización!de exámenes}\index{calendarización!de cursos}
 \citet[p.~4]{carter95recent-developments} definió el problema como la asignación de exámenes a un número limitado de periodos de manera tal que no existan conflictos o coincidencias. Los problemas de calendarización de cursos y exámenes son similares pero algunas diferencias relevantes según \citet[p.~159]{werra85an-introduction-to-timetabling} son:
@@ -612,62 +644,52 @@ Sin embargo, esto no es posible para la calendarización de cursos en donde úni
 \end{enumerate}
 El problema de la calendarización de exámenes es muy común tanto en escuelas como en universidades. La asignación de los exámenes a los periodos está sujeta a un conjunto de limitaciones \citep[p.~12]{abdullah06heuristic-approaches}.
 
-\subsubsection{Calendarización de cursos}
+\paragraph{Calendarización de cursos}
 
 \index{calendarización!de cursos}
 El problema de la calendarización de cursos surge cuando una universidad (o incluso una escuela) ofrece una colección de cursos (cada uno consistiendo de un número dado de conferencias) sin existir un currículo fijo y en donde cada estudiante puede elegir cierto número de cursos. El problema consiste en la asignación de cada lectura a algún periodo en la semana de manera tal que ningún estudiante requiera asistir a más de una conferencia a la vez \citep[p.~157]{werra85an-introduction-to-timetabling}.
 \citet[p.~88]{schaerf99a-survey-of-automated} define el problema como la calendarización semanal de todas las lecciones de un conjunto de cursos universitarios, minimizando los empalmes de las lecciones de cursos teniendo estudiantes en común.
 
-\section{Calendarización de clases}
-\label{calendarizacion_clases}
-
-\section{Calendarización de cursos}
-\label{calendarizacion_cursos}
-
-\section{Calendarización de exámenes}
-\label{calendarizacion_examenes}
-
-
 \chapter{El gestor escolar}
 
-\section{Aplicaciones}
+section{Aplicaciones}
 
-\subsection{Métricas de desempeño}
-\subsection{Diagnóstico}
-\subsection{Multidisciplinario}
+subsection{Métricas de desempeño}
+subsection{Diagnóstico}
+subsection{Multidisciplinario}
 
-\section{Factores de interés}
+section{Factores de interés}
 
-\subsection{Laborales}
+subsection{Laborales}
 
-\subsubsection{Regulatorios}
+subsubsection{Regulatorios}
 
 
-\subsubsection{Interinstitucional}
+subsubsection{Interinstitucional}
 
-\subsection{Inversión}
+subsection{Inversión}
 
-\subsubsection{Downsizing}
+subsubsection{Downsizing}
 
-\subsection{Económicos}
+subsection{Económicos}
 
-\subsubsection{Utilidades}
+subsubsection{Utilidades}
 
-\subsubsection{Fiscales}
+subsubsection{Fiscales}
 
-\subsubsection{Aprovechamiento de recursos}
+subsubsection{Aprovechamiento de recursos}
 
-\subsection{Sociales}
+subsection{Sociales}
 
-\subsubsection{Involucramiento de paterfamilias}
+subsubsection{Involucramiento de paterfamilias}
 
-\subsection{Institucionales}
+subsection{Institucionales}
 
-\subsubsection{Profesorado}
+subsubsection{Profesorado}
 
-\subsection{Flexibilidad}
+subsection{Flexibilidad}
 
-\chapter{Trabajo en el futuro y conclusiones}
+\chapter{Trabajo futuro y conclusiones}
 
 \section{Resumen del trabajo de investigación}
 
