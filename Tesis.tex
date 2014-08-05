@@ -162,7 +162,7 @@ Por último, en el Capítulo 8 se presenta un resumen del trabajo de investigaci
 
 Este capítulo es una revisión bibliográfica enfocada en los aspectos fundamentales del área de investigación.
 Introduce conceptos primordiales para el estudio del problema general de programación, los elementos que lo componen, su proceso de elaboración y las definiciones a utilizar a lo largo del trabajo. Además relata los orígenes de las técnicas para la solución de los problemas de programación, las áreas de aplicación de la programación y la teoría detrás de los modelos matemáticos.
-El capítulo comprende 5 secciones. La sección \ref{programacion_elementos} introduce los conceptos de programación\index{programación} y programa\index{programa} así como los elementos involucrados en el proceso\index{programación!proceso} de programación, esclarece términos prevalentes en la literatura y establece la definición de conceptos relevantes. La sección \ref{historia_programacion} recuenta los orígenes de la programación, mientras que en la sección \ref{areas_aplicacion} se presentan algunas áreas de aplicación de la programación. Por último, en la sección \ref{teoria_programacion} se expone la teoría detrás de la programación.
+El capítulo comprende 3 secciones. La sección \ref{programacion_elementos} introduce los conceptos de programación\index{programación} y programa\index{programa} así como los elementos involucrados en el proceso\index{programación!proceso} de programación, esclarece términos prevalentes en la literatura y establece la definición de conceptos relevantes. La sección \ref{historia_programacion} recuenta los orígenes de la programación.
 
 \section{La programación y sus elementos} % (fold)
 \label{programacion_elementos}
@@ -307,7 +307,7 @@ De acuerdo a \citet{Weaver2006}, las herramientas de control de programación mo
 
 \citet{Weaver2006} recuenta que siguiendo los pasos de Playfair, Karol Adamiecki –un polaco economista, ingeniero e investigador de la administración– desarrolló el harmonograma (\textit{Harmonogram}) en 1896. Este gráfico dispone de una escala de tiempo en el eje  vertical (en el lado izquierdo) y enumera las actividades en la parte superior. La hora de inicio y la duración de las actividades se muestra por una «barra deslizante» (\textit{sliding tab}), muy similar a la «barra» en una gráfica de barra. Lo relevante del harmonigrafo (\textit{Harmonygraph}) es que también tabula para cada actividad sus predecesores y sucesores haciéndolo un predecesor destacado de los sistemas \textit{CPM} y \textit{PERT} desarrollados unos 60 años después \citetext{p.~3}.
 
-Para 1912, la gráfica de barras moderna parece estar totalmente desarrollada y es utilizada al menos en Alemania. Estas ideas fueron entonces divulgadas en EEUU por el consultor de administración estadounidense Henry L. Gantt, quien publicó «Trabajo, Sueldos y Utilidades» (\textit{Work, Wages, and Profits}) en 1916 en donde expresamente habla de la programación, especialmente en el ambiente de los talleres de trabajo. En su forma más pura, la gráfica de barras correlaciona actividades y tiempos en una presentación gráfica permitiendo la determinación de la temporización del trabajo pero no de sus interdependencias. Como se muestra en la figura \ref{fig:grafica_gantt}, la secuenciación es inferida en lugar de ser mostrada y en sus elaboraciones hechas a mano, las primeras gráficas eran una representación estática del programa \citep[p.~3]{Weaver2006}.
+Para 1912, la gráfica de barras moderna parece estar totalmente desarrollada y es utilizada al menos en Alemania. Estas ideas fueron entonces divulgadas en EEUU por el consultor de administración estadounidense Henry L. Gantt, quien publicó «Trabajo, Sueldos y Utilidades» (\textit{Work, Wages, and Profits}) en 1916 en donde expresamente habla de la programación, especialmente en el entorno de los talleres de trabajo. En su forma más pura, la gráfica de barras correlaciona actividades y tiempos en una presentación gráfica permitiendo la determinación de la temporización del trabajo pero no de sus interdependencias. Como se muestra en la figura \ref{fig:grafica_gantt}, la secuenciación es inferida en lugar de ser mostrada y en sus elaboraciones hechas a mano, las primeras gráficas eran una representación estática del programa \citep[p.~3]{Weaver2006}.
 
 \begin{sidewaysfigure}
 \includegraphics[width=\textwidth]{media/gantt-graphic.pdf}
@@ -410,44 +410,101 @@ La llegada de herramientas de programación «fáciles de utilizar» con una int
 
 \section{Introducción}
 
-\section{Criterios de evaluación}
+Muchos de los primeros desarrollos en el campo de la programación fueron motivados por problemas encontrados en la industria de la producción. Por lo tanto, es natural encontrar en la literatura el uso de vocabulario de producción cuando se describen problemas de programación. Aún cuando hoy día la aplicación de la programación es de considerable importancia en múltiples áreas no relacionadas con la producción, la terminología sigue siendo frecuentemente utilizada. Es por eso que a los recursos usualmente se les llama \textbf{máquinas} (\textit{machines}) y a las tareas se les llaman \textbf{trabajos} (\textit{jobs}). En ocasiones, los trabajos pueden consistir de varias tareas elementales llamadas \textbf{operaciones} (\textit{operations}). El entorno del problema de programación es llamado el \textbf{taller de trabajo} (\textit{job-shop}), o simplemente, el \textbf{taller} (\textit{shop}). Por ejemplo, un problema de programación que trate con el procesamiento de pólizas de seguros en aseguradoras puede ser descrito de manera genérica como un «taller» de seguros que se encarga del procesamiento de «trabajos» de polizas por «máquinas» aseguradoras \citep[p.~3]{Baker2009}.
+
+Este capítulo presenta las bases teóricas de la programación.
+
+\section{Marco de la programación}
+
+La teoría de la programación se preocupa primordialmente con modelos matemáticos que se relacionan al proceso de programación. El desarrollo de modelos útiles, los cuales derivan en técnicas de solución y perspectivas prácticas, han sido la interfaz continua entre la teoría y la práctica. 
+%
+La perspectiva teorética es también en gran medida un acercamiento cuantitativo, uno que intenta capturar la estructura del problema en una forma matemática.
+%
+En particular, este enfoque cuantitativo comienza con la descripción de los recursos y tareas, y con la traducción de objetivos de planificación en una \textbf{función objetivo} explícita \citep[p.~3-4]{Baker2009}.
+
+Idealmente, la función objetivo debe consistir de todos los costos que dependan de decisiones de programación. En la práctica, sin embargo, tales costos son frecuentemente difíciles de medir, o incluso de identificar en su totalidad. Los costos de operación mayores –y los más fácilmente identificables– son determinados por la \textbf{función de planificación}, mientras que los costos relacionados con la programación son difíciles de aislar y frecuentemente tienden a dar la impresión de ser costos fijos. Sin embargo, tres tipos de objetivos relativos a la toma de decisiones parecen ser prevalentes en la programación: plazo (\textit{turnaround}), puntualidad (\textit{timeliness}) y rendimiento (\textit{throughput}). El plazo cuantifica el tiempo requerido para completar una tarea. La puntualidad evalúa la conformidad de la compleción de una tarea particular sujeta a una fecha límite. El rendimiento mide la cantidad de trabajo completado durante un periodo fijo. Los primeros dos objetivos requieren más elaboración pues aun cuando se puede juzgar el plazo o la puntualidad de una tarea dada, los problemas de programación requieren una evaluación de desempeño para el conjunto total de tareas en un programa. El rendimiento, en contraste, ya es un indicador que aplica a todo el conjunto \citetext{p.~4}.
+
+Se categorizan los modelos de programación principales al especificar su configuración y la naturaleza de sus trabajos. Estas características se expondrán posteriormente. Dos tipos de restricciones de factibilidad se encuentran comúnmente en los problemas de programación. Primero, están los límites en la capacidad de las máquinas, y segundo, hay restricciones tecnológicas en el orden en que algunos trabajos pueden ser llevados a cabo. Una solución para un problema de programación es cualquier resolución factible de estos dos tipos de restricciones, de manera tal que el solucionar un problema de programación equivalga a responder dos tipos de preguntas \citetext{p.~4}:
+
+\begin{itemize}
+\setlength{\itemsep}{0cm}%
+\setlength{\parskip}{0cm}%
+\item¿Qué recursos deben ser asignados para realizar cada trabajo?
+\item¿Cuándo deben ser realizado cada trabajo?
+\end{itemize}
+
+En otras palabras, un problema de programación da lugar a decisiones de asignación y decisiones de secuenciación. Desde sus inicios, la literatura relevante muestra que se ha dependido en modelos matemáticos para estos dos tipos de problemas de decisión. Tradicionalmente, muchos problemas de programación han sido vistos como problemas de optimación sujetos a restricciones –específicamente, problemas en asignación y secuencia–. Algunas veces, la programación es puramente asignación, en estos casos modelos matemáticos de programación son usualmente apropiados para determinar decisiones óptimas. En otras ocasiones, la programación es puramente secuenciación; estos problemas son únicos para la teoría de la programación y son de amplio interés para los investigadores. La teoría de la programación también incluye una variedad de metodologías. El campo de la programación se ha vuelto foco central para el desarrollo, aplicación y evaluación de procedimientos combinatorios, técnicas de simulación y aproximaciones de solución heurísticas. La selección de un método apropiado depende principalmente de la naturaleza del modelo y de la función objetivo elegida. En algunas ocasiones es preferible considerar técnicas alternativas; por esta razón es importante estudiar metodologías al igual que modelos \citep[p.~4-5]{Baker2009}.
+
+El abordamiento al tema de la programación requiere de matemáticas, pues son útiles para ser preciso, pero este trabajo no persigue a las matemáticas como un fin en sí mismo. La programación no es principalmente acerca de las matemáticas, tampoco acerca de los algoritmos; pero se hace uso de este tipo de dispositivos para desarrollar un conocimiento sistemático y el entendimiento acerca de la solución de problemas de programación \citep[p.~8]{Baker2009}.
+
+% En desarrollos más recientes, conocidos como programación segura (\textit{safe scheduling}), los modelos reconocen niveles de servicio de igual manera. La programación segura puede también involucrar la decisión de aceptar un trabajo o rechazarlo en primera instancia, de manera que cuando se realice un compromise con algún cliente, se pueda estar seguro que de los trabajos se completarán dentro del periodo permitido. Una alternativa a la programación segura minimiza el costo económico esperado de un programa, incluyendo el costo por retardo y el costo por el periodo de seguridad. En lugar de especificar un nivel de servicio por adelantado, este enfoque determina los niveles económicos de servicio como parte de la solución.
+
+\subsection{Entornos del taller de trabajo}
+
+
+
+\subsection{Criterios de evaluación}
 \label{criterios_evaluacion}
 
 Según \citet[p.~1]{TKindt2002}, la teoría de la programación aparece a mediados de la década de los cincuenta. Desde entonces los problemas planteados se han aproximado cada vez más a aplicaciones industriales incrementando por tanto su complejidad. La disposición de los talleres tomados en consideración se asemejan cada vez más y más a lo encontrado en la práctica; al mismo tiempo las restricciones impuestas son cada vez más concretas.  Paradójicamente, la literatura muestra que en la mayoría de los problemas planteados, los programas son evaluados por un \textbf{único} criterio.
 
 Durante las diferentes etapas de planificación distintos criterios pueden ser considerados. A un nivel estratégico, una \textbf{planificación de largo alcance} puede contemplar varios años, los objetivos se preocupan con la minimización de costos relacionados a los planes de inversión para materiales, finanzas, o personal, relacionados a la elección de nuevas oportunidades de negocio, o al lanzamiento de campañas de publicidad. Para la planificación estratégica en una \textbf{fase de mediano plazo} con varios meses en mente, los objetivos se enfocan a la minimización de costos: costos de inventario, costos de transporte de insumos, costos de modificación en la capacidad de producción, costos de lanzamiento, costos de modificación de sistemas de producción entre otros. Durante una fase de planificación o una fase de \textbf{programación a corto plazo} –un periodo de tiempo de una semana– multiples objetivos requieren la atención del ejecutivo de producción: ante todo, debe considerar los retrasos para la satisfacción del cliente, acto seguido, debe minimizar el costo del trabajo en proceso de la producción, y finalmente debe minimizar los costos de producción relacionados al tiempo utilizado para la configuraciónd de la maquinaria o los tiempos muertos de las mismas. Es por ello, que un problema de programación puede contemplar multiples criterios de manera tal que permita ofrecer al dueño del problema soluciones más realistas\citep[p.~1]{TKindt2002}.
 
-De acuerdo a \citet[p.~3,~4]{Baker2009}, la teoría de la programación se preocupa primordialmente con modelos matemáticos que se relacionan al proceso de programación. El desarrollo de modelos útiles, los cuales derivan en técnicas de solución y perspectivas prácticas, han sido la interfaz continua entre la teoría y la práctica. 
-%
-La perspectiva teorética es también en gran medida un acercamiento cuantitativo, uno que intenta capturar la estructura del problema en una forma matemática.
-%
-En particular, este enfoque cuantitativo comienza con la descripción de los recursos y tareas, y con la traducción de objetivos de planificación en una \textbf{función objetivo} explícita.
+\section{Tipología y notación de problemas}
 
-Idealmente, la función objetivo debe consistir de todos los costos que dependan de decisiones de programación. En la práctica, sin embargo, tales costos son frecuentemente difíciles de medir, o incluso de identificar en su totalidad. Los costos de operación mayores –y los más fácilmente identificables– son determinados por la \textbf{función de planificación}, mientras que los costos relacionados con la programación son difíciles de aislar y frecuentemente tienden a dar la impresión de ser costos fijos. Sin embargo, tres tipos de objetivos relativos a la toma de decisiones parecen ser prevalentes en la programación: plazo (\textit{turnaround}), puntualidad (\textit{timeliness}) y rendimiento (\textit{throughput}). El plazo cuantifica el tiempo requerido para completar una tarea. La puntualidad evalúa la conformidad de la compleción de una tarea particular sujeta a una fecha límite. El rendimiento mide la cantidad de trabajo completado durante un periodo fijo. Los primeros dos objetivos requieren más elaboración pues aun cuando se puede juzgar el plazo o la puntualidad de una tarea dada, los problemas de programación requieren una evaluación de desempeño para el conjunto total de tareas en un programa. El rendimiento, en contraste, ya es un indicador que aplica a todo el conjunto \citep[p.~4]{Baker2009}.
+En el tema de los problemas de programación se hace una distinción entre su tipología y su notación. Una tipología es una clasificación de los problemas de acuerdo a su naturaleza. En la programación usualmente está basada en el contexto de las máquinas y en las particularidades de los trabajos. Una notación nos permite referirnos rápidamente a un problema, siendo así que es posible construir una base de datos del conjunto de problemas vistos en la literatura \citep[p.~14]{TKindt2002}.
 
-\section{Marco de la programación}
+\subsection{Tipología de problemas}
 
-En todos los problemas de programación se considera que el número de trabajos y el número de máquinas son finitos. El número de trabajos es denominado por $n$ y el número de máquinas por $m$. Usualmente el subíndice $j$ se refiere a un trabajo mientras que el subíndice $i$ se refiere a una máquina. Si un trabajo requiere de varios pasos u operaciones, entonces el par $(i, j)$ se refiere al paso del proceso u operación del trabajo $j$ en la máquina $i$. Los siguientes atributos están asociados a un trabajo $j$.
+Existen diferentes tipologías de problemas de programación en la literatura. En la figura \ref{fig:typology_maccarthy} se presenta una generalización del trabajo hecho por \citet{maccarthy1993addressing} (como está citado en \citealp[p.~14]{TKindt2002}). En los problemas de programación el objetivo es determinar una secuencia para cada máquina y un tiempo de inicio para cada operación. En problemas de programación y asignación con etapas se pueden definir, independientemente de cada operación, etapas de máquinas. Una máquina pertenece a una sola etapa. Entonces, se combina cada operación con una etapa, y una operación puede ser procesada por cualquier máquina de de su etapa. Por lo tanto, se incorpora un problema de asignación al problema inicial de programación. Ya no es suficiente determinar el tiempo de inicio para las operaciones, es necesario establecer la asignación de las operaciones en las máquinas. Lo mismo ocurre para los problemas generales de programación y asignación en donde un conjunto de máquinas es detallado para cada operación. Por supuesto, una máquina puede existir en más de un conjunto y una operación puede ser llevada a cabo por cualquier máquina perteneciente al mismo conjunto.
 
-\textbf{Tiempo de procesamiento} ($p_{ij}$) La $p_{ij}$ representa el tiempo de procesamiento de un trabajo $j$ en una máquina $i$. El subíndice $i$ es omitido si el tiempo de procesamiento del trabajo $j$ no depende de la máquina o si el trabajo $j$ únicamente va a ser procesado en una máquina dada.
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=.8\textwidth]{media/typology_maccarthy_spanish.pdf}
+\caption[Tipología basada en el contexto de máquinas y operaciones]{Tipología generalizada de problemas de programación de acuerdo a las proposiciones de \citet{maccarthy1993addressing}. De \textit{Multicriteria Scheduling: Theory, Models and Algorithms}, por V. \citeauthor{TKindt2002}, \citeyear{TKindt2002}, p.~15. Derechos reservados [2006] por \textit{Springer-Verlag Berlin Heidelberg}.}
+\label{fig:typology_maccarthy}
+\end{figure}
 
-\textbf{Fecha de liberación} ($r_j$) La fecha de liberación $r_j$ de un trabajo $j$ también es conocido como fecha de inicio. 
+La tipología anterior hace uso del entorno de las máquinas y las operaciones para distinguir los problemas. Existen otras tipologías, se pueden estudiar los problemas de acuerdo sus distintas características –véase la fig \ref{fig:typology_cubic}–:
 
-\textbf{Fecha de cierre} ($d_j$) La fecha de cierre $d_j$ del trabajo $j$ representa la fecha comprometida de compleción. La compleción de un trabajo después de su fecha de cierre \textit{es} permitida, pero se incurre en una penalización. Cuando una fecha de cierre \textit{debe} ser cumplida se le llama \textit{fecha límite} y es denotada por $\bar{d}_j$.
+\begin{enumerate}[1]
+\item \textbf{determinístico vs. estocástico}. En la situación donde todas las características del problema son bien conocidos, se habla de un problema \textbf{determinístico}. Por otra parte, algunas características pueden consistir de variables aleatorias de ley de probabilidad conocida. En este caso se habla de un problema \textbf{estocástico}.
+\item \textbf{unitario vs. repetitivo}. Si las operaciones aparentan ser cíclicas, se trata de un problema \textbf{repetitivo}. En cambio, si cada operación corresponde a un producto único se dice que el problema es \textbf{unitario}.
+\item \textbf{estático vs. dinámico}. Si toda la información del problema es conocida al mismo tiempo es un problema \textbf{estático}. Para algunos problemas, un programa puede haber sido elaborado con cierta información y ser ejecutado mientras aparecen nuevas operaciones en el sistema. Entonces el programa anterior tiene que ser restablecido «al momento». Estos problemas se les conoce como \textbf{dinámicos}.
+\end{enumerate}
 
-\textbf{Peso} ($w_j$) El peso $w_j$ del trabajo $j$ es básicamente un factor de prioridad, denotando la importancia del trabajo $j$ en relación a otros trabajos en el sistema. Por ejemplo, este peso puede representar el costo actual de mantener el trabajo en el sistema. Este costo podría ser un activo o un costo de inventario; también podría representar la cantidad de valor ya agregado al trabajo.
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=.8\textwidth]{media/typology_cubic.pdf}
+\caption[Tipología basada en características]{Tipología de los problemas de programación de acuerdo a sus características. De \textit{Multicriteria Scheduling: Theory, Models and Algorithms}, por V. \citeauthor{TKindt2002}, \citeyear{TKindt2002}, p.~16. Derechos reservados [2006] por \textit{Springer-Verlag Berlin Heidelberg}.}
+\label{fig:typology_cubic}
+\end{figure}
 
-Un problema de programación es descrito por una tripleta $\alpha\; |\; \beta\; |\; \gamma$. El elemento $\alpha$ describe el ambiente de la máquina y contiene únicamente un valor. El elemento $\beta$ provee detalles de las características del procesamiento y restricciones, puede no tener valor alguno, un solo valor o múltiples valores. El elemento $\gamma$ describe el objeto a ser minimizado y frecuentemente contiene un solo valor.
+Estas dos tipologías son complementarias pues es posible trabajar, como ejemplo, con un problema \textit{flow-shop} determinístico, sea unitario o estático. Como será evidente en la próxima sección, la notación tradicional de los problemas de programación es un reflejo de estas tipologías \citep[p.~16]{TKindt2002}.
 
-Los posibles ambientes para especificar en el elemento $\alpha$ son:
+\subsection{Notación}
 
-\textbf{Máquina única}
+De acuerdo a \citet{Pinedo1995}, en todos los problemas de programación se considera que el número de trabajos y el número de máquinas son finitos \citetext{p.~13}. El número de trabajos es denominado por $n$ y el número de máquinas por $m$, la máquina número $k$ se representa por $M_k$. Se denota con $J_i$ al trabajo número $i$, con $n_i$ al número de operaciones del trabajo $J_i$, con $O_{i,j}$ a la operación $j$ del trabajo $J_i$ \citep[p.~7-8, p.~13]{TKindt2002,Pinedo1995}.
+Una síntesis completa de la notación es proporcionada en el apéndice A. Los siguientes atributos están asociados a un trabajo $j$.
 
-\textbf{Máquinas idénticas en paralelo}
+\textbf{Tiempo de procesamiento} ($p_{ij}$) La $p_{ij}$ representa el tiempo de procesamiento de un trabajo $j$ en una máquina $i$. El subíndice $i$ es omitido si el tiempo de procesamiento del trabajo $j$ no depende de la máquina o si el trabajo $j$ únicamente va a ser procesado en una máquina dada \citep[p.~14]{Pinedo1995}.
 
-\textbf{Máquinas en paralelo con velocidades distintas}
+\textbf{Fecha de liberación} ($r_j$) La fecha de liberación $r_j$ de un trabajo $j$ también es conocido como fecha de inicio \citetext{p.~14}.
 
-\textbf{Máquinas no-relacionadas en paralelo}
+\textbf{Fecha de cierre} ($d_j$) La fecha de cierre $d_j$ del trabajo $j$ representa la fecha comprometida de compleción. La compleción de un trabajo después de su fecha de cierre \textit{es} permitida, pero se incurre en una penalización. Cuando una fecha de cierre \textit{debe} ser cumplida se le llama \textit{fecha límite} y es denotada por $\bar{d}_j$ \citetext{p.~14}.
+
+\textbf{Peso} ($w_j$) El peso $w_j$ del trabajo $j$ es básicamente un factor de prioridad, denotando la importancia del trabajo $j$ en relación a otros trabajos en el sistema. Por ejemplo, este peso puede representar el costo actual de mantener el trabajo en el sistema. Este costo podría ser un activo o un costo de inventario; también podría representar la cantidad de valor ya agregado al trabajo \citetext{p.~14}.
+
+Al hacer frente a un problema de programación, se le debe identificar antes de buscar su solución. Aceptando que el problema es complicado y para saber si ya ha sido resuelto en la literatura, se hace uso de una notación reconocida \citep[p.~7]{TKindt2002}. Un problema de programación es descrito por una tripleta $\alpha\: |\: \beta\: |\: \gamma$. El campo $\alpha$ describe el entorno de la máquina y contiene únicamente un valor. El campo $\beta$ provee detalles de las características del procesamiento y restricciones, puede no tener valor alguno, un solo valor o múltiples valores. El campo $\gamma$ describe el objetivo a ser minimizado y frecuentemente contiene un solo valor \citep[p.~14]{Pinedo1995}.
+
+Los posibles entornos de máquinas especificadas en el campo $\alpha$ son:
+
+\textbf{Máquina individual} ($1$) El caso de una máquina individual es el más simple de todos los entornos de máquina posibles y es un caso especial de todos los demás entornos de máquina más complicados. Concierne a un taller básico o uno en donde una máquina individual presenta un problema de programación real. Una área de aplicación directa se encuentra en la computación, si pensamos que la máquina individual es el procesador de un ordenador. Los trabajos a ser procesados son necesariamente de una operación \citep[p.~8, p.~14]{TKindt2002,Pinedo1995}.
+
+\textbf{Máquinas idénticas en paralelo} ($Pm$) Hay una cantidad idéntica de máquinas en paralelo. El trabajo $j$ requiere una operación individual y puede ser procesado por cualquiera de las máquinas $m$ o por cualquiera que pertenezca al subconjunto dado. Si el trabajo $j$ no puede ser procesado en cualquier máquina, sino únicamente en alguna perteneciente a un subconjunto $M_j$, entonces la entrada $M_j$ aparece en el campo $\beta$ \citep[p.~14]{Pinedo1995}.
+
+\textbf{Máquinas en paralelo con velocidades distintas} ($Qm$) Hay múltiples máquinas $m$ en paralelo de distintas velocidades. La velocidad de la máquina $i$ es denotada por $v_i$. El tiempo $p_{ij}$ que el trabajo $j$ utiliza en la máquina $i$ es igual a $p_j/v_j$ –asumiendo que el trabajo $j$ recibe todo su procesamiento de la máquina $i$–. Este entorno es referido como máquinas uniformes. Si todas las máquinas tienen la misma velocidad, esto es $v_i = 1$ para toda $i$ y $p_{ij} = p_j$, entonces el entorno es idéntico al anterior \citetext{p.~14}.
+
 
 \section{Áreas de aplicación}
 \label{areas_aplicacion}
@@ -471,46 +528,6 @@ Los problemas de programación en las \textbf{líneas de producción automotrice
 Los \textbf{problemas de programación de horarios escolares} conciernen a todas las instituciones educativas o universidades, dado que involucran la calendarización de cursos asegurando la disponibilidad de profesores, estudiantes y aulas. Estos problemas son ampliamente estudiados \citep[p.~7]{TKindt2002}.
 
 Los \textbf{problemas de programación de proyectos} comprenden una vasta literatura. El interés general se concentra en la programación de operaciones que hacen uso de multiples recursos simultáneamente (dinero, personal, equipo, materiales, etc), estos recursos estando disponibles en cantidades conocidas. En palabras precisas son problemas de programación multi-recurso haciendo uso de recursos acumulativos no-renovables \citep[p.~7]{TKindt2002}.
-
-\section{Tipología y notación de problemas}
-
-En el tema de los problemas de programación se hace una distinción entre su tipología y su notación. Una tipología es una clasificación de los problemas de acuerdo a su naturaleza. En la programación usualmente está basada en el contexto de las máquinas y en las particularidades de los trabajos. Una notación nos permite referirnos rápidamente a un problema, siendo así que es posible construir una base de datos del conjunto de problemas vistos en la literatura \citep[p.~14]{TKindt2002}.
-
-\citet[p.~3]{Baker2009} recuerdan que muchos de los primeros desarrollos en el campo de la programación fueron motivados por problemas encontrados en la industria de la producción. Por lo tanto, es natural encontrar en la literatura el uso de vocabulario de producción cuando se describen problemas de programación. Aún cuando hoy día la aplicación de la programación es de considerable importancia en múltiples áreas no relacionadas con la producción, la terminología sigue siendo frecuentemente utilizada. Es por eso que a los recursos usualmente se les llama \textbf{máquinas} (\textit{machines}) y a las tareas se les llaman \textbf{trabajos} (\textit{jobs}). En ocasiones, los trabajos pueden consistir de varias tareas elementales llamadas \textbf{operaciones} (\textit{operations}). El ambiente del problema de programación es llamado el \textbf{taller de trabajo} (\textit{job-shop}), o simplemente, el \textbf{taller} (\textit{shop}). Por ejemplo, un problema de programación que trate con el procesamiento de pólizas de seguros en aseguradoras puede ser descrito de manera genérica como un «taller» de seguros que se encarga del procesamiento de «trabajos» de polizas por «máquinas» aseguradoras.
-
-\subsection{Tipología de problemas}
-
-Existen diferentes tipologías de problemas de programación en la literatura. En la figura \ref{fig:typology_maccarthy} se presenta una generalización del trabajo hecho por \citet{maccarthy1993addressing} (como está citado en \citealp[p.~14]{TKindt2002}). En los problemas de programación el objetivo es determinar una secuencia para cada máquina y un tiempo de inicio para cada operación. En problemas de programación y asignación con etapas se pueden definir, independientemente de cada operación, etapas de máquinas. Una máquina pertenece a una sola etapa. Entonces, se combina cada operación con una etapa, y una operación puede ser procesada por cualquier máquina de de su etapa. Por lo tanto, se incorpora un problema de asignación al problema inicial de programación. Ya no es suficiente determinar el tiempo de inicio para las operaciones, es necesario establecer la asignación de las operaciones en las máquinas. Lo mismo ocurre para los problemas generales de programación y asignación en donde un conjunto de máquinas es detallado para cada operación. Por supuesto, una máquina puede existir en más de un conjunto y una operación puede ser llevada a cabo por cualquier máquina perteneciente al mismo conjunto.
-
-\begin{figure}[hbtp]
-\centering
-\includegraphics[width=.8\textwidth]{media/typology_maccarthy_spanish.pdf}
-\caption[Tipología basada en el contexto de máquinas y operaciones]{Tipología generalizada de problemas de programación de acuerdo a las proposiciones de \citet{maccarthy1993addressing}. De \textit{Multicriteria Scheduling: Theory, Models and Algorithms}, por V. \citeauthor{TKindt2002}, \citeyear{TKindt2002}, p.~15. Derechos reservados [2006] por \textit{Springer-Verlag Berlin Heidelberg}.}
-\label{fig:typology_maccarthy}
-\end{figure}
-
-La tipología anterior hace uso del ambiente de las máquinas y operaciones para distinguir los problemas. Existen otras tipologías, se pueden estudiar los problemas de acuerdo sus distintas características –véase la fig \ref{fig:typology_cubic}–:
-
-\begin{enumerate}[1]
-\item \textbf{determinístico vs. estocástico}. En la situación donde todas las características del problema son bien conocidos, se habla de un problema \textbf{determinístico}. Por otra parte, algunas características pueden consistir de variables aleatorias de ley de probabilidad conocida. En este caso se habla de un problema \textbf{estocástico}.
-\item \textbf{unitario vs. repetitivo}. Si las operaciones aparentan ser cíclicas, se trata de un problema \textbf{repetitivo}. En cambio, si cada operación corresponde a un producto único se dice que el problema es \textbf{unitario}.
-\item \textbf{estático vs. dinámico}. Si toda la información del problema es conocida al mismo tiempo es un problema \textbf{estático}. Para algunos problemas, un programa puede haber sido elaborado con cierta información y ser ejecutado mientras aparecen nuevas operaciones en el sistema. Entonces el programa anterior tiene que ser restablecido «al momento». Estos problemas se les conoce como \textbf{dinámicos}.
-\end{enumerate}
-
-\begin{figure}[hbtp]
-\centering
-\includegraphics[width=.8\textwidth]{media/typology_cubic.pdf}
-\caption[Tipología basada en características]{Tipología de los problemas de programación de acuerdo a sus características. De \textit{Multicriteria Scheduling: Theory, Models and Algorithms}, por V. \citeauthor{TKindt2002}, \citeyear{TKindt2002}, p.~16. Derechos reservados [2006] por \textit{Springer-Verlag Berlin Heidelberg}.}
-\label{fig:typology_cubic}
-\end{figure}
-
-Estas dos tipologías son complementarias pues es posible trabajar, como ejemplo, con un problema \textit{flow-shop} determinístico, sea unitario o estático. Como será evidente en la próxima sección, la notación tradicional de los problemas de programación es un reflejo de estas tipologías \citep[p.~16]{TKindt2002}.
-
-\subsection{Notación}
-
-dibidi daba
-asdf
-asdf
 
 \section{Teoría de la complejidad computacional} % (fold)
 \label{teoria_complejidad_computacional}
