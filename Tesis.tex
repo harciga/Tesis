@@ -33,12 +33,15 @@
 \usepackage{marginnote}
 % \usepackage{hyperref}
 
+\usepackage{ulem}
+
 \setlength{\parindent}{0.25in}
 \renewenvironment{quotation}{\list{}{\leftmargin=0.25in}\item[]}{\endlist}
 \newcommand{\BigO}{\ensuremath{\mathcal{O}}}% big-O notation/symbol
 \addto\captionsspanish{
   \renewcommand\bibname{Referencias}
 }
+\renewcommand\textbf{\emph}
 
 \newglossaryentry{asignatura} {
 	   name = asignatura,
@@ -412,11 +415,7 @@ La llegada de herramientas de programación «fáciles de utilizar» con una int
 
 Muchos de los primeros desarrollos en el campo de la programación fueron motivados por problemas encontrados en la industria de la producción. Por lo tanto, es natural encontrar en la literatura el uso de vocabulario de producción cuando se describen problemas de programación. Aún cuando hoy día la aplicación de la programación es de considerable importancia en múltiples áreas no relacionadas con la producción, la terminología sigue siendo frecuentemente utilizada. Es por eso que a los recursos usualmente se les llama \textbf{máquinas} (\textit{machines}) y a las tareas se les llaman \textbf{trabajos} (\textit{jobs}). En ocasiones, los trabajos pueden consistir de varias tareas elementales llamadas \textbf{operaciones} (\textit{operations}). El entorno del problema de programación es llamado el \textbf{taller de trabajo} (\textit{job-shop}), o simplemente, el \textbf{taller} (\textit{shop}). Por ejemplo, un problema de programación que trate con el procesamiento de pólizas de seguros en aseguradoras puede ser descrito de manera genérica como un «taller» de seguros que se encarga del procesamiento de «trabajos» de polizas por «máquinas» aseguradoras \citep[p.~3]{Baker2009}.
 
-Este capítulo presenta las bases teóricas de la programación. La primera parte es el marco de la programación en donde se exponen conceptos como función de planificación, solución factible, criterio de evaluación.
-%
-Le sigue una sección en donde \ldots
-
-INCOMPLETO
+Este capítulo presenta las bases teóricas de la programación. La primera parte es el marco de la programación en donde se exponen las bases teóricas de la programación y su interrelación con la función administrativa de planificación a través de la definición de criterios y la función objetivo del problema a tratar. Después se presenta una breve relación de algunas áreas de aplicación de la teoría de la programación. Luego está la sección de los modelos de programación en donde se explica cómo se plantea un problema de manera formal. A continuación se trata el tema de la tipología y notación de los problemas de programación. Y por último, el capítulo concluye haciendo mención de la teoría de la complejidad computacional y con una síntesis de los problemas generales de programación.
 
 \section{Marco de la programación}
 
@@ -448,6 +447,7 @@ En desarrollos más recientes, conocidos como programación segura (\textit{safe
 Tradicionalmente, muchos problemas de programación han sido vistos como problemas de optimación sujetos a restricciones –específicamente, problemas en asignación y secuencia–. Algunas veces, la programación es puramente asignación, en estos casos modelos matemáticos de programación son usualmente apropiados para determinar decisiones óptimas. En otras ocasiones, la programación es puramente secuenciación; estos problemas son únicos para la teoría de la programación y son de amplio interés para los investigadores. \citet[p.~6]{TKindt2002} dicen que frecuentemente, para resolver un problema de programación, es necesario también resolver un problema de asignación, cuando concierne además la determinación de los recursos para procesar las operaciones. La teoría de la programación también incluye una variedad de metodologías. El campo de la programación se ha vuelto foco central para el desarrollo, aplicación y evaluación de procedimientos combinatorios, técnicas de simulación y aproximaciones de solución heurísticas. La selección de un método apropiado depende principalmente de la naturaleza del modelo y de la función objetivo elegida. En algunas ocasiones es preferible considerar técnicas alternativas; por esta razón es importante estudiar metodologías al igual que modelos \citep[p.~4,~5]{Baker2009}.
 
 El abordamiento al tema de la programación requiere de matemáticas, pues son útiles para ser preciso, pero este trabajo no persigue a las matemáticas como un fin en sí mismo. La programación no es principalmente acerca de las matemáticas, tampoco acerca de los algoritmos; pero se hace uso de estos artilugios para desarrollar conocimiento y entendimiento sistemático en la solución de problemas de programación \citep[p.~8]{Baker2009}.
+
 \subsection{La función objetivo}
 \label{sub:funcion_objetivo}
 
@@ -477,7 +477,6 @@ Durante las diferentes etapas de planificación distintos criterios pueden ser c
 \label{fig:criterios_evaluacion}
 \end{figure}
 
-
 \section{Algunas áreas de aplicación}
 \label{algunas_areas_aplicacion}
 
@@ -495,11 +494,17 @@ Los problemas de programación en las \textbf{líneas de producción automotrice
 \subsection{Otros problemas}
 \label{otros_problemas}
 
-\citet[p.~7]{TKindt2002} continua, afirmando que se encuentran problemas de programación en los \textbf{sistemas computacionales}. Estos problemas son estudiados de distintas maneras al discriminarlos por sistemas mono o multi procesador, con las restricciones de sincronización de operaciones y compartición de recursos. En estos problemas, ciertas operaciones son periódicas y otras no, algunas están sujetas a fechas de cierre, otras a fechas límite. El objetivo es encontrar una solución factible, es decir, una solución que satisfaga las restricciones. Estos problemas abundan en la literatura. De hecho, a pesar de las apariencias son bastante cercanos a los problemas encontrados en los sistemas de producción.
+\citet[p.~7]{TKindt2002} continúan, afirmando que se encuentran problemas de programación en los \textbf{sistemas computacionales}. Estos problemas son estudiados de distintas maneras al discriminarlos por sistemas mono o multi procesador, con las restricciones de sincronización de operaciones y compartición de recursos. En estos problemas, ciertas operaciones son periódicas y otras no, algunas están sujetas a fechas de cierre, otras a fechas límite. El objetivo es encontrar una solución factible, es decir, una solución que satisfaga las restricciones. Estos problemas abundan en la literatura. De hecho, a pesar de las apariencias son bastante cercanos a los problemas encontrados en los sistemas de producción.
 
 Los \textbf{problemas de programación de horarios escolares} conciernen a todas las instituciones educativas o universidades, dado que involucran la calendarización de cursos asegurando la disponibilidad de profesores, estudiantes y aulas. Estos problemas son ampliamente estudiados \citep[p.~7]{TKindt2002}.
 
 Los \textbf{problemas de programación de proyectos} comprenden una vasta literatura. El interés general se concentra en la programación de operaciones que hacen uso de multiples recursos simultáneamente (dinero, personal, equipo, materiales, etc), estos recursos estando disponibles en cantidades conocidas. En palabras precisas son problemas de programación multi-recurso haciendo uso de recursos acumulativos no-renovables \citep[p.~7]{TKindt2002}.
+
+\section{Modelos de programación}
+
+Uno de los problemas básicos complejos de programación es el llamado problema de programación de proyecto limitado por recursos (\textit{resource-onstrained project scheduling problem; RCPSP}). El \textit{RCPSP} es un problema general de programación que puede ser utilizado para modelar múltiples aplicaciones en la práctica, como puede ser: un proceso de producción, un proyecto de desarrollo de software, un horario escolar, la construcción de una vivienda, o la renovación de un aeropuerto. El objetivo es la programación de algunas actividades en un periodo de manera tal que las capacidades de recursos limitados sean respetadas y se optime alguna determinada función objetivo.
+
+INCOMPLETO
 
 \section{Tipología y notación de problemas}
 
@@ -535,7 +540,7 @@ Estas dos tipologías son complementarias pues es posible trabajar, como ejemplo
 
 \subsection{Notación}
 
-De acuerdo a \citet{Pinedo1995}, en todos los problemas de programación se considera que el número de trabajos y el número de máquinas son finitos \citetext{p.~13}. El número de trabajos es denominado por $n$ y el número de máquinas por $m$, la máquina número $k$ se representa por $M_k$. Se denota con $J_i$ al trabajo número $i$, con $n_i$ al número de operaciones del trabajo $J_i$, con $O_{i,j}$ a la operación $j$ del trabajo $J_i$ \citep[p.~7-8, p.~13]{TKindt2002,Pinedo1995}.
+De acuerdo a \citet[p.~13]{Pinedo1995}, en todos los problemas de programación se considera que el número de trabajos y el número de máquinas son finitos. El número de trabajos es denominado por $n$ y el número de máquinas por $m$, la máquina número $k$ se representa por $M_k$. Se denota con $J_i$ al trabajo número $i$, con $n_i$ al número de operaciones del trabajo $J_i$, con $O_{i,j}$ a la operación $j$ del trabajo $J_i$ \citep[p.~7-8, p.~13]{TKindt2002,Pinedo1995}.
 Una síntesis completa de la notación es proporcionada en el apéndice A. Los siguientes atributos están asociados a un trabajo $j$.
 
 \textbf{Tiempo de procesamiento} ($p_{ij}$) La $p_{ij}$ representa el tiempo de procesamiento de un trabajo $j$ en una máquina $i$. El subíndice $i$ es omitido si el tiempo de procesamiento del trabajo $j$ no depende de la máquina o si el trabajo $j$ únicamente va a ser procesado en una máquina dada \citep[p.~14]{Pinedo1995}.
@@ -546,23 +551,29 @@ Una síntesis completa de la notación es proporcionada en el apéndice A. Los s
 
 \textbf{Peso} ($w_j$) El peso $w_j$ del trabajo $j$ es básicamente un factor de prioridad, denotando la importancia del trabajo $j$ en relación a otros trabajos en el sistema. Por ejemplo, este peso puede representar el costo actual de mantener el trabajo en el sistema. Este costo podría ser un activo o un costo de inventario; también podría representar la cantidad de valor ya agregado al trabajo \citetext{p.~14}.
 
-Al hacer frente a un problema de programación, se le debe identificar antes de buscar su solución. Aceptando que el problema es complicado y para saber si ya ha sido resuelto en la literatura, se hace uso de una notación reconocida \citep[p.~7]{TKindt2002}. Un problema de programación es descrito por una tripleta $\alpha\: |\: \beta\: |\: \gamma$. El campo $\alpha$ describe el entorno de la máquina y contiene únicamente un valor. El campo $\beta$ provee detalles de las características del procesamiento y restricciones, puede no tener valor alguno, un solo valor o múltiples valores. El campo $\gamma$ describe el objetivo a ser minimizado y frecuentemente contiene un solo valor \citep[p.~14]{Pinedo1995}.
+Al hacer frente a un problema de programación, se le debe identificar antes de buscar su solución. Aceptando que el problema es complicado y para saber si ya ha sido resuelto en la literatura, se hace uso de una notación reconocida. Con este propósito se han creado «modelos» de talleres, los cuales difieren uno de otro por su composición y la organización de sus recursos \citep[p.~7]{TKindt2002}. Un problema de programación es descrito por una tripleta $\alpha\: |\: \beta\: |\: \gamma$. El campo $\alpha$ describe el entorno de la máquina y contiene únicamente un valor. El campo $\beta$ provee detalles de las características del procesamiento y restricciones, puede no tener valor alguno, un solo valor o múltiples valores. El campo $\gamma$ describe el objetivo a ser minimizado y frecuentemente contiene un solo valor \citep[p.~14]{Pinedo1995}.
 
-Los posibles entornos de máquinas especificadas en el campo $\alpha$ son:
+Los posibles entornos de máquinas especificadas en el campo $\alpha$ se presentan a continuación agrupados de acuerdo al tipo de problema de programación que se busca resolver.
+
+\subsubsection{Problemas de programación sin asignación}
+
+En este tipo de problemas se busca encontrar un tiempo de inicio de procesamiento para cada operación. Distintos tipos de disposiciones son comúnmente encontrados \citep[p.~8]{TKindt2002}:
 
 \textbf{Máquina individual} ($1$) El caso de una máquina individual es el más simple de todos los entornos de máquina posibles y es un caso especial de todos los demás entornos de máquina más complicados. Concierne a un taller básico o uno en donde una máquina individual presenta un problema de programación real. Una área de aplicación directa se encuentra en la computación, si pensamos que la máquina individual es el procesador de un ordenador. Los trabajos a ser procesados son necesariamente de una operación \citep[p.~8, p.~14]{TKindt2002,Pinedo1995}.
+
+\subsubsection{Problemas de programación y asignación con etapas}
 
 \textbf{Máquinas idénticas en paralelo} ($Pm$) Hay una cantidad idéntica de máquinas en paralelo. El trabajo $j$ requiere una operación individual y puede ser procesado por cualquiera de las máquinas $m$ o por cualquiera que pertenezca al subconjunto dado. Si el trabajo $j$ no puede ser procesado en cualquier máquina, sino únicamente en alguna perteneciente a un subconjunto $M_j$, entonces la entrada $M_j$ aparece en el campo $\beta$ \citep[p.~14]{Pinedo1995}.
 
 \textbf{Máquinas en paralelo con velocidades distintas} ($Qm$) Hay múltiples máquinas $m$ en paralelo de distintas velocidades. La velocidad de la máquina $i$ es denotada por $v_i$. El tiempo $p_{ij}$ que el trabajo $j$ utiliza en la máquina $i$ es igual a $p_j/v_j$ –asumiendo que el trabajo $j$ recibe todo su procesamiento de la máquina $i$–. Este entorno es referido como máquinas uniformes. Si todas las máquinas tienen la misma velocidad, esto es $v_i = 1$ para toda $i$ y $p_{ij} = p_j$, entonces el entorno es idéntico al anterior \citetext{p.~14}.
 
+\subsubsection{Problemas generales de programación y asignación}
+
+Este es el caso más general en donde se supone que cada operación tiene su propio conjunto de máquinas en las cuales pueden ser procesadas. No existe asunción acerca de este conjunto de recursos. Se pueden diferenciar distintos casos:
+
+Los trabajos son mono-operación, y están confrontados por un problema de \textbf{máquinas paralelas con asignación general}. Estos problemas aparecen en la literatura bajo el nombre de «Problemas de Programación de Máquinas Multi Propósito» (\textit{Multi Purpose Machine Scheduling Problems}) (P/Q/R MPM SP) \citep[p.~9]{TKindt2002}.
+
 INCOMPLETO
-
-\section{Modelos de programación}
-
-Uno de los problemas básicos complejos de programación es el llamado problema de programación de proyecto limitado por recursos (\textit{resource-onstrained project scheduling problem; RCPSP}). El \textit{RCPSP} es un problema general de programación que puede ser utilizado para modelar múltiples aplicaciones en la práctica, como puede ser: un proceso de producción, un proyecto de desarrollo de software, un horario escolar, la construcción de una vivienda, o la renovación de un aeropuerto. El objetivo es la programación de algunas actividades en un periodo de manera tal que las capacidades de recursos limitados sean respetadas y se optime alguna determinada función objetivo.
-
-IN PROGRESS
 
 \section{Teoría de la complejidad computacional} % (fold)
 \label{teoria_complejidad_computacional}
