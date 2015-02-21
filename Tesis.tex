@@ -25,6 +25,7 @@
 \usepackage{ragged2e}
 \usepackage{nameref}
 
+\usepackage{booktabs}
 \usepackage{setspace}
 \onehalfspacing
 \frenchspacing
@@ -543,13 +544,32 @@ Estas dos tipologías son complementarias pues es posible trabajar, como ejemplo
 De acuerdo a \citet[p.~13]{Pinedo1995}, en todos los problemas de programación se considera que el número de trabajos y el número de máquinas son finitos. El número de trabajos es denominado por $n$ y el número de máquinas por $m$, la máquina número $k$ se representa por $M_k$. Se denota con $J_i$ al trabajo número $i$, con $n_i$ al número de operaciones del trabajo $J_i$, con $O_{i,j}$ a la operación $j$ del trabajo $J_i$ \citep[p.~7-8, p.~13]{TKindt2002,Pinedo1995}.
 Una síntesis completa de la notación es proporcionada en el apéndice A. Los siguientes atributos están asociados a un trabajo $j$.
 
-\textbf{Tiempo de procesamiento} ($p_{ij}$) La $p_{ij}$ representa el tiempo de procesamiento de un trabajo $j$ en una máquina $i$. El subíndice $i$ es omitido si el tiempo de procesamiento del trabajo $j$ no depende de la máquina o si el trabajo $j$ únicamente va a ser procesado en una máquina dada \citep[p.~14]{Pinedo1995}.
+\textbf{Tiempo de procesamiento} ($p_{ij}$) La $p_{ij}$ representa el tiempo de procesamiento de un trabajo $j$ en una máquina $i$. El subíndice $i$ es omitido si el tiempo de procesamiento del trabajo $j$ no depende de la máquina o si el trabajo $j$ va a ser procesado únicamente en una máquina dada \citep[p.~14]{Pinedo1995}.
 
-\textbf{Fecha de liberación} ($r_j$) La fecha de liberación $r_j$ de un trabajo $j$ también es conocido como fecha de inicio \citetext{p.~14}.
+\textbf{Fecha de liberación} ($r_j$) La fecha de liberación $r_j$ de un trabajo $j$ también es conocida como fecha de disponibilidad. Es cuando el trabajo llega al sistema, en otras palabras, es el tiempo más próximo de inicio en el que el trabajo $j$ puede empezar su procesamiento \citetext{p.~14}.
 
-\textbf{Fecha de cierre} ($d_j$) La fecha de cierre $d_j$ del trabajo $j$ representa la fecha comprometida de compleción. La compleción de un trabajo después de su fecha de cierre \textit{es} permitida, pero se incurre en una penalización. Cuando una fecha de cierre \textit{debe} ser cumplida se le llama \textit{fecha límite} y es denotada por $\bar{d}_j$ \citetext{p.~14}.
+\textbf{Fecha de cierre} ($d_j$) La fecha de cierre $d_j$ del trabajo $j$ representa la fecha comprometida de compleción o envío. La compleción de un trabajo después de su fecha de cierre \textit{es} permitida, pero se incurre en una penalización. Cuando una fecha de cierre \textit{debe} ser cumplida se le llama \textit{fecha límite} y es denotada por $\bar{d}_j$ \citetext{p.~14}.
 
 \textbf{Peso} ($w_j$) El peso $w_j$ del trabajo $j$ es básicamente un factor de prioridad, denotando la importancia del trabajo $j$ en relación a otros trabajos en el sistema. Por ejemplo, este peso puede representar el costo actual de mantener el trabajo en el sistema. Este costo podría ser un activo o un costo de inventario; también podría representar la cantidad de valor ya agregado al trabajo \citetext{p.~14}.
+
+\begin{table}
+\centering
+\begin{tabular}{llc}
+\toprule
+  \multicolumn{2}{c}{Término} \\
+  \cmidrule(r){1-2}
+  \multicolumn{1}{c}{Español} & \multicolumn{1}{c}{Inglés} & Notación \\
+  \midrule
+  Tiempo de procesamiento & \textit{Processing time} & $p_{ij}$ \\
+  Fecha de liberación     & \textit{Release date}    & $r_j$ \\
+  Fecha de cierre & \textit{Due date} & $d_j$ \\
+  Fecha límite & \textit{Deadline} & $\bar{d}_j$ \\
+  Peso & \textit{Weight} & $w_j$ \\
+  \bottomrule
+\end{tabular}
+  \caption{Atributos de un trabajo $j$}
+  \label{tab:job_attributes}
+\end{table}
 
 Al hacer frente a un problema de programación, se le debe identificar antes de buscar su solución. Aceptando que el problema es complicado y para saber si ya ha sido resuelto en la literatura, se hace uso de una notación reconocida. Con este propósito se han creado «modelos» de talleres, los cuales difieren uno de otro por su composición y la organización de sus recursos \citep[p.~7]{TKindt2002}. Un problema de programación es descrito por una tripleta $\alpha\: |\: \beta\: |\: \gamma$. El campo $\alpha$ describe el entorno de la máquina y contiene únicamente un valor. El campo $\beta$ provee detalles de las características del procesamiento y restricciones, puede no tener valor alguno, un solo valor o múltiples valores. El campo $\gamma$ describe el objetivo a ser minimizado y frecuentemente contiene un solo valor \citep[p.~14]{Pinedo1995}.
 
@@ -778,7 +798,7 @@ subsection{Flexibilidad}
 
 % Bibliography
 \bibliographystyle{apalike_modified}
-\bibliography{../Dropbox/bibliographies/reviewed,../Dropbox/bibliographies/Dissertation_books}
+\bibliography{~/Dropbox/bibliographies/reviewed,~/Dropbox/bibliographies/Dissertation_books}
 {
 \RaggedRight
 \printindex
