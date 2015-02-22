@@ -26,6 +26,7 @@
 \usepackage{nameref}
 
 \usepackage{booktabs}
+\usepackage{pdfpages}
 \usepackage{setspace}
 \onehalfspacing
 \frenchspacing
@@ -571,15 +572,21 @@ Una síntesis completa de la notación es proporcionada en el apéndice A. Los s
   \label{tab:job_attributes}
 \end{table}
 
-Al hacer frente a un problema de programación, se le debe identificar antes de buscar su solución. Aceptando que el problema es complicado y para saber si ya ha sido resuelto en la literatura, se hace uso de una notación reconocida. Con este propósito se han creado «modelos» de talleres, los cuales difieren uno de otro por su composición y la organización de sus recursos \citep[p.~7]{TKindt2002}. Un problema de programación es descrito por una tripleta $\alpha\: |\: \beta\: |\: \gamma$. El campo $\alpha$ describe el entorno de la máquina y contiene únicamente un valor. El campo $\beta$ provee detalles de las características del procesamiento y restricciones, puede no tener valor alguno, un solo valor o múltiples valores. El campo $\gamma$ describe el objetivo a ser minimizado y frecuentemente contiene un solo valor \citep[p.~14]{Pinedo1995}.
+Al hacer frente a un problema de programación, se le debe identificar antes de buscar su solución. Aceptando que el problema es complicado y para saber si ya ha sido resuelto en la literatura, se hace uso de una notación reconocida. Con este propósito se han creado «modelos» de talleres, los cuales difieren uno de otro por su composición y la organización de sus recursos \citep[p.~7]{TKindt2002}. Un problema de programación es descrito por una tripleta $\alpha\: |\: \beta\: |\: \gamma$. El campo $\alpha$ describe el entorno de la máquina y contiene únicamente un registro. El campo $\beta$ provee detalles de las características del procesamiento y restricciones, puede no tener registro alguno, un solo registro o múltiples registros. El campo $\gamma$ describe el objetivo a ser minimizado y frecuentemente contiene un solo registro \citep[p.~14]{Pinedo1995}.
 
 Los posibles entornos de máquinas especificadas en el campo $\alpha$ se presentan a continuación agrupados de acuerdo al tipo de problema de programación que se busca resolver.
 
 \subsubsection{Problemas de programación sin asignación}
 
-En este tipo de problemas se busca encontrar un tiempo de inicio de procesamiento para cada operación. Distintos tipos de disposiciones son comúnmente encontrados \citep[p.~8]{TKindt2002}:
+En este tipo de problemas se busca encontrar un tiempo de inicio de procesamiento para cada operación. Distintos tipos de configuraciones son comúnmente encontradas \citep[p.~8]{TKindt2002}:
 
-\textbf{Máquina individual} ($1$) El caso de una máquina individual es el más simple de todos los entornos de máquina posibles y es un caso especial de todos los demás entornos de máquina más complicados. Concierne a un taller básico o uno en donde una máquina individual presenta un problema de programación real. Una área de aplicación directa se encuentra en la computación, si pensamos que la máquina individual es el procesador de un ordenador. Los trabajos a ser procesados son necesariamente de una operación \citep[p.~8, p.~14]{TKindt2002,Pinedo1995}.
+\textbf{Máquina singular} ($1$) El caso de una máquina singular es el más simple de todos los entornos de máquina posibles y es un caso especial de todos los demás entornos de máquina más complicados. Concierne a un taller de trabajo básico o uno en donde una máquina singular presenta un problema de programación real. Una área de aplicación directa se encuentra en la computación, si pensamos en la máquina singular como el procesador singular de un ordenador; los trabajos a ser procesados son necesariamente mono-operación \citep[p.~8, p.~14]{TKindt2002,Pinedo1995}.
+
+\textbf{Flowshop} ($Fm$) Existen $m$ máquinas disponibles en el taller de trabajo. Cada trabajo tiene que ser procesado en en cada una de las $m$ máquinas. Todos los trabajos tienen que seguir la misma ruta de procesamiento, estos, al ser completados en una máquina se unen a la cola para la siguiente máquina. Usualmente, todas las colas se presumen operantes bajo la dinámica  «primero en entrar, primero en salir» \textit{First In First Out; FIFO}, de manera tal, que un trabajo no puede adelantarse a otro mientras espera en la cola \citep[p.~8, p.~15]{TKindt2002,Pinedo1995}.
+
+\textbf{Job-shop} ($Jm$) En un taller de trabajo con $m$ máquinas cada trabajo tiene su propia ruta de procesamiento a seguir, esto es, el trabajo utiliza los recursos en un orden propio \citep[p.~8, p.~15]{TKindt2002,Pinedo1995}.
+
+\textbf{Open-shop} ($Om$) 
 
 \subsubsection{Problemas de programación y asignación con etapas}
 
@@ -795,6 +802,9 @@ subsection{Flexibilidad}
 \index{schedule|see{programa}}
 \index{sequence|see{secuencia}}
 \index{timetable|see{horario}}
+
+\appendix
+\includepdf[pages=-]{media/apendix_a.pdf}
 
 % Bibliography
 \bibliographystyle{apalike_modified}
