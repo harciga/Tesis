@@ -578,7 +578,9 @@ Los posibles entornos de máquinas especificadas en el campo $\alpha$ se present
 
 \subsubsection{Problemas de programación sin asignación}
 
-En este tipo de problemas se busca encontrar un tiempo de inicio de procesamiento para cada operación. Distintos tipos de configuraciones son comúnmente encontradas \citep[p.~8]{TKindt2002}:
+En este tipo de problemas se busca encontrar un tiempo de inicio de procesamiento para cada operación. Distintos tipos de configuraciones son comúnmente encontrados \citep[p.~8]{TKindt2002}:
+
+\paragraph{}
 
 \textbf{Máquina singular} ($1$) El caso de una máquina singular es el más simple de todos los entornos de máquina posibles y es un caso especial de todos los demás entornos de máquina más complicados. Concierne a un taller de trabajo básico o uno en donde una máquina singular presenta un problema de programación real. Una área de aplicación directa se encuentra en la computación, si pensamos en la máquina singular como el procesador singular de un ordenador; los trabajos a ser procesados son necesariamente mono-operación \citep[p.~8, p.~14]{TKindt2002,Pinedo1995}.
 
@@ -586,11 +588,19 @@ En este tipo de problemas se busca encontrar un tiempo de inicio de procesamient
 
 \textbf{Job-shop} ($Jm$) En un taller de trabajo con $m$ máquinas cada trabajo tiene su propia ruta de procesamiento a seguir, esto es, el trabajo utiliza los recursos en un orden propio \citep[p.~8, p.~15]{TKindt2002,Pinedo1995}.
 
-\textbf{Open-shop} ($Om$) 
+\textbf{Open-shop} ($Om$) Existen $m$ máquinas. Cada trabajo debe ser procesado en cada una de las máquinas $m$. Sin embargo, algunos de estos tiempos de procesamiento pueden ser instantáneos. No hay restricciones respecto a la construcción de la ruta de procesamiento que cada trabajo debe de seguir en el entorno de máquinas. La herramienta de programación está facultada para determinar la ruta de cada trabajo y distintos trabajos pueden tener distintas rutas, por lo tanto estos pueden usar las máquinas en cualquier orden \citep[p.~8, p.~15]{TKindt2002,Pinedo1995}.
+
+\textbf{Mixed shop} ($X$) Este entorno es una combinación de los anteriores, en donde existen múltiples máquinas disponibles en el taller y algunos de los trabajos pueden compartir la misma ruta de procesamiento \citep[p.~8]{TKindt2002}.
 
 \subsubsection{Problemas de programación y asignación con etapas}
 
-\textbf{Máquinas idénticas en paralelo} ($Pm$) Hay una cantidad idéntica de máquinas en paralelo. El trabajo $j$ requiere una operación individual y puede ser procesado por cualquiera de las máquinas $m$ o por cualquiera que pertenezca al subconjunto dado. Si el trabajo $j$ no puede ser procesado en cualquier máquina, sino únicamente en alguna perteneciente a un subconjunto $M_j$, entonces la entrada $M_j$ aparece en el campo $\beta$ \citep[p.~14]{Pinedo1995}.
+Las máquinas están agrupadas en etapas bien definidas y cada máquina pertenece a una etapa únicamente. En todos los casos, las máquinas de una etapa son capaces de desempeñar las mismas operaciones. Para llevar a término una operación es necesario elegir alguna de las máquinas disponibles, de manera tal, que el problema es dual: se persigue la asignación de una máquina para cada operación y la secuenciación de las operaciones en las máquinas.
+
+En cada etapa se puede presentar los siguientes tipos de configuraciones \citep[p.~8]{TKindt2002}:
+
+\paragraph{}
+
+\textbf{Máquinas idénticas en paralelo} ($Pm$) Hay una cantidad idéntica de máquinas en paralelo. El trabajo $j$ requiere una operación única y puede ser procesado por cualquiera de las máquinas $m$ o por cualquiera que pertenezca a un subconjunto dado, todas las operaciones tienen el mismo tiempo de procesamiento en todas las máquinas. Si el trabajo $j$ no puede ser procesado en cualquier máquina, sino únicamente en alguna perteneciente a un subconjunto $M_j$, entonces la entrada $M_j$ aparece en el campo $\beta$ \citep[p.~14, p.~8]{Pinedo1995,TKindt2002}.
 
 \textbf{Máquinas en paralelo con velocidades distintas} ($Qm$) Hay múltiples máquinas $m$ en paralelo de distintas velocidades. La velocidad de la máquina $i$ es denotada por $v_i$. El tiempo $p_{ij}$ que el trabajo $j$ utiliza en la máquina $i$ es igual a $p_j/v_j$ –asumiendo que el trabajo $j$ recibe todo su procesamiento de la máquina $i$–. Este entorno es referido como máquinas uniformes. Si todas las máquinas tienen la misma velocidad, esto es $v_i = 1$ para toda $i$ y $p_{ij} = p_j$, entonces el entorno es idéntico al anterior \citetext{p.~14}.
 
