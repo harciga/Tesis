@@ -38,8 +38,21 @@
 \usepackage{ulem}
 
 \setlength{\parindent}{0.25in}
+
+\let\olditemize\itemize
+\renewcommand{\itemize}{
+\olditemize
+\setlength{\itemsep}{0pt} 
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+\setlength{\topsep}{0pt}
+\setlength{\topmargin}{0pt}  
+}
+
 \renewenvironment{quotation}{\list{}{\leftmargin=0.25in}\item[]}{\endlist}
+
 \newcommand{\BigO}{\ensuremath{\mathcal{O}}}% big-O notation/symbol
+
 \addto\captionsspanish{
   \renewcommand\bibname{Referencias}
 }
@@ -580,8 +593,6 @@ Los posibles entornos de máquinas especificadas en el campo $\alpha$ se present
 
 En este tipo de problemas se busca encontrar un tiempo de inicio de procesamiento para cada operación. Distintos tipos de configuraciones son comúnmente encontrados \citep[p.~8]{TKindt2002}:
 
-\paragraph{}
-
 \textbf{Máquina singular} ($1$) El caso de una máquina singular es el más simple de todos los entornos de máquina posibles y es un caso especial de todos los demás entornos de máquina más complicados. Concierne a un taller de trabajo básico o uno en donde una máquina singular presenta un problema de programación real. Una área de aplicación directa se encuentra en la computación, si pensamos en la máquina singular como el procesador singular de un ordenador; los trabajos a ser procesados son necesariamente mono-operación \citep[p.~8, p.~14]{TKindt2002,Pinedo1995}.
 
 \textbf{Flowshop} ($Fm$) Existen $m$ máquinas disponibles en el taller de trabajo. Cada trabajo tiene que ser procesado en en cada una de las $m$ máquinas. Todos los trabajos tienen que seguir la misma ruta de procesamiento, estos, al ser completados en una máquina se unen a la cola para la siguiente máquina. Usualmente, todas las colas se presumen operantes bajo la dinámica  «primero en entrar, primero en salir» \textit{First In First Out; FIFO}, de manera tal, que un trabajo no puede adelantarse a otro mientras espera en la cola \citep[p.~8, p.~15]{TKindt2002,Pinedo1995}.
@@ -598,11 +609,23 @@ Las máquinas están agrupadas en etapas bien definidas y cada máquina pertenec
 
 En cada etapa se puede presentar los siguientes tipos de configuraciones \citep[p.~8]{TKindt2002}:
 
-\paragraph{}
-
 \textbf{Máquinas idénticas en paralelo} ($Pm$) Hay una cantidad idéntica de máquinas en paralelo. El trabajo $j$ requiere una operación única y puede ser procesado por cualquiera de las máquinas $m$ o por cualquiera que pertenezca a un subconjunto dado, todas las operaciones tienen el mismo tiempo de procesamiento en todas las máquinas. Si el trabajo $j$ no puede ser procesado en cualquier máquina, sino únicamente en alguna perteneciente a un subconjunto $M_j$, entonces la entrada $M_j$ aparece en el campo $\beta$ \citep[p.~14, p.~8]{Pinedo1995,TKindt2002}.
 
-\textbf{Máquinas en paralelo con velocidades distintas} ($Qm$) Hay múltiples máquinas $m$ en paralelo de distintas velocidades. La velocidad de la máquina $i$ es denotada por $v_i$. El tiempo $p_{ij}$ que el trabajo $j$ utiliza en la máquina $i$ es igual a $p_j/v_j$ –asumiendo que el trabajo $j$ recibe todo su procesamiento de la máquina $i$–. Este entorno es referido como máquinas uniformes. Si todas las máquinas tienen la misma velocidad, esto es $v_i = 1$ para toda $i$ y $p_{ij} = p_j$, entonces el entorno es idéntico al anterior \citetext{p.~14}.
+\textbf{Máquinas en paralelo con velocidades distintas} ($Qm$) Hay múltiples máquinas $m$ en paralelo con distintas velocidades.
+El tiempo de procesamiento de una operación $O_{ij}$ en la máquina $M_k$ es igual a $p_{ijk} = q_{ij}/v_k$ en donde $q_{ij}$ puede ser el número de componentes que deben ser procesados en la operación $O_{ij}$, y $v_k$ es el número de componentes que la máquina $M_k$ puede procesar por unidad de tiempo.
+
+Cuando todo el procesamiento del trabajo $j$ es llevado a cabo en la misma máquina $k$, el tiempo $p_{ijk}$ que las operaciones $i$ del trabajo $j$ utilizan de la máquina $k$ es igual a $p_{ij}/v_k$. Este entorno es referido como máquinas uniformes. Si todas las máquinas tienen la misma velocidad, esto es $v_k = 1$ para toda $jk$ y $p_{ijk} = p_{ij}$, entonces el entorno es idéntico al anterior \citetext[p.~14, p.~8]{Pinedo1995,TKindt2002}.
+
+\textbf{Máquinas no-relacionadas en paralelo} ($Rm$) Este entorno es una generación más extensa del entorno anterior. El tiempo de procesamiento de la operación $O_{ij}$ en la máquina $M_k$ es igual a $p_{ijk}$ y es un dato del problema. Por supuesto, así como la asignación de la operación $O_{ij}$ es desconocida, también lo es su tiempo de procesamiento \citep[p.~14, p.~9]{Pinedo1995,TKindt2002}.
+
+Universalmente, los problemas de programación y asignación «tradicionales» corresponden a las siguientes configuraciones:
+\begin{itemize} 
+\item\textbf{Máquinas paralelas} ($P/Q/R$) Existe una sola etapa y los trabajos son mono-operación.
+\item\textbf{Flowshop híbrido} ($HF$) Todos los trabajos tienen la misma ruta de producción, y por lo tanto hacen uso de las etapas en el mismo orden.
+\item\textbf{Job-shop general} ($GJ$) Cada trabajo tiene una ruta propia.
+\item\textbf{Open-shop general} ($GO$) Los trabajos no tienen una ruta fija.
+\end{itemize}
+Es muy sencillo generalizar estos problemas al suponer que cada operación puede hacer uso de un subconjunto de los recursos de la etapa correspondiente \citep[p.~9]{TKindt2002}.
 
 \subsubsection{Problemas generales de programación y asignación}
 
