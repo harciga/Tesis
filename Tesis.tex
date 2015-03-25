@@ -492,35 +492,6 @@ Durante las diferentes etapas de planificación distintos criterios pueden ser c
 \label{fig:criterios_evaluacion}
 \end{figure}
 
-\section{Algunas áreas de aplicación}
-\label{algunas_areas_aplicacion}
-
-Los problemas de programación se encuentran en todos los niveles y en todos los sectores de la actividad económica. Generalmente, se hace una distinción entre aquellos relacionados a la industria de la fabricación y aquellos relacionados a los sistemas de cómputo o administración de proyectos \citep[p.~6]{TKindt2002}.
-
-\subsection{Problemas relacionados a la producción} % (fold)
-\label{problemas_relacionados_produccion}
-
-Los problemas de programación se encuentran en los sistemas de manufactura flexible (\textit{FMS; Flexible Manufacturing System}). Numerosas definiciones de un \textit{FMS} existen en la literatura. Para \citet{liu1996classification}, «un FMS comprende tres elementos principales: herramientas de maquinaria controladas por computadora; un sistema de transporte automatizado y un sistema de control por computadora» (como está citado en \citealp[p.~6]{TKindt2002})  Estos problemas son tratados en la literatura y seguido en una bien definida clase de aplicación. Además, este amplio problema abarca otros problemas relacionados con la \textbf{Programación de Celdas Robotizadas} y la \textbf{Programación de Vehículos Guiados Automatizados}.
-
-Igualmente, la \textbf{electrodeposición} y los \textbf{talleres químicos} tienen sus propias peculiaridades en los problemas de programación. El último también es conocido como Problemas de Programación de Grúas. Estos talleres se caracterizan por la presencia de una o más grúas compartiendo el mismo espacio físico y donde deben transportar productos para tratamientos en tanques. Por lo general, el tiempo de submersión en un tanque está limitado por un mínimo y un máximo –el intervalo del tiempo de procesamiento–, el tiempo de transporte no es despreciable y las operaciones deben ser llevadas a cabo sin tiempos de espera. Estos problemas son muy comunes en la industra y los casos simples –mono-robot, tanques de una pasada, etc.– ya tienen planteadas buenas soluciones \citep[p.~6,~7]{TKindt2002}.
-
-Los problemas de programación en las \textbf{líneas de producción automotrices}, también conocidos como «Problemas de Secuenciación Automotriz» (\textit{Car Sequencing Problems}), se encuentran en los talleres de ensamblado donde cierto equipamiento u opciones deben ser incorporados a distintos modelos de vehículo. Estos problemas tienen restricciones y peculiaridades particulares. Teniendo conocimiento de una secuencia de vehículos en curso de tratamiento, el problema es determinar el tipo adecuado de vehículo siguiente. Es necesario tomar en consideración el grupo de restricciones enlazadas principalmente a las opciones de emsamblado para estos vehículos y al limitado rango de movimiento de las herramientas dispuestas a lo largo de la línea de producción \citep[p.~7]{TKindt2002}.
-
-\subsection{Otros problemas}
-\label{otros_problemas}
-
-\citet[p.~7]{TKindt2002} continúan, afirmando que se encuentran problemas de programación en los \textbf{sistemas computacionales}. Estos problemas son estudiados de distintas maneras al discriminarlos por sistemas mono o multi procesador, con las restricciones de sincronización de operaciones y compartición de recursos. En estos problemas, ciertas operaciones son periódicas y otras no, algunas están sujetas a fechas de cierre, otras a fechas límite. El objetivo es encontrar una solución factible, es decir, una solución que satisfaga las restricciones. Estos problemas abundan en la literatura. De hecho, a pesar de las apariencias son bastante cercanos a los problemas encontrados en los sistemas de producción.
-
-Los \textbf{problemas de programación de horarios escolares} conciernen a todas las instituciones educativas o universidades, dado que involucran la calendarización de cursos asegurando la disponibilidad de profesores, estudiantes y aulas. Estos problemas son ampliamente estudiados \citep[p.~7]{TKindt2002}.
-
-Los \textbf{problemas de programación de proyectos} comprenden una vasta literatura. El interés general se concentra en la programación de operaciones que hacen uso de multiples recursos simultáneamente (dinero, personal, equipo, materiales, etc), estos recursos estando disponibles en cantidades conocidas. En palabras precisas son problemas de programación multi-recurso haciendo uso de recursos acumulativos no-renovables \citep[p.~7]{TKindt2002}.
-
-\section{Modelos de programación}
-
-Uno de los problemas básicos complejos de programación es el llamado problema de programación de proyecto limitado por recursos (\textit{resource-onstrained project scheduling problem; RCPSP}). El \textit{RCPSP} es un problema general de programación que puede ser utilizado para modelar múltiples aplicaciones en la práctica, como puede ser: un proceso de producción, un proyecto de desarrollo de software, un horario escolar, la construcción de una vivienda, o la renovación de un aeropuerto. El objetivo es la programación de algunas actividades en un periodo de manera tal que las capacidades de recursos limitados sean respetadas y se optime alguna determinada función objetivo.
-
-INCOMPLETO
-
 \section{Tipología y notación de problemas}
 
 En el tema de los problemas de programación se hace una distinción entre su tipología y su notación. Una tipología es una clasificación de los problemas de acuerdo a su naturaleza. En la programación usualmente está basada en el contexto de las máquinas y en las particularidades de los trabajos. Una notación nos permite referirnos rápidamente a un problema, siendo así que es posible construir una base de datos del conjunto de problemas vistos en la literatura \citep[p.~14]{TKindt2002}.
@@ -629,11 +600,33 @@ Es muy sencillo generalizar estos problemas al suponer que cada operación puede
 
 \subsubsection{Problemas generales de programación y asignación}
 
-Este es el caso más general en donde se supone que cada operación tiene su propio conjunto de máquinas en las cuales pueden ser procesadas. No existe asunción acerca de este conjunto de recursos. Se pueden diferenciar distintos casos:
+Este es el caso más general en donde se supone que cada operación tiene su propio conjunto de máquinas en las cuales pueden ser procesadas. No existe asunción acerca de este conjunto de recursos. Se pueden diferenciar distintos casos \citep[p.~9]{TKindt2002}:
 
-Los trabajos son mono-operación, y están confrontados por un problema de \textbf{máquinas paralelas con asignación general}. Estos problemas aparecen en la literatura bajo el nombre de «Problemas de Programación de Máquinas Multi Propósito» (\textit{Multi Purpose Machine Scheduling Problems}) (P/Q/R MPM SP) \citep[p.~9]{TKindt2002}.
+\begin{itemize}
+\item Los trabajos son mono-operación, y están confrontados por un problema de \textbf{máquinas paralelas con asignación general}. Estos problemas aparecen en la literatura bajo el nombre de «Problemas de Programación de Máquinas Multi Propósito» (\textit{Multi Purpose Machine Scheduling Problems}) (\textit{P/Q/R MPM SP}) \citep[p.~9]{TKindt2002}.
 
-INCOMPLETO
+\item Los trabajos siguen un orden de procesamiento. Es difícil en este caso hace una distinción entre \textit{flowshop} y \textit{job-shop} puesto que los grupos de máquinas utilizados por estos trabajos no son comparables. A esto se le conoce como \textbf{talleres con problemas generales de asignación} (\textit{shops with general assignment problems}) (\textit{"General Shop MPM SP"})
+
+\item Los trabajos no siguen una ruta de procesamiento fija. Este es el caso de los \textbf{talleres-abiertos con problemas generales de asignación} («\textit{Open-shop MPM SP}»)
+
+\end{itemize}
+
+\begin{table}
+\centering
+\begin{tabular}{llc}
+\toprule
+  \multicolumn{c}{Valor} & \multicolumn{c}{Significado} \\
+  \midrule
+  $0$ & Máquina singular \\
+  $P,Q,R$ & Máquinas paralelas idénticas
+  Peso & \textit{Weight} & $w_j$ \\
+  \bottomrule
+\end{tabular}
+  \caption{El campo $\alpha$}
+  \label{tab:notation_alpha}
+\end{table}
+
+
 
 \section{Teoría de la complejidad computacional} % (fold)
 \label{teoria_complejidad_computacional}
@@ -645,6 +638,35 @@ Por ejemplo, se hace uso de un algoritmo en particular para resolver un problema
 Por ejemplo, si la función tiene una orden de magnitud $\textit{n}^2$, denotada por $\BigO(\textit{n}^2)$ entonces el algoritmo es polinomial. Por otra parte, si la función es $\BigO(2^\textit{n})$, entonces el algoritmo es no-polinomial (en este caso sería exponencial). Siendo todo lo demás igual, son preferibles los algoritmos polinomiales puesto que conforme \textit{n} se agranda, estos son ultimadamente más rápidos.
 
 INCOMPLETO
+
+\section{Modelos de programación}
+
+Uno de los problemas básicos complejos de programación es el llamado problema de programación de proyecto limitado por recursos (\textit{resource-onstrained project scheduling problem; RCPSP}). El \textit{RCPSP} es un problema general de programación que puede ser utilizado para modelar múltiples aplicaciones en la práctica, como puede ser: un proceso de producción, un proyecto de desarrollo de software, un horario escolar, la construcción de una vivienda, o la renovación de un aeropuerto. El objetivo es la programación de algunas actividades en un periodo de manera tal que las capacidades de recursos limitados sean respetadas y se optime alguna determinada función objetivo.
+
+INCOMPLETO
+
+\section{Algunas áreas de aplicación}
+\label{algunas_areas_aplicacion}
+
+Los problemas de programación se encuentran en todos los niveles y en todos los sectores de la actividad económica. Generalmente, se hace una distinción entre aquellos relacionados a la industria de la fabricación y aquellos relacionados a los sistemas de cómputo o administración de proyectos \citep[p.~6]{TKindt2002}.
+
+\subsection{Problemas relacionados a la producción} % (fold)
+\label{problemas_relacionados_produccion}
+
+Los problemas de programación se encuentran en los sistemas de manufactura flexible (\textit{FMS; Flexible Manufacturing System}). Numerosas definiciones de un \textit{FMS} existen en la literatura. Para \citet{liu1996classification}, «un FMS comprende tres elementos principales: herramientas de maquinaria controladas por computadora; un sistema de transporte automatizado y un sistema de control por computadora» (como está citado en \citealp[p.~6]{TKindt2002})  Estos problemas son tratados en la literatura y seguido en una bien definida clase de aplicación. Además, este amplio problema abarca otros problemas relacionados con la \textbf{Programación de Celdas Robotizadas} y la \textbf{Programación de Vehículos Guiados Automatizados}.
+
+Igualmente, la \textbf{electrodeposición} y los \textbf{talleres químicos} tienen sus propias peculiaridades en los problemas de programación. El último también es conocido como Problemas de Programación de Grúas. Estos talleres se caracterizan por la presencia de una o más grúas compartiendo el mismo espacio físico y donde deben transportar productos para tratamientos en tanques. Por lo general, el tiempo de submersión en un tanque está limitado por un mínimo y un máximo –el intervalo del tiempo de procesamiento–, el tiempo de transporte no es despreciable y las operaciones deben ser llevadas a cabo sin tiempos de espera. Estos problemas son muy comunes en la industra y los casos simples –mono-robot, tanques de una pasada, etc.– ya tienen planteadas buenas soluciones \citep[p.~6,~7]{TKindt2002}.
+
+Los problemas de programación en las \textbf{líneas de producción automotrices}, también conocidos como «Problemas de Secuenciación Automotriz» (\textit{Car Sequencing Problems}), se encuentran en los talleres de ensamblado donde cierto equipamiento u opciones deben ser incorporados a distintos modelos de vehículo. Estos problemas tienen restricciones y peculiaridades particulares. Teniendo conocimiento de una secuencia de vehículos en curso de tratamiento, el problema es determinar el tipo adecuado de vehículo siguiente. Es necesario tomar en consideración el grupo de restricciones enlazadas principalmente a las opciones de emsamblado para estos vehículos y al limitado rango de movimiento de las herramientas dispuestas a lo largo de la línea de producción \citep[p.~7]{TKindt2002}.
+
+\subsection{Otros problemas}
+\label{otros_problemas}
+
+\citet[p.~7]{TKindt2002} continúan, afirmando que se encuentran problemas de programación en los \textbf{sistemas computacionales}. Estos problemas son estudiados de distintas maneras al discriminarlos por sistemas mono o multi procesador, con las restricciones de sincronización de operaciones y compartición de recursos. En estos problemas, ciertas operaciones son periódicas y otras no, algunas están sujetas a fechas de cierre, otras a fechas límite. El objetivo es encontrar una solución factible, es decir, una solución que satisfaga las restricciones. Estos problemas abundan en la literatura. De hecho, a pesar de las apariencias son bastante cercanos a los problemas encontrados en los sistemas de producción.
+
+Los \textbf{problemas de programación de horarios escolares} conciernen a todas las instituciones educativas o universidades, dado que involucran la calendarización de cursos asegurando la disponibilidad de profesores, estudiantes y aulas. Estos problemas son ampliamente estudiados \citep[p.~7]{TKindt2002}.
+
+Los \textbf{problemas de programación de proyectos} comprenden una vasta literatura. El interés general se concentra en la programación de operaciones que hacen uso de multiples recursos simultáneamente (dinero, personal, equipo, materiales, etc), estos recursos estando disponibles en cantidades conocidas. En palabras precisas son problemas de programación multi-recurso haciendo uso de recursos acumulativos no-renovables \citep[p.~7]{TKindt2002}.
 
 \section{Síntesis de los problemas de programación}
 \label{sintesis_problemas_programacion}
