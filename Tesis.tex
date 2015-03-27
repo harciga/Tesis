@@ -558,6 +558,8 @@ Una síntesis completa de la notación es proporcionada en el apéndice A. Los s
 
 Al hacer frente a un problema de programación, se le debe identificar antes de buscar su solución. Aceptando que el problema es complicado y para saber si ya ha sido resuelto en la literatura, se hace uso de una notación reconocida. Con este propósito se han creado «modelos» de talleres, los cuales difieren uno de otro por su composición y la organización de sus recursos \citep[p.~7]{TKindt2002}. Un problema de programación es descrito por una tripleta $\alpha\: |\: \beta\: |\: \gamma$. El campo $\alpha$ describe el entorno de la máquina y contiene únicamente un registro. El campo $\beta$ provee detalles de las características del procesamiento y restricciones, puede no tener registro alguno, un solo registro o múltiples registros. El campo $\gamma$ describe el objetivo a ser minimizado y frecuentemente contiene un solo registro \citep[p.~14]{Pinedo1995}.
 
+\subsubsection{Campo $\alpha$ - entornos}
+
 Los posibles entornos de máquinas especificadas en el campo $\alpha$ se presentan a continuación agrupados de acuerdo al tipo de problema de programación que se busca resolver.
 
 \subsubsection{Problemas de programación sin asignación}
@@ -585,7 +587,7 @@ En cada etapa se puede presentar los siguientes tipos de configuraciones \citep[
 \textbf{Máquinas en paralelo con velocidades distintas} ($Qm$) Hay múltiples máquinas $m$ en paralelo con distintas velocidades.
 El tiempo de procesamiento de una operación $O_{ij}$ en la máquina $M_k$ es igual a $p_{ijk} = q_{ij}/v_k$ en donde $q_{ij}$ puede ser el número de componentes que deben ser procesados en la operación $O_{ij}$, y $v_k$ es el número de componentes que la máquina $M_k$ puede procesar por unidad de tiempo.
 
-Cuando todo el procesamiento del trabajo $j$ es llevado a cabo en la misma máquina $k$, el tiempo $p_{ijk}$ que las operaciones $i$ del trabajo $j$ utilizan de la máquina $k$ es igual a $p_{ij}/v_k$. Este entorno es referido como máquinas uniformes. Si todas las máquinas tienen la misma velocidad, esto es $v_k = 1$ para toda $jk$ y $p_{ijk} = p_{ij}$, entonces el entorno es idéntico al anterior \citetext[p.~14, p.~8]{Pinedo1995,TKindt2002}.
+Cuando todo el procesamiento del trabajo $j$ es llevado a cabo en la misma máquina $k$, el tiempo $p_{ijk}$ que las operaciones $i$ del trabajo $j$ utilizan de la máquina $k$ es igual a $p_{ij}/v_k$. Este entorno es referido como máquinas uniformes. Si todas las máquinas tienen la misma velocidad, esto es $v_k = 1$ para toda $jk$ y $p_{ijk} = p_{ij}$, entonces el entorno es idéntico al anterior \citep[p.~14, p.~8]{Pinedo1995,TKindt2002}.
 
 \textbf{Máquinas no-relacionadas en paralelo} ($Rm$) Este entorno es una generación más extensa del entorno anterior. El tiempo de procesamiento de la operación $O_{ij}$ en la máquina $M_k$ es igual a $p_{ijk}$ y es un dato del problema. Por supuesto, así como la asignación de la operación $O_{ij}$ es desconocida, también lo es su tiempo de procesamiento \citep[p.~14, p.~9]{Pinedo1995,TKindt2002}.
 
@@ -613,20 +615,45 @@ Este es el caso más general en donde se supone que cada operación tiene su pro
 
 \begin{table}
 \centering
-\begin{tabular}{llc}
+\begin{tabular}{l p{10cm}}
 \toprule
-  \multicolumn{c}{Valor} & \multicolumn{c}{Significado} \\
+  \multicolumn{1}{c}{Valor} & \multicolumn{1}{c}{Significado} \\
   \midrule
   $0$ & Máquina singular \\
-  $P,Q,R$ & Máquinas paralelas idénticas
-  Peso & \textit{Weight} & $w_j$ \\
+  $P,Q,R$ & Máquinas paralelas idénticas, proporcionales o ajenas \\
+  $F,J,O,X$ & Flowshop, job-shop, open-shop, mixed-shop. \\
+  $HF$ & Flowshop híbrido \\
+  $GO$ & Open-shop general \\
+  $GJ$ & Job-shop general \\
+  $\{P,Q,R\}MPM$ & Máquinas paralelas (del tipo P, Q o R) con un problema general de asignación \\
+  $G M P M$ & Shop con un problema general de asignación \\
+  $O M P M$ & Open-shop con un problema general de asignación \\
   \bottomrule
 \end{tabular}
   \caption{El campo $\alpha$}
   \label{tab:notation_alpha}
 \end{table}
 
+\subsubsection{Campo $\beta$ - Restricciones}
 
+Una solución de un problema de programación debe siempre satisfacer un cierto número de restricciones, ya sean explícitas o implícitas. En un problema \textit{flowshop} está implícito que los trabajos deben ser procesados de acuerdo a una ruta definida y por consiguiente, una operación no puede comenzar mientras su precedente permanezca incompleta. 
+Por otra parte, la ocurrencia de los distintas fechas de liberación constituye una restricción que debe ser establecida precisamente. En esta sección se describen las restricciones explícitas más comúnmente encontradas en la programación. Un resumen más completo se presenta en el apéndice A \citep[p.~9-10]{TKindt2002}. 
+
+Hay distintos tipos de restricciones relacionadas a las \textbf{fechas de cierre}. Están las fechas de cierre que no deseamos rebasar, aun cuando se tolera su compleción después de tiempo. Ellas corresponden a un acuerdo comprometido que es negociable. Están aquellas fechas de cierre que son imperativas, también llamadas fechas límite, y que no pueden ser rebasadas. Típicamente, corresponden a una fecha de inauguración donde el fabricamente debe presentar su producto, o incluso puede ser la fecha de salida de un camión de carga. Estas fechas no puede ser rebasadas, por consiguiente ningún retraso puede ser permitido. Los problemas en dónde se encuentran estas restricciones generalmente son problemas de toma de decisión: estás fechas pueden o no pueden ser logradas. Cuando es posible alcanzarlas, se está satisfecho con la solución factible o adicionalmente se busca intentar minimizar algún otro criterio \citep[p.~10]{TKindt2002}.
+
+Las restricciones relacionadas a los \textbf{tiempos de inicio} son igualmente variadas. Por supuesto, está la fecha de liberación del producto. En ocasiones corresponde con la fecha de la orden. Igualmente, se puede encontrar una fecha de liberación asociada con una operación específica de un trabajo. Esta fecha puede corresponder a la llegada de suministros para la operación. Finalmente, puede suceder que el tiempo de inicio de una operación en particular sea impuesto. En este caso, es cuestión de reunirse con el cliente para que atestigüe la implementación de la operación que él considera crítica en el proceso de manufactura. Estas dos últimas definiciones corresponden a problemas raramente encontrados en la literatura \citep[p.~10]{TKindt2002}.
+
+Algunas de las restricciones comúnmente encontradas en la literatura son las siguientes:
+
+\begin{itemize}
+  \item \textbf{Fechas de liberación} ($r_j$) Si este símbolo aparece en el campo $\beta$, entonces el trabajo $j$ no puede comenzar su procesamiento antes de su fecha de liberación $r_j$. Si $r_j$ no aparece en el campo $\beta$, el procesamiento del trabajo $j$ puede comenzar en cualquier momento. En comparación con las fechas de liberación, las fechas de cierre no se especifican en este campo. El tipo de función objetivo da suficiente indicación respecto a si hay o no fechas de cierre \citep[p.~16]{Pinedo1995}.
+  \item \textbf{Prevenciones} ($prmp$) Las prevenciones implican que no es necesario mantener un trabajo en una máquina, una vez que ha comenzado, hasta su compleción. Es decir, es posible prever la interrupción de una operación de manera que sea posible hacer uso de la máquina para la compleción de algún otro trabajo. La cantidad de procesamiento alcanzado al momento de la interrupción no se pierde al poner de vuelta al trabajo –o al transferirlo a otra máquina en caso de tratarse de máquinas paralelas–, únicamente hace uso de la máquina por el tiempo faltante de su compleción \citep[p.~16, p.~10]{Pinedo1995,TKindt2002}.
+  \item \textbf{split}
+  \item \textbf{prec}
+  \item \textbf{batch}
+  \item \textbf{no-wait}
+  \item \textbf{prmu}
+\end{itemize}
 
 \section{Teoría de la complejidad computacional} % (fold)
 \label{teoria_complejidad_computacional}
