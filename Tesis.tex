@@ -568,7 +568,7 @@ En este tipo de problemas se busca encontrar un tiempo de inicio de procesamient
 
 \textbf{Máquina singular} ($1$) El caso de una máquina singular es el más simple de todos los entornos de máquina posibles y es un caso especial de todos los demás entornos de máquina más complicados. Concierne a un taller de trabajo básico o uno en donde una máquina singular presenta un problema de programación real. Una área de aplicación directa se encuentra en la computación, si pensamos en la máquina singular como el procesador singular de un ordenador; los trabajos a ser procesados son necesariamente mono-operación \citep[p.~8, p.~14]{TKindt2002,Pinedo1995}.
 
-\textbf{Flowshop} ($Fm$) Existen $m$ máquinas disponibles en el taller de trabajo. Cada trabajo tiene que ser procesado en en cada una de las $m$ máquinas. Todos los trabajos tienen que seguir la misma ruta de procesamiento, estos, al ser completados en una máquina se unen a la cola para la siguiente máquina. Usualmente, todas las colas se presumen operantes bajo la dinámica  «primero en entrar, primero en salir» \textit{First In First Out; FIFO}, de manera tal, que un trabajo no puede adelantarse a otro mientras espera en la cola \citep[p.~8, p.~15]{TKindt2002,Pinedo1995}.
+\textbf{Flowshop} ($Fm$) Existen $m$ máquinas disponibles en el taller de trabajo. Cada trabajo tiene que ser procesado en en cada una de las $m$ máquinas. Todos los trabajos tienen que seguir la misma ruta de procesamiento, estos, al ser completados en una máquina se unen a la cola para la siguiente máquina. Usualmente, todas las colas se presumen operantes bajo la dinámica  «primero en entrar, primero en salir» (\textit{First In First Out; FIFO}), de manera tal, que un trabajo no puede adelantarse a otro mientras espera en la cola \citep[p.~8, p.~15]{TKindt2002,Pinedo1995}.
 
 \textbf{Job-shop} ($Jm$) En un taller de trabajo con $m$ máquinas cada trabajo tiene su propia ruta de procesamiento a seguir, esto es, el trabajo utiliza los recursos en un orden propio \citep[p.~8, p.~15]{TKindt2002,Pinedo1995}.
 
@@ -648,17 +648,21 @@ Algunas de las restricciones comúnmente encontradas en la literatura son las si
 \begin{itemize}
   \item \textbf{Fechas de liberación} ($r_j$) Si este símbolo aparece en el campo $\beta$, entonces el trabajo $j$ no puede comenzar su procesamiento antes de su fecha de liberación $r_j$. Si $r_j$ no aparece en el campo $\beta$, el procesamiento del trabajo $j$ puede comenzar en cualquier momento. En comparación con las fechas de liberación, las fechas de cierre no se especifican en este campo. El tipo de función objetivo da suficiente indicación respecto a si hay o no fechas de cierre \citep[p.~16]{Pinedo1995}.
   \item \textbf{Prevenciones} ($prmp$) Las prevenciones implican que no es necesario mantener un trabajo en una máquina, una vez que ha comenzado, hasta su compleción. Es decir, es posible prever la interrupción de una operación de manera que sea posible hacer uso de la máquina para la compleción de algún otro trabajo. La cantidad de procesamiento alcanzado al momento de la interrupción no se pierde al poner de vuelta al trabajo –o al transferirlo a otra máquina en caso de tratarse de máquinas paralelas–, únicamente hace uso de la máquina por el tiempo faltante de su compleción \citep[p.~16, p.~10]{Pinedo1995,TKindt2002}.
-  \item \textbf{split}
-  \item \textbf{prec}
-  \item \textbf{batch}
-  \item \textbf{no-wait}
-  \item \textbf{prmu}
+  \item \textbf{División} ($split$) Indica que la división está permitida, haciendo posible que una operación se descomponga en múltiples porciones, las cuales pueden ser ejecutadas en una o más máquinas, posiblemente de manera concurrente \citep[p.~10]{TKindt2002}.
+  \item \textbf{Restricciones de precedencia} ($prec$) Las restricciones de precedencia pueden aparecer en un entorno de máquina singular o de máquinas paralelas, requiriendo que uno o más trabajos sean completados antes de que otro trabajo pueda comenzar su procesamiento \citep[p.~16]{Pinedo1995}.
+  \item \textbf{Procesamiento por lotes} ($batch$) Una máquina puede ser capaz de procesar una cantidad de trabajos de manera simultánea, es decir, puede procesar un lote de trabajos al mismo tiempo. Los tiempos de procesamiento de los trabajos en el lote pueden ser de duración variada y el lote alcanza su compleción hasta que el último trabajo del lote ha sido completado, teniendo como entendido que el tiempo de compleción del lote de trabajos está determinado por el trabajo con el tiempo de procesamiento más prologando \citep[p.~16]{Pinedo1995}.
+  \item \textbf{Sin-detenimientos} ($no-wait$) Indica que las operaciones que constituyen a cada trabajo siguen unas a otras sin alguna espera \citep[p.~11]{TKindt2002}.
+  \item \textbf{Permutación} ($prmu$) Una restricción que puede aparecer en los entornos \textit{flowshow} es que las filas delante de cada máquina operan de acuerdo a las normas «primero en entrar, primero en salir» (\textit{First In First Out; FIFO}). Esto implica que el órden (permutación) en que los trabajos atraviesan la primera máquina se mantienen durante todo el sistema \citep[p.~17]{Pinedo1995}.
 \end{itemize}
+
+\subsubsection{Campo $\gamma$ - Criterio de optimalidad}
+
+
 
 \section{Teoría de la complejidad computacional} % (fold)
 \label{teoria_complejidad_computacional}
 
-Una perspectiva útil en cuanto a la relación de los problemas de programación y sus técnicas de solución viene de los avances de una rama de la ciencia computacional conocida como \textbf{teoría de la complejidad computacional}. La noción de la complejidad se refiere al esfuerzo computacional requerido por un algoritmo de solución. El esfuerzo de computación es descrito con una notación de orden de magnitud.
+De acuerdo a \cite[p.~6]{Baker2009}, una perspectiva útil en cuanto a la relación de los problemas de programación y sus técnicas de solución viene de los avances de una rama de la ciencia computacional conocida como \textbf{teoría de la complejidad computacional}. La noción de la complejidad se refiere al esfuerzo computacional requerido por un algoritmo de solución. El esfuerzo de computación es descrito con una notación de orden de magnitud.
 %
 Por ejemplo, se hace uso de un algoritmo en particular para resolver un problema de tamaño \textit{n}. (Técnicamente, \textit{n} denota la cantidad de información necesaria para especificar el problema.) El número de computaciones requeridas por el algoritmo típicamente está vinculado desde encima por una función de \textit{n}. Si la orden de magnitud de esta función es polinomial conforme \textit{n} se agranda, entonces se dice que el algoritmo es polinomial.
 %
