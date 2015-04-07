@@ -657,7 +657,19 @@ Algunas de las restricciones comúnmente encontradas en la literatura son las si
 
 \subsubsection{Campo $\gamma$ - Criterio de optimalidad}
 
+Con el fin de evaluar un programa se puede hacer uso de un cierto número de criterios. Ocasionalmente se puede querer que un criterio se acerque lo más posible a un valor de referencia dado. Aquí se está en la frontera entre las nociones de criterios y restricciones. Si una restricción representa un hecho que en definitiva debe de ser respetado, la optimación de un criterio permite más bien cierto grado de libertad. Como ejemplo, la declaración de que ningún trabajo debe completarse tarde de acuerdo a su fecha de cierre no deja margen alguno en la construcción del programa; incluso puede ser que no exista un programa factible en tal situación. Por otra parte, la minimización del número de trabajos tardíos permite garantizar que siempre habrá una solución, aun cuando para lograr esto ciertos trabajos puedan ser tardíos. Desde un punto de vista práctico, la diferencia entre un criterio y una restricción es únicamente aparente para quien está facultado en la toma de decisiones \citep[p.~12]{TKindt2002}.
 
+\citet[p.~12,~13]{TKindt2002} prosigue explicando que ciertos criterios son equivalentes y es por eso que se presentan conjuntamente: la minimización de uno u otro conlleva a la misma solución óptima aun si el valor del criterio no es el mismo en ambos casos. Algunos problemas de programación carecen de criterios a ser minimizados. En este caso se trata de un problema de factibilidad, también llamado un problema de decisión: ¿existe una solución que satisfaga las restricciones existentes?
+
+Los criterios se pueden clasificar en dos grandes familias: los criterios «minimax», los cuales representan el valor máximo de un conjunto de funciones a ser minimizadas, y los criterios «minisum», quienes representan una suma de funciones a ser minimizadas \citep[p.~13]{TKindt2002}.
+
+\subsubsection[Criterio «minimax»]{Minimización de una función máxima: criterio «minimax»}
+
+El objetivo a minimizar siempre es una función de los tiempos de compleción de los trabajos, los cuales, por supuesto, dependen del programa. 
+%
+El criterio clásico es sin duda alguna el que mide el tiempo de compleción de todos los trabajos. Este criterio se denota por $C_{max}$ y se llama 
+
+El tiempo de compleción de la operación del trabajo $j$ en la máquina $i$ se denota por $C_{ij}$. 
 
 \section{Teoría de la complejidad computacional} % (fold)
 \label{teoria_complejidad_computacional}
