@@ -1,0 +1,5 @@
+*
+!*.tex
+!media/
+!media/*.pdf
+!media/*.png
