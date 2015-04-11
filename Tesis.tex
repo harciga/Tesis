@@ -21,6 +21,7 @@
 
 \usepackage{natbib}
 \usepackage{amsmath,amssymb, bm}
+\usepackage{esint}
 \usepackage{enumerate}
 \usepackage{ragged2e}
 \usepackage{nameref}
@@ -185,7 +186,7 @@ El capítulo comprende 3 secciones. La sección \ref{programacion_elementos} int
 \section{La programación y sus elementos} % (fold)
 \label{programacion_elementos}
 
-Para \citet{Baker2009}, la palabra programación\index{programación} forma parte del vocabulario diario —aunque no siempre se tenga una idea clara de su significado–. En realidad, no es la programación en sí lo que es un concepto común de la vida cotidiana, son más bien los programas\index{programa}. Un \textbf{programa} es un plan o documento tangible, tal como el programa de salidas de un autobús o un programa de clases. Éste señala cuándo debe suceder algún evento\index{evento}; especifica un plan para el tiempo de ocurrencia de ciertas actividades\index{actividad} y contesta la pregunta: «Si todo va bien, ¿cuándo ocurrirá un evento determinado?».
+Para \citet{Baker2009}, la palabra programación\index{programación} forma parte del vocabulario diario –aunque no siempre se tenga una idea clara de su significado–. En realidad, no es la programación en sí lo que es un concepto común de la vida cotidiana, son más bien los programas\index{programa}. Un \textbf{programa} es un plan o documento tangible, tal como el programa de salidas de un autobús o un programa de clases. Éste señala cuándo debe suceder algún evento\index{evento}; especifica un plan para el tiempo de ocurrencia de ciertas actividades\index{actividad} y contesta la pregunta: «Si todo va bien, ¿cuándo ocurrirá un evento determinado?».
 %
 Si se desea conocer la hora en que será servida la cena o el momento en que un autobús saldrá a su destino, el evento\index{evento} de interés es la compleción de una actividad\index{actividad} particular —como lo es la preparación de la cena— o el comienzo de una actividad específica —como el viaje en autobús—. Las respuestas a la pregunta «¿cuándo?» usualmente están relacionadas con información de tiempos\index{tiempo}. La cena está programada para ser servida a las 18:00, el autobús está programado para salir a las 8:00. Sin embargo, una respuesta igualmente útil puede ser dada en términos de secuencia\index{secuencia} en lugar de tiempo: es decir, la cena será servida tan pronto como el platillo principal esté horneado, o el autobús partirá a su destino en cuanto su limpieza y mantenimiento sean completados. Por lo tanto, la pregunta «¿cuándo?» puede ser contestada ya sea con información de secuencia o de tiempos obtenida a partir de un programa \citetext{p.~1}.
 
@@ -665,11 +666,33 @@ Los criterios se pueden clasificar en dos grandes familias: los criterios «mini
 
 \subsubsection[Criterio «minimax»]{Minimización de una función máxima: criterio «minimax»}
 
-El objetivo a minimizar siempre es una función de los tiempos de compleción de los trabajos, los cuales, por supuesto, dependen del programa. 
+\citet[p.~18]{Pinedo1995} explica que el objetivo a minimizar casi siempre es una función de los tiempos de compleción de los trabajos, los cuales, por supuesto, dependen del programa. 
+El tiempo de compleción de la operación del trabajo $j$ en la máquina $i$ se denota por $C_{ij}$. El tiempo de salida del sistema del trabajo $j$ –su tiempo de compleción en la última máquina que utilizó para su procesamiento– se denota con $C_j$.
 %
-El criterio clásico es sin duda alguna el que mide el tiempo de compleción de todos los trabajos. Este criterio se denota por $C_{max}$ y se llama 
+El retraso (\textit{lateness}) de un trabajo $j$ se define como \begin{equation*}
+ L_j = C_j - d_j,
+ \end{equation}
+%
+Sin duda alguna, el criterio clásico es el que mide el tiempo de compleción de todos los trabajos. Este criterio se denota por $C_{max}$ y es conocido como «makespan». Se define a $C_{max} = \underset{i=1,\ldots,n}{\max}(C_i)$, siendo $C_i$ el tiempo de compleción del trabajo $J_i$. Para simplificar la notación, se escribe «$\max$» en lugar de «$\underset{i=1,\ldots,n}{\max}$» cuando no existe ambigüedad posible. $C_{max}$ es la duración total del programa \citep[p.~13]{TKindt2002}.
 
-El tiempo de compleción de la operación del trabajo $j$ en la máquina $i$ se denota por $C_{ij}$. 
+Existen otros criterios basados únicamente en el tiempo de compleción de los trabajos, como:
+
+\begin{itemize}
+\item$F_{\max} = \max(F_i)$ siendo $F_i = C_i - r_i$: el tiempo máximo utilizado en el taller, o incluso aún, la duración del descanso, con $r_i$ siendo la fecha de liberación del trabajo $J_i$.
+\item$I_{\max} = \max(I_k)$: siendo $I_k$ la suma de los tiempos muertos en el recurso $M_k$.
+\end{itemize}
+
+De igual manera, se encuentran en la literatura criterios que están basados en las fechas de cierre $d_i$, $\forall i = 1,\ldots,n$ de los trabajos. Sobresalen los siguientes criterios:
+
+\begin{itemize}
+  \item $L_{\max} = \max(L_i)$ siendo $L_i = C_i - d_i$: el máximo retraso (\textit{lateness}).
+  \item $T_{\max} = \max(T_i)$ siendo $T_i = \max(0; C_i - d_i)$: la máxima tardanza (\textit{tardiness}).
+  \item $E_{\max} = \max(E_i)$ siendo $E_i = \max(0; d_i - C_i)$: la máxima anticipación (\textit{earliness}).
+\end{itemize}
+
+Generalmente, $\fint_{\max}$ se refiere al criterio ordinario «minimax», el cual es una función no\nobreakdash-decreciente de los tiempos de compleción de los trabajos. Este no es el caso para el criterio $E_{\max}$ \citep[p.~13]{TKindt2002}.
+
+\subsubsection[Criterio «minisum»]{Minimización de una función de suma: criterio «minisum»}
 
 \section{Teoría de la complejidad computacional} % (fold)
 \label{teoria_complejidad_computacional}
