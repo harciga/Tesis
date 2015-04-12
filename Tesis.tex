@@ -267,10 +267,10 @@ Algunas restricciones existen únicamente desde el punto de vista del dueño del
 
 Para \citet[p.~5]{TKindt2002} los problemas de programación se encuentran en todo tipo de sistemas puesto que es necesaria para la organización y/o distribución del trabajo entre múltiples entidades. En cada libro pertinente de la literatura se presenta una definición así como sus componentes principales. Una de éstas es la enunciada por \citet{carlier1988problemes}: 
 \begin{quotation}
-La programación es predecir el procesamiento de un trabajo al asignar recursos a tareas y fijar sus tiempos de inicio\ldots Los diferentes componentes de un problema de programación son las tareas, sus restricciones potenciales, los recursos y la función objetivo\ldots Las tareas deben ser programadas para optimar un objetivo específico\ldots Por supuesto, frecuentemente será más realista en la práctica considerar múltiples criterios (como está citado en \citealp[p.~6]{TKindt2002}) 
+La programación es predecir el procesamiento de un trabajo al asignar recursos a tareas y fijar sus tiempos de inicio\dots Los diferentes componentes de un problema de programación son las tareas, sus restricciones potenciales, los recursos y la función objetivo\dots Las tareas deben ser programadas para optimar un objetivo específico\dots Por supuesto, frecuentemente será más realista en la práctica considerar múltiples criterios (como está citado en \citealp[p.~6]{TKindt2002}) 
 \end{quotation}
 
-Otra definición es la hecha por \citet[p.~1]{Pinedo1995}: «La programación es un proceso de toma de decisión\ldots  Se encarga de la asignación de recursos a tareas durante periodos y cuya meta es la optimación de uno o más objetivos.»
+Otra definición es la hecha por \citet[p.~1]{Pinedo1995}: «La programación es un proceso de toma de decisión\dots  Se encarga de la asignación de recursos a tareas durante periodos y cuya meta es la optimación de uno o más objetivos.»
 
 Algunos autores consideran a la programación\index{programación} (\textit{scheduling}) y calendarización\index{calendarización} (\textit{timetabling}) como actividades distintas, en este trabajo se utilizará el término programación\index{programación} como un término genérico y para cubrir tipos específicos de problemas, y se considerará a la calendarización\index{programación!calendarización} (\textit{timetabling}), secuenciación\index{programación!secuenciación} (\textit{sequencing}) y establecimiento de listas\index{programación!listas} (\textit{rostering}) como casos especiales de la actividad genérica de programación\index{programación} \citep[p.~47]{wren95scheduling-timetabling}.
 %
@@ -669,11 +669,26 @@ Los criterios se pueden clasificar en dos grandes familias: los criterios «mini
 \citet[p.~18]{Pinedo1995} explica que el objetivo a minimizar casi siempre es una función de los tiempos de compleción de los trabajos, los cuales, por supuesto, dependen del programa. 
 El tiempo de compleción de la operación del trabajo $j$ en la máquina $i$ se denota por $C_{ij}$. El tiempo de salida del sistema del trabajo $j$ –su tiempo de compleción en la última máquina que utilizó para su procesamiento– se denota con $C_j$.
 %
-El retraso (\textit{lateness}) de un trabajo $j$ se define como \begin{equation*}
- L_j = C_j - d_j,
- \end{equation}
-%
-Sin duda alguna, el criterio clásico es el que mide el tiempo de compleción de todos los trabajos. Este criterio se denota por $C_{max}$ y es conocido como «makespan». Se define a $C_{max} = \underset{i=1,\ldots,n}{\max}(C_i)$, siendo $C_i$ el tiempo de compleción del trabajo $J_i$. Para simplificar la notación, se escribe «$\max$» en lugar de «$\underset{i=1,\ldots,n}{\max}$» cuando no existe ambigüedad posible. $C_{max}$ es la duración total del programa \citep[p.~13]{TKindt2002}.
+El retardo (\textit{lateness}) de un trabajo $j$ se define como 
+\[ L_j = C_j - d_j, \]
+el cual es positivo cuando el trabajo $j$ es completado tardíamente y negativo cuando es completado anticipadamente. La tardanza (\textit{tardiness})jde un trabajo $j$ se define como
+\[ T_j = \max(C_j - d_j, 0) = \max(L_j, 0). \]
+La diferencia entre tardanza y retardo se fundamenta en el hecho de que la tardanza nunca es negativa. La unidad de penalización (\textit{unit penalty}) de un trabajo $j$ se define como
+\[ U_j = \left\{
+    \begin{array}{ll}
+      1 & \mbox{si } C_j > d_j \\
+      0 & \mbox{en caso contrario}
+    \end{array}
+  \right. \]
+El retardo, la tardanza y la unidad de penalización son las tres funciones relacionadas a la penalización de las fechas de cierre básicas en la literatura. La forma que toman estas funciones está mostrada en la figura \ref{fig:penalty_fun}.
+
+\begin{figure}[hbtp]
+\centering
+\caption[]{}
+\label{fig:penalty_fun}
+\end{figure}
+ 
+Sin duda alguna, el criterio clásico es el que mide el tiempo de compleción de todos los trabajos. Este criterio se denota por $C_{max}$ y es conocido como «makespan». Se define a $C_{max} = \underset{i=1,\dots,n}{\max}(C_i)$, siendo $C_i$ el tiempo de compleción del trabajo $J_i$. Para simplificar la notación, se escribe «$\max$» en lugar de «$\underset{i=1,\dots,n}{\max}$» cuando no existe ambigüedad posible. $C_{max}$ es la duración total del programa \citep[p.~13]{TKindt2002}.
 
 Existen otros criterios basados únicamente en el tiempo de compleción de los trabajos, como:
 
@@ -682,10 +697,10 @@ Existen otros criterios basados únicamente en el tiempo de compleción de los t
 \item$I_{\max} = \max(I_k)$: siendo $I_k$ la suma de los tiempos muertos en el recurso $M_k$.
 \end{itemize}
 
-De igual manera, se encuentran en la literatura criterios que están basados en las fechas de cierre $d_i$, $\forall i = 1,\ldots,n$ de los trabajos. Sobresalen los siguientes criterios:
+De igual manera, se encuentran en la literatura criterios que están basados en las fechas de cierre $d_i$, $\forall i = 1,\dots,n$ de los trabajos. Sobresalen los siguientes criterios:
 
 \begin{itemize}
-  \item $L_{\max} = \max(L_i)$ siendo $L_i = C_i - d_i$: el máximo retraso (\textit{lateness}).
+  \item $L_{\max} = \max(L_i)$ siendo $L_i = C_i - d_i$: el máximo retardo (\textit{lateness}).
   \item $T_{\max} = \max(T_i)$ siendo $T_i = \max(0; C_i - d_i)$: la máxima tardanza (\textit{tardiness}).
   \item $E_{\max} = \max(E_i)$ siendo $E_i = \max(0; d_i - C_i)$: la máxima anticipación (\textit{earliness}).
 \end{itemize}
@@ -764,7 +779,7 @@ En los problemas clásicos de $m$ recursos se asume que cada tarea requiere de u
 
 Los problemas de programación con restricciones de recursos renovables son comúnmente conocidos como problemas de talleres puesto que se les encuentra en la administración de la producción. Sin embargo, son problemas muy generales que aparecen en otros contextos, en especial en las ciencias computacionales \citep[p.~101]{gotha93les-problemes-dordonnancement}.
 
-En los problemas de taller (\textit{job-shop}) una tarea es una operación, un recurso es una máquina y cada operación requiere para su realización una máquina. En el modelo básico del problema, el taller está constituido por $m$ máquinas y $n$ trabajos (\textit{jobs}) disponibles al inicio deben ser realizados, un trabajo $i$ está constituido por $n_i$ operaciones, la operación $j$ del trabajo $i$ tiene la notación $(i,j)$ en donde $(i,1)<(i,2)<\ldots<(i,n_i)$ si el trabajo $i$ tiene una serie. Una operación $(i,j)$ utiliza la máquina $m_{i,j}$ durante toda su duración $p_{i,j}$ y no puede ser interrumpida \citep[p.~102]{gotha93les-problemes-dordonnancement}.
+En los problemas de taller (\textit{job-shop}) una tarea es una operación, un recurso es una máquina y cada operación requiere para su realización una máquina. En el modelo básico del problema, el taller está constituido por $m$ máquinas y $n$ trabajos (\textit{jobs}) disponibles al inicio deben ser realizados, un trabajo $i$ está constituido por $n_i$ operaciones, la operación $j$ del trabajo $i$ tiene la notación $(i,j)$ en donde $(i,1)<(i,2)<\dots<(i,n_i)$ si el trabajo $i$ tiene una serie. Una operación $(i,j)$ utiliza la máquina $m_{i,j}$ durante toda su duración $p_{i,j}$ y no puede ser interrumpida \citep[p.~102]{gotha93les-problemes-dordonnancement}.
 
 Los problemas se pueden clasificar de acuerdo al orden de utilización de las máquinas para fabricar un producto –fabricación en serie–. Existen problemas en donde los talleres hacen uso de una ruta única donde todas las series son idénticas –\textit{flow-shop}–, talleres con múltiples rutas en donde cada producto o familia de productos contiene –\textit{job-shop}– o no contiene –\textit{open-shop}– una serie específica. Las fechas de inicio de las operaciones $(i,j)$ constituyen las incognitas del problema y su determinación definen la ordenación. Las restricciones son disyuntivas; la elección de una secuencia sobre una máquina genera los conflictos de uso para la misma \citep[p.~102]{gotha93les-problemes-dordonnancement}.
 
