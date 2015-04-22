@@ -728,7 +728,16 @@ Los criterios «minisum» son usualmente más dificiles de optimar que su contra
 \begin{itemize}
   \item $\bar{C}$ para designar $\frac{1}{n}\sum C_i$ ó $\sum C_i$. Este criterio representa el tiempo de compleción promedio o el tiempo total de compleción de los trabajos.
   \item $\bar{C}^w$ para designar $\frac{1}{n} \sum w_iC_i$, $\frac{1}{\sum w_i}\sum w_iC_i$ ó $\sum w_iC_i$. Este criterio representa el tiempo ponderado promedio de compleción o el tiempo ponderado total de compleción de los trabajos.
+  \item $\bar{F}$ para designar $ \frac{1}{n}\sum F_i $ ó $\sum F_i$. La optimación de este criterio es equivalente a la optimación del criterio $\bar{C}$. Es lo mismo para el criterio $\bar{F}^w$ respecto al criterio $\bar{C}^w$.
+  \item $\bar{T}$ para designar $\frac{1}{n}\sum T_i$ ó $\sum T_i$. Este criterio designa la tardanza promedio o la tardanza total de los trabajos.
+  \item $\bar{T}^w$ para designar $\frac{1}{n}\sum w_iT_i$, $\frac{1}{\sum w_i}\sum w_iT_i$ ó $\sum w_iT_i$. Este criterio designa la tardanza ponderada promedio o la tardanza ponderada total de los trabajos.
+  \item $\bar{U}$ para designar $\sum U_i$ que es la cuantía de los trabajos retrasados con $U_i=1$ si el trabajo $J_i$ está retrasado y $U_i=0$ en caso contrario.
+  \item $\bar{U}^w$ para designar $\frac{1}{n}\sum w_iU_i$, $\frac{1}{\sum w_i}\sum w_iU_i$ ó $\sum w_iU_i$ los cuales representan la cuantía ponderada de los trabajos retrasados.
+  \item $\bar{E}$ es el promedio de anticipación de los trabajos.
+  \item $\bar{E}^w$ es el promedio ponderado de anticipación de los trabajos.
 \end{itemize}
+
+En general, $\bar{\fint}$ designa un criterio «minisum» ordinario el cual es usualmente una función no\nobreakdash-decreciente de los tiempos de compleción de los trabajos. Este no es el caso para el criterio $\bar{E}$.
 
 \section{Teoría de la complejidad computacional} % (fold)
 \label{teoria_complejidad_computacional}
