@@ -671,7 +671,7 @@ El tiempo de compleción de la operación del trabajo $j$ en la máquina $i$ se 
 %
 El retardo (\textit{lateness}) de un trabajo $j$ se define como 
 \[ L_j = C_j - d_j, \]
-el cual es positivo cuando el trabajo $j$ es completado tardíamente y negativo cuando es completado anticipadamente. La tardanza (\textit{tardiness})jde un trabajo $j$ se define como
+el cual es positivo cuando el trabajo $j$ es completado tardíamente y negativo cuando es completado anticipadamente. La tardanza (\textit{tardiness}) de un trabajo $j$ se define como
 \[ T_j = \max(C_j - d_j, 0) = \max(L_j, 0). \]
 La diferencia entre tardanza y retardo se fundamenta en el hecho de que la tardanza nunca es negativa. La unidad de penalización (\textit{unit penalty}) de un trabajo $j$ se define como
 \[ U_j = \left\{
@@ -680,7 +680,7 @@ La diferencia entre tardanza y retardo se fundamenta en el hecho de que la tarda
       0 & \mbox{en caso contrario}
     \end{array}
   \right. \]
-El retardo, la tardanza y la unidad de penalización son las tres funciones relacionadas a la penalización de las fechas de cierre básicas en la literatura. La forma que toman estas funciones está mostrada en la figura \ref{fig:penalty_fun}.
+El retardo, la tardanza y la unidad de penalización son las tres funciones relacionadas a la penalización de las fechas de cierre, básicas en la literatura. La forma que toman estas funciones está mostrada en la figura \ref{fig:penalty_fun}.
 
 \begin{figure}[hbtp]
 \centering
@@ -688,8 +688,15 @@ El retardo, la tardanza y la unidad de penalización son las tres funciones rela
 \caption[Funciones de penalización]{Funciones de penalización relacionadas a las fechas de cierre. De \textit{Scheduling: Theory, Algorithms, and Systems}, por M. \citeauthor{Pinedo1995}, \citeyear{Pinedo1995}, p.~18. Derechos reservados [2008] por \textit{Springer Science+Business Media, LLC}.}
 \label{fig:penalty_fun}
 \end{figure}
- 
-Sin duda alguna, el criterio clásico es el que mide el tiempo de compleción de todos los trabajos. Este criterio se denota por $C_{max}$ y es conocido como «makespan». Se define a $C_{max} = \underset{i=1,\dots,n}{\max}(C_i)$, siendo $C_i$ el tiempo de compleción del trabajo $J_i$. Para simplificar la notación, se escribe «$\max$» en lugar de «$\underset{i=1,\dots,n}{\max}$» cuando no existe ambigüedad posible. $C_{max}$ es la duración total del programa \citep[p.~13]{TKindt2002}.
+
+Algunos posibles ejemplos de funciones objetivo a ser minimizadas son:
+
+\textbf{Makespan} ($C_{\max}$) El criterio clásico es, sin lugar a dudas, aquel que mide el tiempo de compleción de todos los trabajos. Este criterio se denota por $C_{max}$ y es conocido como «makespan». Se define a $C_{max} = \underset{i=1,\dots,n}{\max}(C_i)$, siendo $C_i$ el tiempo de compleción del trabajo $J_i$. Para simplificar la notación, se escribe «$\max$» en lugar de «$\underset{i=1,\dots,n}{\max}$» cuando no existe ambigüedad posible. $C_{max}$ es la duración total del programa \citep[p.~13]{TKindt2002}. Un makespan mínimo usualmente implica una buena utilización de las máquinas \citep[p.~18]{Pinedo1995}.
+
+\textbf{Tiempo ponderado total de compleción} ($\sum w_jC_j$) La suma de los tiempos ponderados de compleción de los $n$ trabajos proporciona una indicación de la participación total o de los costos de inventario incurridos por el programa. La suma de los tiempos de compleción aparece frecuentemente en la literatura con el término «tiempo de flujo» (\textit{flow time}). El tiempo ponderado total de compleción, por ende, es llamado «tiempo de flujo ponderado» (\textit{weighted flow time}) \citep[p.~18]{Pinedo1995}.
+
+\textbf{Cuantía ponderada de trabajos tardíos} ($\sum w_jU_j$) 
+La cuantía ponderada de trabajos tardíos no es únicamente una métrica de interés académico, reiteradamente es un objetivo en la práctica y es una medida que se puede asentar fácilmente \citep[p.~19]{Pinedo1995}.
 
 Existen otros criterios basados únicamente en el tiempo de compleción de los trabajos, como:
 
@@ -706,9 +713,22 @@ De igual manera, se encuentran en la literatura criterios que están basados en 
   \item $E_{\max} = \max(E_i)$ siendo $E_i = \max(0; d_i - C_i)$: la máxima anticipación (\textit{earliness}).
 \end{itemize}
 
-Generalmente, $\fint_{\max}$ se refiere al criterio ordinario «minimax», el cual es una función no\nobreakdash-decreciente de los tiempos de compleción de los trabajos. Este no es el caso para el criterio $E_{\max}$ \citep[p.~13]{TKindt2002}.
+Generalmente, $\fint_{\max}$ se refiere al criterio ordinario «minimax», el cual es una función no\nobreakdash-decreciente de los tiempos de compleción de los trabajos en $C_1,\dots,C_n$, estas funciones objetivo son llamadas medidas de desempeño regulares. Este no es el caso para el criterio $E_{\max}$. Recientemente los investigadores han empezados a estudiar funciones objetivo que no son regulares. Por ejemplo, cuando el trabajo $j$ tiene la fecha de cierre $d_j$, puede estar sujeto a una penalización por anticipación, en donde la «anticipación» del trabajo $j$ se define como \citep[p.~13]{TKindt2002} 
+\[ E_j = \max (d_j - C_j, 0) \]
+Esta penalización por anticipación es no\nobreakdash-decreciente en $C_j$. Un objetivo como la anticipación total más la tardanza total, sería:
+\[ \sum_{j=1}^{n}E_{j}+\sum_{j=1}^{n}T_{j} \]
+es por lo tanto no\nobreakdash-regular. Un objetivo más general que no es regular es la anticipación ponderada total más la tardanza ponderada total, que es:
+\[ \sum_{j=1}^{n}w'_jE_{j}+\sum_{j=1}^{n}w''_jT_{j} \]
+El peso asociado a la anticipación del trabajo $j$ ($w'_j$) puede ser diferente al peso asociado a la tardanza del trabajo $j$ ($w''_j$).
 
 \subsubsection[Criterio «minisum»]{Minimización de una función de suma: criterio «minisum»}
+
+Los criterios «minisum» son usualmente más dificiles de optimar que su contraparte «minimax». Entre los criterios existentes en la literatura están los siguientes:
+
+\begin{itemize}
+  \item $\bar{C}$ para designar $\frac{1}{n}\sum C_i$ ó $\sum C_i$. Este criterio representa el tiempo de compleción promedio o el tiempo total de compleción de los trabajos.
+  \item $\bar{C}^w$ para designar $\frac{1}{n} \sum w_iC_i$, $\frac{1}{\sum w_i}\sum w_iC_i$ ó $\sum w_iC_i$. Este criterio representa el tiempo ponderado promedio de compleción o el tiempo ponderado total de compleción de los trabajos.
+\end{itemize}
 
 \section{Teoría de la complejidad computacional} % (fold)
 \label{teoria_complejidad_computacional}
