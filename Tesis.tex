@@ -658,9 +658,9 @@ Algunas de las restricciones comúnmente encontradas en la literatura son las si
 
 \subsubsection{Campo $\gamma$ - Criterio de optimalidad}
 
-Con el fin de evaluar un programa se puede hacer uso de un cierto número de criterios. Ocasionalmente se puede querer que un criterio se acerque lo más posible a un valor de referencia dado. Aquí se está en la frontera entre las nociones de criterios y restricciones. Si una restricción representa un hecho que en definitiva debe de ser respetado, la optimación de un criterio permite más bien cierto grado de libertad. Como ejemplo, la declaración de que ningún trabajo debe completarse tarde de acuerdo a su fecha de cierre no deja margen alguno en la construcción del programa; incluso puede ser que no exista un programa factible en tal situación. Por otra parte, la minimización del número de trabajos tardíos permite garantizar que siempre habrá una solución, aun cuando para lograr esto ciertos trabajos puedan ser tardíos. Desde un punto de vista práctico, la diferencia entre un criterio y una restricción es únicamente aparente para quien está facultado en la toma de decisiones \citep[p.~12]{TKindt2002}.
+De acuerdo a \citet[p.~12]{TKindt2002}, con el fin de evaluar un programa se puede hacer uso de un cierto número de criterios. Ocasionalmente se puede querer que un criterio se acerque lo más posible a un valor de referencia dado. Aquí se está en la frontera entre las nociones de criterios y restricciones. Si una restricción representa un hecho que en definitiva debe de ser respetado, la optimación de un criterio permite más bien cierto grado de libertad. Como ejemplo, la declaración de que ningún trabajo debe completarse tarde de acuerdo a su fecha de cierre no deja margen alguno en la construcción del programa; incluso puede ser que no exista un programa factible en tal situación. Por otra parte, la minimización del número de trabajos tardíos permite garantizar que siempre habrá una solución, aun cuando para lograr esto ciertos trabajos puedan ser tardíos. Desde un punto de vista práctico, la diferencia entre un criterio y una restricción es únicamente aparente para quien está facultado en la toma de decisiones.
 
-\citet[p.~12,~13]{TKindt2002} prosigue explicando que ciertos criterios son equivalentes y es por eso que se presentan conjuntamente: la minimización de uno u otro conlleva a la misma solución óptima aun si el valor del criterio no es el mismo en ambos casos. Algunos problemas de programación carecen de criterios a ser minimizados. En este caso se trata de un problema de factibilidad, también llamado un problema de decisión: ¿existe una solución que satisfaga las restricciones existentes?
+\citet[p.~12,~13]{TKindt2002} prosiguen explicando que ciertos criterios son equivalentes y es por eso que se presentan conjuntamente: la minimización de uno u otro conlleva a la misma solución óptima aun si el valor del criterio no es el mismo en ambos casos. Algunos problemas de programación carecen de criterios a ser minimizados. En este caso se trata de un problema de factibilidad, también llamado un problema de decisión: ¿existe una solución que satisfaga las restricciones existentes?
 
 Los criterios se pueden clasificar en dos grandes familias: los criterios «minimax», los cuales representan el valor máximo de un conjunto de funciones a ser minimizadas, y los criterios «minisum», quienes representan una suma de funciones a ser minimizadas \citep[p.~13]{TKindt2002}.
 
@@ -691,7 +691,7 @@ El retardo, la tardanza y la unidad de penalización son las tres funciones rela
 
 Algunos posibles ejemplos de funciones objetivo a ser minimizadas son:
 
-\textbf{Makespan} ($C_{\max}$) El criterio clásico es, sin lugar a dudas, aquel que mide el tiempo de compleción de todos los trabajos. Este criterio se denota por $C_{max}$ y es conocido como «makespan». Se define a $C_{max} = \underset{i=1,\dots,n}{\max}(C_i)$, siendo $C_i$ el tiempo de compleción del trabajo $J_i$. Para simplificar la notación, se escribe «$\max$» en lugar de «$\underset{i=1,\dots,n}{\max}$» cuando no existe ambigüedad posible. $C_{max}$ es la duración total del programa \citep[p.~13]{TKindt2002}. Un makespan mínimo usualmente implica una buena utilización de las máquinas \citep[p.~18]{Pinedo1995}.
+\textbf{Makespan} ($C_{\max}$) El criterio clásico es, sin lugar a dudas, aquel que mide el tiempo de compleción de todos los trabajos. Este criterio se denota por $C_{max}$ y es conocido como «makespan». Se define a $C_{max} = \underset{i=1,\dots,n}{\max}(C_i)$, siendo $C_i$ el tiempo de compleción del trabajo $J_i$. Para simplificar la notación, se escribe «$\max$» en lugar de «$\underset{i=1,\dots,n}{\max}$» cuando no existe ambigüedad posible. $C_{max}$ es la duración total del programa. Un makespan mínimo usualmente implica una buena utilización de las máquinas \citep[p.~13, p.~18]{TKindt2002,Pinedo1995}.
 
 \textbf{Tiempo ponderado total de compleción} ($\sum w_jC_j$) La suma de los tiempos ponderados de compleción de los $n$ trabajos proporciona una indicación de la participación total o de los costos de inventario incurridos por el programa. La suma de los tiempos de compleción aparece frecuentemente en la literatura con el término «tiempo de flujo» (\textit{flow time}). El tiempo ponderado total de compleción, por ende, es llamado «tiempo de flujo ponderado» (\textit{weighted flow time}) \citep[p.~18]{Pinedo1995}.
 
@@ -704,26 +704,26 @@ Existen otros criterios basados únicamente en el tiempo de compleción de los t
 \item$F_{\max} = \max(F_i)$ siendo $F_i = C_i - r_i$: el tiempo máximo utilizado en el taller, o incluso aún, la duración del descanso, con $r_i$ siendo la fecha de liberación del trabajo $J_i$.
 \item$I_{\max} = \max(I_k)$: siendo $I_k$ la suma de los tiempos muertos en el recurso $M_k$.
 \end{itemize}
-
+%
 De igual manera, se encuentran en la literatura criterios que están basados en las fechas de cierre $d_i$, $\forall i = 1,\dots,n$ de los trabajos. Sobresalen los siguientes criterios:
-
+%
 \begin{itemize}
   \item $L_{\max} = \max(L_i)$ siendo $L_i = C_i - d_i$: el máximo retardo (\textit{lateness}).
   \item $T_{\max} = \max(T_i)$ siendo $T_i = \max(0; C_i - d_i)$: la máxima tardanza (\textit{tardiness}).
-  \item $E_{\max} = \max(E_i)$ siendo $E_i = \max(0; d_i - C_i)$: la máxima anticipación (\textit{earliness}).
+  \item $E_{\max} = \max(E_i)$ siendo $E_i = \max(0; d_i - C_i)$: la máxima anticipación (\textit{earliness}) \citep[p.~13]{TKindt2002}.
 \end{itemize}
 
-Generalmente, $\fint_{\max}$ se refiere al criterio ordinario «minimax», el cual es una función no\nobreakdash-decreciente de los tiempos de compleción de los trabajos en $C_1,\dots,C_n$, estas funciones objetivo son llamadas medidas de desempeño regulares. Este no es el caso para el criterio $E_{\max}$. Recientemente los investigadores han empezados a estudiar funciones objetivo que no son regulares. Por ejemplo, cuando el trabajo $j$ tiene la fecha de cierre $d_j$, puede estar sujeto a una penalización por anticipación, en donde la «anticipación» del trabajo $j$ se define como \citep[p.~13]{TKindt2002} 
+Generalmente, $\fint_{\max}$ se refiere al criterio ordinario «minimax», el cual es una función no\nobreakdash-decreciente de los tiempos de compleción de los trabajos en $C_1,\dots,C_n$, estas funciones objetivo son llamadas medidas de desempeño regulares. Este no es el caso para el criterio $E_{\max}$ \citep[p.~13]{TKindt2002}. Recientemente los investigadores han empezados a estudiar funciones objetivo que no son regulares. Por ejemplo, cuando el trabajo $j$ tiene la fecha de cierre $d_j$, puede estar sujeto a una penalización por anticipación, en donde la «anticipación» del trabajo $j$ se define como 
 \[ E_j = \max (d_j - C_j, 0) \]
 Esta penalización por anticipación es no\nobreakdash-decreciente en $C_j$. Un objetivo como la anticipación total más la tardanza total, sería:
 \[ \sum_{j=1}^{n}E_{j}+\sum_{j=1}^{n}T_{j} \]
 es por lo tanto no\nobreakdash-regular. Un objetivo más general que no es regular es la anticipación ponderada total más la tardanza ponderada total, que es:
 \[ \sum_{j=1}^{n}w'_jE_{j}+\sum_{j=1}^{n}w''_jT_{j} \]
-El peso asociado a la anticipación del trabajo $j$ ($w'_j$) puede ser diferente al peso asociado a la tardanza del trabajo $j$ ($w''_j$).
+El peso asociado a la anticipación del trabajo $j$ ($w'_j$) puede ser diferente al peso asociado a la tardanza del trabajo $j$ ($w''_j$) \citep[p.~19]{Pinedo1995}.
 
 \subsubsection[Criterio «minisum»]{Minimización de una función de suma: criterio «minisum»}
 
-Los criterios «minisum» son usualmente más dificiles de optimar que su contraparte «minimax». Entre los criterios existentes en la literatura están los siguientes:
+Los criterios «minisum» son usualmente más dificiles de optimar que su contraparte «minimax» \citep[p.~13]{TKindt2002}. Entre los criterios existentes en la literatura están los siguientes:
 
 \begin{itemize}
   \item $\bar{C}$ para designar $\frac{1}{n}\sum C_i$ ó $\sum C_i$. Este criterio representa el tiempo de compleción promedio o el tiempo total de compleción de los trabajos.
@@ -734,10 +734,10 @@ Los criterios «minisum» son usualmente más dificiles de optimar que su contra
   \item $\bar{U}$ para designar $\sum U_i$ que es la cuantía de los trabajos retrasados con $U_i=1$ si el trabajo $J_i$ está retrasado y $U_i=0$ en caso contrario.
   \item $\bar{U}^w$ para designar $\frac{1}{n}\sum w_iU_i$, $\frac{1}{\sum w_i}\sum w_iU_i$ ó $\sum w_iU_i$ los cuales representan la cuantía ponderada de los trabajos retrasados.
   \item $\bar{E}$ es el promedio de anticipación de los trabajos.
-  \item $\bar{E}^w$ es el promedio ponderado de anticipación de los trabajos.
+  \item $\bar{E}^w$ es el promedio ponderado de anticipación de los trabajos \citep[p.~14]{TKindt2002}.
 \end{itemize}
 
-En general, $\bar{\fint}$ designa un criterio «minisum» ordinario el cual es usualmente una función no\nobreakdash-decreciente de los tiempos de compleción de los trabajos. Este no es el caso para el criterio $\bar{E}$.
+\citet[p.~14]{TKindt2002} concluyé señalando que en general, $\bar{\fint}$ designa un criterio «minisum» ordinario el cual es usualmente una función no\nobreakdash-decreciente de los tiempos de compleción de los trabajos. Este no es el caso para el criterio $\bar{E}$.
 
 \section{Teoría de la complejidad computacional} % (fold)
 \label{teoria_complejidad_computacional}
