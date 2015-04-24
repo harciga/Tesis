@@ -737,18 +737,18 @@ Los criterios «minisum» son usualmente más dificiles de optimar que su contra
   \item $\bar{E}^w$ es el promedio ponderado de anticipación de los trabajos \citep[p.~14]{TKindt2002}.
 \end{itemize}
 
-\citet[p.~14]{TKindt2002} concluyé señalando que en general, $\bar{\fint}$ designa un criterio «minisum» ordinario el cual es usualmente una función no\nobreakdash-decreciente de los tiempos de compleción de los trabajos. Este no es el caso para el criterio $\bar{E}$.
+\citet[p.~14]{TKindt2002} concluye señalando que en general, $\bar{\fint}$ designa un criterio «minisum» ordinario el cual es usualmente una función no\nobreakdash-decreciente de los tiempos de compleción de los trabajos. Este no es el caso para el criterio $\bar{E}$.
 
 \section{Teoría de la complejidad computacional} % (fold)
 \label{teoria_complejidad_computacional}
 
 De acuerdo a \cite[p.~6]{Baker2009}, una perspectiva útil en cuanto a la relación de los problemas de programación y sus técnicas de solución viene de los avances de una rama de la ciencia computacional conocida como \textbf{teoría de la complejidad computacional}. La noción de la complejidad se refiere al esfuerzo computacional requerido por un algoritmo de solución. El esfuerzo de computación es descrito con una notación de orden de magnitud.
 %
-Por ejemplo, se hace uso de un algoritmo en particular para resolver un problema de tamaño \textit{n}. (Técnicamente, \textit{n} denota la cantidad de información necesaria para especificar el problema.) El número de computaciones requeridas por el algoritmo típicamente está vinculado desde encima por una función de \textit{n}. Si la orden de magnitud de esta función es polinomial conforme \textit{n} se agranda, entonces se dice que el algoritmo es polinomial.
+Por ejemplo, se hace uso de un algoritmo en particular para resolver un problema de tamaño \textit{n}. (Técnicamente, \textit{n} denota la cantidad de información necesaria para especificar el problema.) La cuantía de computaciones requeridas por el algoritmo típicamente está acotado superiormente por una función de \textit{n}. Si la orden de magnitud de esta función es polinomial conforme \textit{n} se agranda, entonces se dice que el algoritmo es polinomial.
 %
 Por ejemplo, si la función tiene una orden de magnitud $\textit{n}^2$, denotada por $\BigO(\textit{n}^2)$ entonces el algoritmo es polinomial. Por otra parte, si la función es $\BigO(2^\textit{n})$, entonces el algoritmo es no-polinomial (en este caso sería exponencial). Siendo todo lo demás igual, son preferibles los algoritmos polinomiales puesto que conforme \textit{n} se agranda, estos son ultimadamente más rápidos.
 
-INCOMPLETO
+Una clase de problemas llamados \textit{NP-completos} incluyen muchos bien conocidos y difíciles problemas combinatorios. Estos problemas son equivalentes en el sentido de que si uno de ellos puede ser resuelto por un algoritmo polinomial, entonces también lo son los otros. Sin embargo, muchos años de investigación por matemáticos y científicos computacionales no ha producido un algoritmo polinomial aplicable a cualquier problema de este tipo de clase, y la conjetura es que no existe tal algoritmo. Los problemas de optimación de este tipo, son llamados \textit{NP-complejo}. La utilidad de este concepto, el cual aplica a muchos problemas de programación, es que al hacer frente a un problema cuyo origen es NP-complejo, entonces se sabe que tal vez no se puedan encontrar soluciones óptimas con las técnicas disponibles. Probablemente sea conveniente hacer uso de un procedimiento de solución heurístico que tiene requerimientos computacionales más modestos pero no garantiza la optimalidad. Existen instancias de problemas NP-complejos en que la realización de las tareas a programar en el taller serían completadas —siguiendo cualquier secuencia razonable— antes que solucionar el problema óptimamente en el ordenador más veloz disponible. Por lo tanto, la dependencia en heurísticos es frecuentemente la regla en la práctica, en lugar de ser la excepción \citep[p.~6]{Baker2009}.
 
 \section{Modelos de programación}
 
