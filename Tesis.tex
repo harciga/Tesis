@@ -648,7 +648,7 @@ Algunas de las restricciones comúnmente encontradas en la literatura son las si
 
 \begin{itemize}
   \item \textbf{Fechas de liberación} ($r_j$) Si este símbolo aparece en el campo $\beta$, entonces el trabajo $j$ no puede comenzar su procesamiento antes de su fecha de liberación $r_j$. Si $r_j$ no aparece en el campo $\beta$, el procesamiento del trabajo $j$ puede comenzar en cualquier momento. En comparación con las fechas de liberación, las fechas de cierre no se especifican en este campo. El tipo de función objetivo da suficiente indicación respecto a si hay o no fechas de cierre \citep[p.~16]{Pinedo1995}.
-  \item \textbf{Prevenciones} ($prmp$) Las prevenciones implican que no es necesario mantener un trabajo en una máquina, una vez que ha comenzado, hasta su compleción. Es decir, es posible prever la interrupción de una operación de manera que sea posible hacer uso de la máquina para la compleción de algún otro trabajo. La cantidad de procesamiento alcanzado al momento de la interrupción no se pierde al poner de vuelta al trabajo –o al transferirlo a otra máquina en caso de tratarse de máquinas paralelas–, únicamente hace uso de la máquina por el tiempo faltante de su compleción \citep[p.~16, p.~10]{Pinedo1995,TKindt2002}.
+  \item \textbf{Apropiaciones} ($prmp$) Las apropiaciones implican que no es necesario mantener un trabajo en una máquina, una vez que ha comenzado, hasta su compleción. Es decir, es posible prever la interrupción de una operación de manera que sea posible hacer uso de la máquina para la compleción de algún otro trabajo. La cantidad de procesamiento alcanzado al momento de la interrupción no se pierde al poner de vuelta al trabajo –o al transferirlo a otra máquina en caso de tratarse de máquinas paralelas–, únicamente hace uso de la máquina por el tiempo faltante de su compleción \citep[p.~16, p.~10]{Pinedo1995,TKindt2002}.
   \item \textbf{División} ($split$) Indica que la división está permitida, haciendo posible que una operación se descomponga en múltiples porciones, las cuales pueden ser ejecutadas en una o más máquinas, posiblemente de manera concurrente \citep[p.~10]{TKindt2002}.
   \item \textbf{Restricciones de precedencia} ($prec$) Las restricciones de precedencia pueden aparecer en un entorno de máquina singular o de máquinas paralelas, requiriendo que uno o más trabajos sean completados antes de que otro trabajo pueda comenzar su procesamiento \citep[p.~16]{Pinedo1995}.
   \item \textbf{Procesamiento por lotes} ($batch$) Una máquina puede ser capaz de procesar una cantidad de trabajos de manera simultánea, es decir, puede procesar un lote de trabajos al mismo tiempo. Los tiempos de procesamiento de los trabajos en el lote pueden ser de duración variada y el lote alcanza su compleción hasta que el último trabajo del lote ha sido completado, teniendo como entendido que el tiempo de compleción del lote de trabajos está determinado por el trabajo con el tiempo de procesamiento más prologando \citep[p.~16]{Pinedo1995}.
@@ -671,7 +671,7 @@ El tiempo de compleción de la operación del trabajo $j$ en la máquina $i$ se 
 %
 El retardo (\textit{lateness}) de un trabajo $j$ se define como 
 \[ L_j = C_j - d_j, \]
-el cual es positivo cuando el trabajo $j$ es completado tardíamente y negativo cuando es completado anticipadamente. La tardanza (\textit{tardiness}) de un trabajo $j$ se define como
+el cual es positivo cuando el trabajo $j$ es completado tardíamente y negativo cuando es completado precozmente. La tardanza (\textit{tardiness}) de un trabajo $j$ se define como
 \[ T_j = \max(C_j - d_j, 0) = \max(L_j, 0). \]
 La diferencia entre tardanza y retardo se fundamenta en el hecho de que la tardanza nunca es negativa. La unidad de penalización (\textit{unit penalty}) de un trabajo $j$ se define como
 \[ U_j = \left\{
@@ -710,16 +710,16 @@ De igual manera, se encuentran en la literatura criterios que están basados en 
 \begin{itemize}
   \item $L_{\max} = \max(L_i)$ siendo $L_i = C_i - d_i$: el máximo retardo (\textit{lateness}).
   \item $T_{\max} = \max(T_i)$ siendo $T_i = \max(0; C_i - d_i)$: la máxima tardanza (\textit{tardiness}).
-  \item $E_{\max} = \max(E_i)$ siendo $E_i = \max(0; d_i - C_i)$: la máxima anticipación (\textit{earliness}) \citep[p.~13]{TKindt2002}.
+  \item $E_{\max} = \max(E_i)$ siendo $E_i = \max(0; d_i - C_i)$: la máxima precocidad (\textit{earliness}) \citep[p.~13]{TKindt2002}.
 \end{itemize}
 
-Generalmente, $\fint_{\max}$ se refiere al criterio ordinario «minimax», el cual es una función no\nobreakdash-decreciente de los tiempos de compleción de los trabajos en $C_1,\dots,C_n$, estas funciones objetivo son llamadas medidas de desempeño regulares. Este no es el caso para el criterio $E_{\max}$ \citep[p.~13]{TKindt2002}. Recientemente los investigadores han empezados a estudiar funciones objetivo que no son regulares. Por ejemplo, cuando el trabajo $j$ tiene la fecha de cierre $d_j$, puede estar sujeto a una penalización por anticipación, en donde la «anticipación» del trabajo $j$ se define como 
+Generalmente, $\fint_{\max}$ se refiere al criterio ordinario «minimax», el cual es una función no\nobreakdash-decreciente de los tiempos de compleción de los trabajos en $C_1,\dots,C_n$, estas funciones objetivo son llamadas medidas de desempeño regulares. Este no es el caso para el criterio $E_{\max}$ \citep[p.~13]{TKindt2002}. Recientemente los investigadores han empezados a estudiar funciones objetivo que no son regulares. Por ejemplo, cuando el trabajo $j$ tiene la fecha de cierre $d_j$, puede estar sujeto a una penalización por precocidad, en donde la «precocidad» del trabajo $j$ se define como 
 \[ E_j = \max (d_j - C_j, 0) \]
-Esta penalización por anticipación es no\nobreakdash-decreciente en $C_j$. Un objetivo como la anticipación total más la tardanza total, sería:
+Esta penalización por precocidad es no\nobreakdash-decreciente en $C_j$. Un objetivo como la precocidad total más la tardanza total, sería:
 \[ \sum_{j=1}^{n}E_{j}+\sum_{j=1}^{n}T_{j} \]
-es por lo tanto no\nobreakdash-regular. Un objetivo más general que no es regular es la anticipación ponderada total más la tardanza ponderada total, que es:
+es por lo tanto no\nobreakdash-regular. Un objetivo más general que no es regular es la precocidad ponderada total más la tardanza ponderada total, que es:
 \[ \sum_{j=1}^{n}w'_jE_{j}+\sum_{j=1}^{n}w''_jT_{j} \]
-El peso asociado a la anticipación del trabajo $j$ ($w'_j$) puede ser diferente al peso asociado a la tardanza del trabajo $j$ ($w''_j$) \citep[p.~19]{Pinedo1995}.
+El peso asociado a la precocidad del trabajo $j$ ($w'_j$) puede ser diferente al peso asociado a la tardanza del trabajo $j$ ($w''_j$) \citep[p.~19]{Pinedo1995}.
 
 \subsubsection[Criterio «minisum»]{Minimización de una función de suma: criterio «minisum»}
 
@@ -733,8 +733,8 @@ Los criterios «minisum» son usualmente más dificiles de optimar que su contra
   \item $\bar{T}^w$ para designar $\frac{1}{n}\sum w_iT_i$, $\frac{1}{\sum w_i}\sum w_iT_i$ ó $\sum w_iT_i$. Este criterio designa la tardanza ponderada promedio o la tardanza ponderada total de los trabajos.
   \item $\bar{U}$ para designar $\sum U_i$ que es la cuantía de los trabajos retrasados con $U_i=1$ si el trabajo $J_i$ está retrasado y $U_i=0$ en caso contrario.
   \item $\bar{U}^w$ para designar $\frac{1}{n}\sum w_iU_i$, $\frac{1}{\sum w_i}\sum w_iU_i$ ó $\sum w_iU_i$ los cuales representan la cuantía ponderada de los trabajos retrasados.
-  \item $\bar{E}$ es el promedio de anticipación de los trabajos.
-  \item $\bar{E}^w$ es el promedio ponderado de anticipación de los trabajos \citep[p.~14]{TKindt2002}.
+  \item $\bar{E}$ es el promedio de precocidad de los trabajos.
+  \item $\bar{E}^w$ es el promedio ponderado de precocidad de los trabajos \citep[p.~14]{TKindt2002}.
 \end{itemize}
 
 \citet[p.~14]{TKindt2002} concluye señalando que en general, $\bar{\fint}$ designa un criterio «minisum» ordinario el cual es usualmente una función no\nobreakdash-decreciente de los tiempos de compleción de los trabajos. Este no es el caso para el criterio $\bar{E}$.
@@ -753,7 +753,62 @@ Una clase de problemas llamados \textit{NP-completos} incluyen muchos problemas 
 \section{Modelos de programación}
 
 De acuerdo a \citet[p.~2]{Robert2010}, uno de los problemas básicos complejos de programación es el llamado problema de programación de proyecto limitado por recursos (\textit{resource-onstrained project scheduling problem; RCPSP}). El \textit{RCPSP} es un problema general de programación que puede ser utilizado para modelar múltiples aplicaciones en la práctica, como puede ser: un proceso de producción, un proyecto de desarrollo de software, un horario escolar, la construcción de una vivienda, o la renovación de un aeropuerto. El objetivo es la programación de algunas actividades en un periodo de manera tal que las capacidades de recursos limitados sean respetadas y se optime alguna determinada función objetivo. Algunos ejemplos de recursos pueden ser procesadores, máquinas, personas o lugares, cuales deben estar disponibles en capacidades limitadas. Como funciones objetivo, la duración del proyecto, la desviación de las fechas límite o los costos pertinentes a los recursos pueden ser minimizados.
-El \textit{RCPSP} puede ser formulado de la siguiente manera. Dadas $n$ \textbf{actividades} (trabajos) $j=1,\dots,n$ y $r$ \textbf{recursos renovables} $k=1,\dots,r$. Una cuantía constante de unidades $R_k$ del recurso $k$ está disponible en cualquier momento. La actividad $j$ debe ser procesada por $p_j$ unidades de tiempo. Durante este periodo una cuantía constante de $r_{jk}$ unidades del recurso $k$ son utilizadas. Todos los datos se presumen son números enteros. Un recurso es llamado \textbf{disyuntivo} si $R_k=1$, de lo contrario es llamado \textbf{cumulativo}. Si el recurso $k$ es disyuntivo, dos actividades $i$, $j$ con $r_{ij}=r{jk}=1$ no pueden ser procesadas simultáneamente \citep[p.~2]{Robert2010}.
+El \textit{RCPSP} puede ser formulado de la siguiente manera. Dadas $n$ \textbf{actividades} (trabajos) $j=1,\dots,n$ y $r$ \textbf{recursos renovables} $k=1,\dots,r$. Una cuantía constante de unidades $R_k$ del recurso $k$ está disponible en cualquier momento. La actividad $j$ debe ser procesada por $p_j$ unidades de tiempo. Durante este periodo una cuantía constante de $r_{jk}$ unidades del recurso $k$ son utilizadas. Todos los datos se presumen son números enteros. Un recurso es llamado \textbf{disyuntivo} si $R_k=1$, de lo contrario es llamado \textbf{cumulativo}. Si el recurso $k$ es disyuntivo, dos actividades $i$, $j$ con $r_{ij}=r_{jk}=1$ no pueden ser procesadas simultáneamente \citep[p.~2]{Robert2010}.
+Adicionalmente, \textbf{restricciones de precedencia} son definidas entre algunas actividades. Están dadas por relaciones $i \to j$, en donde $i \to j$ significa que la actividad $j$ no puede comenzar antes que la actividad $i$ sea completada. El objetivo es determinar los tiempos de inicio $S_j$ para las actividades $j=1,\dots,n$ de manera tal que:
+
+\begin{itemize}
+  \item En cada tiempo $t$ la demanda total de recurso sea menor o igual a la disponibilidad de cada recurso $k=1,\dots,r$;
+  \item las restricciones de precedencia dadas son satisfechas, esto es $S_i+p_i \leq S_j$ si $i \to j$, y;
+  \item el makespan $C_{\max}=\overset{n}{\underset{j=1}{\max}}(C_j)$ es minimizado, en donde $C_j:=S_j+p_j$ se presume es el tiempo de compleción de la actividad $i$ \citep[p.~2]{Robert2010}.
+  \end{itemize}
+
+  El hecho de que una actividad, la cual comienza al tiempo $S_j$, se completa al tiempo $C_j=S_j+p_j$ implica que las actividades no son apropiadas. Se puede relajar esta condición al permitir la \textbf{apropiación} (interrupción momentánea de actividades). En este caso el procesamiento de cualquier actividad puede ser interrumpida y continuada más tarde.
+Frecuentemente es útil agregar una actividad artificial única de inicio $0$ y una actividad artificial única de terminación $n+1$, las cuales indicar el tiempo de inicio y de terminación del proyecto, respectivamente. Las actividades artificiales no requieren recursos y tienen un tiempo de procesamiento $0$. Para poder establecer la restricción $0 \to j \to n+1$ para todas las actividades $j=1,\dots,n$, se establece $0 \to j$ a todas las actividades $j$ sin ningún predecesor y $j \to n+1$ para todas las actividades $j$ sin algún sucesor. Siendo así que $S_0$ es el tiempo de inicio del proyecto y $S_{n+1}-S_0$ puede ser interpretado como el makespan del proyecto. Usualmente se estipula que $S_0:=0$ \citep[p.~2,~3]{Robert2010}.
+Si la apropiación no está permitidia, entonces el vector $S=(S_j)$ define al programa del proyecto. $S$ es llamado \textbf{factible} si todas las restricciones de recurso y precedencia son satisfechas.
+
+Habiendo un proyecto con $n=4$ actividades, $r=2$ recursos con capacidades $R_1=5$, $R_2=7$, una relación de precedencia $2 \to 3$ y los siguientes datos:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l|llll}
+\toprule
+  $j$ & 1 & 2 & 3 & 4 \\
+  \midrule
+  $p_j$ & 4 & 3 & 5 & 8 \\
+  $r_{j1}$ & 2 & 1 & 2 & 2 \\
+  $r_{j2}$ & 3 & 5 & 2 & 4 \\
+  \bottomrule
+\end{tabular}
+\label{tab:project_data}
+\end{table}
+
+En la figura \ref{fig:feasible_schedules}(a) se muestra una gráfica de Gantt de un programa factible con $C_{\max}=15$. Este programa no minimiza al makespan, dado que al mover la actividad $1$ a la derecha, se obtiene un programa más corto. Un programa óptimo con un makespan $C_{\max}=12$ se muestra en \ref{fig:feasible_schedules}(b) \citep[p.~3]{Robert2010}.
+
+\begin{figure}[hbtp]
+\centering
+\input{media/feasible_schedules.pdf_tex}
+\caption[Programas factibles]{Un par de programas factibles. De \textit{Introduction to Scheduling}, por Y. \citeauthor{Robert2010}, \citeyear{Robert2010}, p.~3. Derechos reservados [2010] por \textit{Taylor and Francis Group, LLC}.}
+\label{fig:feasible_schedules}
+\end{figure}
+
+Una relación de precedencia $i \to j$ con el significado $S_i+p_i \leq S_j$ puede ser generalizada por una relación de inicio-a-inicio de la forma 
+\begin{equation} 
+S_i + d_{ij} \leq S_j 
+\label{eq:start-start}
+\end{equation}
+con un número entero arbitrario $d_{ij} \in \mathbb{Z}$. La interpretación de la relación \ref{eq:start-start} depende del signo de $d_{ij}$:
+
+\begin{itemize}
+  \item Si $d_{ij} \geq 0$, entonces la actividad j no puede comenzar antes de $d_{ij}$ unidades de tiempo después del inicio de la actividad $i$. Esto significa que la actividad $j$ no comienza antes que la actividad $i$ y $d_{ij}$ es la distancia mínima (tiempo de latencia) entre ambos tiempos de inicio, véase la figura \ref{fig:time-lags}(a).
+  \item Si $d_{ij} < 0$, entonces el tiempo más precoz de inicio de la actividad $j$ es $-d_{ij}$ unidades de tiempo antes del inicio de la actividad $i$, es decir, la actividad $i$ no puede comenzar más de $-d_{ij}$ unidades de tiempo más tarde que la actividad $j$. Si $S_j \leq S_i$, esto significa que $\lvert d_{ij} \lvert$ es la distancia máxima entre ambos tiempos de inicio, véase la figura \ref{fig:time-lags}.
+\end{itemize}
+
+\begin{figure}[hbtp]
+  \centering
+  \input{media/feasible_schedules.pdf_tex}
+  \caption[Programas factibles]{Un par de programas factibles. De \textit{Introduction to Scheduling}, por Y. \citeauthor{Robert2010}, \citeyear{Robert2010}, p.~3. Derechos reservados [2010] por \textit{Taylor and Francis Group, LLC}.}
+  \label{fig:time-lags}
+\end{figure}
 
 \section{Algunas áreas de aplicación}
 \label{algunas_areas_aplicacion}
@@ -973,7 +1028,7 @@ subsection{Flexibilidad}
 
 % Bibliography
 \bibliographystyle{apalike_modified}
-\bibliography{~/Dropbox/bibliographies/reviewed,~/Dropbox/bibliographies/Dissertation_books}
+\bibliography{bibliographies/reviewed,bibliographies/Dissertation_books}
 {
 \RaggedRight
 \printindex
