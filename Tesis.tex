@@ -800,15 +800,31 @@ con un número entero arbitrario $d_{ij} \in \mathbb{Z}$. La interpretación de 
 
 \begin{itemize}
   \item Si $d_{ij} \geq 0$, entonces la actividad j no puede comenzar antes de $d_{ij}$ unidades de tiempo después del inicio de la actividad $i$. Esto significa que la actividad $j$ no comienza antes que la actividad $i$ y $d_{ij}$ es la distancia mínima (tiempo de latencia) entre ambos tiempos de inicio, véase la figura \ref{fig:time-lags}(a).
-  \item Si $d_{ij} < 0$, entonces el tiempo más precoz de inicio de la actividad $j$ es $-d_{ij}$ unidades de tiempo antes del inicio de la actividad $i$, es decir, la actividad $i$ no puede comenzar más de $-d_{ij}$ unidades de tiempo más tarde que la actividad $j$. Si $S_j \leq S_i$, esto significa que $\lvert d_{ij} \lvert$ es la distancia máxima entre ambos tiempos de inicio, véase la figura \ref{fig:time-lags}.
+  \item Si $d_{ij} < 0$, entonces el tiempo más precoz de inicio de la actividad $j$ es $-d_{ij}$ unidades de tiempo antes del inicio de la actividad $i$, es decir, la actividad $i$ no puede comenzar más de $-d_{ij}$ unidades de tiempo más tarde que la actividad $j$. Si $S_j \leq S_i$, esto significa que $\lvert d_{ij} \lvert$ es la distancia máxima entre ambos tiempos de inicio, véase la figura \ref{fig:time-lags}(b).
 \end{itemize}
 
 \begin{figure}[hbtp]
   \centering
-  \input{media/feasible_schedules.pdf_tex}
-  \caption[Programas factibles]{Un par de programas factibles. De \textit{Introduction to Scheduling}, por Y. \citeauthor{Robert2010}, \citeyear{Robert2010}, p.~3. Derechos reservados [2010] por \textit{Taylor and Francis Group, LLC}.}
+  \input{media/time-lags.pdf_tex}
+  \caption[Tiempos de latencia]{Tiempos de latencia positivos y negativos. De \textit{Introduction to Scheduling}, por Y. \citeauthor{Robert2010}, \citeyear{Robert2010}, p.~4. Derechos reservados [2010] por \textit{Taylor and Francis Group, LLC}.}
   \label{fig:time-lags}
 \end{figure}
+
+Si $d_{ij} > 0$ se mantiene, el valor es también llamado un tiempo de latencia positivo, de lo contrario al ser $d_{ij} < 0$, se le llama tiempo de latencia negativo.
+
+Las relaciones como \ref{eq:start-start} son relaciones muy generales de tiempo entre actividades. Por ejemplo, \ref{eq:start-start} teniendo a $d_{ij}=p_i$ es equivalente a la relación de precedencia $i \to j$. De manera más general, además de las relaciones de inicio-a-inicio, se pueden considerar las siguientes relaciones: compleción-a-inicio, compleción-a-compleción e inicio-a-compleción. Ahora bien, si no se permite la apropiación, cualquiera de este tipo de relaciones se puede transformar en cualquier otro tipo equivalente. Verbigracia, las relaciones de compleción-a-inicio $C_i+l_{ij} \leq S_j$ con tiempos de latencia de compleción-a-inicio $l_{ij}$ pueden ser transformadas en relaciones de inicio-a-inicio $S_i+p_i+l_{ij} \leq S_j$ al establecer $d_{ij}:=p_i+l_{ij}$.
+
+Estas generalizaciones de las relaciones de precedencia permiten modelar distintos tipos de restricciones útiles para la solución del programa, tomando como ejemplo el modelado de restricciones de tiempo entre procesos —como los encontrados en los procesos químicos—. Si $S_i+p_i+l_{ij} \leq S_j$ y $S_j-u_{ij}-p_i \leq S_i$ con $0 \leq l_{ij} \leq u_{ij}$, entonces el tiempo entre la compleción de la actividad $i$ y el tiempo de inicio de la actividad $j$ debe ser al menos $l_{ij}$ pero no más de $u_{ij}$. Si $l_{ij}=u_{ij}=0$ entonces la actividad $j$ debe comenzar inmediatamente después de que la actividad $i$ termine.
+
+También los tiempos de liberación $r_j$ y las fechas límite $d_j$ de las actividades $j$ pueden ser modeladas por relaciones de la forma \ref{eq:start-start}. Mientras que el tiempo de liberación $r_j$ es el tiempo más precoz de inicio para la actividad $j$, una fecha límite $d_j$ es el tiempo de compleción más tardío para $j$. Para modelar los tiempos de liberación se agrega la restricción $S_0+r_j \leq S_j$. Para modelar los fechas límite se hace uso de la restricción $S_j-(d_j-p_j) \leq S_0$. En ambos casos se presume que $S_0=0$. Si $r_j \leq d_j$ para un tiempo de liberación $r_j$ y una fecha límite $d_j$, entonces el intervalo $[r_j,d_j]$ es llamado una ventana de tiempo para la actividad $j$. La actividad $j$ debe ser procesada en su totalidad dentro de su ventana de tiempo.
+
+En la programación de procesadores, en ocasiones, las también llamadas demoras de comunicación $c_{ij} > 0$ son tomadas en consideración. Si dos actividades $i, j$ con $i \to j$ son procesadas en el mismo procesador, no surge algún costo operativo de comunicación y la restricción es interpretada como la relación de precedencia usual $S_i+p_i \leq S_j$. No obstante, si $i,j$ son procesados en distintos procesadores, una demora de comunicación ocurre, lo que significa que se debe satisfacer $S_i+p_i+c_{ij} \leq S_j$.
+
+En el caso multi-modo, un conjunto $\mathcal{M}_j$ de los tan llamados modos —alternativas de procesamiento— es asociato a cada actividad $j$. El tiempo de procesamiento de la actividad $j$ en el modo $m$ está dado por $p_{jm}$ y el uso por periodo de un recurso renovable $k$ está dado por $r_{jkm}$. Se debe asignar un modo para cada actividad y programar las actividades en los modos asignados. Múltiples modos puedes, por ejemplo, ser usados para modelar una situación en la cual una actividad puede ser procesada rápidamente por múltiples trabajadores o más lentamente con menos gente.
+
+En el contexto multi-modo, además de los recursos renovables como los procesadores, máquinas o personal, también son posibles los llamados recursos no\nobreakdash-renovables, como dinero o energía. Mientras que los recursos renovables están disponibles en una cantidad constante durante cada periodo, la disponibilidad de los recursos no renovables está limitada durante toda la duración del proyecto. Esto significa que los recursos no\nobreakdash-renovables son consumidos, es decir, cuando una actividad $j$ es procesada, la cantidad disponible $R_k$ de un recurso no\nobreakdash-renovable $k$ disminuye en $r_{jk}$.
+
+Los recursos no\nobreakdash-renovables son importantes únicaente en conexión con los problemas multi-modo, porque en el caso de los problemas mono-mono los requerimientos de recursos no\nobreakdash-renovables son independientes del programa (los recursos no\nobreakdash-renovables pueden ser suficientes o no serlo). Por otra parte, en el caso multi-modo los requerimientos de recursos no\nobreakdash-renovables dependen de la elección de los modos, a saber, pueden existir asignaciones de modo factibles y no\nobreakdash-factibles.
 
 \section{Algunas áreas de aplicación}
 \label{algunas_areas_aplicacion}
