@@ -443,11 +443,11 @@ En la sub-sección \ref{Definiciones} definimos a la programación cómo:
 La \textbf{programación} es la asignación, sujeta a restricciones, de recursos a objetos siendo colocados en el espacio-tiempo, de manera tal que se minimice el costo total de algún conjunto de los recursos usados.
 \end{quotation}
 
-En la definición anterior, tales «objetos» se refieren a una tarea (\textit{task}), trabajo (\textit{job}) u operación (\textit{operation}) que es colocada dentro de un programa. En la teoría de la programación, estos trabajos pueden ser divididos en una serie de operaciones. Cuando todos los trabajos contienen una sola operación se habla de un problema mono-operación. De lo contrario, se habla de un problema multi-operación. Las operaciones de un trabajo pueden estar conectadas por restricciones de precedencia. En este caso el conjunto de operaciones de un trabajo y sus restricciones de precedencia definen la ruta del trabajo \citep[p.~5]{TKindt2002}.
+En la definición anterior, tales «objetos» se refieren a una tarea (\textit{task}), trabajo (\textit{job}) u operación (\textit{operation}) que es colocada dentro de un programa. En la teoría de la programación, estos trabajos pueden ser divididos en una serie de operaciones. Cuando todos los trabajos contienen una sola operación se habla de un problema mono-operación. De lo contrario, se habla de un problema multi-operación. Las operaciones de un trabajo pueden estar conectadas por restricciones de precedencia. En este caso el conjunto de operaciones de un trabajo y sus restricciones de precedencia definen la ruta de procesamiento del trabajo \citep[p.~5]{TKindt2002}.
 
-Los términos recurso (\textit{resource}) o máquina (\textit{machine}) son por lo general de dos tipos: renovables o consumibles. Los recursos renovables se vuelven disponibles nuevamente después de haber sido utilizados –maquinaria, archivero, ordenador, personal, etc.–, mientras que los recursos no-renovables desaparecen después de su uso –dinero, material, etc.–. Entre los recursos renovables se puede hacer una distinción entre los recursos disyuntivos, los cuales únicamente pueden desempeñar una operación a la vez, y los recursos acumulativos que pueden procesar un número limitado de operaciones simultáneamente \citep[p.~6]{TKindt2002}.
+Los términos recurso (\textit{resource}) o máquina (\textit{machine}) son por lo general de dos tipos: renovables o consumibles. Los recursos renovables se vuelven disponibles nuevamente después de haber sido utilizados –maquinaria, archivero, ordenador, personal, etc.–, mientras que los recursos no\nobreakdash-renovables desaparecen después de su uso –dinero, material, etc.–. Entre los recursos renovables se puede hacer una distinción entre los recursos disyuntivos, los cuales únicamente pueden desempeñar una operación a la vez, y los recursos acumulativos que pueden procesar un número limitado de operaciones simultáneamente \citep[p.~6]{TKindt2002}.
 
-Dos tipos de restricciones de factibilidad se encuentran comúnmente en los problemas de programación. Primero, están los límites en la capacidad de las máquinas, y segundo, hay restricciones tecnológicas en el orden en que algunos trabajos pueden ser llevados a cabo. Una solución para un problema de programación es cualquier resolución factible de estos dos tipos de restricciones, de manera tal que el solucionar un problema de programación equivalga a responder dos tipos de preguntas \citep[p.~4]{Baker2009}:
+Dos tipos de restricciones de factibilidad se encuentran comúnmente en los problemas de programación. Primero, están los límites en la capacidad de las máquinas, y segundo, hay restricciones tecnológicas en el orden en que algunos trabajos pueden ser llevados a cabo. Una solución para un problema de programación es cualquier resolución factible de estos dos tipos de restricciones, de manera tal que el solucionar un problema de programación sea equivalente a responder dos tipos de preguntas \citep[p.~4]{Baker2009}:
 
 \begin{itemize}
 \setlength{\itemsep}{0cm}%
@@ -493,11 +493,9 @@ Durante las diferentes etapas de planificación distintos criterios pueden ser c
 \label{fig:criterios_evaluacion}
 \end{figure}
 
-\section{Tipología y notación de problemas}
+\section{Tipología de problemas}
 
-En el tema de los problemas de programación se hace una distinción entre su tipología y su notación. Una tipología es una clasificación de los problemas de acuerdo a su naturaleza. En la programación usualmente está basada en el contexto de las máquinas y en las particularidades de los trabajos. Una notación nos permite referirnos rápidamente a un problema, siendo así que es posible construir una base de datos del conjunto de problemas vistos en la literatura \citep[p.~14]{TKindt2002}.
-
-\subsection{Tipología de problemas}
+\citet[p.~14]{TKindt2002} menciona que en el tema de los problemas de programación se hace una distinción entre su tipología y su notación. Una tipología es una clasificación de los problemas de acuerdo a su naturaleza. En la programación usualmente está basada en el contexto de las máquinas y en las particularidades de los trabajos. Una notación nos permite referirnos rápidamente a un problema, siendo así que es posible construir una base de datos del conjunto de problemas vistos en la literatura.
 
 Existen diferentes tipologías de problemas de programación en la literatura. En la figura \ref{fig:typology_maccarthy} se presenta una generalización del trabajo hecho por \citet{maccarthy1993addressing} (como está citado en \citealp[p.~14]{TKindt2002}). En los problemas de programación el objetivo es determinar una secuencia para cada máquina y un tiempo de inicio para cada operación. En problemas de programación y asignación con etapas se pueden definir, independientemente de cada operación, etapas de máquinas. Una máquina pertenece a una sola etapa. Entonces, se combina cada operación con una etapa, y una operación puede ser procesada por cualquier máquina de su etapa. Por lo tanto, se incorpora un problema de asignación al problema inicial de programación. Ya no es suficiente determinar el tiempo de inicio para las operaciones, sino es necesario también establecer la asignación de las operaciones en las máquinas. Lo mismo ocurre para los problemas generales de programación y asignación en donde un conjunto de máquinas es pormenorizado para cada operación. Por supuesto, una máquina puede existir en más de un conjunto y una operación puede ser llevada a cabo por cualquier máquina perteneciente al mismo conjunto \citep[p.~14,~15]{TKindt2002}.
 
@@ -525,7 +523,7 @@ La tipología anterior hace uso del entorno de las máquinas y las operaciones p
 
 Estas dos tipologías son complementarias pues es posible trabajar, como ejemplo, con un problema \textit{flow-shop} determinístico, sea unitario o estático. Como será evidente en la próxima sección, la notación tradicional de los problemas de programación es un reflejo de estas tipologías \citep[p.~16]{TKindt2002}.
 
-\subsection{Notación}
+\section{Notación}
 
 De acuerdo a \citet[p.~13]{Pinedo1995}, en todos los problemas de programación se considera que el número de trabajos y el número de máquinas son finitos. El número de trabajos es denominado por $n$ y el número de máquinas por $m$, la máquina número $k$ se representa por $M_k$. Se denota con $J_i$ al trabajo número $i$, con $n_i$ al número de operaciones del trabajo $J_i$, con $O_{i,j}$ a la operación $j$ del trabajo $J_i$ \citep[p.~7-8, p.~13]{TKindt2002,Pinedo1995}.
 Una síntesis completa de la notación es proporcionada en el apéndice A. Los siguientes atributos están asociados a un trabajo $j$.
@@ -559,7 +557,7 @@ Una síntesis completa de la notación es proporcionada en el apéndice A. Los s
 
 Al hacer frente a un problema de programación, se le debe identificar antes de buscar su solución. Aceptando que el problema es complicado y para saber si ya ha sido resuelto en la literatura, se hace uso de una notación reconocida. Con este propósito se han creado «modelos» de talleres, los cuales difieren uno de otro por su composición y la organización de sus recursos \citep[p.~7]{TKindt2002}. Un problema de programación es descrito por una tripleta $\alpha\: |\: \beta\: |\: \gamma$. El campo $\alpha$ describe el entorno de la máquina y contiene únicamente un registro. El campo $\beta$ provee detalles de las características del procesamiento y restricciones, puede no tener registro alguno, un solo registro o múltiples registros. El campo $\gamma$ describe el objetivo a ser minimizado y frecuentemente contiene un solo registro \citep[p.~14]{Pinedo1995}.
 
-\subsubsection{Campo $\alpha$ - entornos}
+\subsection{Campo $\alpha$ - entornos}
 
 Los posibles entornos de máquinas especificadas en el campo $\alpha$ se presentan a continuación agrupados de acuerdo al tipo de problema de programación que se busca resolver.
 
@@ -635,7 +633,7 @@ Este es el caso más general en donde se supone que cada operación tiene su pro
   \label{tab:notation_alpha}
 \end{table}
 
-\subsubsection{Campo $\beta$ - Restricciones}
+\subsection{Campo $\beta$ - restricciones}
 
 Una solución de un problema de programación debe siempre satisfacer un cierto número de restricciones, ya sean explícitas o implícitas. En un problema \textit{flowshop} está implícito que los trabajos deben ser procesados de acuerdo a una ruta definida y por consiguiente, una operación no puede comenzar mientras su precedente permanezca incompleta. 
 Por otra parte, la ocurrencia de los distintas fechas de liberación constituye una restricción que debe ser establecida precisamente. En esta sección se describen las restricciones explícitas más comúnmente encontradas en la programación. Un resumen más completo se presenta en el apéndice A \citep[p.~9-10]{TKindt2002}. 
@@ -656,7 +654,7 @@ Algunas de las restricciones comúnmente encontradas en la literatura son las si
   \item \textbf{Permutación} ($prmu$) Una restricción que puede aparecer en los entornos \textit{flowshow} es que las filas delante de cada máquina operan de acuerdo a las normas «primero en entrar, primero en salir» (\textit{First In First Out; FIFO}). Esto implica que el órden (permutación) en que los trabajos atraviesan la primera máquina se mantienen durante todo el sistema \citep[p.~17]{Pinedo1995}.
 \end{itemize}
 
-\subsubsection{Campo $\gamma$ - Criterio de optimalidad}
+\subsection{Campo $\gamma$ - criterio de optimalidad}
 
 De acuerdo a \citet[p.~12]{TKindt2002}, con el fin de evaluar un programa se puede hacer uso de un cierto número de criterios. Ocasionalmente se puede querer que un criterio se acerque lo más posible a un valor de referencia dado. Aquí se está en la frontera entre las nociones de criterios y restricciones. Si una restricción representa un hecho que en definitiva debe de ser respetado, la optimación de un criterio permite más bien cierto grado de libertad. Como ejemplo, la declaración de que ningún trabajo debe completarse tarde de acuerdo a su fecha de cierre no deja margen alguno en la construcción del programa; incluso puede ser que no exista un programa factible en tal situación. Por otra parte, la minimización del número de trabajos tardíos permite garantizar que siempre habrá una solución, aun cuando para lograr esto ciertos trabajos puedan ser tardíos. Desde un punto de vista práctico, la diferencia entre un criterio y una restricción es únicamente aparente para quien está facultado en la toma de decisiones.
 
@@ -664,7 +662,7 @@ De acuerdo a \citet[p.~12]{TKindt2002}, con el fin de evaluar un programa se pue
 
 Los criterios se pueden clasificar en dos grandes familias: los criterios «minimax», los cuales representan el valor máximo de un conjunto de funciones a ser minimizadas, y los criterios «minisum», quienes representan una suma de funciones a ser minimizadas \citep[p.~13]{TKindt2002}.
 
-\subsubsection[Criterio «minimax»]{Minimización de una función máxima: criterio «minimax»}
+\subsection[Criterio «minimax»]{Minimización de una función máxima: criterio «minimax»}
 
 \citet[p.~18]{Pinedo1995} explica que el objetivo a minimizar casi siempre es una función de los tiempos de compleción de los trabajos, los cuales, por supuesto, dependen del programa. 
 El tiempo de compleción de la operación del trabajo $j$ en la máquina $i$ se denota por $C_{ij}$. El tiempo de salida del sistema del trabajo $j$ –su tiempo de compleción en la última máquina que utilizó para su procesamiento– se denota con $C_j$.
@@ -721,7 +719,7 @@ es por lo tanto no\nobreakdash-regular. Un objetivo más general que no es regul
 \[ \sum_{j=1}^{n}w'_jE_{j}+\sum_{j=1}^{n}w''_jT_{j} \]
 El peso asociado a la precocidad del trabajo $j$ ($w'_j$) puede ser diferente al peso asociado a la tardanza del trabajo $j$ ($w''_j$) \citep[p.~19]{Pinedo1995}.
 
-\subsubsection[Criterio «minisum»]{Minimización de una función de suma: criterio «minisum»}
+\subsection[Criterio «minisum»]{Minimización de una función de suma: criterio «minisum»}
 
 Los criterios «minisum» son usualmente más dificiles de optimar que su contraparte «minimax» \citep[p.~13]{TKindt2002}. Entre los criterios existentes en la literatura están los siguientes:
 
@@ -739,20 +737,9 @@ Los criterios «minisum» son usualmente más dificiles de optimar que su contra
 
 \citet[p.~14]{TKindt2002} concluye señalando que en general, $\bar{\fint}$ designa un criterio «minisum» ordinario el cual es usualmente una función no\nobreakdash-decreciente de los tiempos de compleción de los trabajos. Este no es el caso para el criterio $\bar{E}$.
 
-\section{Teoría de la complejidad computacional} % (fold)
-\label{teoria_complejidad_computacional}
+\section{El modelo de programación RCPSP}
 
-De acuerdo a \cite[p.~6]{Baker2009}, una perspectiva útil en cuanto a la relación de los problemas de programación y sus técnicas de solución viene de los avances de una rama de la ciencia computacional conocida como \textbf{teoría de la complejidad computacional}. La noción de la complejidad se refiere al esfuerzo computacional requerido por un algoritmo de solución. El esfuerzo de computación es descrito con una notación de orden de magnitud.
-%
-Por ejemplo, se hace uso de un algoritmo en particular para resolver un problema de tamaño \textit{n}. (Técnicamente, \textit{n} denota la cantidad de información necesaria para especificar el problema.) La cuantía de computaciones requeridas por el algoritmo típicamente está acotado superiormente por una función de \textit{n}. Si la orden de magnitud de esta función es polinomial conforme \textit{n} se agranda, entonces se dice que el algoritmo es polinomial.
-%
-Por ejemplo, si la función tiene una orden de magnitud $\textit{n}^2$, denotada por $\BigO(\textit{n}^2)$ entonces el algoritmo es polinomial. Por otra parte, si la función es $\BigO(2^\textit{n})$, entonces el algoritmo es no-polinomial (en este caso sería exponencial). Siendo todo lo demás igual, son preferibles los algoritmos polinomiales puesto que conforme \textit{n} se agranda, estos son ultimadamente más rápidos.
-
-Una clase de problemas llamados \textit{NP-completos} incluyen muchos problemas combinatorios bien conocidos y difíciles. Estos problemas son equivalentes en el sentido de que si uno de ellos puede ser resuelto por un algoritmo polinomial, entonces también lo son los otros. Sin embargo, muchos años de investigación por matemáticos y científicos computacionales no ha producido un algoritmo polinomial aplicable a cualquier problema de este tipo de clase, y la conjetura es que no existe tal algoritmo. Los problemas de optimación de este tipo, son llamados \textit{NP-complejo}. La utilidad de este concepto, el cual aplica a muchos problemas de programación, es que al hacer frente a un problema cuyo origen es NP-complejo, entonces se sabe que tal vez no se puedan encontrar soluciones óptimas con las técnicas disponibles. Probablemente sea conveniente hacer uso de un procedimiento de solución heurístico que tiene requerimientos computacionales más modestos pero no garantiza la optimalidad. Existen instancias de problemas NP-complejos en que la realización de las tareas a programar en el taller serían completadas —siguiendo cualquier secuencia razonable— antes que solucionar el problema óptimamente en el ordenador más veloz disponible. Por lo tanto, la dependencia en heurísticos es frecuentemente la regla en la práctica, en lugar de ser la excepción \citep[p.~6]{Baker2009}.
-
-\section{Modelos de programación}
-
-De acuerdo a \citet[p.~2]{Robert2010}, uno de los problemas básicos complejos de programación es el llamado problema de programación de proyecto limitado por recursos (\textit{resource-onstrained project scheduling problem; RCPSP}). El \textit{RCPSP} es un problema general de programación que puede ser utilizado para modelar múltiples aplicaciones en la práctica, como puede ser: un proceso de producción, un proyecto de desarrollo de software, un horario escolar, la construcción de una vivienda, o la renovación de un aeropuerto. El objetivo es la programación de algunas actividades en un periodo de manera tal que las capacidades de recursos limitados sean respetadas y se optime alguna determinada función objetivo. Algunos ejemplos de recursos pueden ser procesadores, máquinas, personas o lugares, cuales deben estar disponibles en capacidades limitadas. Como funciones objetivo, la duración del proyecto, la desviación de las fechas límite o los costos pertinentes a los recursos pueden ser minimizados.
+De acuerdo a \citet[p.~2]{Robert2010}, uno de los problemas básicos complejos de programación es el llamado «problema de programación de proyecto limitado por recursos» (\textit{resource-onstrained project scheduling problem; RCPSP}). El \textit{RCPSP} es un problema general de programación que puede ser utilizado para modelar múltiples aplicaciones en la práctica, como puede ser: un proceso de producción, un proyecto de desarrollo de software, un horario escolar, la construcción de una vivienda, o la renovación de un aeropuerto. El objetivo es la programación de algunas actividades en un periodo de manera tal que las capacidades de recursos limitados sean respetadas y se optime alguna determinada función objetivo. Algunos ejemplos de recursos pueden ser procesadores, máquinas, personas o lugares, cuales deben estar disponibles en capacidades limitadas. Como funciones objetivo, la duración del proyecto, la desviación de las fechas límite o los costos pertinentes a los recursos pueden ser minimizados.
 El \textit{RCPSP} puede ser formulado de la siguiente manera. Dadas $n$ \textbf{actividades} (trabajos) $j=1,\dots,n$ y $r$ \textbf{recursos renovables} $k=1,\dots,r$. Una cuantía constante de unidades $R_k$ del recurso $k$ está disponible en cualquier momento. La actividad $j$ debe ser procesada por $p_j$ unidades de tiempo. Durante este periodo una cuantía constante de $r_{jk}$ unidades del recurso $k$ son utilizadas. Todos los datos se presumen son números enteros. Un recurso es llamado \textbf{disyuntivo} si $R_k=1$, de lo contrario es llamado \textbf{cumulativo}. Si el recurso $k$ es disyuntivo, dos actividades $i$, $j$ con $r_{ij}=r_{jk}=1$ no pueden ser procesadas simultáneamente \citep[p.~2]{Robert2010}.
 Adicionalmente, \textbf{restricciones de precedencia} son definidas entre algunas actividades. Están dadas por relaciones $i \to j$, en donde $i \to j$ significa que la actividad $j$ no puede comenzar antes que la actividad $i$ sea completada. El objetivo es determinar los tiempos de inicio $S_j$ para las actividades $j=1,\dots,n$ de manera tal que:
 
@@ -762,11 +749,12 @@ Adicionalmente, \textbf{restricciones de precedencia} son definidas entre alguna
   \item el makespan $C_{\max}=\overset{n}{\underset{j=1}{\max}}(C_j)$ es minimizado, en donde $C_j:=S_j+p_j$ se presume es el tiempo de compleción de la actividad $i$ \citep[p.~2]{Robert2010}.
   \end{itemize}
 
-  El hecho de que una actividad, la cual comienza al tiempo $S_j$, se completa al tiempo $C_j=S_j+p_j$ implica que las actividades no son apropiadas. Se puede relajar esta condición al permitir la \textbf{apropiación} (interrupción momentánea de actividades). En este caso el procesamiento de cualquier actividad puede ser interrumpida y continuada más tarde.
-Frecuentemente es útil agregar una actividad artificial única de inicio $0$ y una actividad artificial única de terminación $n+1$, las cuales indicar el tiempo de inicio y de terminación del proyecto, respectivamente. Las actividades artificiales no requieren recursos y tienen un tiempo de procesamiento $0$. Para poder establecer la restricción $0 \to j \to n+1$ para todas las actividades $j=1,\dots,n$, se establece $0 \to j$ a todas las actividades $j$ sin ningún predecesor y $j \to n+1$ para todas las actividades $j$ sin algún sucesor. Siendo así que $S_0$ es el tiempo de inicio del proyecto y $S_{n+1}-S_0$ puede ser interpretado como el makespan del proyecto. Usualmente se estipula que $S_0:=0$ \citep[p.~2,~3]{Robert2010}.
-Si la apropiación no está permitidia, entonces el vector $S=(S_j)$ define al programa del proyecto. $S$ es llamado \textbf{factible} si todas las restricciones de recurso y precedencia son satisfechas.
+\citet[p.~2,~3]{Robert2010} resaltan que el hecho de que una actividad, la cual comienza al tiempo $S_j$, se complete al tiempo $C_j=S_j+p_j$ implica que las actividades no son apropiadas. Se puede relajar esta condición al permitir la \textbf{apropiación} (interrupción momentánea de actividades). En este caso el procesamiento de cualquier actividad puede ser interrumpida y continuada más tarde.
+Frecuentemente es útil agregar una actividad artificial única de inicio $0$ y una actividad artificial única de terminación $n+1$, las cuales indican el tiempo de inicio y de terminación del proyecto, respectivamente. Las actividades artificiales no requieren recursos y tienen un tiempo de procesamiento $0$. Para poder establecer la restricción $0 \to j \to n+1$ para todas las actividades $j=1,\dots,n$, se establece $0 \to j$ a todas las actividades $j$ sin ningún predecesor y $j \to n+1$ para todas las actividades $j$ sin algún sucesor. Siendo así que $S_0$ es el tiempo de inicio del proyecto y $S_{n+1}-S_0$ puede ser interpretado como el makespan del proyecto. Usualmente se estipula que $S_0:=0$.
 
-Habiendo un proyecto con $n=4$ actividades, $r=2$ recursos con capacidades $R_1=5$, $R_2=7$, una relación de precedencia $2 \to 3$ y los siguientes datos:
+Si la apropiación no está permitidia, entonces el vector $S=(S_j)$ define al programa del proyecto. $S$ es llamado \textbf{factible} si todas las restricciones de recurso y precedencia son satisfechas \citep[p.~3]{Robert2010}. 
+
+\citet[p.~3]{Robert2010} presentan como ejemplo un proyecto con $n=4$ actividades, $r=2$ recursos con capacidades $R_1=5$, $R_2=7$, una relación de precedencia $2 \to 3$ y los siguientes datos:
 
 \begin{table}[h]
 \centering
@@ -791,7 +779,7 @@ En la figura \ref{fig:feasible_schedules}(a) se muestra una gráfica de Gantt de
 \label{fig:feasible_schedules}
 \end{figure}
 
-Una relación de precedencia $i \to j$ con el significado $S_i+p_i \leq S_j$ puede ser generalizada por una relación de inicio-a-inicio de la forma 
+\citet{Robert2010} continúan explicando que una relación de precedencia $i \to j$ con el significado $S_i+p_i \leq S_j$ puede ser generalizada por una relación de inicio-a-inicio de la forma 
 \begin{equation} 
 S_i + d_{ij} \leq S_j 
 \label{eq:start-start}
@@ -810,24 +798,35 @@ con un número entero arbitrario $d_{ij} \in \mathbb{Z}$. La interpretación de 
   \label{fig:time-lags}
 \end{figure}
 
-Si $d_{ij} > 0$ se mantiene, el valor es también llamado un tiempo de latencia positivo, de lo contrario al ser $d_{ij} < 0$, se le llama tiempo de latencia negativo.
+Si $d_{ij} > 0$ se mantiene, el valor es también llamado un tiempo de latencia positivo, de lo contrario al ser $d_{ij} < 0$, se le llama tiempo de latencia negativo \citep[p.~4]{Robert2010}. 
 
-Las relaciones como \ref{eq:start-start} son relaciones muy generales de tiempo entre actividades. Por ejemplo, \ref{eq:start-start} teniendo a $d_{ij}=p_i$ es equivalente a la relación de precedencia $i \to j$. De manera más general, además de las relaciones de inicio-a-inicio, se pueden considerar las siguientes relaciones: compleción-a-inicio, compleción-a-compleción e inicio-a-compleción. Ahora bien, si no se permite la apropiación, cualquiera de este tipo de relaciones se puede transformar en cualquier otro tipo equivalente. Verbigracia, las relaciones de compleción-a-inicio $C_i+l_{ij} \leq S_j$ con tiempos de latencia de compleción-a-inicio $l_{ij}$ pueden ser transformadas en relaciones de inicio-a-inicio $S_i+p_i+l_{ij} \leq S_j$ al establecer $d_{ij}:=p_i+l_{ij}$.
+Las relaciones como (\ref{eq:start-start}) son relaciones muy generales de tiempo entre actividades. Por ejemplo, (\ref{eq:start-start}) teniendo a $d_{ij}=p_i$ es equivalente a la relación de precedencia $i \to j$. De manera más general, además de las relaciones de inicio-a-inicio, se pueden considerar las siguientes relaciones: compleción-a-inicio, compleción-a-compleción e inicio-a-compleción. Ahora bien, si no se permite la apropiación, cualquiera de este tipo de relaciones se puede transformar en cualquier otro tipo equivalente. Verbigracia, las relaciones de compleción-a-inicio $C_i+l_{ij} \leq S_j$ con tiempos de latencia de compleción-a-inicio $l_{ij}$ pueden ser transformadas en relaciones de inicio-a-inicio $S_i+p_i+l_{ij} \leq S_j$ al establecer $d_{ij}:=p_i+l_{ij}$ \citep[p.~4]{Robert2010}.
 
-Estas generalizaciones de las relaciones de precedencia permiten modelar distintos tipos de restricciones útiles para la solución del programa, tomando como ejemplo el modelado de restricciones de tiempo entre procesos —como los encontrados en los procesos químicos—. Si $S_i+p_i+l_{ij} \leq S_j$ y $S_j-u_{ij}-p_i \leq S_i$ con $0 \leq l_{ij} \leq u_{ij}$, entonces el tiempo entre la compleción de la actividad $i$ y el tiempo de inicio de la actividad $j$ debe ser al menos $l_{ij}$ pero no más de $u_{ij}$. Si $l_{ij}=u_{ij}=0$ entonces la actividad $j$ debe comenzar inmediatamente después de que la actividad $i$ termine.
+Estas generalizaciones de las relaciones de precedencia permiten modelar distintos tipos de restricciones útiles para la solución del programa, tomando como ejemplo el modelado de restricciones de tiempo entre procesos —como los encontrados en los procesos químicos—. Si $S_i+p_i+l_{ij} \leq S_j$ y $S_j-u_{ij}-p_i \leq S_i$ con $0 \leq l_{ij} \leq u_{ij}$, entonces el tiempo entre la compleción de la actividad $i$ y el tiempo de inicio de la actividad $j$ debe ser al menos $l_{ij}$ pero no más de $u_{ij}$. Si $l_{ij}=u_{ij}=0$ entonces la actividad $j$ debe comenzar inmediatamente después de que la actividad $i$ termine (restricción sin\nobreakdash-detenimiento) \citep[p.~4]{Robert2010}.
 
-También los tiempos de liberación $r_j$ y las fechas límite $d_j$ de las actividades $j$ pueden ser modeladas por relaciones de la forma \ref{eq:start-start}. Mientras que el tiempo de liberación $r_j$ es el tiempo más precoz de inicio para la actividad $j$, una fecha límite $d_j$ es el tiempo de compleción más tardío para $j$. Para modelar los tiempos de liberación se agrega la restricción $S_0+r_j \leq S_j$. Para modelar los fechas límite se hace uso de la restricción $S_j-(d_j-p_j) \leq S_0$. En ambos casos se presume que $S_0=0$. Si $r_j \leq d_j$ para un tiempo de liberación $r_j$ y una fecha límite $d_j$, entonces el intervalo $[r_j,d_j]$ es llamado una ventana de tiempo para la actividad $j$. La actividad $j$ debe ser procesada en su totalidad dentro de su ventana de tiempo.
+También los tiempos de liberación $r_j$ y las fechas límite $d_j$ de las actividades $j$ pueden ser modeladas por relaciones de la forma (\ref{eq:start-start}). Mientras que el tiempo de liberación $r_j$ es el tiempo más precoz de inicio para la actividad $j$, una fecha límite $d_j$ es el tiempo de compleción más tardío para $j$. Para modelar los tiempos de liberación se agrega la restricción $S_0+r_j \leq S_j$. Para modelar los fechas límite se hace uso de la restricción $S_j-(d_j-p_j) \leq S_0$. En ambos casos se presume que $S_0=0$. Si $r_j \leq d_j$ para un tiempo de liberación $r_j$ y una fecha límite $d_j$, entonces el intervalo $[r_j,d_j]$ es llamado una ventana de tiempo para la actividad $j$. La actividad $j$ debe ser procesada en su totalidad dentro de su ventana de tiempo \citep[p.~4,~5]{Robert2010}.
 
-En la programación de procesadores, en ocasiones, las también llamadas demoras de comunicación $c_{ij} > 0$ son tomadas en consideración. Si dos actividades $i, j$ con $i \to j$ son procesadas en el mismo procesador, no surge algún costo operativo de comunicación y la restricción es interpretada como la relación de precedencia usual $S_i+p_i \leq S_j$. No obstante, si $i,j$ son procesados en distintos procesadores, una demora de comunicación ocurre, lo que significa que se debe satisfacer $S_i+p_i+c_{ij} \leq S_j$.
+En la programación de procesadores, en ocasiones, las llamadas demoras de comunicación $c_{ij} > 0$ son tomadas en consideración. Si dos actividades $i, j$ con $i \to j$ son procesadas en el mismo procesador, no surge algún costo operativo de comunicación y la restricción es interpretada como la relación de precedencia usual $S_i+p_i \leq S_j$. No obstante, si $i,j$ son procesados en distintos procesadores, una demora de comunicación ocurre, lo que significa que se debe satisfacer $S_i+p_i+c_{ij} \leq S_j$ \citep[p.~5]{Robert2010}.
 
-En el caso multi-modo, un conjunto $\mathcal{M}_j$ de los tan llamados modos —alternativas de procesamiento— es asociato a cada actividad $j$. El tiempo de procesamiento de la actividad $j$ en el modo $m$ está dado por $p_{jm}$ y el uso por periodo de un recurso renovable $k$ está dado por $r_{jkm}$. Se debe asignar un modo para cada actividad y programar las actividades en los modos asignados. Múltiples modos puedes, por ejemplo, ser usados para modelar una situación en la cual una actividad puede ser procesada rápidamente por múltiples trabajadores o más lentamente con menos gente.
+En el caso multi-modo, un conjunto $\mathcal{M}_j$ de modos —alternativas de procesamiento— es asociado a cada actividad $j$. El tiempo de procesamiento de la actividad $j$ en el modo $m$ está dado por $p_{jm}$ y el uso por periodo de un recurso renovable $k$ está dado por $r_{jkm}$. Se debe asignar un modo para cada actividad y programar las actividades en los modos asignados. Múltiples modos puedes, por ejemplo, ser usados para modelar una situación en la cual una actividad puede ser procesada rápidamente por múltiples trabajadores o más lentamente con menos gente \citep[p.~5]{Robert2010}.
 
-En el contexto multi-modo, además de los recursos renovables como los procesadores, máquinas o personal, también son posibles los llamados recursos no\nobreakdash-renovables, como dinero o energía. Mientras que los recursos renovables están disponibles en una cantidad constante durante cada periodo, la disponibilidad de los recursos no renovables está limitada durante toda la duración del proyecto. Esto significa que los recursos no\nobreakdash-renovables son consumidos, es decir, cuando una actividad $j$ es procesada, la cantidad disponible $R_k$ de un recurso no\nobreakdash-renovable $k$ disminuye en $r_{jk}$.
+En el contexto multi-modo, además de los recursos renovables como los procesadores, máquinas o personal, también son posibles los llamados recursos no\nobreakdash-renovables, como dinero o energía. Mientras que los recursos renovables están disponibles en una cantidad constante durante cada periodo, la disponibilidad de los recursos no renovables está limitada durante toda la duración del proyecto. Esto significa que los recursos no\nobreakdash-renovables son consumidos, es decir, cuando una actividad $j$ es procesada, la cantidad disponible $R_k$ de un recurso no\nobreakdash-renovable $k$ disminuye en $r_{jk}$ \citep[p.~5]{Robert2010}.
 
-Los recursos no\nobreakdash-renovables son importantes únicaente en conexión con los problemas multi-modo, porque en el caso de los problemas mono-mono los requerimientos de recursos no\nobreakdash-renovables son independientes del programa (los recursos no\nobreakdash-renovables pueden ser suficientes o no serlo). Por otra parte, en el caso multi-modo los requerimientos de recursos no\nobreakdash-renovables dependen de la elección de los modos, a saber, pueden existir asignaciones de modo factibles y no\nobreakdash-factibles.
+Los recursos no\nobreakdash-renovables son importantes únicaente en conexión con los problemas multi-modo, porque en el caso de los problemas mono-mono los requerimientos de recursos no\nobreakdash-renovables son independientes del programa (los recursos no\nobreakdash-renovables pueden ser suficientes o no serlo). Por otra parte, en el caso multi-modo los requerimientos de recursos no\nobreakdash-renovables dependen de la elección de los modos, a saber, pueden existir asignaciones de modo factibles y no\nobreakdash-factibles \citep[p.~5]{Robert2010}.
 
-\section{Algunas áreas de aplicación}
-\label{algunas_areas_aplicacion}
+\section{Teoría de la complejidad computacional} % (fold)
+\label{teoria_complejidad_computacional}
+
+De acuerdo a \cite[p.~6]{Baker2009}, una perspectiva útil en cuanto a la relación de los problemas de programación y sus técnicas de solución viene de los avances de una rama de la ciencia computacional conocida como \textbf{teoría de la complejidad computacional}. La noción de la complejidad se refiere al esfuerzo computacional requerido por un algoritmo de solución. El esfuerzo de computación es descrito con una notación de orden de magnitud.
+%
+Por ejemplo, se hace uso de un algoritmo en particular para resolver un problema de tamaño \textit{n}. (Técnicamente, \textit{n} denota la cantidad de información necesaria para especificar el problema.) La cuantía de computaciones requeridas por el algoritmo típicamente está acotado superiormente por una función de \textit{n}. Si la orden de magnitud de esta función es polinomial conforme \textit{n} se agranda, entonces se dice que el algoritmo es polinomial.
+%
+Por ejemplo, si la función tiene una orden de magnitud $\textit{n}^2$, denotada por $\BigO(\textit{n}^2)$ entonces el algoritmo es polinomial. Por otra parte, si la función es $\BigO(2^\textit{n})$, entonces el algoritmo es no-polinomial (en este caso sería exponencial). Siendo todo lo demás igual, son preferibles los algoritmos polinomiales puesto que conforme \textit{n} se agranda, estos son ultimadamente más rápidos.
+
+Una clase de problemas llamados \textit{NP-completos} incluyen muchos problemas combinatorios bien conocidos y difíciles. Estos problemas son equivalentes en el sentido de que si uno de ellos puede ser resuelto por un algoritmo polinomial, entonces también lo son los otros. Sin embargo, muchos años de investigación por matemáticos y científicos computacionales no ha producido un algoritmo polinomial aplicable a cualquier problema de este tipo de clase, y la conjetura es que no existe tal algoritmo. Los problemas de optimación de este tipo, son llamados \textit{NP-complejos}. La utilidad de este concepto, el cual aplica a muchos problemas de programación, es que al hacer frente a un problema cuyo origen es NP-complejo, entonces se sabe que tal vez no se puedan encontrar soluciones óptimas con las técnicas disponibles. Probablemente sea conveniente hacer uso de un procedimiento de solución heurístico que tiene requerimientos computacionales más modestos pero no garantiza la optimalidad. Existen instancias de problemas NP-complejos en que la realización de las tareas a programar en el taller serían completadas —siguiendo cualquier secuencia razonable— antes que solucionar el problema óptimamente en el ordenador más veloz disponible. Por lo tanto, la dependencia en heurísticos es frecuentemente la regla en la práctica, en lugar de ser la excepción \citep[p.~6]{Baker2009}.
+
+\section{Síntesis de los problemas de programación y sus áreas de aplicación}
+\label{sintesis_problemas_programacion}
 
 Los problemas de programación se encuentran en todos los niveles y en todos los sectores de la actividad económica. Generalmente, se hace una distinción entre aquellos relacionados a la industria de la fabricación y aquellos relacionados a los sistemas de cómputo o administración de proyectos \citep[p.~6]{TKindt2002}.
 
@@ -849,12 +848,11 @@ Los \textbf{problemas de programación de horarios escolares} conciernen a todas
 
 Los \textbf{problemas de programación de proyectos} comprenden una vasta literatura. El interés general se concentra en la programación de operaciones que hacen uso de multiples recursos simultáneamente (dinero, personal, equipo, materiales, etc), estos recursos estando disponibles en cantidades conocidas. En palabras precisas son problemas de programación multi-recurso haciendo uso de recursos acumulativos no-renovables \citep[p.~7]{TKindt2002}.
 
-\section{Síntesis de los problemas de programación}
-\label{sintesis_problemas_programacion}
+\subsection{Síntesis de los problemas de programación}
 
 Los problemas encontrados en la programación son infinitamente variados y tienen potencialmente una aplicación en cualquier contexto económico imaginable como la informática, la construcción, la industria y la administración. A continuación se reseñan de manera general los problemas que conforman la programación.
 
-\subsection{Problemas centrales de programación}
+\subsubsection{Problemas centrales de programación}
 \label{problemas_centrales_programación}
 
 \citet{gotha93les-problemes-dordonnancement} califica de «centrales» a los problemas de programación sin restricciones de recursos, en donde tales son suficientes sin importar el programa que resulte \citetext{p.~89}. 
@@ -865,7 +863,7 @@ El problema central de recursos consumibles consiste de tareas vinculadas por re
 
 El problema central cíclico consiste de un conjunto finito de tareas genéricas. Una tarea genérica produce una infinidad de instancias, todas de la misma duración. Un conjunto finito de restricciones de precedencia genéricas vincula las tareas genéricas; una de estas restricciones es especificada por una tripleta $(i, j, h)$ en donde $i$ y $j$ son dos tareas genéricas, y $h$ es un entero natural llamado «\textit{hauteur}». Esto significa que por cada entero $n$, la instancia $(j, h+n)$ no puede comenzar su ejecución sino después de que haya sido completada la instancia $(i,n)$ \citep[p.~92]{gotha93les-problemes-dordonnancement}.
 
-\subsection{Problemas enfocados en un recurso único}
+\subsubsection{Problemas enfocados en un recurso único}
 \label{problemas_enfocados_recurso_unico}
 
 Los problemas pertinentes a esta sección tratan con un recurso único individual o con $m$ instancias idénticas. Estos problemas pueden parecer muy específicos, sin embargo su resolución es la base de otros problemas más generales, especialmente cuando parece que un recurso es dominante. 
@@ -874,7 +872,7 @@ El problema básico consiste en determinar para un recurso la secuencia óptima 
 
 En los problemas clásicos de $m$ recursos se asume que cada tarea requiere de un recurso y que se dispone del mismo en $m$ ejemplares idénticos. Generalmente la solución de estos problemas tiene como criterio la minimización de la duración total; los mismos son casi siempre NP-difíciles salvo en los casos particulares de periodos unitarios y dos recursos o de periodo unitario y un árbol de precedencia dando lugar a algoritmos de listas óptimas. En ciertos problemas de programación, una restricción de sucesión está asociada a una transferencia entre los recursos que llevan a cabo las dos tareas. En las aplicaciones computacionales un ejemplo sería la transferencia de datos entre las dos tareas. La duración de esta transferencia depende de las dos tareas pero también de la distancia entre los dos recursos. Estos problemas de programación distribuida, por supuesto son más difíciles que los problemas de programación convencionales de $m$ recursos puesto que los contienen como casos especiales \citep[p.~99]{gotha93les-problemes-dordonnancement}.
 
-\subsection{Problemas enfocados en múltiples recursos}
+\subsubsection{Problemas enfocados en múltiples recursos}
 \label{problemas_enfocados_multiples_recursos}
 
 Los problemas de programación con restricciones de recursos renovables son comúnmente conocidos como problemas de talleres puesto que se les encuentra en la administración de la producción. Sin embargo, son problemas muy generales que aparecen en otros contextos, en especial en las ciencias computacionales \citep[p.~101]{gotha93les-problemes-dordonnancement}.
@@ -886,7 +884,7 @@ Los problemas se pueden clasificar de acuerdo al orden de utilización de las m�
 El modelo básico puede ser extendido de varias maneras como asumiendo la existencia de fechas límite expiradas, la posible interrupción de una operación –con o sin memoria del trabajo parcialmente realizado–, el tiempo de preparación, que la disponibilidad de máquinas varíe en el transcurso del programa, que la capacidad de los recursos sea fraccional o la utilización de múltiples recursos para una operación \citep[p.~102]{gotha93les-problemes-dordonnancement}.
 
 
-\subsection{Problemas de ordenación cíclicos}
+\subsubsection{Problemas de ordenación cíclicos}
 \label{problemas_ordenacion_ciclicos}
 
 Este tipo de problemas tienen numerosas aplicaciones en el ámbito informático –computaciones cíclicas en arquitecturas paralelas– como en el dominio de la producción –\textit{job-shops} cíclicos– o de la planificación –asignación periódica de recursos–. La investigación de estos problemas ha sido realizada apegándose a sus respectivas aplicaciones y el desarrollo de heurísticas para la obtención rápida de una solución aproximada. Si bien hay mucho interés en el estudio teorético de los problemas subyacentes, la división de los investigadores por sus campos de aplicación ha imposibilitado su estudio \citep[p.~131]{gotha93les-problemes-dordonnancement}.
