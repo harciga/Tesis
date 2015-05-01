@@ -50,6 +50,8 @@
 \setlength{\topmargin}{0pt}  
 }
 
+\newenvironment{simple}{\setlength{\parindent}{0pt}}{}
+
 \renewenvironment{quotation}{\list{}{\leftmargin=0.25in}\item[]}{\endlist}
 
 \newcommand{\BigO}{\ensuremath{\mathcal{O}}}% big-O notation/symbol
@@ -277,7 +279,7 @@ Algunos autores consideran a la programación\index{programación} (\textit{sche
 En la sub-sección \ref{proceso_programacion} se definió el objetivo de la programación como:
 
 \begin{quotation}
-  solucionar problemas prácticos relacionados a la asignación, sujeta a restricciones, de recursos a objetos siendo colocados en el espacio-tiempo, haciendo uso o desarrollando herramientas apropiadas. Los problemas con frecuencia buscarán la satisfacción de ciertos objetivos.
+solucionar problemas prácticos relacionados a la asignación, sujeta a restricciones, de recursos a objetos siendo colocados en el espacio-tiempo, haciendo uso o desarrollando herramientas apropiadas. Los problemas con frecuencia buscarán la satisfacción de ciertos objetivos.
 \end{quotation}
 
 Para \citet{wren95scheduling-timetabling}, las actividades de calendarización\index{programación!calendarización}, establecimiento de listas\index{programación!listas} y secuenciación\index{programación!secuenciación} todas se apegan a la definición anterior.
@@ -662,7 +664,7 @@ De acuerdo a \citet[p.~12]{TKindt2002}, con el fin de evaluar un programa se pue
 
 Los criterios se pueden clasificar en dos grandes familias: los criterios «minimax», los cuales representan el valor máximo de un conjunto de funciones a ser minimizadas, y los criterios «minisum», quienes representan una suma de funciones a ser minimizadas \citep[p.~13]{TKindt2002}.
 
-\subsection[Criterio «minimax»]{Minimización de una función máxima: criterio «minimax»}
+\subsubsection[Criterio «minimax»]{Minimización de una función máxima: criterio «minimax»}
 
 \citet[p.~18]{Pinedo1995} explica que el objetivo a minimizar casi siempre es una función de los tiempos de compleción de los trabajos, los cuales, por supuesto, dependen del programa. 
 El tiempo de compleción de la operación del trabajo $j$ en la máquina $i$ se denota por $C_{ij}$. El tiempo de salida del sistema del trabajo $j$ –su tiempo de compleción en la última máquina que utilizó para su procesamiento– se denota con $C_j$.
@@ -719,7 +721,7 @@ es por lo tanto no\nobreakdash-regular. Un objetivo más general que no es regul
 \[ \sum_{j=1}^{n}w'_jE_{j}+\sum_{j=1}^{n}w''_jT_{j} \]
 El peso asociado a la precocidad del trabajo $j$ ($w'_j$) puede ser diferente al peso asociado a la tardanza del trabajo $j$ ($w''_j$) \citep[p.~19]{Pinedo1995}.
 
-\subsection[Criterio «minisum»]{Minimización de una función de suma: criterio «minisum»}
+\subsubsection[Criterio «minisum»]{Minimización de una función de suma: criterio «minisum»}
 
 Los criterios «minisum» son usualmente más dificiles de optimar que su contraparte «minimax» \citep[p.~13]{TKindt2002}. Entre los criterios existentes en la literatura están los siguientes:
 
@@ -736,6 +738,24 @@ Los criterios «minisum» son usualmente más dificiles de optimar que su contra
 \end{itemize}
 
 \citet[p.~14]{TKindt2002} concluye señalando que en general, $\bar{\fint}$ designa un criterio «minisum» ordinario el cual es usualmente una función no\nobreakdash-decreciente de los tiempos de compleción de los trabajos. Este no es el caso para el criterio $\bar{E}$.
+
+\subsection{Ejemplos de la notación}
+\label{sub:notacion_ejemplos}
+
+\begin{simple}
+\textbf{Un \textit{flow-shop} flexible}
+
+$FFc \lvert r_j \lvert \sum w_jT_j$ denota un \textit{flow-shop} flexible. Los trabajos tienen fechas de liberación y fechas de cierre y el objetivo es la minimización de la tardanza ponderada total. 
+\end{simple}
+
+\subsubsection{Una factoría de bolsas de papel}
+
+Considérese una fabrica que produce bolsas de papel para cemento, carbón, comida para canes y así sucesivamente. La materia prima básica para tal operación son los rollos de papel. El proceso de producción consiste de tres etapas: la impresión del logotipo, el engomado del costado de la bolsa y la costura de uno o ambos extremos de la bolsa. Cada etapa consiste de un número de máquinas las cuales no son necesariamente idénticas. Las máquinas en una etapa pueden diferir ligeramente en la velocidad que operan, el número de colores que pueden imprimir o el tamaño de la bolsa que pueden producir. Cada orden de producción indica una cantidad dada de una bolsa en específico que tiene que ser producida y enviada para una fecha de envío ya comprometida o fecha de cierre. Los tiempos de procesamiento para las diferentes operaciones son proporcionales al tamaño de la orden, esto es, la cuantía de bolsas ordenadas.
+
+Una entrega tardía implica una penalización en la forma de pérdida de buena voluntad y la magnitud de la penalización depende de la importancia de la orden o del cliente, y la tardanza de la entrega. Uno de los objetivos del sistema de programación es la minimización de la suma de estas penalizaciónes.
+
+Cuando una máquina es conmutada de un tipo de bolsa a otro, es necesaria una conformación. La duración de la conformación de la máquina depende de las similitudes entre las dos órdenes consecutivas —el número de colores en común, las diferencias del tamaño de bolsa y así—. Un objetivo importante del sistema de programación es la minimización del tiempo total utilizado en las conformaciones.
+
 
 \section{El modelo de programación RCPSP}
 
@@ -848,7 +868,7 @@ Los \textbf{problemas de programación de horarios escolares} conciernen a todas
 
 Los \textbf{problemas de programación de proyectos} comprenden una vasta literatura. El interés general se concentra en la programación de operaciones que hacen uso de multiples recursos simultáneamente (dinero, personal, equipo, materiales, etc), estos recursos estando disponibles en cantidades conocidas. En palabras precisas son problemas de programación multi-recurso haciendo uso de recursos acumulativos no-renovables \citep[p.~7]{TKindt2002}.
 
-\subsection{Síntesis de los problemas de programación}
+%\subsection{Síntesis de los problemas de programación}
 
 Los problemas encontrados en la programación son infinitamente variados y tienen potencialmente una aplicación en cualquier contexto económico imaginable como la informática, la construcción, la industria y la administración. A continuación se reseñan de manera general los problemas que conforman la programación.
 
