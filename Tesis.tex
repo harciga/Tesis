@@ -739,22 +739,41 @@ Los criterios «minisum» son usualmente más dificiles de optimar que su contra
 
 \citet[p.~14]{TKindt2002} concluye señalando que en general, $\bar{\fint}$ designa un criterio «minisum» ordinario el cual es usualmente una función no\nobreakdash-decreciente de los tiempos de compleción de los trabajos. Este no es el caso para el criterio $\bar{E}$.
 
-\subsection{Ejemplos de la notación}
+\section{Ejemplos de la notación}
 \label{sub:notacion_ejemplos}
+
+\subsection{Una fábrica de bolsas de papel}
 
 \begin{simple}
 \textbf{Un \textit{flow-shop} flexible}
 
-$FFc \lvert r_j \lvert \sum w_jT_j$ denota un \textit{flow-shop} flexible. Los trabajos tienen fechas de liberación y fechas de cierre y el objetivo es la minimización de la tardanza ponderada total. 
+$FFc \lvert r_j \lvert \sum w_jT_j$ denota un \textit{flow-shop} flexible. Los trabajos tienen fechas de liberación y fechas de cierre y el objetivo es la minimización de la tardanza ponderada total. El siguiente problema se ajusta al modelo.
 \end{simple}
-
-\subsubsection{Una factoría de bolsas de papel}
 
 Considérese una fabrica que produce bolsas de papel para cemento, carbón, comida para canes y así sucesivamente. La materia prima básica para tal operación son los rollos de papel. El proceso de producción consiste de tres etapas: la impresión del logotipo, el engomado del costado de la bolsa y la costura de uno o ambos extremos de la bolsa. Cada etapa consiste de un número de máquinas las cuales no son necesariamente idénticas. Las máquinas en una etapa pueden diferir ligeramente en la velocidad que operan, el número de colores que pueden imprimir o el tamaño de la bolsa que pueden producir. Cada orden de producción indica una cantidad dada de una bolsa en específico que tiene que ser producida y enviada para una fecha de envío ya comprometida o fecha de cierre. Los tiempos de procesamiento para las diferentes operaciones son proporcionales al tamaño de la orden, esto es, la cuantía de bolsas ordenadas.
 
 Una entrega tardía implica una penalización en la forma de pérdida de buena voluntad y la magnitud de la penalización depende de la importancia de la orden o del cliente, y la tardanza de la entrega. Uno de los objetivos del sistema de programación es la minimización de la suma de estas penalizaciónes.
 
 Cuando una máquina es conmutada de un tipo de bolsa a otro, es necesaria una conformación. La duración de la conformación de la máquina depende de las similitudes entre las dos órdenes consecutivas —el número de colores en común, las diferencias del tamaño de bolsa y así—. Un objetivo importante del sistema de programación es la minimización del tiempo total utilizado en las conformaciones.
+
+De hecho, el problema descrito con anterioridad tiene algunas características adicionales, incluyendo la configuración de tiempos dependientes de secuencia en cada una de las tres etapas. Además, el tiempo de procesamiento del trabajo $j$ en la máquina $i$ tiene una estructura especial: depende del número de bolsas y de la velocidad de la máquina.
+
+\subsection{Asignación de puertas en un aeropuerto}
+
+\begin{simple}
+\textbf{Un entorno de máquinas paralelas}
+
+$Pm \lvert r_j,M_j \lvert \sum w_jT_j$ denota un sistema con $m$ máquinas en paralelo. El trabajo $j$ arriba en la fecha de liberación $r_j$ y tiene que salir para la fecha de cierre $d_j$. El trabajo $j$ puede ser procesado únicamente en una de las máquinas pertenecientes al subconjunto $\mathcal{M}_j$, si el trabajo $j$ no es completado a tiempo, una penalización $w_jT_j$ es adjudicada. El modelo puede ser aplicado para el problema de asignación siguiente:
+\end{simple}
+
+Téngase en consideración la terminal de un aeropuerto mayor. Existen docenas de puertas y cientos de aviones llegan y salen cada día. Las puertas no son todas idénticas y tampoco lo son los aviones. Algunas de las puertas están en sitios con amplio espacio en donde los aviones grandes (\textit{widebodies}) puede ser acomodados con facilidad. Otras puertas están en sitios en donde es difícil hacer pasar a los aviones; ciertos aviones incluso pueden requerir ser remolcados a sus puertas.
+
+Los aviones llegan y salen de acuerdo a cierto itinerario. Sin embargo, éste está sujeto a una cierta cantidad de incertidumbre, la cual se puede deber a situaciones climáticas o por ocurrencias imprevistas en otros aeropuertos. Durante el tiempo que un avión ocupa la puerta los pasajeros entrantes tienen que descender del avión, éste tiene que recibir servicio y los pasajeros salientes deben abordar. El tiempo de salida programado puede ser visto como una fecha de cierre y el desempeño de la aerolínea puede ser evaluado correspondientemente. Sin embargo, si se conoce con antelación que un avión no puede aterrizar en el aeropuerto próximo debido a una congestión anticipada a su hora programada de llegada, entonces el avión no despega —esta política es seguida para conservar combustible—. Si un avión no tiene permitido despegar, las politicas operativas usualmente disponen que los pasajeros permanezcan en la terminar en lugar del avión. Si el abordaje es pospuesto, un avión puede permanecer en la puerta por un periodo extendido de tiempo, impidiendo así que otros aviones hagan uso de la puerta.
+
+El programador debe asignar puertas a los aviones de manera tal que la asignación sea físicamente factible mientras se optiman ciertos objetivos. Esto impolica que el programador tienen que asignar aviones a puertas adecuadas que estén disponibles a sus horas de llegada respectivas. Los objetivos incluyen la minimización del trabajo del personal de la aerolinea y la minimización de los retrasos en los aviones.
+
+En este escenario, las puertas son los recursos y el manejo y servicio de los aviones son las tareas. El arribo de un avión a una puerta representa el tiempo de inicio de la tarea y la salida representa su tiempo de compleción.
+
 
 
 \section{El modelo de programación RCPSP}
