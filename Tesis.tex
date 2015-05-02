@@ -38,6 +38,7 @@
 
 \usepackage{ulem}
 
+\pdfsuppresswarningpagegroup=1
 \setlength{\parindent}{0.25in}
 
 \let\olditemize\itemize
@@ -557,7 +558,7 @@ Una síntesis completa de la notación es proporcionada en el apéndice A. Los s
   \label{tab:job_attributes}
 \end{table}
 
-Al hacer frente a un problema de programación, se le debe identificar antes de buscar su solución. Aceptando que el problema es complicado y para saber si ya ha sido resuelto en la literatura, se hace uso de una notación reconocida. Con este propósito se han creado «modelos» de talleres, los cuales difieren uno de otro por su composición y la organización de sus recursos \citep[p.~7]{TKindt2002}. Un problema de programación es descrito por una tripleta $\alpha\: |\: \beta\: |\: \gamma$. El campo $\alpha$ describe el entorno de la máquina y contiene únicamente un registro. El campo $\beta$ provee detalles de las características del procesamiento y restricciones, puede no tener registro alguno, un solo registro o múltiples registros. El campo $\gamma$ describe el objetivo a ser minimizado y frecuentemente contiene un solo registro \citep[p.~14]{Pinedo1995}.
+Al hacer frente a un problema de programación, se le debe identificar antes de buscar su solución. Aceptando que el problema es complicado y para saber si ya ha sido resuelto en la literatura, se hace uso de una notación reconocida. Con este propósito se han creado «modelos» de talleres, los cuales difieren uno de otro por su composición y la organización de sus recursos \citep[p.~7]{TKindt2002}. Un problema de programación es descrito por una tripleta $\alpha\: \lvert \: \beta\: \lvert \: \gamma$. El campo $\alpha$ describe el entorno de la máquina y contiene únicamente un registro. El campo $\beta$ provee detalles de las características del procesamiento y restricciones, puede no tener registro alguno, un solo registro o múltiples registros. El campo $\gamma$ describe el objetivo a ser minimizado y frecuentemente contiene un solo registro \citep[p.~14]{Pinedo1995}.
 
 \subsection{Campo $\alpha$ - entornos}
 
@@ -739,31 +740,32 @@ Los criterios «minisum» son usualmente más dificiles de optimar que su contra
 
 \citet[p.~14]{TKindt2002} concluye señalando que en general, $\bar{\fint}$ designa un criterio «minisum» ordinario el cual es usualmente una función no\nobreakdash-decreciente de los tiempos de compleción de los trabajos. Este no es el caso para el criterio $\bar{E}$.
 
-\section{Ejemplos de la notación}
+\subsection{Ejemplos de la notación}
 \label{sub:notacion_ejemplos}
 
-\subsection{Una fábrica de bolsas de papel}
+\subsubsection{Un entorno de máquina singular}
 
 \begin{simple}
-\textbf{Un \textit{flow-shop} flexible}
-
-$FFc \lvert r_j \lvert \sum w_jT_j$ denota un \textit{flow-shop} flexible. Los trabajos tienen fechas de liberación y fechas de cierre y el objetivo es la minimización de la tardanza ponderada total. El siguiente problema se ajusta al modelo.
+  $1 \: \lvert \: r_j, prmp \: \lvert \: \sum w_jC_j$ denota un sistema de máquina singular con el trabajo $j$ entrando al sistema en su fecha de liberación $r_j$. Las apropiaciones son permitidas. El objetivo a ser minimizado es la suma ponderada de los tiempos de compleción.
 \end{simple}
 
-Considérese una fabrica que produce bolsas de papel para cemento, carbón, comida para canes y así sucesivamente. La materia prima básica para tal operación son los rollos de papel. El proceso de producción consiste de tres etapas: la impresión del logotipo, el engomado del costado de la bolsa y la costura de uno o ambos extremos de la bolsa. Cada etapa consiste de un número de máquinas las cuales no son necesariamente idénticas. Las máquinas en una etapa pueden diferir ligeramente en la velocidad que operan, el número de colores que pueden imprimir o el tamaño de la bolsa que pueden producir. Cada orden de producción indica una cantidad dada de una bolsa en específico que tiene que ser producida y enviada para una fecha de envío ya comprometida o fecha de cierre. Los tiempos de procesamiento para las diferentes operaciones son proporcionales al tamaño de la orden, esto es, la cuantía de bolsas ordenadas.
-
-Una entrega tardía implica una penalización en la forma de pérdida de buena voluntad y la magnitud de la penalización depende de la importancia de la orden o del cliente, y la tardanza de la entrega. Uno de los objetivos del sistema de programación es la minimización de la suma de estas penalizaciónes.
-
-Cuando una máquina es conmutada de un tipo de bolsa a otro, es necesaria una conformación. La duración de la conformación de la máquina depende de las similitudes entre las dos órdenes consecutivas —el número de colores en común, las diferencias del tamaño de bolsa y así—. Un objetivo importante del sistema de programación es la minimización del tiempo total utilizado en las conformaciones.
-
-De hecho, el problema descrito con anterioridad tiene algunas características adicionales, incluyendo la configuración de tiempos dependientes de secuencia en cada una de las tres etapas. Además, el tiempo de procesamiento del trabajo $j$ en la máquina $i$ tiene una estructura especial: depende del número de bolsas y de la velocidad de la máquina.
-
-\subsection{Asignación de puertas en un aeropuerto}
+\subsubsection{Secuencia subordinada a tiempos de configuración}
 
 \begin{simple}
-\textbf{Un entorno de máquinas paralelas}
+  $1 \: \lvert \: s_{jk} \: \lvert \: C_{\max}$ denota un sistema de máquina singular con $n$ trabajos sujetos a una secuenciación subordinada a los tiempos de configuración, en donde el objetivo es minimizar el makespan. Es bien sabido que este problema es equivalente al denominado problema del agente viajero (\textit{travelling salesman problem; TSP}).
+\end{simple}
 
-$Pm \lvert r_j,M_j \lvert \sum w_jT_j$ denota un sistema con $m$ máquinas en paralelo. El trabajo $j$ arriba en la fecha de liberación $r_j$ y tiene que salir para la fecha de cierre $d_j$. El trabajo $j$ puede ser procesado únicamente en una de las máquinas pertenecientes al subconjunto $\mathcal{M}_j$, si el trabajo $j$ no es completado a tiempo, una penalización $w_jT_j$ es adjudicada. El modelo puede ser aplicado para el problema de asignación siguiente:
+\subsubsection{Un proyecto}
+
+\begin{simple}
+$P \infty \: \lvert \: prec \: \lvert \: C_{\max}$ denota un problema de programación con $n$ trabajos sujeto a restricciones de precedencia y un número ilimitado de máquinas (o recursos) en paralelo. El tiempo total del proyecto en su totalidad debe ser minimizado. Este tipo de problemas es muy común en planeación de proyectos en la industria de la construcción y ha llevado al desarrollo de técnicas como \textit{CPM} y \textit{PERT}.
+\end{simple}.
+
+\subsubsection{Un entorno de máquinas paralelas}
+
+\begin{simple}
+
+$Pm \: \lvert \: r_j,M_j \: \lvert \: \sum w_jT_j$ denota un sistema con $m$ máquinas en paralelo. El trabajo $j$ arriba en la fecha de liberación $r_j$ y tiene que salir para la fecha de cierre $d_j$. El trabajo $j$ puede ser procesado únicamente en una de las máquinas pertenecientes al subconjunto $\mathcal{M}_j$, si el trabajo $j$ no es completado a tiempo, una penalización $w_jT_j$ es adjudicada. El modelo puede ser aplicado para el problema de asignación siguiente:
 \end{simple}
 
 Téngase en consideración la terminal de un aeropuerto mayor. Existen docenas de puertas y cientos de aviones llegan y salen cada día. Las puertas no son todas idénticas y tampoco lo son los aviones. Algunas de las puertas están en sitios con amplio espacio en donde los aviones grandes (\textit{widebodies}) puede ser acomodados con facilidad. Otras puertas están en sitios en donde es difícil hacer pasar a los aviones; ciertos aviones incluso pueden requerir ser remolcados a sus puertas.
@@ -774,7 +776,19 @@ El programador debe asignar puertas a los aviones de manera tal que la asignaci�
 
 En este escenario, las puertas son los recursos y el manejo y servicio de los aviones son las tareas. El arribo de un avión a una puerta representa el tiempo de inicio de la tarea y la salida representa su tiempo de compleción.
 
+\subsubsection{Un \textit{flow-shop} flexible}
 
+\begin{simple}
+$FFc \: \lvert \: r_j \: \lvert \: \sum w_jT_j$ denota un \textit{flow-shop} flexible. Los trabajos tienen fechas de liberación y fechas de cierre y el objetivo es la minimización de la tardanza ponderada total. El siguiente problema se ajusta al modelo.
+\end{simple}
+
+Considérese una fabrica que produce bolsas de papel para cemento, carbón, comida para canes y así sucesivamente. La materia prima básica para tal operación son los rollos de papel. El proceso de producción consiste de tres etapas: la impresión del logotipo, el engomado del costado de la bolsa y la costura de uno o ambos extremos de la bolsa. Cada etapa consiste de un número de máquinas las cuales no son necesariamente idénticas. Las máquinas en una etapa pueden diferir ligeramente en la velocidad que operan, el número de colores que pueden imprimir o el tamaño de la bolsa que pueden producir. Cada orden de producción indica una cantidad dada de una bolsa en específico que tiene que ser producida y enviada para una fecha de envío ya comprometida o fecha de cierre. Los tiempos de procesamiento para las diferentes operaciones son proporcionales al tamaño de la orden, esto es, la cuantía de bolsas ordenadas.
+
+Una entrega tardía implica una penalización en la forma de pérdida de buena voluntad y la magnitud de la penalización depende de la importancia de la orden o del cliente, y la tardanza de la entrega. Uno de los objetivos del sistema de programación es la minimización de la suma de estas penalizaciónes.
+
+Cuando una máquina es conmutada de un tipo de bolsa a otro, es necesaria una conformación. La duración de la conformación de la máquina depende de las similitudes entre las dos órdenes consecutivas —el número de colores en común, las diferencias del tamaño de bolsa y así—. Un objetivo importante del sistema de programación es la minimización del tiempo total utilizado en las conformaciones.
+
+De hecho, el problema descrito con anterioridad tiene algunas características adicionales, incluyendo la configuración de tiempos dependientes de secuencia en cada una de las tres etapas. Además, el tiempo de procesamiento del trabajo $j$ en la máquina $i$ tiene una estructura especial: depende del número de bolsas y de la velocidad de la máquina.
 
 \section{El modelo de programación RCPSP}
 
