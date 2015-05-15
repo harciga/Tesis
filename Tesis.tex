@@ -531,7 +531,7 @@ Estas dos tipologías son complementarias pues es posible trabajar, como ejemplo
 De acuerdo a \citet[p.~13]{Pinedo1995}, en todos los problemas de programación se considera que el número de trabajos y el número de máquinas son finitos. El número de trabajos es denominado por $n$ y el número de máquinas por $m$, la máquina número $k$ se representa por $M_k$. Se denota con $J_i$ al trabajo número $i$, con $n_i$ al número de operaciones del trabajo $J_i$, con $O_{i,j}$ a la operación $j$ del trabajo $J_i$ \citep[p.~7-8, p.~13]{TKindt2002,Pinedo1995}.
 Una síntesis completa de la notación es proporcionada en el apéndice A. Los siguientes atributos están asociados a un trabajo $j$.
 
-\textbf{Tiempo de procesamiento} ($p_{ij}$) La $p_{ij}$ representa el tiempo de procesamiento de un trabajo $j$ en una máquina $i$. El subíndice $i$ es omitido si el tiempo de procesamiento del trabajo $j$ no depende de la máquina o si el trabajo $j$ va a ser procesado únicamente en una máquina dada \citep[p.~14]{Pinedo1995}.
+\textbf{Tiempo de procesamiento} ($p_{i,j}$) La $p_{i,j}$ representa el tiempo de procesamiento de un trabajo $j$ en una máquina $i$. El subíndice $i$ es omitido si el tiempo de procesamiento del trabajo $j$ no depende de la máquina o si el trabajo $j$ va a ser procesado únicamente en una máquina dada \citep[p.~14]{Pinedo1995}.
 
 \textbf{Fecha de liberación} ($r_j$) La fecha de liberación $r_j$ de un trabajo $j$ también es conocida como fecha de disponibilidad. Es cuando el trabajo llega al sistema, en otras palabras, es el tiempo más próximo de inicio en el que el trabajo $j$ puede empezar su procesamiento \citetext{p.~14}.
 
@@ -541,20 +541,24 @@ Una síntesis completa de la notación es proporcionada en el apéndice A. Los s
 
 \begin{table}
 \centering
-\begin{tabular}{llc}
+\begin{tabular}{c p{12cm}}
 \toprule
-  \multicolumn{2}{c}{Término} \\
-  \cmidrule(r){1-2}
-  \multicolumn{1}{c}{Español} & \multicolumn{1}{c}{Inglés} & Notación \\
+\multicolumn{1}{c}{ Notación} & \multicolumn{1}{c}{Significado} \\
   \midrule
-  Tiempo de procesamiento & \textit{Processing time} & $p_{ij}$ \\
-  Fecha de liberación     & \textit{Release date}    & $r_j$ \\
-  Fecha de cierre & \textit{Due date} & $d_j$ \\
-  Fecha límite & \textit{Deadline} & $\bar{d}_j$ \\
-  Peso & \textit{Weight} & $w_j$ \\
+  $n$ & Número de trabajos. \\
+  $m$ & Número de máquinas. \\
+  $J_i$ & Trabajo número $i$, $i=1,\dots,n$. \\
+  $n_i$ & Número de operaciones del trabajo $J_i$, seguido tenemos que $n_i=m, \forall i, i=1,\dots,n$. \\
+  $M_j$ & Máquina número $j$, $j=1,\dots,m$ \\
+  $O_{i,j}$ & Operación $j$ del trabajo $J_i$ \\
+  $r_i (r_{i,j})$ & Tiempo de liberación del trabajo $J_i$ (Respectivamente para la operación $O_{i,j}$). \\
+  $p_{i,j}$ & Tiempo de procesamiento de la operación $O_{i,j}$. Cuando existe una única operación por trabajo se usa la notación $p_i$. \\
+  $d_i (d_{i,j})$ & Fecha de cierre del trabajo $J_i$ (Respectivamente para la operación $O_{i,j}$). \\
+  $\bar{d}_i (\bar{d}_{i,j})$ & Fecha límite del trabajo $J_i$ (Respectivamente para la operación $O_{i,j}$). El trabajo $J_i$ (resp. para $O_{i,j}$) no puede ser completado después de esta fecha. \\
+  $w_i (w_{i,j})$ & Peso asociado al trabajo $J_i$ (Respectivamente para la operación $O_{i,j}$). \\
   \bottomrule
 \end{tabular}
-  \caption{Atributos de un trabajo $j$}
+\caption{Datos generales de un problema de programación}
   \label{tab:job_attributes}
 \end{table}
 
@@ -587,11 +591,11 @@ En cada etapa se puede presentar los siguientes tipos de configuraciones \citep[
 \textbf{Máquinas idénticas en paralelo} ($Pm$) Hay una cantidad idéntica de máquinas en paralelo. El trabajo $j$ requiere una operación única y puede ser procesado por cualquiera de las máquinas $m$ o por cualquiera que pertenezca a un subconjunto dado, todas las operaciones tienen el mismo tiempo de procesamiento en todas las máquinas. Si el trabajo $j$ no puede ser procesado en cualquier máquina, sino únicamente en alguna perteneciente a un subconjunto $M_j$, entonces la entrada $M_j$ aparece en el campo $\beta$ \citep[p.~14, p.~8]{Pinedo1995,TKindt2002}.
 
 \textbf{Máquinas en paralelo con velocidades distintas} ($Qm$) Hay múltiples máquinas $m$ en paralelo con distintas velocidades.
-El tiempo de procesamiento de una operación $O_{ij}$ en la máquina $M_k$ es igual a $p_{ijk} = q_{ij}/v_k$ en donde $q_{ij}$ puede ser el número de componentes que deben ser procesados en la operación $O_{ij}$, y $v_k$ es el número de componentes que la máquina $M_k$ puede procesar por unidad de tiempo.
+El tiempo de procesamiento de una operación $O_{i,j}$ en la máquina $M_k$ es igual a $p_{i,j,k} = q_{i,j}/v_k$ en donde $q_{i,j}$ puede ser el número de componentes que deben ser procesados en la operación $O_{i,j}$, y $v_k$ es el número de componentes que la máquina $M_k$ puede procesar por unidad de tiempo.
 
-Cuando todo el procesamiento del trabajo $j$ es llevado a cabo en la misma máquina $k$, el tiempo $p_{ijk}$ que las operaciones $i$ del trabajo $j$ utilizan de la máquina $k$ es igual a $p_{ij}/v_k$. Este entorno es referido como máquinas uniformes. Si todas las máquinas tienen la misma velocidad, esto es $v_k = 1$ para toda $jk$ y $p_{ijk} = p_{ij}$, entonces el entorno es idéntico al anterior \citep[p.~14, p.~8]{Pinedo1995,TKindt2002}.
+Cuando todo el procesamiento del trabajo $j$ es llevado a cabo en la misma máquina $k$, el tiempo $p_{i,j,k}$ que las operaciones $i$ del trabajo $j$ utilizan de la máquina $k$ es igual a $p_{i,j}/v_k$. Este entorno es referido como máquinas uniformes. Si todas las máquinas tienen la misma velocidad, esto es $v_k = 1$ para toda $jk$ y $p_{i,j,k} = p_{i,j}$, entonces el entorno es idéntico al anterior \citep[p.~14, p.~8]{Pinedo1995,TKindt2002}.
 
-\textbf{Máquinas no-relacionadas en paralelo} ($Rm$) Este entorno es una generación más extensa del entorno anterior. El tiempo de procesamiento de la operación $O_{ij}$ en la máquina $M_k$ es igual a $p_{ijk}$ y es un dato del problema. Por supuesto, así como la asignación de la operación $O_{ij}$ es desconocida, también lo es su tiempo de procesamiento \citep[p.~14, p.~9]{Pinedo1995,TKindt2002}.
+\textbf{Máquinas no-relacionadas en paralelo} ($Rm$) Este entorno es una generación más extensa del entorno anterior. El tiempo de procesamiento de la operación $O_{i,j}$ en la máquina $M_k$ es igual a $p_{i,j,k}$ y es un dato del problema. Por supuesto, así como la asignación de la operación $O_{i,j}$ es desconocida, también lo es su tiempo de procesamiento \citep[p.~14, p.~9]{Pinedo1995,TKindt2002}.
 
 Universalmente, los problemas de programación y asignación «tradicionales» corresponden a las siguientes configuraciones:
 \begin{itemize} 
@@ -617,7 +621,7 @@ Este es el caso más general en donde se supone que cada operación tiene su pro
 
 \begin{table}
 \centering
-\begin{tabular}{l p{10cm}}
+\begin{tabular}{l p{12cm}}
 \toprule
   \multicolumn{1}{c}{Valor} & \multicolumn{1}{c}{Significado} \\
   \midrule
@@ -657,6 +661,23 @@ Algunas de las restricciones comúnmente encontradas en la literatura son las si
   \item \textbf{Permutación} ($prmu$) Una restricción que puede aparecer en los entornos \textit{flowshow} es que las filas delante de cada máquina operan de acuerdo a las normas «primero en entrar, primero en salir» (\textit{First In First Out; FIFO}). Esto implica que el órden (permutación) en que los trabajos atraviesan la primera máquina se mantienen durante todo el sistema \citep[p.~17]{Pinedo1995}.
 \end{itemize}
 
+\begin{table}
+\centering
+\begin{tabular}{l p{12cm}}
+\toprule
+  \multicolumn{1}{c}{Valor} & \multicolumn{1}{c}{Significado} \\
+  \midrule
+  $prec$ & Hay restricciones generales de precedencia entre las operaciones. \\
+  $chains$ & Existen restricciones de precedencia que conforman un conjunto de cadenas entre operaciones. \\
+  $split$ & La división de una operación en partes está permitida y éstas pueden ser procesadas simultáneamente. \\
+  $pmtn$ & Las operaciones pueden ser interrumpidas y retomadas más tarde en cualquier otra máquina \\
+  $no-wait$ & Para cada trabajo, cuando una operación es completada la siguiente debe comenzar. \\
+  \bottomrule
+\end{tabular}
+\caption{El campo $\beta$}
+\label{tab:notation_beta}
+\end{table}
+
 \subsection{Campo $\gamma$ - criterio de optimalidad}
 
 De acuerdo a \citet[p.~12]{TKindt2002}, con el fin de evaluar un programa se puede hacer uso de un cierto número de criterios. Ocasionalmente se puede querer que un criterio se acerque lo más posible a un valor de referencia dado. Aquí se está en la frontera entre las nociones de criterios y restricciones. Si una restricción representa un hecho que en definitiva debe de ser respetado, la optimación de un criterio permite más bien cierto grado de libertad. Como ejemplo, la declaración de que ningún trabajo debe completarse tarde de acuerdo a su fecha de cierre no deja margen alguno en la construcción del programa; incluso puede ser que no exista un programa factible en tal situación. Por otra parte, la minimización del número de trabajos tardíos permite garantizar que siempre habrá una solución, aun cuando para lograr esto ciertos trabajos puedan ser tardíos. Desde un punto de vista práctico, la diferencia entre un criterio y una restricción es únicamente aparente para quien está facultado en la toma de decisiones.
@@ -665,10 +686,23 @@ De acuerdo a \citet[p.~12]{TKindt2002}, con el fin de evaluar un programa se pue
 
 Los criterios se pueden clasificar en dos grandes familias: los criterios «minimax», los cuales representan el valor máximo de un conjunto de funciones a ser minimizadas, y los criterios «minisum», quienes representan una suma de funciones a ser minimizadas \citep[p.~13]{TKindt2002}.
 
+\begin{table}
+\centering
+\begin{tabular}{l l p{8cm}}
+\toprule
+\multicolumn{1}{l}{Criterio} & \multicolumn{1}{l}{Expresión} & \multicolumn{1}{l}{Significado} \\
+  \midrule
+  $C_{\max}$ & $\underset{i=1,\dots,n}{\max} (C_i)$ & Makespan, o tiempo máximo de compleción. \\
+  \bottomrule
+\end{tabular}
+\caption{El campo $\gamma$}
+\label{tab:notation_gamma}
+\end{table}
+
 \subsubsection[Criterio «minimax»]{Minimización de una función máxima: criterio «minimax»}
 
 \citet[p.~18]{Pinedo1995} explica que el objetivo a minimizar casi siempre es una función de los tiempos de compleción de los trabajos, los cuales, por supuesto, dependen del programa. 
-El tiempo de compleción de la operación del trabajo $j$ en la máquina $i$ se denota por $C_{ij}$. El tiempo de salida del sistema del trabajo $j$ –su tiempo de compleción en la última máquina que utilizó para su procesamiento– se denota con $C_j$.
+El tiempo de compleción de la operación del trabajo $j$ en la máquina $i$ se denota por $C_{i,j}$. El tiempo de salida del sistema del trabajo $j$ –su tiempo de compleción en la última máquina que utilizó para su procesamiento– se denota con $C_j$.
 %
 El retardo (\textit{lateness}) de un trabajo $j$ se define como 
 \[ L_j = C_j - d_j, \]
@@ -746,54 +780,53 @@ Los criterios «minisum» son usualmente más dificiles de optimar que su contra
 \subsubsection{Un entorno de máquina singular}
 
 \begin{simple}
-  $1 \: \lvert \: r_j, prmp \: \lvert \: \sum w_jC_j$ denota un sistema de máquina singular con el trabajo $j$ entrando al sistema en su fecha de liberación $r_j$. Las apropiaciones son permitidas. El objetivo a ser minimizado es la suma ponderada de los tiempos de compleción.
+  $1 \: \lvert \: r_j, prmp \: \lvert \: \sum w_jC_j$ denota un sistema de máquina singular con el trabajo $j$ entrando al sistema en su fecha de liberación $r_j$. Las apropiaciones son permitidas. El objetivo a ser minimizado es la suma ponderada de los tiempos de compleción \citep[p.~20]{Pinedo1995}.
 \end{simple}
 
 \subsubsection{Secuencia subordinada a tiempos de configuración}
 
 \begin{simple}
-  $1 \: \lvert \: s_{jk} \: \lvert \: C_{\max}$ denota un sistema de máquina singular con $n$ trabajos sujetos a una secuenciación subordinada a los tiempos de configuración, en donde el objetivo es minimizar el makespan. Es bien sabido que este problema es equivalente al denominado problema del agente viajero (\textit{travelling salesman problem; TSP}).
+  $1 \: \lvert \: s_{j,k} \: \lvert \: C_{\max}$ denota un sistema de máquina singular con $n$ trabajos sujetos a una secuenciación subordinada a los tiempos de configuración, en donde el objetivo es minimizar el makespan. Es bien sabido que este problema es equivalente al denominado problema del agente viajero (\textit{travelling salesman problem; TSP}) \citep[p.~20]{Pinedo1995}.
 \end{simple}
 
 \subsubsection{Un proyecto}
 
 \begin{simple}
-$P \infty \: \lvert \: prec \: \lvert \: C_{\max}$ denota un problema de programación con $n$ trabajos sujeto a restricciones de precedencia y un número ilimitado de máquinas (o recursos) en paralelo. El tiempo total del proyecto en su totalidad debe ser minimizado. Este tipo de problemas es muy común en planeación de proyectos en la industria de la construcción y ha llevado al desarrollo de técnicas como \textit{CPM} y \textit{PERT}.
+  $P \infty \: \lvert \: prec \: \lvert \: C_{\max}$ denota un problema de programación con $n$ trabajos sujeto a restricciones de precedencia y un número ilimitado de máquinas (o recursos) en paralelo. El tiempo total del proyecto en su totalidad debe ser minimizado. Este tipo de problemas es muy común en planeación de proyectos en la industria de la construcción y ha llevado al desarrollo de técnicas como \textit{CPM} y \textit{PERT} \citep[p.~21]{Pinedo1995}.
 \end{simple}.
 
 \subsubsection{Un entorno de máquinas paralelas}
 
 \begin{simple}
-
-$Pm \: \lvert \: r_j,M_j \: \lvert \: \sum w_jT_j$ denota un sistema con $m$ máquinas en paralelo. El trabajo $j$ arriba en la fecha de liberación $r_j$ y tiene que salir para la fecha de cierre $d_j$. El trabajo $j$ puede ser procesado únicamente en una de las máquinas pertenecientes al subconjunto $\mathcal{M}_j$, si el trabajo $j$ no es completado a tiempo, una penalización $w_jT_j$ es adjudicada. El modelo puede ser aplicado para el problema de asignación siguiente:
+  $Pm \: \lvert \: r_j,M_j \: \lvert \: \sum w_jT_j$ denota un sistema con $m$ máquinas en paralelo. El trabajo $j$ arriba en la fecha de liberación $r_j$ y tiene que salir para la fecha de cierre $d_j$. El trabajo $j$ puede ser procesado únicamente en una de las máquinas pertenecientes al subconjunto $\mathcal{M}_j$, si el trabajo $j$ no es completado a tiempo, una penalización $w_jT_j$ es adjudicada. El modelo puede ser aplicado para el problema de asignación siguiente \citep[p.~20]{Pinedo1995}:
 \end{simple}
 
-Téngase en consideración la terminal de un aeropuerto mayor. Existen docenas de puertas y cientos de aviones llegan y salen cada día. Las puertas no son todas idénticas y tampoco lo son los aviones. Algunas de las puertas están en sitios con amplio espacio en donde los aviones grandes (\textit{widebodies}) puede ser acomodados con facilidad. Otras puertas están en sitios en donde es difícil hacer pasar a los aviones; ciertos aviones incluso pueden requerir ser remolcados a sus puertas.
+Téngase en consideración la terminal de un aeropuerto mayor. Existen docenas de puertas y cientos de aviones llegan y salen cada día. Las puertas no son todas idénticas y tampoco lo son los aviones. Algunas de las puertas están en sitios con amplio espacio en donde los aviones grandes (\textit{widebodies}) puede ser acomodados con facilidad. Otras puertas están en sitios en donde es difícil hacer pasar a los aviones; ciertos aviones incluso pueden requerir ser remolcados a sus puertas \citep[p.~2,~3]{Pinedo1995}.
 
-Los aviones llegan y salen de acuerdo a cierto itinerario. Sin embargo, éste está sujeto a una cierta cantidad de incertidumbre, la cual se puede deber a situaciones climáticas o por ocurrencias imprevistas en otros aeropuertos. Durante el tiempo que un avión ocupa la puerta los pasajeros entrantes tienen que descender del avión, éste tiene que recibir servicio y los pasajeros salientes deben abordar. El tiempo de salida programado puede ser visto como una fecha de cierre y el desempeño de la aerolínea puede ser evaluado correspondientemente. Sin embargo, si se conoce con antelación que un avión no puede aterrizar en el aeropuerto próximo debido a una congestión anticipada a su hora programada de llegada, entonces el avión no despega —esta política es seguida para conservar combustible—. Si un avión no tiene permitido despegar, las politicas operativas usualmente disponen que los pasajeros permanezcan en la terminar en lugar del avión. Si el abordaje es pospuesto, un avión puede permanecer en la puerta por un periodo extendido de tiempo, impidiendo así que otros aviones hagan uso de la puerta.
+Los aviones llegan y salen de acuerdo a cierto itinerario. Sin embargo, éste está sujeto a una cierta cantidad de incertidumbre, la cual se puede deber a situaciones climáticas o por ocurrencias imprevistas en otros aeropuertos. Durante el tiempo que un avión ocupa la puerta los pasajeros entrantes tienen que descender del avión, éste tiene que recibir servicio y los pasajeros salientes deben abordar. El tiempo de salida programado puede ser visto como una fecha de cierre y el desempeño de la aerolínea puede ser evaluado correspondientemente. Sin embargo, si se conoce con antelación que un avión no puede aterrizar en el aeropuerto próximo debido a una congestión anticipada a su hora programada de llegada, entonces el avión no despega —esta política es seguida para conservar combustible—. Si un avión no tiene permitido despegar, las politicas operativas usualmente disponen que los pasajeros permanezcan en la terminar en lugar del avión. Si el abordaje es pospuesto, un avión puede permanecer en la puerta por un periodo extendido de tiempo, impidiendo así que otros aviones hagan uso de la puerta \citep[p.~3]{Pinedo1995}.
 
-El programador debe asignar puertas a los aviones de manera tal que la asignación sea físicamente factible mientras se optiman ciertos objetivos. Esto impolica que el programador tienen que asignar aviones a puertas adecuadas que estén disponibles a sus horas de llegada respectivas. Los objetivos incluyen la minimización del trabajo del personal de la aerolinea y la minimización de los retrasos en los aviones.
+El programador debe asignar puertas a los aviones de manera tal que la asignación sea físicamente factible mientras se optiman ciertos objetivos. Esto impolica que el programador tienen que asignar aviones a puertas adecuadas que estén disponibles a sus horas de llegada respectivas. Los objetivos incluyen la minimización del trabajo del personal de la aerolinea y la minimización de los retrasos en los aviones \citep[p.~3]{Pinedo1995}.
 
-En este escenario, las puertas son los recursos y el manejo y servicio de los aviones son las tareas. El arribo de un avión a una puerta representa el tiempo de inicio de la tarea y la salida representa su tiempo de compleción.
+En este escenario, las puertas son los recursos y el manejo y servicio de los aviones son las tareas. El arribo de un avión a una puerta representa el tiempo de inicio de la tarea y la salida representa su tiempo de compleción \citep[p.~3]{Pinedo1995}.
 
 \subsubsection{Un \textit{flow-shop} flexible}
 
 \begin{simple}
-$FFc \: \lvert \: r_j \: \lvert \: \sum w_jT_j$ denota un \textit{flow-shop} flexible. Los trabajos tienen fechas de liberación y fechas de cierre y el objetivo es la minimización de la tardanza ponderada total. El siguiente problema se ajusta al modelo.
+  $FFc \: \lvert \: r_j \: \lvert \: \sum w_jT_j$ denota un \textit{flow-shop} flexible. Los trabajos tienen fechas de liberación y fechas de cierre y el objetivo es la minimización de la tardanza ponderada total. El siguiente problema se ajusta al modelo \citep[p.~20]{Pinedo1995}.
 \end{simple}
 
-Considérese una fabrica que produce bolsas de papel para cemento, carbón, comida para canes y así sucesivamente. La materia prima básica para tal operación son los rollos de papel. El proceso de producción consiste de tres etapas: la impresión del logotipo, el engomado del costado de la bolsa y la costura de uno o ambos extremos de la bolsa. Cada etapa consiste de un número de máquinas las cuales no son necesariamente idénticas. Las máquinas en una etapa pueden diferir ligeramente en la velocidad que operan, el número de colores que pueden imprimir o el tamaño de la bolsa que pueden producir. Cada orden de producción indica una cantidad dada de una bolsa en específico que tiene que ser producida y enviada para una fecha de envío ya comprometida o fecha de cierre. Los tiempos de procesamiento para las diferentes operaciones son proporcionales al tamaño de la orden, esto es, la cuantía de bolsas ordenadas.
+Considérese una fabrica que produce bolsas de papel para cemento, carbón, comida para canes y así sucesivamente. La materia prima básica para tal operación son los rollos de papel. El proceso de producción consiste de tres etapas: la impresión del logotipo, el engomado del costado de la bolsa y la costura de uno o ambos extremos de la bolsa. Cada etapa consiste de un número de máquinas las cuales no son necesariamente idénticas. Las máquinas en una etapa pueden diferir ligeramente en la velocidad que operan, el número de colores que pueden imprimir o el tamaño de la bolsa que pueden producir. Cada orden de producción indica una cantidad dada de una bolsa en específico que tiene que ser producida y enviada para una fecha de envío ya comprometida o fecha de cierre. Los tiempos de procesamiento para las diferentes operaciones son proporcionales al tamaño de la orden, esto es, la cuantía de bolsas ordenadas \citep[p.~1,~2]{Pinedo1995}.
 
-Una entrega tardía implica una penalización en la forma de pérdida de buena voluntad y la magnitud de la penalización depende de la importancia de la orden o del cliente, y la tardanza de la entrega. Uno de los objetivos del sistema de programación es la minimización de la suma de estas penalizaciónes.
+Una entrega tardía implica una penalización en la forma de pérdida de buena voluntad y la magnitud de la penalización depende de la importancia de la orden o del cliente, y la tardanza de la entrega. Uno de los objetivos del sistema de programación es la minimización de la suma de estas penalizaciónes \citep[p.~2]{Pinedo1995}.
 
-Cuando una máquina es conmutada de un tipo de bolsa a otro, es necesaria una conformación. La duración de la conformación de la máquina depende de las similitudes entre las dos órdenes consecutivas —el número de colores en común, las diferencias del tamaño de bolsa y así—. Un objetivo importante del sistema de programación es la minimización del tiempo total utilizado en las conformaciones.
+Cuando una máquina es conmutada de un tipo de bolsa a otro, es necesaria una conformación. La duración de la conformación de la máquina depende de las similitudes entre las dos órdenes consecutivas —el número de colores en común, las diferencias del tamaño de bolsa y así—. Un objetivo importante del sistema de programación es la minimización del tiempo total utilizado en las conformaciones \citep[p.~2]{Pinedo1995}.
 
-De hecho, el problema descrito con anterioridad tiene algunas características adicionales, incluyendo la configuración de tiempos dependientes de secuencia en cada una de las tres etapas. Además, el tiempo de procesamiento del trabajo $j$ en la máquina $i$ tiene una estructura especial: depende del número de bolsas y de la velocidad de la máquina.
+De hecho, el problema descrito con anterioridad tiene algunas características adicionales, incluyendo la configuración de tiempos dependientes de secuencia en cada una de las tres etapas. Además, el tiempo de procesamiento del trabajo $j$ en la máquina $i$ tiene una estructura especial: depende del número de bolsas y de la velocidad de la máquina \citep[p.~2]{Pinedo1995}.
 
 \section{El modelo de programación RCPSP}
 
 De acuerdo a \citet[p.~2]{Robert2010}, uno de los problemas básicos complejos de programación es el llamado «problema de programación de proyecto limitado por recursos» (\textit{resource-onstrained project scheduling problem; RCPSP}). El \textit{RCPSP} es un problema general de programación que puede ser utilizado para modelar múltiples aplicaciones en la práctica, como puede ser: un proceso de producción, un proyecto de desarrollo de software, un horario escolar, la construcción de una vivienda, o la renovación de un aeropuerto. El objetivo es la programación de algunas actividades en un periodo de manera tal que las capacidades de recursos limitados sean respetadas y se optime alguna determinada función objetivo. Algunos ejemplos de recursos pueden ser procesadores, máquinas, personas o lugares, cuales deben estar disponibles en capacidades limitadas. Como funciones objetivo, la duración del proyecto, la desviación de las fechas límite o los costos pertinentes a los recursos pueden ser minimizados.
-El \textit{RCPSP} puede ser formulado de la siguiente manera. Dadas $n$ \textbf{actividades} (trabajos) $j=1,\dots,n$ y $r$ \textbf{recursos renovables} $k=1,\dots,r$. Una cuantía constante de unidades $R_k$ del recurso $k$ está disponible en cualquier momento. La actividad $j$ debe ser procesada por $p_j$ unidades de tiempo. Durante este periodo una cuantía constante de $r_{jk}$ unidades del recurso $k$ son utilizadas. Todos los datos se presumen son números enteros. Un recurso es llamado \textbf{disyuntivo} si $R_k=1$, de lo contrario es llamado \textbf{cumulativo}. Si el recurso $k$ es disyuntivo, dos actividades $i$, $j$ con $r_{ij}=r_{jk}=1$ no pueden ser procesadas simultáneamente \citep[p.~2]{Robert2010}.
+El \textit{RCPSP} puede ser formulado de la siguiente manera. Dadas $n$ \textbf{actividades} (trabajos) $j=1,\dots,n$ y $r$ \textbf{recursos renovables} $k=1,\dots,r$. Una cuantía constante de unidades $R_k$ del recurso $k$ está disponible en cualquier momento. La actividad $j$ debe ser procesada por $p_j$ unidades de tiempo. Durante este periodo una cuantía constante de $r_{j,k}$ unidades del recurso $k$ son utilizadas. Todos los datos se presumen son números enteros. Un recurso es llamado \textbf{disyuntivo} si $R_k=1$, de lo contrario es llamado \textbf{cumulativo}. Si el recurso $k$ es disyuntivo, dos actividades $i$, $j$ con $r_{i,j}=r_{j,k}=1$ no pueden ser procesadas simultáneamente \citep[p.~2]{Robert2010}.
 Adicionalmente, \textbf{restricciones de precedencia} son definidas entre algunas actividades. Están dadas por relaciones $i \to j$, en donde $i \to j$ significa que la actividad $j$ no puede comenzar antes que la actividad $i$ sea completada. El objetivo es determinar los tiempos de inicio $S_j$ para las actividades $j=1,\dots,n$ de manera tal que:
 
 \begin{itemize}
@@ -834,14 +867,14 @@ En la figura \ref{fig:feasible_schedules}(a) se muestra una gráfica de Gantt de
 
 \citet{Robert2010} continúan explicando que una relación de precedencia $i \to j$ con el significado $S_i+p_i \leq S_j$ puede ser generalizada por una relación de inicio-a-inicio de la forma 
 \begin{equation} 
-S_i + d_{ij} \leq S_j 
+S_i + d_{i,j} \leq S_j 
 \label{eq:start-start}
 \end{equation}
-con un número entero arbitrario $d_{ij} \in \mathbb{Z}$. La interpretación de la relación \ref{eq:start-start} depende del signo de $d_{ij}$:
+con un número entero arbitrario $d_{i,j} \in \mathbb{Z}$. La interpretación de la relación \ref{eq:start-start} depende del signo de $d_{i,j}$:
 
 \begin{itemize}
-  \item Si $d_{ij} \geq 0$, entonces la actividad j no puede comenzar antes de $d_{ij}$ unidades de tiempo después del inicio de la actividad $i$. Esto significa que la actividad $j$ no comienza antes que la actividad $i$ y $d_{ij}$ es la distancia mínima (tiempo de latencia) entre ambos tiempos de inicio, véase la figura \ref{fig:time-lags}(a).
-  \item Si $d_{ij} < 0$, entonces el tiempo más precoz de inicio de la actividad $j$ es $-d_{ij}$ unidades de tiempo antes del inicio de la actividad $i$, es decir, la actividad $i$ no puede comenzar más de $-d_{ij}$ unidades de tiempo más tarde que la actividad $j$. Si $S_j \leq S_i$, esto significa que $\lvert d_{ij} \lvert$ es la distancia máxima entre ambos tiempos de inicio, véase la figura \ref{fig:time-lags}(b).
+  \item Si $d_{i,j} \geq 0$, entonces la actividad j no puede comenzar antes de $d_{i,j}$ unidades de tiempo después del inicio de la actividad $i$. Esto significa que la actividad $j$ no comienza antes que la actividad $i$ y $d_{i,j}$ es la distancia mínima (tiempo de latencia) entre ambos tiempos de inicio, véase la figura \ref{fig:time-lags}(a).
+  \item Si $d_{i,j} < 0$, entonces el tiempo más precoz de inicio de la actividad $j$ es $-d_{i,j}$ unidades de tiempo antes del inicio de la actividad $i$, es decir, la actividad $i$ no puede comenzar más de $-d_{i,j}$ unidades de tiempo más tarde que la actividad $j$. Si $S_j \leq S_i$, esto significa que $\lvert d_{i,j} \lvert$ es la distancia máxima entre ambos tiempos de inicio, véase la figura \ref{fig:time-lags}(b).
 \end{itemize}
 
 \begin{figure}[hbtp]
@@ -851,19 +884,19 @@ con un número entero arbitrario $d_{ij} \in \mathbb{Z}$. La interpretación de 
   \label{fig:time-lags}
 \end{figure}
 
-Si $d_{ij} > 0$ se mantiene, el valor es también llamado un tiempo de latencia positivo, de lo contrario al ser $d_{ij} < 0$, se le llama tiempo de latencia negativo \citep[p.~4]{Robert2010}. 
+Si $d_{i,j} > 0$ se mantiene, el valor es también llamado un tiempo de latencia positivo, de lo contrario al ser $d_{i,j} < 0$, se le llama tiempo de latencia negativo \citep[p.~4]{Robert2010}. 
 
-Las relaciones como (\ref{eq:start-start}) son relaciones muy generales de tiempo entre actividades. Por ejemplo, (\ref{eq:start-start}) teniendo a $d_{ij}=p_i$ es equivalente a la relación de precedencia $i \to j$. De manera más general, además de las relaciones de inicio-a-inicio, se pueden considerar las siguientes relaciones: compleción-a-inicio, compleción-a-compleción e inicio-a-compleción. Ahora bien, si no se permite la apropiación, cualquiera de este tipo de relaciones se puede transformar en cualquier otro tipo equivalente. Verbigracia, las relaciones de compleción-a-inicio $C_i+l_{ij} \leq S_j$ con tiempos de latencia de compleción-a-inicio $l_{ij}$ pueden ser transformadas en relaciones de inicio-a-inicio $S_i+p_i+l_{ij} \leq S_j$ al establecer $d_{ij}:=p_i+l_{ij}$ \citep[p.~4]{Robert2010}.
+Las relaciones como (\ref{eq:start-start}) son relaciones muy generales de tiempo entre actividades. Por ejemplo, (\ref{eq:start-start}) teniendo a $d_{i,j}=p_i$ es equivalente a la relación de precedencia $i \to j$. De manera más general, además de las relaciones de inicio-a-inicio, se pueden considerar las siguientes relaciones: compleción-a-inicio, compleción-a-compleción e inicio-a-compleción. Ahora bien, si no se permite la apropiación, cualquiera de este tipo de relaciones se puede transformar en cualquier otro tipo equivalente. Verbigracia, las relaciones de compleción-a-inicio $C_i+l_{i,j} \leq S_j$ con tiempos de latencia de compleción-a-inicio $l_{i,j}$ pueden ser transformadas en relaciones de inicio-a-inicio $S_i+p_i+l_{i,j} \leq S_j$ al establecer $d_{i,j}:=p_i+l_{i,j}$ \citep[p.~4]{Robert2010}.
 
-Estas generalizaciones de las relaciones de precedencia permiten modelar distintos tipos de restricciones útiles para la solución del programa, tomando como ejemplo el modelado de restricciones de tiempo entre procesos —como los encontrados en los procesos químicos—. Si $S_i+p_i+l_{ij} \leq S_j$ y $S_j-u_{ij}-p_i \leq S_i$ con $0 \leq l_{ij} \leq u_{ij}$, entonces el tiempo entre la compleción de la actividad $i$ y el tiempo de inicio de la actividad $j$ debe ser al menos $l_{ij}$ pero no más de $u_{ij}$. Si $l_{ij}=u_{ij}=0$ entonces la actividad $j$ debe comenzar inmediatamente después de que la actividad $i$ termine (restricción sin\nobreakdash-detenimiento) \citep[p.~4]{Robert2010}.
+Estas generalizaciones de las relaciones de precedencia permiten modelar distintos tipos de restricciones útiles para la solución del programa, tomando como ejemplo el modelado de restricciones de tiempo entre procesos —como los encontrados en los procesos químicos—. Si $S_i+p_i+l_{i,j} \leq S_j$ y $S_j-u_{i,j}-p_i \leq S_i$ con $0 \leq l_{i,j} \leq u_{i,j}$, entonces el tiempo entre la compleción de la actividad $i$ y el tiempo de inicio de la actividad $j$ debe ser al menos $l_{i,j}$ pero no más de $u_{i,j}$. Si $l_{i,j}=u_{i,j}=0$ entonces la actividad $j$ debe comenzar inmediatamente después de que la actividad $i$ termine (restricción sin\nobreakdash-detenimiento) \citep[p.~4]{Robert2010}.
 
 También los tiempos de liberación $r_j$ y las fechas límite $d_j$ de las actividades $j$ pueden ser modeladas por relaciones de la forma (\ref{eq:start-start}). Mientras que el tiempo de liberación $r_j$ es el tiempo más precoz de inicio para la actividad $j$, una fecha límite $d_j$ es el tiempo de compleción más tardío para $j$. Para modelar los tiempos de liberación se agrega la restricción $S_0+r_j \leq S_j$. Para modelar los fechas límite se hace uso de la restricción $S_j-(d_j-p_j) \leq S_0$. En ambos casos se presume que $S_0=0$. Si $r_j \leq d_j$ para un tiempo de liberación $r_j$ y una fecha límite $d_j$, entonces el intervalo $[r_j,d_j]$ es llamado una ventana de tiempo para la actividad $j$. La actividad $j$ debe ser procesada en su totalidad dentro de su ventana de tiempo \citep[p.~4,~5]{Robert2010}.
 
-En la programación de procesadores, en ocasiones, las llamadas demoras de comunicación $c_{ij} > 0$ son tomadas en consideración. Si dos actividades $i, j$ con $i \to j$ son procesadas en el mismo procesador, no surge algún costo operativo de comunicación y la restricción es interpretada como la relación de precedencia usual $S_i+p_i \leq S_j$. No obstante, si $i,j$ son procesados en distintos procesadores, una demora de comunicación ocurre, lo que significa que se debe satisfacer $S_i+p_i+c_{ij} \leq S_j$ \citep[p.~5]{Robert2010}.
+En la programación de procesadores, en ocasiones, las llamadas demoras de comunicación $c_{i,j} > 0$ son tomadas en consideración. Si dos actividades $i, j$ con $i \to j$ son procesadas en el mismo procesador, no surge algún costo operativo de comunicación y la restricción es interpretada como la relación de precedencia usual $S_i+p_i \leq S_j$. No obstante, si $i,j$ son procesados en distintos procesadores, una demora de comunicación ocurre, lo que significa que se debe satisfacer $S_i+p_i+c_{i,j} \leq S_j$ \citep[p.~5]{Robert2010}.
 
-En el caso multi-modo, un conjunto $\mathcal{M}_j$ de modos —alternativas de procesamiento— es asociado a cada actividad $j$. El tiempo de procesamiento de la actividad $j$ en el modo $m$ está dado por $p_{jm}$ y el uso por periodo de un recurso renovable $k$ está dado por $r_{jkm}$. Se debe asignar un modo para cada actividad y programar las actividades en los modos asignados. Múltiples modos puedes, por ejemplo, ser usados para modelar una situación en la cual una actividad puede ser procesada rápidamente por múltiples trabajadores o más lentamente con menos gente \citep[p.~5]{Robert2010}.
+En el caso multi-modo, un conjunto $\mathcal{M}_j$ de modos —alternativas de procesamiento— es asociado a cada actividad $j$. El tiempo de procesamiento de la actividad $j$ en el modo $m$ está dado por $p_{j,m}$ y el uso por periodo de un recurso renovable $k$ está dado por $r_{j,k,m}$. Se debe asignar un modo para cada actividad y programar las actividades en los modos asignados. Múltiples modos puedes, por ejemplo, ser usados para modelar una situación en la cual una actividad puede ser procesada rápidamente por múltiples trabajadores o más lentamente con menos gente \citep[p.~5]{Robert2010}.
 
-En el contexto multi-modo, además de los recursos renovables como los procesadores, máquinas o personal, también son posibles los llamados recursos no\nobreakdash-renovables, como dinero o energía. Mientras que los recursos renovables están disponibles en una cantidad constante durante cada periodo, la disponibilidad de los recursos no renovables está limitada durante toda la duración del proyecto. Esto significa que los recursos no\nobreakdash-renovables son consumidos, es decir, cuando una actividad $j$ es procesada, la cantidad disponible $R_k$ de un recurso no\nobreakdash-renovable $k$ disminuye en $r_{jk}$ \citep[p.~5]{Robert2010}.
+En el contexto multi-modo, además de los recursos renovables como los procesadores, máquinas o personal, también son posibles los llamados recursos no\nobreakdash-renovables, como dinero o energía. Mientras que los recursos renovables están disponibles en una cantidad constante durante cada periodo, la disponibilidad de los recursos no renovables está limitada durante toda la duración del proyecto. Esto significa que los recursos no\nobreakdash-renovables son consumidos, es decir, cuando una actividad $j$ es procesada, la cantidad disponible $R_k$ de un recurso no\nobreakdash-renovable $k$ disminuye en $r_{j,k}$ \citep[p.~5]{Robert2010}.
 
 Los recursos no\nobreakdash-renovables son importantes únicaente en conexión con los problemas multi-modo, porque en el caso de los problemas mono-mono los requerimientos de recursos no\nobreakdash-renovables son independientes del programa (los recursos no\nobreakdash-renovables pueden ser suficientes o no serlo). Por otra parte, en el caso multi-modo los requerimientos de recursos no\nobreakdash-renovables dependen de la elección de los modos, a saber, pueden existir asignaciones de modo factibles y no\nobreakdash-factibles \citep[p.~5]{Robert2010}.
 
