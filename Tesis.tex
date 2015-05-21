@@ -543,23 +543,23 @@ Una síntesis completa de la notación es proporcionada en el apéndice A. Los s
 \centering
 \begin{tabular}{c p{12cm}}
 \toprule
-\multicolumn{1}{c}{ Notación} & \multicolumn{1}{c}{Significado} \\
+\multicolumn{1}{c}{Notación} & \multicolumn{1}{c}{Significado} \\
   \midrule
-  $n$ & Número de trabajos. \\
-  $m$ & Número de máquinas. \\
-  $J_i$ & Trabajo número $i$, $i=1,\dots,n$. \\
-  $n_i$ & Número de operaciones del trabajo $J_i$, seguido tenemos que $n_i=m, \forall i, i=1,\dots,n$. \\
-  $M_j$ & Máquina número $j$, $j=1,\dots,m$ \\
-  $O_{i,j}$ & Operación $j$ del trabajo $J_i$ \\
-  $r_i (r_{i,j})$ & Tiempo de liberación del trabajo $J_i$ (Respectivamente para la operación $O_{i,j}$). \\
-  $p_{i,j}$ & Tiempo de procesamiento de la operación $O_{i,j}$. Cuando existe una única operación por trabajo se usa la notación $p_i$. \\
-  $d_i (d_{i,j})$ & Fecha de cierre del trabajo $J_i$ (Respectivamente para la operación $O_{i,j}$). \\
+  $n$                         & Número de trabajos.                                                                                                                                                  \\
+  $m$                         & Número de máquinas.                                                                                                                                                  \\
+  $J_i$                       & Trabajo número $i$, $i=1,\dots,n$.                                                                                                                                   \\
+  $n_i$                       & Número de operaciones del trabajo $J_i$, seguido tenemos que $n_i=m, \forall i, i=1,\dots,n$.                                                                        \\
+  $M_j$                       & Máquina número $j$, $j=1,\dots,m$                                                                                                                                    \\
+  $O_{i,j}$                   & Operación $j$ del trabajo $J_i$                                                                                                                                      \\
+  $r_i (r_{i,j})$             & Tiempo de liberación del trabajo $J_i$ (Respectivamente para la operación $O_{i,j}$).                                                                                \\
+  $p_{i,j}$                   & Tiempo de procesamiento de la operación $O_{i,j}$. Cuando existe una única operación por trabajo se usa la notación $p_i$.                                           \\
+  $d_i (d_{i,j})$             & Fecha de cierre del trabajo $J_i$ (Respectivamente para la operación $O_{i,j}$).                                                                                     \\
   $\bar{d}_i (\bar{d}_{i,j})$ & Fecha límite del trabajo $J_i$ (Respectivamente para la operación $O_{i,j}$). El trabajo $J_i$ (resp. para $O_{i,j}$) no puede ser completado después de esta fecha. \\
-  $w_i (w_{i,j})$ & Peso asociado al trabajo $J_i$ (Respectivamente para la operación $O_{i,j}$). \\
+  $w_i (w_{i,j})$             & Peso asociado al trabajo $J_i$ (Respectivamente para la operación $O_{i,j}$).                                                                                        \\
   \bottomrule
 \end{tabular}
 \caption{Datos generales de un problema de programación}
-  \label{tab:job_attributes}
+  \label{tab:problem_data}
 \end{table}
 
 Al hacer frente a un problema de programación, se le debe identificar antes de buscar su solución. Aceptando que el problema es complicado y para saber si ya ha sido resuelto en la literatura, se hace uso de una notación reconocida. Con este propósito se han creado «modelos» de talleres, los cuales difieren uno de otro por su composición y la organización de sus recursos \citep[p.~7]{TKindt2002}. Un problema de programación es descrito por una tripleta $\alpha\: \lvert \: \beta\: \lvert \: \gamma$. El campo $\alpha$ describe el entorno de la máquina y contiene únicamente un registro. El campo $\beta$ provee detalles de las características del procesamiento y restricciones, puede no tener registro alguno, un solo registro o múltiples registros. El campo $\gamma$ describe el objetivo a ser minimizado y frecuentemente contiene un solo registro \citep[p.~14]{Pinedo1995}.
@@ -693,6 +693,11 @@ Los criterios se pueden clasificar en dos grandes familias: los criterios «mini
 \multicolumn{1}{l}{Criterio} & \multicolumn{1}{l}{Expresión} & \multicolumn{1}{l}{Significado} \\
   \midrule
   $C_{\max}$ & $\underset{i=1,\dots,n}{\max} (C_i)$ & Makespan, o tiempo máximo de compleción. \\
+  $T_{\max}$ & $\underset{i=1,\dots,n}{\max} (\max (C_i-d_i;0))$ & Tardanza máxima de los trabajos \\ 
+  $L_{\max}$ & $\underset{i=1,\dots,n}{\max} (C_i-d_i)$ & Retardo máximo de los trabajos \\
+  $E_{\max}$ & $\underset{i=1,\dots,n}{\max} (\max(d_i-C_i;0))$ & Precocidad máxima de los trabajos \\
+  $\fint_{\max}$ & $\underset{i=1,\dots,n}{\max} (\fint_i)$ & Función genérica de costo máximo. Generalmente, se asume como una función creciente de los tiempos de compleción de los trabajos. \\
+  $\bar{C} (\bar{C}^w)$ & $\overset{n}{\underset{i=1}{\sum}}C_i (\overset{n}{\underset{i=1}{\sum}}w_iC_i)$ & Tiempos (ponderados) promedio de compleción de los trabajos. \\
   \bottomrule
 \end{tabular}
 \caption{El campo $\gamma$}
