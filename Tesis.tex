@@ -692,12 +692,16 @@ Los criterios se pueden clasificar en dos grandes familias: los criterios «mini
 \toprule
 \multicolumn{1}{l}{Criterio} & \multicolumn{1}{l}{Expresión} & \multicolumn{1}{l}{Significado} \\
   \midrule
-  $C_{\max}$ & $\underset{i=1,\dots,n}{\max} (C_i)$ & Makespan, o tiempo máximo de compleción. \\
-  $T_{\max}$ & $\underset{i=1,\dots,n}{\max} (\max (C_i-d_i;0))$ & Tardanza máxima de los trabajos \\ 
-  $L_{\max}$ & $\underset{i=1,\dots,n}{\max} (C_i-d_i)$ & Retardo máximo de los trabajos \\
-  $E_{\max}$ & $\underset{i=1,\dots,n}{\max} (\max(d_i-C_i;0))$ & Precocidad máxima de los trabajos \\
-  $\fint_{\max}$ & $\underset{i=1,\dots,n}{\max} (\fint_i)$ & Función genérica de costo máximo. Generalmente, se asume como una función creciente de los tiempos de compleción de los trabajos. \\
-  $\bar{C} (\bar{C}^w)$ & $\overset{n}{\underset{i=1}{\sum}}C_i (\overset{n}{\underset{i=1}{\sum}}w_iC_i)$ & Tiempos (ponderados) promedio de compleción de los trabajos. \\
+  $C_{\max}$            & $\underset{i=1,\dots,n}{\max} (C_i)$                                             & Makespan, o tiempo máximo de compleción.                                                                                          \\[12pt]
+  $T_{\max}$            & $\underset{i=1,\dots,n}{\max} (\max (C_i-d_i;0))$                                & Tardanza máxima de los trabajos                                                                                                   \\[12pt]
+  $L_{\max}$            & $\underset{i=1,\dots,n}{\max} (C_i-d_i)$                                         & Retardo máximo de los trabajos                                                                                                    \\[12pt]
+  $E_{\max}$            & $\underset{i=1,\dots,n}{\max} (\max(d_i-C_i;0))$                                 & Precocidad máxima de los trabajos                                                                                                 \\[12pt]
+  $\fint_{\max}$        & $\underset{i=1,\dots,n}{\max} (\fint_i)$                                         & Función genérica de costo máximo. Generalmente, se asume como una función creciente de los tiempos de compleción de los trabajos. \\
+  $\bar{C} (\bar{C}^w)$ & $\overset{n}{\underset{i=1}{\sum}}C_i (\overset{n}{\underset{i=1}{\sum}}w_iC_i)$ & Tiempos (ponderados) promedio de compleción de los trabajos.                                                                      \\
+  $\bar{T} (\bar{T}^w)$ & $\overset{n}{\underset{i=1}{\sum}}T_i (\overset{n}{\underset{i=1}{\sum}}w_iT_i)$ & Tardanza (ponderada) promedio de los trabajos.                                                                                    \\
+  $\bar{U} (\bar{C}^w)$ & $\overset{n}{\underset{i=1}{\sum}}U_i (\overset{n}{\underset{i=1}{\sum}}w_iU_i)$ & Cuantía (ponderada) de trabajos con retraso.                                                                                      \\[12pt]
+  $\bar{E} (\bar{T}^w)$ & $\overset{n}{\underset{i=1}{\sum}}E_i (\overset{n}{\underset{i=1}{\sum}}w_iE_i)$ & Precocidad (ponderada) promedio de los trabajos.                                                                                  \\
+  — & & Sin criterio; es un problema de factibilidad.    \\
   \bottomrule
 \end{tabular}
 \caption{El campo $\gamma$}
