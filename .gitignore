@@ -2,3 +2,4 @@
 !*.tex
 !media/
 !media/*
+media/.DS_Store
